@@ -1,0 +1,23 @@
+{
+  "knowledge_base": "Knowledge VNG AI",
+  "knowledge_base_id": "cefadf09-4187-46ac-a765-591e3255a4a4",
+  "document": "11-chat-kiem-thu-va-bao-tri.md",
+  "date": "2026-08-07",
+  "preserved_old_knowledge_id": "0d06dfd8-84dd-46cc-834d-e9e572c9a99e",
+  "removed_failed_knowledge_ids": [
+    "4d027a2c-1b75-4176-bff1-724539482bb8",
+    "2823820f-5572-4f46-84a7-1d2652ba2a49"
+  ],
+  "final_knowledge_id": "58567b75-a702-4f59-b13a-704c019b33c5",
+  "final_parser_override": "Simple",
+  "final_status": "Hoàn tất",
+  "observations": [
+    "The first upload reached 5/5 stages but remained in post-processing.",
+    "Using Hủy in the progress dialog changed the document status to Đã hủy; it does not merely close the dialog.",
+    "Phân tích lại changed the status from Đã hủy to Đang xử lý and then Đang hoàn tất, but the displayed progress remained frozen at 1m26s.",
+    "The failed new ID was deleted only after both row IDs were checked and the old completed ID was confirmed present.",
+    "A second Built-in upload reproduced the same stalled post-processing state and was removed after the old completed ID was confirmed present.",
+    "The same local Markdown was uploaded with a one-file Markdown parser override set to Simple.",
+    "The Simple-parser upload reached Hoàn tất; full content, segments, and the MinIO image alt were verified before the old ID was deleted."
+  ]
+}

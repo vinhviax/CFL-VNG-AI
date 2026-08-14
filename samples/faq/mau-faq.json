@@ -1,0 +1,50 @@
+[
+  {
+    "standard_question": "Làm sao để đổi tên hiển thị trong game?",
+    "similar_questions": [
+      "cách đổi tên nhân vật",
+      "sửa username",
+      "thay tên hiển thị"
+    ],
+    "answers": [
+      "Vào Cài đặt > Hồ sơ > Đổi tên. Thao tác tốn 200 mảnh ngọc và chỉ thực hiện được một lần mỗi 30 ngày."
+    ],
+    "negative_questions": [
+      "đổi tên tài khoản đăng nhập"
+    ],
+    "tag_name": "Tài khoản",
+    "is_enabled": true
+  },
+  {
+    "standard_question": "Vì sao tài khoản của tôi bị tạm khóa?",
+    "similar_questions": [
+      "không đăng nhập được nữa",
+      "account bị suspended",
+      "bị đá khỏi game liên tục"
+    ],
+    "answers": [
+      "Tài khoản có thể bị tạm khóa khi hệ thống phát hiện đăng nhập từ nhiều thiết bị lạ trong thời gian ngắn. Hãy xác thực lại qua email để mở khóa."
+    ],
+    "negative_questions": [
+      "tôi quên mật khẩu nên không đăng nhập được"
+    ],
+    "tag_name": "Tài khoản",
+    "is_enabled": true
+  },
+  {
+    "standard_question": "Làm sao liên hệ hỗ trợ khi gặp lỗi thanh toán?",
+    "similar_questions": [
+      "lỗi nạp thẻ liên hệ ai",
+      "nạp tiền không thấy xu báo ai"
+    ],
+    "answers": [
+      "Gửi yêu cầu qua mục Hỗ trợ trong game, kèm mã giao dịch và ảnh chụp lỗi.",
+      "Nếu quá 24 giờ làm việc chưa có phản hồi, bổ sung mã ticket vào yêu cầu cũ; không tạo ticket trùng."
+    ],
+    "negative_questions": [
+      "xin hoàn tiền vì mua nhầm vật phẩm"
+    ],
+    "tag_name": "Thanh toán",
+    "is_enabled": true
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-08-07",
+  "knowledge_base": "Mixed; see provenance",
+  "tenant_id": "10012",
+  "purpose": "Map local audit screenshots to the MinIO URIs emitted by Knowledge VNG after image ingestion. The build script uses these URIs in upload-ready Markdown so chat can render images.",
+  "provenance": {
+    "01-14": "Test Doc RAG+Wiki",
+    "15-25": "Knowledge VNG AI (cefadf09-4187-46ac-a765-591e3255a4a4)"
+  },
+  "images": {
+    "01-tong-quan-danh-sach-knowledge.png": "minio://knowledge-base-prd/10012/exports/de2842c4-1f64-461f-9dc1-94cee45e473a.jpg",
+    "02-cau-hinh-tong-quan-document.png": "minio://knowledge-base-prd/10012/exports/6cea9d7e-d1a4-44b3-b5be-31574a7c0f70.jpg",
+    "03-cau-hinh-mo-hinh-vlm-asr.png": "minio://knowledge-base-prd/10012/exports/80dd4952-e6d4-485a-b726-d3d16419b85b.jpg",
+    "04-xu-ly-parser-theo-dinh-dang.png": "minio://knowledge-base-prd/10012/exports/3880e116-00e1-44b1-925b-467b44c0e3fd.jpg",
+    "05-xu-ly-phan-doan-cha-con.png": "minio://knowledge-base-prd/10012/exports/d6443be2-be4c-4edc-a9ab-0cf7734a3212.jpg",
+    "06-chia-se-va-phan-quyen.png": "minio://knowledge-base-prd/10012/exports/5a6ea4b9-76c7-4016-909b-aa1c33a67a95.jpg",
+    "07-nguon-du-lieu-notion-drive-nas.png": "minio://knowledge-base-prd/10012/exports/21cfa6a5-c1cd-4440-9873-e5015f6cf375.jpg",
+    "08-tai-tep-thu-muc-va-soan-thao.png": "minio://knowledge-base-prd/10012/exports/bee792d9-4c0f-440f-bb12-ed30f7149a3b.jpg",
+    "09-wiki-muc-luc-va-trang.png": "minio://knowledge-base-prd/10012/exports/8d07d181-2702-4863-99a8-385f7162c5b9.jpg",
+    "10-graph-cac-loai-node.png": "minio://knowledge-base-prd/10012/exports/2c712497-ee35-4115-8837-2da248753372.jpg",
+    "11-faq-danh-sach-nhap-xuat-tim-kiem.png": "minio://knowledge-base-prd/10012/exports/55ab80d1-2137-4551-af85-9f2aa7546691.jpg",
+    "12-faq-bieu-mau-them-qa.png": "minio://knowledge-base-prd/10012/exports/cf5cb82d-51cb-4365-9c76-7079ec36c8a0.jpg",
+    "13-chat-hien-thi-anh-minio.png": "minio://knowledge-base-prd/10012/exports/07dbea9e-18be-42b8-b8c8-2fd0edf4bc4c.jpg",
+    "14-chat-khong-hien-thi-duong-dan-tuong-doi.png": "minio://knowledge-base-prd/10012/exports/517b280c-185b-4827-b424-a6e74a853359.jpg",
+    "15-google-drive-xac-thuc-service-account.png": "minio://knowledge-base-prd/10012/exports/ad7105da-ebc6-4e77-8dfe-40392f7ba37b.png",
+    "16-google-drive-chon-tai-nguyen.png": "minio://knowledge-base-prd/10012/exports/56e7239b-548a-4f90-be64-54184b1da6a0.png",
+    "17-google-drive-lich-va-cach-dong-bo.png": "minio://knowledge-base-prd/10012/exports/077abe31-5d1c-4939-9a95-d3fe2d5da471.png",
+    "18-google-drive-loc-tep-va-tag.png": "minio://knowledge-base-prd/10012/exports/0c5fd3a3-79c0-4fa3-b3e5-2c082ea07792.png",
+    "19-google-drive-ghi-de-xu-ly.png": "minio://knowledge-base-prd/10012/exports/ae3ca551-9688-4d18-95e9-6b6b324d7c3e.png",
+    "20-google-drive-da-phuong-thuc-va-parser.png": "minio://knowledge-base-prd/10012/exports/6cc4dec1-1082-43c5-9c31-7f7ca2612d6d.png",
+    "21-google-drive-parser-office-text.png": "minio://knowledge-base-prd/10012/exports/1223284d-c725-4ac0-beee-a13cd77e5f19.png",
+    "22-google-drive-parser-media-web.png": "minio://knowledge-base-prd/10012/exports/83ae528d-e865-44e5-a053-d75c440ae67b.png",
+    "23-google-drive-dong-bo-xoa.png": "minio://knowledge-base-prd/10012/exports/b8d23074-4a88-4392-9125-cd4df6754285.png",
+    "24-google-drive-parser-excel-tuy-chinh.png": "minio://knowledge-base-prd/10012/exports/b0265dee-40e8-4996-b4e4-c2e5b6e97a18.png",
+    "25-google-drive-dong-bo-thanh-cong.png": "minio://knowledge-base-prd/10012/exports/21d6ee87-4171-4f58-adf7-22b2ec67bc1a.png"
+  }
+}

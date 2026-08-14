@@ -1,0 +1,20 @@
+# Credentials and private keys — never commit, even to a private repository.
+/knowledge/GS9 CFL Item Profile/keys CFL ItemID/keys/
+**/.env
+**/.env.*
+**/*credentials*.json
+**/*service-account*.json
+**/*service_account*.json
+**/*private-key*
+**/*private_key*
+**/*.pem
+**/*.p12
+**/*.pfx
+
+# Local caches and operating-system metadata.
+__pycache__/
+*.py[cod]
+*.gsheet
+.DS_Store
+Thumbs.db
+desktop.ini

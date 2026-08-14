@@ -1,0 +1,26 @@
+{
+  "knowledge_base": "Knowledge VNG AI",
+  "knowledge_base_id": "cefadf09-4187-46ac-a765-591e3255a4a4",
+  "tenant_id": "10012",
+  "captured_at": "2026-08-07",
+  "inventory_before_replacement": {
+    "documents": 24,
+    "markdown_documents": 13,
+    "png_documents": 11
+  },
+  "knowledge_ids": {
+    "00-gioi-thieu-va-quick-start.md": "bea1838c-c691-4da1-8fe0-a69ffc6b25dc",
+    "01-chuan-bi-noi-dung.md": "8057fe44-88b6-46fc-bcb8-fdf039772e7f",
+    "02-tao-kb-nhanh-va-nang-cao.md": "4d72e2c1-5f4a-4145-8231-750a3450c46a",
+    "03-tai-lieu-rag-wiki.md": "67be356f-71ea-4fdc-81df-6c13c50baf5a",
+    "04-faq-va-lap-chi-muc.md": "51d2f69c-76be-4d74-b54d-148ec527aa4c",
+    "05-mo-hinh-vlm-asr.md": "e45117df-add7-40a4-a936-ca43aff4108d",
+    "06-parser-va-xu-ly-file.md": "6253f9ef-56e8-4eb3-a000-d72f22f32e08",
+    "07-phan-doan-chunking.md": "83b47244-844d-4877-becc-6fb58899e0e7",
+    "08-chia-se-va-nguon-du-lieu.md": "d7f07873-8987-46fc-a242-e07bc460ee9d",
+    "09-van-hanh-documents-wiki-graph.md": "555f6397-8cbf-40a9-a95e-9babc390d69f",
+    "10-van-hanh-faq.md": "769e6e30-13e6-44f2-a856-958dd51df189",
+    "11-chat-kiem-thu-va-bao-tri.md": "0d06dfd8-84dd-46cc-834d-e9e572c9a99e",
+    "12-ket-noi-google-drive.md": "b4080723-6fd0-47e5-ae74-92b8f69e38aa"
+  }
+}

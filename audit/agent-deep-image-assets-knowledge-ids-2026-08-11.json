@@ -1,0 +1,24 @@
+{
+  "captured_at": "2026-08-11",
+  "knowledge_base": "Knowledge VNG - Image Assets",
+  "knowledge_base_id": "6da8657c-dd96-4170-a698-074043475014",
+  "tenant_id": "10012",
+  "method": "Mở trang detail của từng tệp qua UI; chỉ đọc asset đã render trong trang bằng pageAssets, chọn đúng một file_path=minio kết thúc .png. Không gọi private API, không suy đoán URI.",
+  "images": [
+    {"filename":"35-agent-che-do-va-preset.png","knowledge_id":"89aeb004-66b3-492f-9f89-e9d9f0d73f57","minio_uri":"minio://knowledge-base-prd/10012/exports/a1ebe886-714d-4fc3-b3e9-d3cbe005cfbb.png","status":"Hoàn tất"},
+    {"filename":"36-agent-system-prompt-va-bien.png","knowledge_id":"f2b19832-365a-4c87-aa69-70299d67566f","minio_uri":"minio://knowledge-base-prd/10012/exports/079fd918-899a-4c52-8ca7-7ec71d62b407.png","status":"Hoàn tất"},
+    {"filename":"37-agent-intent-va-prompt-ghi-de.png","knowledge_id":"998b3712-87d3-447b-91c6-7f7a03675e04","minio_uri":"minio://knowledge-base-prd/10012/exports/af8c66a4-3940-4c99-8a3e-bd4164a95aeb.png","status":"Hoàn tất"},
+    {"filename":"38-agent-intent-trace-runtime.png","knowledge_id":"dfd2cb91-9eaa-49c2-b31a-f7f4c428d397","minio_uri":"minio://knowledge-base-prd/10012/exports/75cca568-97e1-4f0c-a121-4e2f47a1d2be.png","status":"Hoàn tất"},
+    {"filename":"39-agent-model-ab-va-request-info.png","knowledge_id":"a52d9fd1-e52f-424e-89b7-d82e0cc78fc4","minio_uri":"minio://knowledge-base-prd/10012/exports/3deae3c9-9c14-473f-ada3-cc64bfa4a8e3.png","status":"Hoàn tất"},
+    {"filename":"40-agent-quota-timeout-va-loi-runtime.png","knowledge_id":"5c2a7356-736d-4326-a719-e885e2d8b7a7","minio_uri":"minio://knowledge-base-prd/10012/exports/875e9309-46ee-4901-800f-c88d92367724.png","status":"Hoàn tất"},
+    {"filename":"41-agent-test-kb-da-nguon.png","knowledge_id":"ad5d9138-03e0-485c-b010-738cd6f1b1f5","minio_uri":"minio://knowledge-base-prd/10012/exports/464611ad-8b6b-44e6-a2d8-1bdfefc8e856.png","status":"Hoàn tất"},
+    {"filename":"42-agent-at-kho-tri-thuc-va-tep.png","knowledge_id":"b13e491d-3f32-455d-941b-c1a87332bce3","minio_uri":"minio://knowledge-base-prd/10012/exports/f4c5d9ed-91e6-4110-ad20-6e1a08a25dd4.png","status":"Hoàn tất"},
+    {"filename":"43-agent-trace-cong-cu-truy-hoi.png","knowledge_id":"0fd40bfc-a927-42fa-b28a-7b10dbcd4cd2","minio_uri":"minio://knowledge-base-prd/10012/exports/79ffdb8a-ae3c-4b06-af4e-40d765ccbb7e.png","status":"Hoàn tất"},
+    {"filename":"44-agent-ab-topk-threshold-rerank.png","knowledge_id":"d40f9780-5f79-480c-b1da-923319348180","minio_uri":"minio://knowledge-base-prd/10012/exports/33d4048f-735b-464e-8dcc-2e8b714fdc0a.png","status":"Hoàn tất"},
+    {"filename":"45-agent-tep-dinh-kem.png","knowledge_id":"5456e550-952b-4a47-a635-b1641968dc12","minio_uri":"minio://knowledge-base-prd/10012/exports/c8f2a63c-944e-479a-a116-fbbe29438d2e.png","status":"Hoàn tất"},
+    {"filename":"46-agent-image-analysis.png","knowledge_id":"d8374499-ec45-4db9-9c87-5bbaedce8bc7","minio_uri":"minio://knowledge-base-prd/10012/exports/7aff3c1c-13cd-4788-9b17-251f7c94de12.png","status":"Hoàn tất"},
+    {"filename":"47-agent-document-summarize.png","knowledge_id":"adc707ad-978a-4310-904e-f4b05cbdefc3","minio_uri":"minio://knowledge-base-prd/10012/exports/c993f9f0-e66c-4692-83d7-11a5b85ad5fb.png","status":"Hoàn tất"},
+    {"filename":"48-agent-lich-su-va-request-information.png","knowledge_id":"26b15522-4930-4436-8319-f517d8b7b8ca","minio_uri":"minio://knowledge-base-prd/10012/exports/124e6dfd-7a1a-4c1a-92aa-6b02ad216b57.png","status":"Hoàn tất"},
+    {"filename":"49-agent-chia-se-va-vong-doi.png","knowledge_id":"3baf7b15-6a3a-4873-9497-d1c862c2e154","minio_uri":"minio://knowledge-base-prd/10012/exports/0874930a-485f-4b72-ad9b-cff1ec240324.png","status":"Hoàn tất"}
+  ]
+}

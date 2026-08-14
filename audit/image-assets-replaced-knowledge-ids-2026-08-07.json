@@ -1,0 +1,29 @@
+{
+  "knowledge_base": "Knowledge VNG - Image Assets",
+  "knowledge_base_id": "6da8657c-dd96-4170-a698-074043475014",
+  "tenant_id": "10012",
+  "deleted_at": "2026-08-07",
+  "reason": "Replaced mislabeled JPEG payloads with real PNG payloads while preserving filenames",
+  "deleted_knowledge_ids": {
+    "01-tong-quan-danh-sach-knowledge.png": "3d449a33-5a46-4f0f-8c2b-d2fa9fb609ce",
+    "02-cau-hinh-tong-quan-document.png": "f73c8eca-b5fe-4648-9dce-cb9401625e52",
+    "03-cau-hinh-mo-hinh-vlm-asr.png": "b608faa9-b385-4b5b-beb9-d9da088a6029",
+    "04-xu-ly-parser-theo-dinh-dang.png": "2076e489-89a5-4535-9d9a-bdbd9cebe98a",
+    "05-xu-ly-phan-doan-cha-con.png": "d2e9617e-9a64-46bc-8391-1095b692f0c1",
+    "06-chia-se-va-phan-quyen.png": "a9ed246f-c4df-47e1-9ff7-207ec3031d20",
+    "07-nguon-du-lieu-notion-drive-nas.png": "ace35c98-5795-4d24-8cbe-d9496747c974",
+    "08-tai-tep-thu-muc-va-soan-thao.png": "bc9bd0db-5338-40a9-82bb-629afbee4126",
+    "09-wiki-muc-luc-va-trang.png": "3a9d7366-1bcc-4d6d-96e4-26e0f6bff8f8",
+    "10-graph-cac-loai-node.png": "4017aed8-5bcc-466e-97d3-2747a72c453d",
+    "11-faq-danh-sach-nhap-xuat-tim-kiem.png": "ebc611d1-17c0-45a9-a78b-3685b62ddd11",
+    "12-faq-bieu-mau-them-qa.png": "5472760d-2ae6-4eab-99ca-6dd8bd4b083f",
+    "13-chat-hien-thi-anh-minio.png": "9d911a15-41b2-40b4-ad2e-d77bf53691d6",
+    "14-chat-khong-hien-thi-duong-dan-tuong-doi.png": "48c55247-8430-407e-baef-b5e83894cbe5"
+  },
+  "post_delete_inventory": {
+    "documents": 25,
+    "png_documents": 25,
+    "markdown_documents": 0,
+    "legacy_size_matches": 0
+  }
+}

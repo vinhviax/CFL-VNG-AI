@@ -1,0 +1,46 @@
+{
+  "captured_at": "2026-08-11T18:07:03+07:00",
+  "tenant_id": "10012",
+  "scope": "Agent guide extension final inventory",
+  "knowledge_bases": [
+    {
+      "role": "asset_host",
+      "name": "Knowledge VNG - Image Assets",
+      "knowledge_base_id": "6da8657c-dd96-4170-a698-074043475014",
+      "png_count": 34,
+      "markdown_count": 0,
+      "complete_count": 34,
+      "other_status_count": 0,
+      "status": "Hoàn tất"
+    },
+    {
+      "role": "consumer",
+      "name": "Knowledge VNG AI",
+      "knowledge_base_id": "cefadf09-4187-46ac-a765-591e3255a4a4",
+      "png_count": 0,
+      "markdown_count": 14,
+      "complete_count": 14,
+      "other_status_count": 0,
+      "status": "Hoàn tất"
+    }
+  ],
+  "agent": {
+    "name": "Kiểm thử Agent Knowledge VNG 2026-08-11",
+    "agent_id": "3c644ac2-ab5f-4141-959d-f1fa13ce8c41",
+    "knowledge_base": "Knowledge VNG AI",
+    "file_type": "MD",
+    "retrieve_only_when_mentioned": false
+  },
+  "agent_module": {
+    "filename": "13-tao-va-van-hanh-agent.md",
+    "knowledge_id": "957b9bcb-bdc5-41de-ba06-67e489eac1f0",
+    "status": "Hoàn tất"
+  },
+  "final_chat": {
+    "chat_id": "2446f763-3758-4179-b67c-84ca561bfc64",
+    "url": "https://vnggames.ai/kb/chats/2446f763-3758-4179-b67c-84ca561bfc64?agent_id=3c644ac2-ab5f-4141-959d-f1fa13ce8c41",
+    "module_source_opened": true,
+    "agent_image_rendered": true,
+    "outside_scope_refused": true
+  }
+}

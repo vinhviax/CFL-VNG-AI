@@ -1,0 +1,20 @@
+{
+  "knowledge_base": "Knowledge VNG AI",
+  "knowledge_base_id": "cefadf09-4187-46ac-a765-591e3255a4a4",
+  "tenant_id": "10012",
+  "captured_before_delete": "2026-08-07",
+  "reason": "Consumer KB now renders images from Markdown URIs hosted by Knowledge VNG - Image Assets",
+  "knowledge_ids": {
+    "15-google-drive-xac-thuc-service-account.png": "020c4b3f-607f-42a3-b4db-54d0af8752d7",
+    "16-google-drive-chon-tai-nguyen.png": "6ef5e264-f5be-40ca-b451-1ca64f708587",
+    "17-google-drive-lich-va-cach-dong-bo.png": "2bc484ee-dbc7-4a0b-a22c-35d30dae7566",
+    "18-google-drive-loc-tep-va-tag.png": "3aa1c285-0973-4a71-8bf6-f5f8ce5457c9",
+    "19-google-drive-ghi-de-xu-ly.png": "4a783f37-c3d7-4f7d-bc4d-60605d779cc6",
+    "20-google-drive-da-phuong-thuc-va-parser.png": "523669d6-4c25-4b80-a1e3-3039cffa75a0",
+    "21-google-drive-parser-office-text.png": "aa5f6dcb-e5f4-48b9-b4f7-5d429524a452",
+    "22-google-drive-parser-media-web.png": "d27b08e9-5b57-4865-9f00-6aeda40ce852",
+    "23-google-drive-dong-bo-xoa.png": "4d6d5d1e-7f00-498b-9565-3dfdf583c94b",
+    "24-google-drive-parser-excel-tuy-chinh.png": "e816b934-15e4-4737-8698-3cd30c9ee48c",
+    "25-google-drive-dong-bo-thanh-cong.png": "0d72bf53-0dbd-432e-8a96-b4aba855d340"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "captured_at": "2026-08-07",
+  "tenant_id": "10012",
+  "asset_knowledge_base": {
+    "name": "Knowledge VNG - Image Assets",
+    "id": "6da8657c-dd96-4170-a698-074043475014",
+    "documents": 25,
+    "png_documents": 25,
+    "markdown_documents": 0,
+    "completed_documents": 25
+  },
+  "consumer_knowledge_base": {
+    "name": "Knowledge VNG AI",
+    "id": "cefadf09-4187-46ac-a765-591e3255a4a4",
+    "documents": 13,
+    "markdown_documents": 13,
+    "png_documents": 0,
+    "completed_documents": 13
+  },
+  "post_cleanup_chat_validation": {
+    "chat_id": "2625ff6e-7e92-46d3-9fa4-eee81a1bf63c",
+    "previous_post_cleanup_chat_id": "25bc7d2c-ac5b-455d-ab12-55af8135de63",
+    "question": "Google Drive file filter and path tag with illustration",
+    "answer_correct": true,
+    "image_rendered": true,
+    "image_alt": "Regex lọc tệp và gắn tag",
+    "reference_documents": 7,
+    "reference_file_types": ["md"],
+    "verified_source": "12-ket-noi-google-drive.md",
+    "verified_uri": "minio://knowledge-base-prd/10012/exports/f0c0c37a-0e8c-44a2-ba64-abf67d5667ee.png",
+    "verified_generated_link": "../audit/audit-google-drive-connector-2026-08-07.md"
+  },
+  "verification_method": "Live table row inventory plus chat reference expansion and direct Markdown segment inspection"
+}

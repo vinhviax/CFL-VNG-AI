@@ -1,0 +1,21 @@
+{
+  "knowledge_base": "Knowledge VNG AI",
+  "knowledge_base_id": "cefadf09-4187-46ac-a765-591e3255a4a4",
+  "tenant_id": "10012",
+  "date": "2026-08-07",
+  "document": "12-ket-noi-google-drive.md",
+  "reason": "Rebuild after fixing generated-module relative audit link from audit/... to ../audit/...",
+  "previous_knowledge_id": "748baf80-3d87-427b-acbf-9de20f8461e8",
+  "current_knowledge_id": "e58fb441-74cc-44cf-83a9-972954fa697c",
+  "parser": "Built-in",
+  "current_status": "Hoàn tất",
+  "verification": {
+    "single_live_row": true,
+    "full_content_opened": true,
+    "fixed_link_in_source": "../audit/audit-google-drive-connector-2026-08-07.md",
+    "chat_id": "2625ff6e-7e92-46d3-9fa4-eee81a1bf63c",
+    "chat_image_rendered": true,
+    "reference_sources_only_markdown": true,
+    "verified_image_uri": "minio://knowledge-base-prd/10012/exports/f0c0c37a-0e8c-44a2-ba64-abf67d5667ee.png"
+  }
+}

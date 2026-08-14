@@ -1,0 +1,58 @@
+{
+  "snapshot_date": "2026-08-12",
+  "scope": "Agent v3.3.0 rollout final live inventory",
+  "verification_method": "UI only; no private API or inferred MinIO URI",
+  "asset_host": {
+    "name": "Knowledge VNG - Image Assets",
+    "knowledge_base_id": "6da8657c-dd96-4170-a698-074043475014",
+    "tenant_id": "10012",
+    "png": 49,
+    "markdown": 0,
+    "completed": 49,
+    "status": "verified"
+  },
+  "consumer": {
+    "name": "Knowledge VNG AI",
+    "knowledge_base_id": "cefadf09-4187-46ac-a765-591e3255a4a4",
+    "tenant_id": "10012",
+    "markdown": 20,
+    "png": 0,
+    "completed": 20,
+    "status": "verified",
+    "agent_modules": [
+      "13-agent-tong-quan-va-kien-truc.md",
+      "14-che-do-preset-prompt-va-intent.md",
+      "15-model-reranker-suy-luan-va-quota.md",
+      "16-kho-tri-thuc-cong-cu-va-truy-hoi.md",
+      "17-da-phuong-thuc-va-tep-dinh-kem.md",
+      "18-chat-nguon-lich-su-va-danh-gia.md",
+      "19-vong-doi-phan-quyen-quan-sat-va-bao-tri.md"
+    ]
+  },
+  "legacy_module_cleanup": {
+    "deleted_name": "13-tao-va-van-hanh-agent.md",
+    "deleted_knowledge_id": "957b9bcb-bdc5-41de-ba06-67e489eac1f0",
+    "backup": "audit/13-tao-va-van-hanh-agent-before-v3.3.0.md",
+    "backup_sha256": "489FDBB1E9E6C541D5B035C6EDFBD32ABE5F08BAE9034F604A3E97473F65D8B7",
+    "gate_before_deletion": "new module 13 completed, retrieved as source, and rendered hero image"
+  },
+  "test_cleanup": {
+    "deleted_knowledge_base": "TEST - Agent Deep Audit 2026-08-11",
+    "deleted_knowledge_base_id": "af9b245f-e282-48fd-bf00-ca1bdce0dbc2",
+    "deleted_agents": [
+      "TEST - Agent Lifecycle Deep Audit 2026-08-11",
+      "TEST - Agent Lifecycle Deep Audit 2026-08-11 (Copy)"
+    ],
+    "retained_agents": [
+      "Kiểm thử Agent Knowledge VNG 2026-08-11",
+      "Kiểm thử Agent Knowledge VNG 2026-08-11 - Bản sao"
+    ]
+  },
+  "checks": {
+    "module_13_to_19_source_and_image": "verified",
+    "final_no_hit": "verified",
+    "asset_deletion": "none",
+    "credentials_recorded": false
+  },
+  "supporting_audit": "audit/agent-deep-test-2026-08-11.md"
+}

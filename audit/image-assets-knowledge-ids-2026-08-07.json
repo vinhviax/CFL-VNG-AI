@@ -1,0 +1,33 @@
+{
+  "knowledge_base": "Knowledge VNG - Image Assets",
+  "knowledge_base_id": "6da8657c-dd96-4170-a698-074043475014",
+  "tenant_id": "10012",
+  "captured_at": "2026-08-07",
+  "knowledge_ids": {
+    "01-tong-quan-danh-sach-knowledge.png": "cc9dd059-416c-4240-8d9d-bad5ca2ed530",
+    "02-cau-hinh-tong-quan-document.png": "8bcf9139-5652-41cf-84f9-1d1299ca7cdc",
+    "03-cau-hinh-mo-hinh-vlm-asr.png": "321785f4-d8a8-48c0-964d-43317f80d4d1",
+    "04-xu-ly-parser-theo-dinh-dang.png": "19c9db76-492a-45c2-8ba3-79fcc702f2f8",
+    "05-xu-ly-phan-doan-cha-con.png": "4f47ed8a-058a-4fe5-adaa-a2a5d07e459c",
+    "06-chia-se-va-phan-quyen.png": "102b8463-7f4c-4a3e-b06e-4fc4c44751da",
+    "07-nguon-du-lieu-notion-drive-nas.png": "3afa2660-3d9d-492a-9488-ed4ca6230414",
+    "08-tai-tep-thu-muc-va-soan-thao.png": "85b8fe4e-1662-46c0-85be-0e941b156e4b",
+    "09-wiki-muc-luc-va-trang.png": "46271dbc-d983-49ac-9a2a-bc79a36440a5",
+    "10-graph-cac-loai-node.png": "bfccf478-8820-48e2-9761-b53d8dbdb9a3",
+    "11-faq-danh-sach-nhap-xuat-tim-kiem.png": "f101043f-c486-4295-8e46-434b2c96882b",
+    "12-faq-bieu-mau-them-qa.png": "b03e6aa8-b425-49ad-a740-fed901473049",
+    "13-chat-hien-thi-anh-minio.png": "c03f6195-75fa-4dba-97ca-8ca362b22dcb",
+    "14-chat-khong-hien-thi-duong-dan-tuong-doi.png": "2fafe3fd-59bd-4179-9553-738bbea1a27e",
+    "15-google-drive-xac-thuc-service-account.png": "ef012dd6-6365-45ee-899d-85227589577b",
+    "16-google-drive-chon-tai-nguyen.png": "24caa6c0-0cd9-4122-b0cc-2739e553653b",
+    "17-google-drive-lich-va-cach-dong-bo.png": "2acbb11c-9d8e-48b2-8387-b866540b5340",
+    "18-google-drive-loc-tep-va-tag.png": "ace79bc4-3853-4bb8-991f-4b471bbd05a3",
+    "19-google-drive-ghi-de-xu-ly.png": "fe77226a-6804-47a1-beaf-38f5b43b0884",
+    "20-google-drive-da-phuong-thuc-va-parser.png": "a4438d7b-86bd-4df3-a494-6cc95cfc68a9",
+    "21-google-drive-parser-office-text.png": "a8269263-104a-4400-8815-7ce16f25f22b",
+    "22-google-drive-parser-media-web.png": "bf319f22-8df1-4c77-8bea-674b3d1e9d23",
+    "23-google-drive-dong-bo-xoa.png": "634831d9-9c27-47a1-b1d8-d1e13dfcda03",
+    "24-google-drive-parser-excel-tuy-chinh.png": "c15157d5-c175-4305-9b64-dfa27dc65cb9",
+    "25-google-drive-dong-bo-thanh-cong.png": "711b5f1c-5602-4889-813e-1a6b4f47e3d6"
+  }
+}
