@@ -1,7 +1,7 @@
 # Handoff — Knowledge Base VNG
 
 **Cập nhật:** 14/08/2026  
-**Trạng thái:** Đã chuẩn hóa workspace và đường dẫn builder; rollout v3.3.0 vẫn đóng; 10 custom Agent đã có basic tool theo vai trò; meta-KB `GS9 CFL Knowledge Agent` đã phát hành 25/25 Markdown và chat-test đạt; đang hoàn tất GitHub handoff, không có mutation live đang chạy.
+**Trạng thái:** Đã chuẩn hóa workspace và đường dẫn builder; rollout v3.3.0 vẫn đóng; 10 custom Agent đã có basic tool theo vai trò; meta-KB `GS9 CFL Knowledge Agent` đã phát hành 25/25 Markdown và chat-test đạt; GitHub handoff đã publish lên `main`, không có mutation live đang chạy.
 
 ## Điểm vào phiên tiếp theo
 
@@ -32,6 +32,8 @@ git status --short --branch
 ```
 
 Sau đó dùng nguyên prompt trong `NEXT_SESSION_PROMPT.md`. Root trên máy mới là kết quả `git rev-parse --show-toplevel`, không giả định còn ổ `J:`.
+
+Snapshot Git đầu tiên: `1502d798debe46674cb5271fc92bd0c6240f2452`. Sau lần push đầu, local HEAD và `origin/main` khớp chính xác, upstream là `origin/main` và working tree sạch. Commit handoff cuối chỉ cập nhật tài liệu tiến độ/audit; trên máy mới luôn lấy trạng thái chuẩn bằng `git pull --ff-only origin main`.
 
 ## Cấu trúc cần giữ
 

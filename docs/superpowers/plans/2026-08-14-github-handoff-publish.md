@@ -63,7 +63,9 @@
 - Modify: `audit/github-publish-2026-08-14.md`
 - Modify: `docs/superpowers/plans/2026-08-14-github-handoff-publish.md`
 
-- [ ] **Step 1:** Commit snapshot đã kiểm chứng với message mô tả Agent/KB handoff.
-- [ ] **Step 2:** Push `main` lên `origin` không force.
-- [ ] **Step 3:** Đối chiếu local HEAD với remote `refs/heads/main`.
-- [ ] **Step 4:** Ghi trạng thái publish, tick plan, commit/push handoff cuối và xác minh working tree sạch.
+- [x] **Step 1:** Commit snapshot đã kiểm chứng với message mô tả Agent/KB handoff.
+- [x] **Step 2:** Push `main` lên `origin` không force.
+- [x] **Step 3:** Đối chiếu local HEAD với remote `refs/heads/main`.
+- [x] **Step 4:** Ghi trạng thái publish, tick plan, commit/push handoff cuối và xác minh working tree sạch.
+
+**Execution evidence:** snapshot commit `1502d798debe46674cb5271fc92bd0c6240f2452` đã push lên `origin/main` và khớp remote trước commit handoff cuối.

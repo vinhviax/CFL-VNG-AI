@@ -33,7 +33,8 @@
 - Strict build: `20` module / `125,609` bytes; HTML offline `30,859,005` bytes.
 - Regression: `Ran 16 tests`, `OK`.
 - Agent/meta-KB gate: `PASS` — 25 Markdown, 25 H1 duy nhất, 0 link hỏng, 0 secret pattern, 10 custom Agent và 10 Web ID duy nhất.
-- Trạng thái: **Đã sẵn sàng commit/push**.
-- Commit snapshot: chưa ghi.
-- Commit handoff cuối: chưa ghi.
-- Remote verification: chưa chạy.
+- Trạng thái: **Đã push snapshot; đang ghi handoff cuối**.
+- Commit snapshot: `1502d798debe46674cb5271fc92bd0c6240f2452` (`feat: publish VNG AI knowledge base and agent handoff`).
+- Push snapshot: `main -> origin/main`, upstream đã thiết lập.
+- Remote verification sau push: local HEAD và `refs/heads/main` cùng là `1502d798debe46674cb5271fc92bd0c6240f2452`; working tree có `0` thay đổi trước khi ghi handoff cuối.
+- Commit handoff cuối: commit chứa chính audit này; lấy hash chuẩn bằng `git log -1 --format=%H` sau pull để tránh tự tham chiếu hash của chính commit.
