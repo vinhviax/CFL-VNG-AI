@@ -9,7 +9,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "scripts" / "build_handbook.py"
 CONSUMER_DIR = ROOT / "knowledge" / "GS9 Knowledge VNG AI"
-ASSET_DIR = ROOT / "knowledge" / "GS9 Knowledge VNG - Image Assets"
 
 
 def load_builder():
@@ -37,15 +36,12 @@ class BuildHandbookTests(unittest.TestCase):
 
         self.assertEqual(builder.KNOWLEDGE_DIR_NAME, "knowledge")
         self.assertEqual(builder.CONSUMER_KB_NAME, "GS9 Knowledge VNG AI")
-        self.assertEqual(
-            builder.ASSET_KB_NAME,
-            "GS9 Knowledge VNG - Image Assets",
-        )
+        self.assertFalse(hasattr(builder, "ASSET_KB_NAME"))
 
     def test_local_png_assets_have_png_signature(self):
         expected_signature = b"\x89PNG\r\n\x1a\n"
 
-        for asset_path in sorted(ASSET_DIR.glob("*.png")):
+        for asset_path in sorted(CONSUMER_DIR.glob("image-*.png")):
             with asset_path.open("rb") as asset_file:
                 actual_signature = asset_file.read(8)
 
@@ -55,29 +51,31 @@ class BuildHandbookTests(unittest.TestCase):
                 f"{asset_path.name} does not have a PNG signature",
             )
 
-    def test_project_image_map_covers_all_assets_from_dedicated_asset_kb(self):
+    def test_project_image_map_covers_all_merged_assets(self):
         payload = json.loads(
             (CONSUMER_DIR / "image-map.json").read_text(encoding="utf-8")
         )
-        assets = {path.name for path in ASSET_DIR.glob("*.png")}
+        assets = {path.name for path in CONSUMER_DIR.glob("image-*.png")}
         images = payload["images"]
 
         self.assertEqual(
             payload["knowledge_base"],
-            "GS9 Knowledge VNG - Image Assets",
+            "GS9 Knowledge VNG AI",
         )
         self.assertEqual(
             payload["knowledge_base_id"],
-            "6da8657c-dd96-4170-a698-074043475014",
+            "cefadf09-4187-46ac-a765-591e3255a4a4",
         )
         self.assertEqual(payload["tenant_id"], "10012")
         self.assertEqual(set(images), assets)
         self.assertEqual(len(images), 49)
         self.assertEqual(len(set(images.values())), 49)
-        for uri in images.values():
-            self.assertTrue(
-                uri.startswith("minio://knowledge-base-prd/10012/exports/")
-            )
+        # Đã kiểm chứng 16/08/2026 (doc-02, DEC-052): dạng file_path
+        # ("minio://.../10012/<knowledge_id>/<uuid>.png") render đúng trong
+        # Document preview, y hệt dạng "exports/" cũ. Chấp nhận cả hai.
+        for name, uri in images.items():
+            self.assertTrue(name.startswith("image-"))
+            self.assertTrue(uri.startswith("minio://knowledge-base-prd/10012/"))
             self.assertTrue(uri.endswith(".png"))
 
     def test_generated_project_modules_have_no_active_local_image_links(self):
@@ -295,46 +293,51 @@ Nội dung kiểm thử.
             "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
         )
         blocks = []
-        module_names = [f"{index:02d}-module.md" for index in range(13)]
+        module_names = [f"doc-{index:02d}-module.md" for index in range(13)]
         module_names.extend(
             [
-                "13-agent-tong-quan-va-kien-truc.md",
-                "14-che-do-preset-prompt-va-intent.md",
-                "15-model-reranker-suy-luan-va-quota.md",
-                "16-kho-tri-thuc-cong-cu-va-truy-hoi.md",
-                "17-da-phuong-thuc-va-tep-dinh-kem.md",
-                "18-chat-nguon-lich-su-va-danh-gia.md",
-                "19-vong-doi-phan-quyen-quan-sat-va-bao-tri.md",
+                "doc-13-tong-quan-va-kien-truc.md",
+                "doc-14-che-do-preset-prompt-va-intent.md",
+                "doc-15-model-reranker-suy-luan-va-quota.md",
+                "doc-16-kho-tri-thuc-cong-cu-va-truy-hoi.md",
+                "doc-17-da-phuong-thuc-va-tep-dinh-kem.md",
+                "doc-18-chat-nguon-lich-su-va-danh-gia.md",
+                "doc-19-vong-doi-phan-quyen-quan-sat-va-bao-tri.md",
             ]
         )
+        bodies = {}
         for index, module_name in enumerate(module_names):
-            blocks.append(
-                f"<!-- MODULE:{module_name} -->\n"
+            bodies[module_name] = (
                 f"## {index:02d} - Module\n"
-                "![Màn hình](<knowledge/GS9 Knowledge VNG - Image Assets/screen.png>)\n"
-                "<!-- /MODULE -->"
+                "![Màn hình](<knowledge/GS9 Knowledge VNG AI/image-screen.png>)\n"
             )
-        source = "# Sổ tay\n\n" + "\n\n".join(blocks)
 
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
-            asset_dir = root / "knowledge" / "GS9 Knowledge VNG - Image Assets"
             consumer_dir = root / "knowledge" / "GS9 Knowledge VNG AI"
-            asset_dir.mkdir(parents=True)
             consumer_dir.mkdir(parents=True)
-            (asset_dir / "screen.png").write_bytes(png)
+            (consumer_dir / "image-screen.png").write_bytes(png)
             (consumer_dir / "image-map.json").write_text(
-                '{"images":{"screen.png":"minio://bucket/screen.png"}}',
+                '{"images":{"image-screen.png":"minio://bucket/image-screen.png"}}',
                 encoding="utf-8",
             )
-            (root / "so-tay-tao-knowledge-base-v3.md").write_text(source, encoding="utf-8")
+            human_dir = root / "docs KB" / "Human"
+            (human_dir / "KB").mkdir(parents=True)
+            (human_dir / "Agent").mkdir(parents=True)
+            (human_dir / "_master-header.txt").write_text(
+                "# Sổ tay\n\n", encoding="utf-8"
+            )
+            for module_name, body in bodies.items():
+                index = int(module_name.split("-")[1])
+                sub = "Agent" if index >= 13 else "KB"
+                (human_dir / sub / module_name).write_text(body, encoding="utf-8")
 
             result = builder.build_project(root, require_minio=True)
 
             self.assertEqual(len(result["modules"]), 20)
             self.assertEqual(
                 result["modules"][-1].name,
-                "19-vong-doi-phan-quyen-quan-sat-va-bao-tri.md",
+                "doc-19-vong-doi-phan-quyen-quan-sat-va-bao-tri.md",
             )
             self.assertTrue(result["html"].exists())
             self.assertEqual(len(list(consumer_dir.glob("*.md"))), 20)
@@ -342,55 +345,69 @@ Nội dung kiểm thử.
 
     def test_live_project_has_exact_agent_deep_split_and_sixty_image_pairs(self):
         expected_modules = {
-            "00-gioi-thieu-va-quick-start.md",
-            "01-chuan-bi-noi-dung.md",
-            "02-tao-kb-nhanh-va-nang-cao.md",
-            "03-tai-lieu-rag-wiki.md",
-            "04-faq-va-lap-chi-muc.md",
-            "05-mo-hinh-vlm-asr.md",
-            "06-parser-va-xu-ly-file.md",
-            "07-phan-doan-chunking.md",
-            "08-chia-se-va-nguon-du-lieu.md",
-            "09-van-hanh-documents-wiki-graph.md",
-            "10-van-hanh-faq.md",
-            "11-chat-kiem-thu-va-bao-tri.md",
-            "12-ket-noi-google-drive.md",
-            "13-agent-tong-quan-va-kien-truc.md",
-            "14-che-do-preset-prompt-va-intent.md",
-            "15-model-reranker-suy-luan-va-quota.md",
-            "16-kho-tri-thuc-cong-cu-va-truy-hoi.md",
-            "17-da-phuong-thuc-va-tep-dinh-kem.md",
-            "18-chat-nguon-lich-su-va-danh-gia.md",
-            "19-vong-doi-phan-quyen-quan-sat-va-bao-tri.md",
+            "doc-00-gioi-thieu-va-quick-start.md",
+            "doc-01-chuan-bi-noi-dung.md",
+            "doc-02-tao-kb-nhanh-va-nang-cao.md",
+            "doc-03-tai-lieu-rag-wiki.md",
+            "doc-04-faq-va-lap-chi-muc.md",
+            "doc-05-mo-hinh-vlm-asr.md",
+            "doc-06-parser-va-xu-ly-file.md",
+            "doc-07-phan-doan-chunking.md",
+            "doc-08-chia-se-va-nguon-du-lieu.md",
+            "doc-09-van-hanh-documents-wiki-graph.md",
+            "doc-10-van-hanh-faq.md",
+            "doc-11-chat-kiem-thu-va-bao-tri.md",
+            "doc-12-ket-noi-google-drive.md",
+            "doc-13-tong-quan-va-kien-truc.md",
+            "doc-14-che-do-preset-prompt-va-intent.md",
+            "doc-15-model-reranker-suy-luan-va-quota.md",
+            "doc-16-kho-tri-thuc-cong-cu-va-truy-hoi.md",
+            "doc-17-da-phuong-thuc-va-tep-dinh-kem.md",
+            "doc-18-chat-nguon-lich-su-va-danh-gia.md",
+            "doc-19-vong-doi-phan-quyen-quan-sat-va-bao-tri.md",
         }
-        module_paths = sorted(CONSUMER_DIR.glob("*.md"))
+        module_paths = sorted(CONSUMER_DIR.glob("doc-*.md"))
         self.assertEqual({path.name for path in module_paths}, expected_modules)
 
         rendered = "\n".join(path.read_text(encoding="utf-8") for path in module_paths)
-        self.assertEqual(rendered.count("minio://knowledge-base-prd/10012/exports/"), 60)
+        # Đã kiểm chứng 16/08/2026 (doc-02, DEC-052): dạng file_path
+        # ("minio://.../10012/<knowledge_id>/<uuid>.png") render đúng, thay
+        # thế toàn bộ 49 URI "exports/" cũ đã chết sau khi ảnh được re-sync
+        # qua Google Drive connector. Đếm theo tiền tố chung, không khoá dạng.
+        self.assertEqual(rendered.count("minio://knowledge-base-prd/10012/"), 60)
         self.assertEqual(
-            rendered.count(
-                "<!-- LOCAL_ASSET: ../GS9 Knowledge VNG - Image Assets/"
-            ),
+            rendered.count("<!-- LOCAL_ASSET: ./image-"),
             60,
         )
 
-    def test_agent_modules_follow_operational_and_technical_structure(self):
+    def test_agent_modules_are_operational_guides_without_dev_content(self):
+        """Module Agent phải là hướng dẫn thao tác, không lẫn nội dung Dev.
+
+        Từ 16/08/2026 nội dung tách theo đối tượng đọc: `docs KB/Human` chỉ
+        hướng dẫn người dùng, mọi chi tiết kiểm chứng nằm ở `docs KB/Dev`.
+        Cấu trúc heading cố định cũ (gồm `Bằng chứng`, `Data flow`) không còn
+        áp dụng; gate nay kiểm đúng thứ khiến tài liệu dùng được.
+        """
+        dev_only_markers = [
+            "DEC-0",
+            "audit/",
+            "## Bằng chứng",
+            "Chưa được phép suy luận",
+            "Bị chặn–Chưa xác định",
+        ]
         for module_number in range(13, 20):
-            matches = list(CONSUMER_DIR.glob(f"{module_number:02d}-*.md"))
-            self.assertEqual(len(matches), 1, f"missing or ambiguous module {module_number:02d}")
+            matches = list(CONSUMER_DIR.glob(f"doc-{module_number:02d}-*.md"))
+            self.assertEqual(
+                len(matches), 1, f"missing or ambiguous module {module_number:02d}"
+            )
+            name = matches[0].name
             rendered = matches[0].read_text(encoding="utf-8")
-            for heading in [
-                "Khái niệm",
-                "Bảng control",
-                "SOP",
-                "Data flow",
-                "Ma trận kiểm thử",
-                "Bằng chứng",
-                "Lỗi và giới hạn",
-                "Checklist",
-            ]:
-                self.assertIn(heading, rendered, f"{matches[0].name}: {heading}")
+
+            self.assertIn("Bạn sẽ biết gì sau khi đọc", rendered, name)
+            self.assertIn("Checklist", rendered, name)
+            self.assertIn("minio://", rendered, f"{name}: phải có ít nhất một ảnh")
+            for marker in dev_only_markers:
+                self.assertNotIn(marker, rendered, f"{name}: lẫn nội dung Dev — {marker}")
 
     def test_count_h1_ignores_markdown_inside_fenced_code(self):
         builder = load_builder()

@@ -37,13 +37,13 @@ Snapshot Web actual sau lần lưu cấu hình cuối ngày 14/08/2026:
 - Cả 10 vẫn `Không dùng kho tri thức`; không có tool RAG, Wiki, data, `Truy vấn CSDL` hoặc `Danh mục sản phẩm` nào đang active. Mọi tool phụ thuộc nguồn trong từng `config.md` chỉ là thiết kế có điều kiện sau audit.
 - Chưa chạy chat/runtime hoặc gold-set cho snapshot này.
 
-- `GS9 LiveOps Planner`
-- `GS9 Release Reviewer`
-- `GS9 Incident Triage`
-- `GS9 KPI Experiment Analyst`
-- `GS9 Economy Offer Analyst`
-- `GS9 Player Voice Analyst`
-- `GS9 CS Copilot`
+- `GS9 CFL LiveOps Planner`
+- `GS9 CFL Release Reviewer`
+- `GS9 CFL Incident Triage`
+- `GS9 CFL KPI Experiment Analyst`
+- `GS9 CFL Economy Offer Analyst`
+- `GS9 CFL Player Voice Analyst`
+- `GS9 CFL CS Copilot`
 - `GS9 GM Case Investigator`
-- `GS9 Player Communications`
-- `GS9 Knowledge Curator`
+- `GS9 CFL Player Communications`
+- `GS9 CFL Knowledge Curator`

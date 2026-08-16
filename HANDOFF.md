@@ -1,108 +1,122 @@
 # Handoff — Knowledge Base VNG
 
-**Cập nhật:** 14/08/2026  
-**Trạng thái:** Đã chuẩn hóa workspace và đường dẫn builder; rollout v3.3.0 vẫn đóng; 10 custom Agent đã có basic tool theo vai trò; meta-KB `GS9 CFL Knowledge Agent` đã phát hành 25/25 Markdown và chat-test đạt; GitHub handoff đã publish lên `main`, không có mutation live đang chạy.
+**Cập nhật:** 16/08/2026 (phiên 3)
+**Phiên bản:** 3.4.0 · **Test:** `Ran 30 tests` / `OK` (6 skip do thiếu HTML nguồn Plan V5 trên máy này)
 
-## Điểm vào phiên tiếp theo
+---
 
-Root duy nhất:
+## 1. Đọc gì trước
 
-`J:\My Drive\CFL\VNG AI\Knowledge Base VNG`
+| Thứ tự | File | Vì sao |
+|---|---|---|
+| 1 | `AGENTS.md` | Quy tắc làm việc, ranh giới an toàn, bảng phân loại đối tượng đọc |
+| 2 | File này | Trạng thái và việc đang mở |
+| 3 | `STATUS.md` | Nhật ký theo phiên, chi tiết hơn |
+| 4 | `DECISIONS.md` | 57 quyết định — tra khi không hiểu vì sao làm vậy |
+| 5 | `PROJECT.md` | Cây thư mục chuẩn, hợp đồng artifact |
 
-Đọc theo thứ tự: `AGENTS.md` → `HANDOFF.md` → `STATUS.md` → `PROJECT.md` → `DECISIONS.md`. Chỉ mở audit liên quan khi cần bằng chứng.
+---
 
-## Tiếp tục từ GitHub trên máy khác
+## 2. Kiến trúc nội dung — hiểu sai chỗ này là làm hỏng việc
 
-Repository: `https://github.com/vinhviax/CFL-VNG-AI.git`  
-Branch: `main`
+Nội dung đi theo **ba tầng**, tách theo **đối tượng đọc** (DEC-053):
 
-Clone mới:
+```
+docs KB/Dev/      25 file · cơ chế, kết quả kiểm chứng, cấu hình
+                  → cho Dev và Agent config. KHÔNG lên Web.
 
-```powershell
-git clone https://github.com/vinhviax/CFL-VNG-AI.git
-Set-Location .\CFL-VNG-AI
-git status --short --branch
+docs KB/Human/    29 file · hướng dẫn thao tác
+                  → NGUỒN BUILD. Sửa nội dung ở đây.
+
+knowledge/<KB>/   bản sinh bởi build_handbook.py
+                  → lên Web. KHÔNG sửa tay, sẽ bị ghi đè.
 ```
 
-Nếu đã clone:
+**Quy ước tiền tố tên file** trong `docs KB/`, builder tự đổi sang `doc-` khi sinh (giữ DEC-042 vì regex đồng bộ khoá `^(doc|image)-`):
 
-```powershell
-git pull --ff-only origin main
-git status --short --branch
-```
+| Tiền tố nguồn | Dải số | Đổ về KB |
+|---|---|---|
+| `KB-NN-*` | 00–12 | `GS9 Knowledge VNG AI` |
+| `Agent-NN-*` | 13–19 | `GS9 Knowledge VNG AI` |
+| `AgentCFL-NN-*` | 00–05 | `GS9 CFL Knowledge Agent` |
+| `KBCFL-NN-*` | 10–12 | `GS9 CFL Knowledge Agent` |
 
-Sau đó dùng nguyên prompt trong `NEXT_SESSION_PROMPT.md`. Root trên máy mới là kết quả `git rev-parse --show-toplevel`, không giả định còn ổ `J:`.
+Thêm tính năng mới thì thêm tiền tố vào `HUMAN_SOURCE_PREFIXES` hoặc `SIMPLE_KB_TARGETS` trong `scripts/build_handbook.py` — **không tạo thư mục con**.
 
-Snapshot Git đầu tiên: `1502d798debe46674cb5271fc92bd0c6240f2452`. Sau lần push đầu, local HEAD và `origin/main` khớp chính xác, upstream là `origin/main` và working tree sạch. Commit handoff cuối chỉ cập nhật tài liệu tiến độ/audit; trên máy mới luôn lấy trạng thái chuẩn bằng `git pull --ff-only origin main`.
+**Quy tắc phân loại một câu:** câu hỏi người dùng cuối đặt ra khi đang chat → Human. Câu hỏi chỉ người sửa hệ thống mới cần → Dev. Mã `DEC-xxx`, link `audit/`, cụm "đã/chưa kiểm chứng" **không được** xuất hiện trong `docs KB/Human` và `knowledge/`.
 
-## Cấu trúc cần giữ
+---
 
-| Khu vực | Vai trò |
-|---|---|
-| `knowledge/` | Mirror/dữ liệu của các KB đang quản lý trên Web |
-| `knowledge/GS9 Knowledge VNG AI/` | 20 Markdown sinh + `image-map.json`; không PNG |
-| `knowledge/GS9 Knowledge VNG - Image Assets/` | 49 PNG; không Markdown |
-| `knowledge/GS9 CFL Knowledge Agent/` | 25 Markdown Human-facing về 6 default + 10 custom Agent; không binary/folder con |
-| `agent/` | Artifact audit read-only của 6 Agent mặc định và catalog/config/test/handoff quản trị của 10 custom Agent LiveOps |
+## 3. Trạng thái hai KB chính
 
-Ba tên `GS9 ...` là tên chính thức trên Web theo quy định công ty; không đổi lại tên cũ.
+| KB | Local | Web | Ghi chú |
+|---|---|---|---|
+| `GS9 Knowledge VNG AI` | 20 doc + 49 ảnh | **69 tài liệu, đã sync** | Chat-test ảnh ĐẠT |
+| `GS9 CFL Knowledge Agent` | 8 doc | **0 tài liệu — chưa sync** | Việc mở số 1 |
 
-`knowledge-vng/` là layout gộp cũ, không phải file. Trước đây nó chứa 20 module, map và folder 49 ảnh. Builder/test hiện không còn phụ thuộc hoặc tái tạo layout đó.
+`GS9 CFL Plan Version`: 12 doc + 29 ảnh, URI đã vá xong, **chưa up bản mới lên Web**.
 
-## Trạng thái core
+---
 
-- Master: `so-tay-tao-knowledge-base-v3.md`, v3.3.0, 20 marker module.
-- Consumer: 20 MD + map 49 URI duy nhất.
-- Asset host: 49 PNG thật.
-- Module: 60 MinIO + 60 `LOCAL_ASSET` trỏ sang `../GS9 Knowledge VNG - Image Assets/`.
-- HTML offline tự chứa đã sinh lại.
-- Verification mới nhất: strict build PASS; `Ran 16 tests`; `OK`.
-- Đối chiếu vòng phục hồi: 20/20 module khớp backup sau quy đổi path. Sau đó ba module `01`, `09`, `11` được sửa có chủ đích để dùng 20 MD/49 PNG và layout/tên `GS9`; chưa upload live.
-- Custom Agent: 10/10 đã tạo; list count `18/12/6/0` theo thứ tự Tất cả/Của tôi/Mặc định/shared-with-me. Tất cả no-KB, sharing `0`, image/audio Off và chưa chat/runtime test.
-- Web actual chung là `hosted_vllm/qwen3.6-35b`, temperature `0.7`, Thinking Off, reranker trống. Planned baseline/System Prompt local được giữ nguyên nhưng Web actual là nguồn chuẩn cho trạng thái đang lưu.
-- Tool actual: bảy Smart Agent dùng Ask + Think + Todo; Player Voice dùng Ask + Think; GM dùng Ask + Todo; CS Copilot giữ Fast Answer và không có Tools tab. Chín Smart Agent có `20` loop, timeout `120s`, parallel Off.
-- Agent meta-KB: ID `1d92448f-7ee2-46c4-b202-5efbe9cc5616`, tenant `10012`, 25/25 Markdown Hoàn tất, sharing 0, model `hosted_vllm/qwen3.6-35b`, embedding `text-embedding-3-large`. Chat test đã trả lời đúng Agent/tool/Human gate và mở được nguồn hồ sơ tương ứng.
+## 4. Việc đang mở
 
-## Lệnh chuẩn
+### 4.1 Sync 2 KB lên Web — làm ngay
+1. `knowledge/GS9 CFL Knowledge Agent` (8 file) — KB trên Web đang **trống**
+2. `knowledge/GS9 CFL Plan Version/V5` (12 file `.md`) — URI ảnh đã vá, cần up lại
+
+### 4.2 Chat-test luật trích dẫn ảnh của Agent
+Đã chèn luật vào System Prompt của 10/10 Agent custom (DEC-056) nhưng **chưa test**. Nên thử `GS9 CFL Knowledge Curator` vì nó gắn `GS9 Knowledge VNG AI` (KB có ảnh). Hỏi câu buộc trả lời kèm hình, xem Agent có phát ra `![...](minio://...)` không.
+
+### 4.3 Bốn Agent chưa gắn KB
+`CS Copilot`, `Economy Offer Analyst`, `GM Policy Advisor`, `Player Communications` — `kb_selection_mode: none`. Luật trích dẫn ảnh đã dán nhưng vô tác dụng vì không có nguồn.
+
+### 4.4 Gate chất lượng chưa chạy
+**Chưa Agent nào chat-test đạt.** Toàn bộ 16 Agent vẫn ở mức *Bị chặn–Chưa xác định* về chất lượng runtime.
+
+### 4.5 Chưa kiểm chứng
+- Converter Plan V5 chạy với bố cục ảnh phẳng mới (DEC-054) — 6 test luôn skip vì HTML nguồn chỉ có trên máy công ty
+- Hành vi connector khi **đổi tên / di chuyển / xoá** tệp
+
+---
+
+## 5. Cạm bẫy đã gặp thật
+
+**Google Drive khoá file.** Project nằm trên Drive nên file hay bị khoá ngay sau khi ghi. Dấu hiệu: `Invalid request code` / `OSError: Errno 22` / `Incorrect function`, và `stat` cho `Links: 0`. Không tool nào của agent vượt qua được — chỉ File Explorer ép tải về được.
+→ **Ghi file qua file tạm rồi `os.replace`.** Ghi đè trực tiếp đã từng làm **mất sạch nội dung một file nguồn** (16/08).
+
+**URI ảnh chết sau khi re-sync.** Nạp lại ảnh qua connector là URI cũ chết toàn bộ. Lấy lại hàng loạt bằng trường `file_path` của API, đừng lấy URI trong `description` (chỉ 24/49 ảnh có, nhiều ảnh lại có 2 URI khó chọn).
+
+**MCP không thấy mọi KB.** `list_knowledge_bases` chỉ trả KB đã share vào space. Với KB chưa share (ví dụ `GS9 CFL Plan Version`), lấy token qua `/api/auth/token?sub_app=kb` rồi gọi `https://miniapp.vnggames.ai/kb/v1/api/...` kèm `Authorization: Bearer` — gọi bằng cookie bị CORS chặn.
+
+**Trang web dùng shadow DOM.** App KB chạy trong micro-frontend qiankun. Tool đọc trang thường không thấy nội dung; phải qua `document.getElementById('__qiankun_microapp_wrapper_for_kb__').shadowRoot`. Dialog cấu hình Agent thì lại render ở document chính.
+
+**Ảnh render 2 lần trong chat.** Nền tảng tự render khi gặp `minio://` mà không đợi markdown khép kín → ảnh hiện 2 lần kèm ký tự `![`, `](`, `)` lộ ra. **Lỗi nền tảng, không phải lỗi tài liệu.**
+
+---
+
+## 6. Lệnh chuẩn
 
 ```powershell
 python scripts\build_handbook.py
 python -m unittest discover -s tests -v
+python scripts\link_plan_v5_minio.py --check
 ```
 
-Không dùng `--allow-missing-minio` cho bản bàn giao.
+**Gate:** strict build ra 20 module + 8 doc KB Agent, 60 link MinIO, HTML offline tự chứa, `Ran 30 tests`/`OK`. Không dùng `--allow-missing-minio` cho bản bàn giao.
 
-## Lưu ý an toàn
+---
 
-- Nội dung nghiệp vụ chỉ sửa ở master; không sửa trực tiếp module/HTML.
-- Không xóa asset KB hoặc PNG còn được Markdown tham chiếu.
-- Không mutation live, upload dữ liệu private, gửi chia sẻ hoặc xóa Agent/KB nếu chưa được giao rõ ràng.
-- Không bind KB nghiệp vụ cho 10 custom Agent trước audit nội dung/quyền; không publish/share hoặc chạy gold-set Agent nếu chưa có chỉ định mới. Chat test đã thực hiện chỉ trên meta-KB bằng prompt tổng hợp vô hại.
-- Có credential hiện hữu trong vùng dữ liệu một KB CFL khác; chưa được dọn vì chưa xác định dependency. Không đọc, sao chép hoặc đưa credential đó vào audit.
-- Git handoff publish toàn bộ project theo phê duyệt người dùng nhưng `.gitignore` loại credential/private key/`.env`. Không dùng `git add -f`, không public fork/mirror và không đưa file key đã nhận diện vào lịch sử Git.
-- `Test Doc RAG+Wiki` cũ đã bị xóa; test Documents/Wiki/Graph mới cần KB test được phép.
+## 7. An toàn
 
-## Bằng chứng mới nhất
+- Không commit credential. `keys KB/` và `**/keys/` đã được `.gitignore` che (vá 16/08 — trước đó **không** được che).
+- `GS9 CFL Item Profile` chứa dữ liệu người chơi. Đã đổi tên file theo quy ước (DEC-055) nhưng **không mở, không đọc nội dung**.
+- Hai binding `Incident Triage → PUM` và `Player Voice Analyst → Sentiment Feedback User` từng bị đánh giá rủi ro, nay **người dùng xác nhận giữ nguyên** vì nền tảng chỉ dùng nội bộ.
+- Space `CFL Member` để quyền **Được chỉnh sửa** cho 6 người → mọi cấu hình Agent có thể bị người khác đổi bất cứ lúc nào. Đọc lại trước khi kết luận.
 
-- `audit/default-agent-readonly-audit-2026-08-14.md`
-- `agent/README.md` và sáu file `agent/*-config.md` — cấu hình UI-visible của 6 Agent mặc định, chỉ-đọc
-- `audit/liveops-custom-agent-creation-2026-08-14.md`
-- `audit/liveops-custom-agent-multitool-and-agent-kb-2026-08-14.md`
-- `agent/liveops-custom-agent-catalog.md` và 10 folder `agent/GS9 .../` — planned baseline cùng Web actual/ID/handoff của custom Agent
-- `knowledge/GS9 CFL Knowledge Agent/` — 25 Markdown đã review độc lập và upload live
-- `audit/workspace-normalization-2026-08-14.md`
-- `audit/workspace-normalization-prebuild-2026-08-14.zip`
-- `audit/workspace-docs-before-normalization-2026-08-14.zip`
-- `audit/final-live-inventory-2026-08-12.json`
-- `audit/agent-deep-test-2026-08-11.md`
-- `docs/superpowers/reports/2026-08-12-agent-v3.3-rollout.md`
-- `audit/github-publish-2026-08-14.md`
-- `NEXT_SESSION_PROMPT.md`
+---
 
-## Việc tiếp theo chỉ khi được giao
+## 8. Tài liệu thuyết trình
 
-- Audit các KB nghiệp vụ ứng viên rồi trình allowlist/quyền cho từng Agent; không tự bind KB CFL khác hoặc `Data Private Weapon`.
-- Chỉ chạy gold-set/runtime Agent, publish/share hoặc thay đổi cấu hình Web khi có chỉ định mới; mọi action gửi tin/live mutation vẫn cần Human approval.
-- Khi Agent Web actual thay đổi, cập nhật đồng thời `agent/`, meta-KB local, upload Web và audit; không coi meta-KB là corpus nghiệp vụ của Agent.
-- Tiếp tục backlog connector/retrieval/ASR trong `STATUS.md` khi có quyền và fixture test.
-- Rà soát credential theo quy trình thay thế/rotation trước khi di chuyển hoặc xóa.
+`gioi-thieu-knowledge-base-va-agent.html` — bản giới thiệu cho team, 10 phần: vấn đề, KB là gì, Agent là gì, cách phối hợp, quy trình 6 bước, 10 kho của CFL, 16 trợ lý, bảng binding, nguyên tắc an toàn, trạng thái. Tự chứa, mở bằng trình duyệt, in PDF được.
+
+**Số liệu trong đó là ảnh chụp 16/08/2026** — nếu binding hay danh sách KB đổi thì phải cập nhật lại file này.

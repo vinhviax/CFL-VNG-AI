@@ -5,7 +5,7 @@
 
 Tài liệu chuẩn để tạo, kiểm thử và vận hành Knowledge Base cùng Agent trên VNG AI. Nội dung nghiệp vụ nằm trong 20 module dưới đây; các file Markdown phân phối và HTML offline được sinh bằng builder.
 
-<!-- MODULE:00-gioi-thieu-va-quick-start.md -->
+<!-- MODULE:doc-00-gioi-thieu-va-quick-start.md -->
 ## 00 - Giới thiệu và quick start {#00-gioi-thieu-va-quick-start}
 
 ### Bạn sẽ biết gì sau khi đọc
@@ -25,7 +25,7 @@ Knowledge Base, viết tắt là KB, là kho nội dung có cấu trúc để h�
 
 Hai loại này phục vụ hai bài toán khác nhau. Không cần ép toàn bộ tri thức vào một KB duy nhất.
 
-![Trang danh sách Knowledge Base và nút tạo Knowledge Base mới](<knowledge/GS9 Knowledge VNG - Image Assets/01-tong-quan-danh-sach-knowledge.png>)
+![Trang danh sách Knowledge Base và nút tạo Knowledge Base mới](<knowledge/GS9 Knowledge VNG AI/image-01-tong-quan-danh-sach-knowledge.png>)
 
 *Ảnh 00.1 - Trang Knowledge hiển thị danh sách kho và nút `Knowledge Base mới`.*
 
@@ -68,7 +68,7 @@ Knowledge VNG có hai bộ tab khác nhau:
 3. **Giữ bản nguồn và bản xuất.** KB là lớp phân phối, không thay thế kho lưu trữ có phiên bản.
 <!-- /MODULE -->
 
-<!-- MODULE:01-chuan-bi-noi-dung.md -->
+<!-- MODULE:doc-01-chuan-bi-noi-dung.md -->
 ## 01 - Chuẩn bị nội dung nguồn {#01-chuan-bi-noi-dung}
 
 ### Bạn sẽ biết gì sau khi đọc
@@ -140,7 +140,7 @@ Không dùng quy trình này cho lỗi INVALID_TOKEN.
 
 Tuy nhiên, phép thử trực tiếp cho thấy chat Knowledge VNG **không render ảnh** từ đường dẫn tương đối, dù file MD và ảnh đều đã được nạp riêng.
 
-![Câu trả lời có mô tả ảnh nhưng không render ảnh khi Markdown dùng đường dẫn tương đối](<knowledge/GS9 Knowledge VNG - Image Assets/14-chat-khong-hien-thi-duong-dan-tuong-doi.png>)
+![Câu trả lời có mô tả ảnh nhưng không render ảnh khi Markdown dùng đường dẫn tương đối](<knowledge/GS9 Knowledge VNG AI/image-14-chat-khong-hien-thi-duong-dan-tuong-doi.png>)
 
 *Ảnh 01.1 - Trường hợp không đạt: câu trả lời có phần “Hình minh họa” nhưng DOM không có ảnh.*
 
@@ -176,7 +176,7 @@ Khi đổi nơi lưu ảnh, làm đúng thứ tự: tạo host mới → upload 
 Các câu “80% lỗi AI đến từ file nguồn”, “KB không có owner sẽ chết sau một quý” hoặc các tỷ lệ tương tự không được dùng nếu không có dữ liệu đo và nguồn trích dẫn. Có thể viết dưới dạng rủi ro vận hành, không biến thành thống kê.
 <!-- /MODULE -->
 
-<!-- MODULE:02-tao-kb-nhanh-va-nang-cao.md -->
+<!-- MODULE:doc-02-tao-kb-nhanh-va-nang-cao.md -->
 ## 02 - Tạo KB bằng chế độ Nhanh và Nâng cao {#02-tao-kb-nhanh-va-nang-cao}
 
 ### Bạn sẽ biết gì sau khi đọc
@@ -202,7 +202,7 @@ Các lựa chọn RAG/Wiki, parser, phân đoạn, VLM, ASR hoặc cách lập c
 
 Chế độ Nâng cao hiển thị toàn bộ tab cấu hình theo loại KB. Với Tài liệu, tab **Tổng quan** cho thấy loại và chiến lược RAG/Wiki; với FAQ, tab này có cấu hình lập chỉ mục câu hỏi.
 
-![Tab Tổng quan của KB Tài liệu với loại, RAG, Wiki, tên và mô tả](<knowledge/GS9 Knowledge VNG - Image Assets/02-cau-hinh-tong-quan-document.png>)
+![Tab Tổng quan của KB Tài liệu với loại, RAG, Wiki, tên và mô tả](<knowledge/GS9 Knowledge VNG AI/image-02-cau-hinh-tong-quan-document.png>)
 
 *Ảnh 02.1 - Tab Tổng quan của KB Tài liệu đã có nội dung; một số lựa chọn bị khóa.*
 
@@ -235,7 +235,7 @@ Trong phép thử tạo KB trước đó, banner Nhanh ghi “sinh câu hỏi đ
 Danh sách model có thể đổi, và có model hiện trong dropdown nhưng backend không chấp nhận. Hãy chọn model đang lưu được trong chính KB, ghi ngày kiểm tra và tránh viết quy trình phụ thuộc vĩnh viễn vào một tên model.
 <!-- /MODULE -->
 
-<!-- MODULE:03-tai-lieu-rag-wiki.md -->
+<!-- MODULE:doc-03-tai-lieu-rag-wiki.md -->
 ## 03 - KB Tài liệu, RAG và Wiki {#03-tai-lieu-rag-wiki}
 
 ### Bạn sẽ biết gì sau khi đọc
@@ -278,7 +278,7 @@ Tab Wiki của KB Tài liệu đã kiểm thử có:
 - Khả năng tạo thư mục để tổ chức trang.
 - Liên kết từ node Graph sang **Mở trong Wiki** khi node có trang liên quan.
 
-![Tab Wiki với mục lục và trang tổng hợp](<knowledge/GS9 Knowledge VNG - Image Assets/09-wiki-muc-luc-va-trang.png>)
+![Tab Wiki với mục lục và trang tổng hợp](<knowledge/GS9 Knowledge VNG AI/image-09-wiki-muc-luc-va-trang.png>)
 
 *Ảnh 03.1 - Wiki là lớp nội dung tổng hợp, tách với danh sách file gốc.*
 
@@ -294,7 +294,7 @@ FAQ không có control bật Wiki trong cấu hình. Vì vậy đây là khung g
 
 Chú giải Graph quan sát được gồm **Tóm tắt, Thực thể, Khái niệm, Tổng hợp, So sánh**.
 
-![Graph với chú giải năm loại node](<knowledge/GS9 Knowledge VNG - Image Assets/10-graph-cac-loai-node.png>)
+![Graph với chú giải năm loại node](<knowledge/GS9 Knowledge VNG AI/image-10-graph-cac-loai-node.png>)
 
 *Ảnh 03.2 - Chú giải có Tổng hợp và So sánh, nhưng KB test vẫn chưa sinh được hai loại node này.*
 
@@ -311,7 +311,7 @@ Ngay sau phép thử nạp bộ Aurora/Borealis, chuyển Wiki sang **Toàn di�
 Nếu ưu tiên tuyệt đối việc trích đúng câu chữ gốc, hãy bắt đầu với RAG và kiểm tra nguồn trước khi bật Wiki.
 <!-- /MODULE -->
 
-<!-- MODULE:04-faq-va-lap-chi-muc.md -->
+<!-- MODULE:doc-04-faq-va-lap-chi-muc.md -->
 ## 04 - KB FAQ và lập chỉ mục {#04-faq-va-lap-chi-muc}
 
 ### Bạn sẽ biết gì sau khi đọc
@@ -332,7 +332,7 @@ Form **Thêm Q&A** quan sát được có:
 - Tối đa 5 **Câu trả lời**.
 - **Phân loại**.
 
-![Biểu mẫu Thêm Q&A với câu hỏi chuẩn, biến thể, loại trừ và câu trả lời](<knowledge/GS9 Knowledge VNG - Image Assets/12-faq-bieu-mau-them-qa.png>)
+![Biểu mẫu Thêm Q&A với câu hỏi chuẩn, biến thể, loại trừ và câu trả lời](<knowledge/GS9 Knowledge VNG AI/image-12-faq-bieu-mau-them-qa.png>)
 
 *Ảnh 04.1 - Mỗi mục FAQ có thể chứa nhiều biến thể và nhiều câu trả lời.*
 
@@ -383,7 +383,7 @@ Quy trình khi đổi:
 Nếu hai mục có câu hỏi gần nhau nhưng trả lời khác, thêm điều kiện phân biệt vào câu hỏi chuẩn và câu trả lời. Dùng **Kiểm tra tìm kiếm** để xem cả hai mục có cùng xuất hiện ở ngưỡng vận hành hay không.
 <!-- /MODULE -->
 
-<!-- MODULE:05-mo-hinh-vlm-asr.md -->
+<!-- MODULE:doc-05-mo-hinh-vlm-asr.md -->
 ## 05 - Model, VLM và ASR {#05-mo-hinh-vlm-asr}
 
 ### Bạn sẽ biết gì sau khi đọc
@@ -402,7 +402,7 @@ Nếu hai mục có câu hỏi gần nhau nhưng trả lời khác, thêm điề
 - **VLM:** đọc nội dung hình ảnh.
 - **ASR:** chuyển âm thanh thành văn bản.
 
-![Tab Mô hình với model chat, Embedding, Wiki, VLM và ASR](<knowledge/GS9 Knowledge VNG - Image Assets/03-cau-hinh-mo-hinh-vlm-asr.png>)
+![Tab Mô hình với model chat, Embedding, Wiki, VLM và ASR](<knowledge/GS9 Knowledge VNG AI/image-03-cau-hinh-mo-hinh-vlm-asr.png>)
 
 *Ảnh 05.1 - Tab Mô hình của KB Tài liệu; cấu hình trong ảnh là trạng thái của KB test, không phải mặc định sản phẩm.*
 
@@ -447,7 +447,7 @@ Kết luận đúng là: **chưa chọn được model ASR trong môi trường 
 - Nếu nguồn truy hồi sai, ưu tiên kiểm tra embedding, dữ liệu và chunking trước khi đổi model chat.
 <!-- /MODULE -->
 
-<!-- MODULE:06-parser-va-xu-ly-file.md -->
+<!-- MODULE:doc-06-parser-va-xu-ly-file.md -->
 ## 06 - Parser và xử lý file {#06-parser-va-xu-ly-file}
 
 ### Bạn sẽ biết gì sau khi đọc
@@ -462,7 +462,7 @@ Kết luận đúng là: **chưa chọn được model ASR trong môi trường 
 
 Parser là bộ đọc và chuyển file thành nội dung để hệ thống lập chỉ mục. Tên engine trên giao diện gồm **Built-in, Simple, MinerU, LLM, markitdown, liteparse**. Không phải định dạng nào cũng có đủ mọi engine.
 
-![Tab Xử lý với cấu hình parser theo từng định dạng file](<knowledge/GS9 Knowledge VNG - Image Assets/04-xu-ly-parser-theo-dinh-dang.png>)
+![Tab Xử lý với cấu hình parser theo từng định dạng file](<knowledge/GS9 Knowledge VNG AI/image-04-xu-ly-parser-theo-dinh-dang.png>)
 
 *Ảnh 06.1 - Các lựa chọn parser thay đổi theo từng nhóm file.*
 
@@ -523,7 +523,7 @@ Các mô tả trên giúp chọn bài test; không phải cam kết kỹ thuật
 Parser không thay thế việc viết heading. Với Markdown, đặt một `#` cho tên tài liệu và dùng `##` cho các ý định người dùng thường hỏi. Đây là cách bền vững hơn việc dựa vào ký hiệu trang trí hoặc chữ in đậm.
 <!-- /MODULE -->
 
-<!-- MODULE:07-phan-doan-chunking.md -->
+<!-- MODULE:doc-07-phan-doan-chunking.md -->
 ## 07 - Phân đoạn và chunking {#07-phan-doan-chunking}
 
 ### Bạn sẽ biết gì sau khi đọc
@@ -555,7 +555,7 @@ Trong KB Tài liệu test:
 
 Đây là trạng thái của KB test, không phải cam kết mặc định cho mọi KB mới.
 
-![Tab Xử lý với chế độ phân đoạn cha-con và các kích thước](<knowledge/GS9 Knowledge VNG - Image Assets/05-xu-ly-phan-doan-cha-con.png>)
+![Tab Xử lý với chế độ phân đoạn cha-con và các kích thước](<knowledge/GS9 Knowledge VNG AI/image-05-xu-ly-phan-doan-cha-con.png>)
 
 *Ảnh 07.1 - Giao diện cấu hình chunk cha-con trong KB Tài liệu.*
 
@@ -600,7 +600,7 @@ Với mỗi tài liệu, chuẩn bị ít nhất:
 Xem phần nguồn truy hồi trước khi đánh giá văn phong câu trả lời.
 <!-- /MODULE -->
 
-<!-- MODULE:08-chia-se-va-nguon-du-lieu.md -->
+<!-- MODULE:doc-08-chia-se-va-nguon-du-lieu.md -->
 ## 08 - Chia sẻ và nguồn dữ liệu {#08-chia-se-va-nguon-du-lieu}
 
 ### Bạn sẽ biết gì sau khi đọc
@@ -619,7 +619,7 @@ Tab **Chia sẻ** cho phép chọn Space và gán quyền:
 - **Chỉnh sửa:** thành viên có thể thay đổi nội dung theo quyền hệ thống.
 - **Chỉ đọc:** thành viên dùng để đọc, truy hồi hoặc hỏi đáp nhưng không sửa nội dung.
 
-![Tab Chia sẻ với lựa chọn Space và quyền Chỉnh sửa hoặc Chỉ đọc](<knowledge/GS9 Knowledge VNG - Image Assets/06-chia-se-va-phan-quyen.png>)
+![Tab Chia sẻ với lựa chọn Space và quyền Chỉnh sửa hoặc Chỉ đọc](<knowledge/GS9 Knowledge VNG AI/image-06-chia-se-va-phan-quyen.png>)
 
 *Ảnh 08.1 - Chia sẻ là quyết định quyền truy cập, không phải cách nạp dữ liệu.*
 
@@ -638,7 +638,7 @@ Tab **Nguồn dữ liệu** quan sát được có ba connector:
 - **Google Drive**
 - **NAS**
 
-![Tab Nguồn dữ liệu với Notion, Google Drive và NAS](<knowledge/GS9 Knowledge VNG - Image Assets/07-nguon-du-lieu-notion-drive-nas.png>)
+![Tab Nguồn dữ liệu với Notion, Google Drive và NAS](<knowledge/GS9 Knowledge VNG AI/image-07-nguon-du-lieu-notion-drive-nas.png>)
 
 *Ảnh 08.2 - Khi chưa cấu hình, trang hiện nút thêm nguồn dữ liệu đầu tiên.*
 
@@ -669,7 +669,7 @@ Google Drive connector dùng scope chỉ đọc `drive.readonly`. Quy trình đ�
 6. Trong Knowledge VNG, dán nguyên JSON. Để trống **Shared Drive ID** khi nguồn nằm trong My Drive.
 7. Bấm **Kiểm tra kết nối** trước khi đi tiếp.
 
-![Màn hình xác thực Google Drive bằng service-account JSON](<knowledge/GS9 Knowledge VNG - Image Assets/15-google-drive-xac-thuc-service-account.png>)
+![Màn hình xác thực Google Drive bằng service-account JSON](<knowledge/GS9 Knowledge VNG AI/image-15-google-drive-xac-thuc-service-account.png>)
 
 *Ảnh 08.3 - Không chụp hoặc lưu nội dung JSON key; ảnh chỉ ghi nhận các trường cấu hình.*
 
@@ -677,7 +677,7 @@ Lỗi tổng quát `connection validation failed` đã xuất hiện khi Drive A
 
 ### Google Drive - chọn tài nguyên
 
-![Cây chọn thư mục và tệp Google Drive](<knowledge/GS9 Knowledge VNG - Image Assets/16-google-drive-chon-tai-nguyen.png>)
+![Cây chọn thư mục và tệp Google Drive](<knowledge/GS9 Knowledge VNG AI/image-16-google-drive-chon-tai-nguyen.png>)
 
 *Ảnh 08.4 - Có thể chọn một tệp hoặc thư mục; dấu trừ ở thư mục cha nghĩa là chỉ một phần con được chọn.*
 
@@ -692,7 +692,7 @@ Chọn thư mục khi muốn tệp mới trong thư mục thuộc phạm vi đ�
 
 ### Google Drive - lịch, chế độ và xung đột
 
-![Lịch và cách đồng bộ Google Drive](<knowledge/GS9 Knowledge VNG - Image Assets/17-google-drive-lich-va-cach-dong-bo.png>)
+![Lịch và cách đồng bộ Google Drive](<knowledge/GS9 Knowledge VNG AI/image-17-google-drive-lich-va-cach-dong-bo.png>)
 
 *Ảnh 08.5 - Lượt test dùng Tăng dần, Ghi đè và mỗi 15 phút.*
 
@@ -704,7 +704,7 @@ Chọn thư mục khi muốn tệp mới trong thư mục thuộc phạm vi đ�
 
 ### Google Drive - lọc tệp và tag
 
-![Regex lọc tệp và gắn tag](<knowledge/GS9 Knowledge VNG - Image Assets/18-google-drive-loc-tep-va-tag.png>)
+![Regex lọc tệp và gắn tag](<knowledge/GS9 Knowledge VNG AI/image-18-google-drive-loc-tep-va-tag.png>)
 
 *Ảnh 08.6 - Có thể thêm nhiều regex tên tệp, tag mặc định và rule tag theo đường dẫn.*
 
@@ -716,13 +716,13 @@ Chọn thư mục khi muốn tệp mới trong thư mục thuộc phạm vi đ�
 
 ### Google Drive - ghi đè xử lý
 
-![Ghi đè chunking cho nguồn Google Drive](<knowledge/GS9 Knowledge VNG - Image Assets/19-google-drive-ghi-de-xu-ly.png>)
+![Ghi đè chunking cho nguồn Google Drive](<knowledge/GS9 Knowledge VNG AI/image-19-google-drive-ghi-de-xu-ly.png>)
 
 *Ảnh 08.7 - Giá trị 0 dùng mặc định KB; chỉ ghi đè khi có bộ câu hỏi đối chứng.*
 
 Nguồn có thể ghi đè kích thước đoạn, độ chồng, giới hạn token, đoạn cha-con, ký tự phân tách và ngôn ngữ. Khuyến nghị giữ `0` hoặc để trống ở lượt đầu để kế thừa cấu hình KB.
 
-![Đa phương thức, ASR, OCR và parser theo loại tệp](<knowledge/GS9 Knowledge VNG - Image Assets/20-google-drive-da-phuong-thuc-va-parser.png>)
+![Đa phương thức, ASR, OCR và parser theo loại tệp](<knowledge/GS9 Knowledge VNG AI/image-20-google-drive-da-phuong-thuc-va-parser.png>)
 
 *Ảnh 08.8 - Các toggle và parser kế thừa yêu cầu model/cấu hình tương ứng của KB.*
 
@@ -733,9 +733,9 @@ Nguồn có thể ghi đè kích thước đoạn, độ chồng, giới hạn t
 
 ### Google Drive - parser theo loại tệp
 
-![Parser cho Office, CSV, Markdown và văn bản](<knowledge/GS9 Knowledge VNG - Image Assets/21-google-drive-parser-office-text.png>)
+![Parser cho Office, CSV, Markdown và văn bản](<knowledge/GS9 Knowledge VNG AI/image-21-google-drive-parser-office-text.png>)
 
-![Parser cho JSON, ảnh, email, ebook và web](<knowledge/GS9 Knowledge VNG - Image Assets/22-google-drive-parser-media-web.png>)
+![Parser cho JSON, ảnh, email, ebook và web](<knowledge/GS9 Knowledge VNG AI/image-22-google-drive-parser-media-web.png>)
 
 *Ảnh 08.9-08.10 - Danh sách parser quan sát trong wizard ngày 07/08/2026.*
 
@@ -750,7 +750,7 @@ Nguồn có thể ghi đè kích thước đoạn, độ chồng, giới hạn t
 
 Danh sách parser có thể phụ thuộc tenant và thay đổi theo thời điểm.
 
-![Chọn parser Excel tùy chỉnh](<knowledge/GS9 Knowledge VNG - Image Assets/24-google-drive-parser-excel-tuy-chinh.png>)
+![Chọn parser Excel tùy chỉnh](<knowledge/GS9 Knowledge VNG AI/image-24-google-drive-parser-excel-tuy-chinh.png>)
 
 *Ảnh 08.11 - Các parser có tiền tố FPA là cấu hình riêng của tenant test, không phải mặc định chung.*
 
@@ -758,7 +758,7 @@ Khi Excel để **Thủ công**, dropdown có thể hiện parser do tenant đă
 
 ### Google Drive - đồng bộ xóa
 
-![Tùy chọn đồng bộ xóa](<knowledge/GS9 Knowledge VNG - Image Assets/23-google-drive-dong-bo-xoa.png>)
+![Tùy chọn đồng bộ xóa](<knowledge/GS9 Knowledge VNG AI/image-23-google-drive-dong-bo-xoa.png>)
 
 *Ảnh 08.12 - UI mô tả bật control sẽ gỡ tri thức khi nguồn đã bị xóa.*
 
@@ -766,7 +766,7 @@ Khuyến nghị để **tắt** trong lượt thử đầu. Chỉ bật sau khi 
 
 ### Kết quả kết nối và đồng bộ đầu tiên
 
-![Google Drive đã kết nối và đồng bộ thành công](<knowledge/GS9 Knowledge VNG - Image Assets/25-google-drive-dong-bo-thanh-cong.png>)
+![Google Drive đã kết nối và đồng bộ thành công](<knowledge/GS9 Knowledge VNG AI/image-25-google-drive-dong-bo-thanh-cong.png>)
 
 *Ảnh 08.13 - Card nguồn hiển thị Đã kết nối và Kết quả Thành công.*
 
@@ -811,7 +811,7 @@ Khi có credential test, cần chạy ma trận: thêm file, sửa file, đổi 
 - Ghi người sở hữu credential và quy trình xoay vòng ngoài KB nội dung.
 <!-- /MODULE -->
 
-<!-- MODULE:09-van-hanh-documents-wiki-graph.md -->
+<!-- MODULE:doc-09-van-hanh-documents-wiki-graph.md -->
 ## 09 - Vận hành Documents, Wiki và Graph {#09-van-hanh-documents-wiki-graph}
 
 ### Bạn sẽ biết gì sau khi đọc
@@ -831,7 +831,7 @@ Menu quan sát được có:
 - **Nhập từ URL** - đang disabled
 - **Soạn thảo trực tuyến**
 
-![Menu thêm tài liệu với tải tệp, tải thư mục, nhập URL và soạn trực tuyến](<knowledge/GS9 Knowledge VNG - Image Assets/08-tai-tep-thu-muc-va-soan-thao.png>)
+![Menu thêm tài liệu với tải tệp, tải thư mục, nhập URL và soạn trực tuyến](<knowledge/GS9 Knowledge VNG AI/image-08-tai-tep-thu-muc-va-soan-thao.png>)
 
 *Ảnh 09.1 - `Nhập từ URL` đang vô hiệu hóa tại thời điểm kiểm tra.*
 
@@ -905,7 +905,7 @@ Không có nút tạo tay hai node này trong menu node hoặc hướng dẫn ca
 8. Ghi ngày, người thực hiện và kết quả.
 <!-- /MODULE -->
 
-<!-- MODULE:10-van-hanh-faq.md -->
+<!-- MODULE:doc-10-van-hanh-faq.md -->
 ## 10 - Vận hành FAQ {#10-van-hanh-faq}
 
 ### Bạn sẽ biết gì sau khi đọc
@@ -926,7 +926,7 @@ Trang Documents của FAQ đã kiểm tra có:
 - **Nhập**
 - **Thêm Q&A**
 
-![Danh sách FAQ với các nút kiểm tra tìm kiếm, xuất, nhập và thêm Q&A](<knowledge/GS9 Knowledge VNG - Image Assets/11-faq-danh-sach-nhap-xuat-tim-kiem.png>)
+![Danh sách FAQ với các nút kiểm tra tìm kiếm, xuất, nhập và thêm Q&A](<knowledge/GS9 Knowledge VNG AI/image-11-faq-danh-sach-nhap-xuat-tim-kiem.png>)
 
 *Ảnh 10.1 - Trang vận hành FAQ tập trung vào từng mục Q&A và chất lượng tìm kiếm.*
 
@@ -988,7 +988,7 @@ Trước khi nhập:
 - Lưu file nguồn cùng ngày nhập và người thực hiện.
 <!-- /MODULE -->
 
-<!-- MODULE:11-chat-kiem-thu-va-bao-tri.md -->
+<!-- MODULE:doc-11-chat-kiem-thu-va-bao-tri.md -->
 ## 11 - Chat, kiểm thử và bảo trì {#11-chat-kiem-thu-va-bao-tri}
 
 ### Bạn sẽ biết gì sau khi đọc
@@ -1026,7 +1026,7 @@ Khi Markdown dùng đường dẫn tương đối `assets/...`, retriever tìm t
 
 Khi Markdown dùng URI nội bộ `minio://...`, retriever chuyển liên kết thành ảnh và câu trả lời hiển thị đúng hình.
 
-![Câu trả lời Knowledge VNG hiển thị ảnh khi nguồn Markdown dùng URI MinIO](<knowledge/GS9 Knowledge VNG - Image Assets/13-chat-hien-thi-anh-minio.png>)
+![Câu trả lời Knowledge VNG hiển thị ảnh khi nguồn Markdown dùng URI MinIO](<knowledge/GS9 Knowledge VNG AI/image-13-chat-hien-thi-anh-minio.png>)
 
 *Ảnh 11.1 - Trường hợp đạt: ảnh xuất hiện trực tiếp trong câu trả lời chat.*
 
@@ -1081,7 +1081,7 @@ Một KB sẵn sàng khi:
 7. Có backup và quy trình phục hồi.
 <!-- /MODULE -->
 
-<!-- MODULE:12-ket-noi-google-drive.md -->
+<!-- MODULE:doc-12-ket-noi-google-drive.md -->
 ## 12 - Kết nối Google Drive {#12-ket-noi-google-drive}
 
 ### Bạn sẽ biết gì sau khi đọc
@@ -1102,7 +1102,7 @@ Một KB sẵn sàng khi:
 4. Chia sẻ đúng thư mục nguồn cho `client_email` với quyền **Viewer**.
 5. Không đưa JSON key vào Drive, KB, Markdown hoặc ảnh chụp.
 
-![Nhập service-account JSON cho Google Drive](<knowledge/GS9 Knowledge VNG - Image Assets/15-google-drive-xac-thuc-service-account.png>)
+![Nhập service-account JSON cho Google Drive](<knowledge/GS9 Knowledge VNG AI/image-15-google-drive-xac-thuc-service-account.png>)
 
 *Ảnh 12.1 - Dán nguyên JSON; để trống Shared Drive ID khi nguồn nằm trong My Drive.*
 
@@ -1110,7 +1110,7 @@ Nếu **Kiểm tra kết nối** trả về `connection validation failed`, ki�
 
 ### 2. Chọn tài nguyên
 
-![Chọn thư mục hoặc tệp Google Drive](<knowledge/GS9 Knowledge VNG - Image Assets/16-google-drive-chon-tai-nguyen.png>)
+![Chọn thư mục hoặc tệp Google Drive](<knowledge/GS9 Knowledge VNG AI/image-16-google-drive-chon-tai-nguyen.png>)
 
 *Ảnh 12.2 - Dấu trừ ở thư mục cha nghĩa là chỉ một phần con được chọn.*
 
@@ -1121,7 +1121,7 @@ Nếu **Kiểm tra kết nối** trả về `connection validation failed`, ki�
 
 ### 3. Chọn lịch và cách đồng bộ
 
-![Lịch, chế độ và chiến lược xung đột](<knowledge/GS9 Knowledge VNG - Image Assets/17-google-drive-lich-va-cach-dong-bo.png>)
+![Lịch, chế độ và chiến lược xung đột](<knowledge/GS9 Knowledge VNG AI/image-17-google-drive-lich-va-cach-dong-bo.png>)
 
 *Ảnh 12.3 - Lượt test dùng Tăng dần, Ghi đè và mỗi 15 phút.*
 
@@ -1135,7 +1135,7 @@ Chỉ dùng **Toàn bộ** khi cần quét lại có chủ đích. Sau khi đổ
 
 ### 4. Lọc tệp và tag
 
-![Regex lọc tên tệp và gắn tag](<knowledge/GS9 Knowledge VNG - Image Assets/18-google-drive-loc-tep-va-tag.png>)
+![Regex lọc tên tệp và gắn tag](<knowledge/GS9 Knowledge VNG AI/image-18-google-drive-loc-tep-va-tag.png>)
 
 *Ảnh 12.4 - Để trống regex để đồng bộ mọi tệp hợp lệ trong phạm vi.*
 
@@ -1146,13 +1146,13 @@ Chỉ dùng **Toàn bộ** khi cần quét lại có chủ đích. Sau khi đổ
 
 ### 5. Giữ mặc định xử lý ở lượt đầu
 
-![Ghi đè chunking ở cấp nguồn](<knowledge/GS9 Knowledge VNG - Image Assets/19-google-drive-ghi-de-xu-ly.png>)
+![Ghi đè chunking ở cấp nguồn](<knowledge/GS9 Knowledge VNG AI/image-19-google-drive-ghi-de-xu-ly.png>)
 
 *Ảnh 12.5 - Giá trị 0 dùng cấu hình mặc định của KB.*
 
 Giữ kích thước đoạn, độ chồng và token ở `0`; để trống ký tự phân tách nếu chưa có lý do kiểm thử rõ ràng. Chỉ bật đoạn cha-con khi nội dung cần giữ ngữ cảnh cha lớn hơn.
 
-![Đa phương thức, ASR, OCR và parser](<knowledge/GS9 Knowledge VNG - Image Assets/20-google-drive-da-phuong-thuc-va-parser.png>)
+![Đa phương thức, ASR, OCR và parser](<knowledge/GS9 Knowledge VNG AI/image-20-google-drive-da-phuong-thuc-va-parser.png>)
 
 *Ảnh 12.6 - VLM, ASR và OCR cần model/cấu hình tương ứng.*
 
@@ -1163,9 +1163,9 @@ Giữ kích thước đoạn, độ chồng và token ở `0`; để trống ký
 
 ### 6. Chọn parser đúng loại tệp
 
-![Parser cho Office, CSV, Markdown và text](<knowledge/GS9 Knowledge VNG - Image Assets/21-google-drive-parser-office-text.png>)
+![Parser cho Office, CSV, Markdown và text](<knowledge/GS9 Knowledge VNG AI/image-21-google-drive-parser-office-text.png>)
 
-![Parser cho media, email, ebook và web](<knowledge/GS9 Knowledge VNG - Image Assets/22-google-drive-parser-media-web.png>)
+![Parser cho media, email, ebook và web](<knowledge/GS9 Knowledge VNG AI/image-22-google-drive-parser-media-web.png>)
 
 *Ảnh 12.7-12.8 - Parser quan sát được ngày 07/08/2026; danh sách có thể đổi theo tenant.*
 
@@ -1178,7 +1178,7 @@ Giữ kích thước đoạn, độ chồng và token ở `0`; để trống ký
 | Ảnh | MinerU |
 | Email, EPUB, HTML/HTM, MHTML, âm thanh | Built-in |
 
-![Parser Excel tùy chỉnh](<knowledge/GS9 Knowledge VNG - Image Assets/24-google-drive-parser-excel-tuy-chinh.png>)
+![Parser Excel tùy chỉnh](<knowledge/GS9 Knowledge VNG AI/image-24-google-drive-parser-excel-tuy-chinh.png>)
 
 *Ảnh 12.9 - Các parser có tiền tố FPA là cấu hình riêng của tenant test.*
 
@@ -1186,7 +1186,7 @@ Excel **Thủ công** có thể liệt kê parser do tenant đăng ký. Không c
 
 ### 7. Thận trọng với đồng bộ xóa
 
-![Bật hoặc tắt đồng bộ xóa](<knowledge/GS9 Knowledge VNG - Image Assets/23-google-drive-dong-bo-xoa.png>)
+![Bật hoặc tắt đồng bộ xóa](<knowledge/GS9 Knowledge VNG AI/image-23-google-drive-dong-bo-xoa.png>)
 
 *Ảnh 12.10 - UI mô tả bật control sẽ gỡ tri thức khi tệp nguồn bị xóa.*
 
@@ -1196,7 +1196,7 @@ Excel **Thủ công** có thể liệt kê parser do tenant đăng ký. Không c
 
 Bấm **Tạo & đồng bộ ngay**. Card nguồn phải cho biết trạng thái, chế độ, phạm vi, lịch, thời điểm gần nhất và kết quả.
 
-![Google Drive đã kết nối và đồng bộ thành công](<knowledge/GS9 Knowledge VNG - Image Assets/25-google-drive-dong-bo-thanh-cong.png>)
+![Google Drive đã kết nối và đồng bộ thành công](<knowledge/GS9 Knowledge VNG AI/image-25-google-drive-dong-bo-thanh-cong.png>)
 
 *Ảnh 12.11 - Lượt test hiển thị Đã kết nối và Kết quả Thành công.*
 
@@ -1220,7 +1220,7 @@ Một lượt thành công chưa chứng minh:
 Xem bằng chứng chi tiết tại [audit Google Drive ngày 07/08/2026](audit/audit-google-drive-connector-2026-08-07.md).
 <!-- /MODULE -->
 
-<!-- MODULE:13-agent-tong-quan-va-kien-truc.md -->
+<!-- MODULE:doc-13-agent-tong-quan-va-kien-truc.md -->
 ## 13 - Agent: tổng quan và kiến trúc {#13-agent-tong-quan-va-kien-truc}
 
 **Phạm vi và ngày kiểm chứng: 11/08/2026.** Module này là điểm vào ngắn cho cả vận hành và kỹ thuật; các control chi tiết nằm ở module 14–19.
@@ -1239,7 +1239,7 @@ Human → Agent nhận lượt chat → phân loại Intent
 
 Trong gói Knowledge VNG, Agent nghiệp vụ dùng **Knowledge VNG AI** làm corpus: Markdown chứa SOP và URI ảnh MinIO. **Knowledge VNG - Image Assets** chỉ là host 49 PNG; không chọn nó làm KB hỏi đáp phổ thông. Một ảnh render trong câu trả lời vẫn được truy hồi từ Markdown consumer rồi theo URI tới asset host.
 
-![Trang danh sách và nút Tạo trợ lý](<knowledge/GS9 Knowledge VNG - Image Assets/26-agent-tong-quan-danh-sach.png>)
+![Trang danh sách và nút Tạo trợ lý](<knowledge/GS9 Knowledge VNG AI/image-26-agent-tong-quan-danh-sach.png>)
 
 *Ảnh 13.1 – Danh sách Agent, bộ lọc phạm vi và điểm bắt đầu tạo Agent.*
 
@@ -1320,7 +1320,7 @@ Chi tiết truy vết nằm tại [audit Agent chuyên sâu 11/08](audit/agent-d
 - [ ] Kết luận được gắn **Đã kiểm chứng**, **Có điều kiện** hoặc **Bị chặn/Chưa xác định**.
 <!-- /MODULE -->
 
-<!-- MODULE:14-che-do-preset-prompt-va-intent.md -->
+<!-- MODULE:doc-14-che-do-preset-prompt-va-intent.md -->
 ## 14 - Agent: chế độ, preset, prompt và Intent {#14-che-do-preset-prompt-va-intent}
 
 ### Khái niệm
@@ -1332,7 +1332,7 @@ Tab **Thông tin cơ bản** quyết định Agent được nhận diện thế 
 
 Năm preset dưới Suy luận thông minh là **Hỏi đáp RAG**, **Hỏi đáp Wiki**, **Kết hợp RAG + Wiki**, **Phân tích dữ liệu** và **Tùy chỉnh**. Preset điền System Prompt, gợi ý tool và phạm vi KB; nó là baseline để kiểm tra, không thay thế kiểm thử sau khi lưu.
 
-![Chế độ chạy và preset Hỏi đáp RAG](<knowledge/GS9 Knowledge VNG - Image Assets/35-agent-che-do-va-preset.png>)
+![Chế độ chạy và preset Hỏi đáp RAG](<knowledge/GS9 Knowledge VNG AI/image-35-agent-che-do-va-preset.png>)
 
 *Ảnh 14.1 – Hai mode, preset và sáu tab của hộp Tạo trợ lý.*
 
@@ -1346,13 +1346,13 @@ Năm preset dưới Suy luận thông minh là **Hỏi đáp RAG**, **Hỏi đá
 | System Prompt | Luật chung của mọi lượt | Chỉ dùng nguồn, nêu nguồn, no-hit không bịa | Câu đúng/no-hit tuân thủ |
 | Prompt Intent | Luật riêng cho một loại lượt | Để trống để dùng template nếu chưa test | Không phá luật chung |
 
-![System Prompt và biến UI gợi ý](<knowledge/GS9 Knowledge VNG - Image Assets/36-agent-system-prompt-va-bien.png>)
+![System Prompt và biến UI gợi ý](<knowledge/GS9 Knowledge VNG AI/image-36-agent-system-prompt-va-bien.png>)
 
 *Ảnh 14.2 – System Prompt quan sát được và các biến chỉ nên dùng đúng cú pháp UI.*
 
 System Prompt Smart Reasoning quan sát biến `{{knowledge_bases}}`, `{{current_time}}`, `{{language}}`. Prompt theo Intent gợi ý `{{query}}`, `{{contexts}}`, `{{current_time}}`, `{{current_week}}`, `{{language}}`. Chỉ vì một biến được gợi ý không có nghĩa nó có dữ liệu hữu ích trong mọi tình huống; phải kiểm tra qua chat và source trace.
 
-![Intent và prompt theo Intent trong một cấu hình đã mở](<knowledge/GS9 Knowledge VNG - Image Assets/37-agent-intent-va-prompt-ghi-de.png>)
+![Intent và prompt theo Intent trong một cấu hình đã mở](<knowledge/GS9 Knowledge VNG AI/image-37-agent-intent-va-prompt-ghi-de.png>)
 
 *Ảnh 14.3 – Prompt theo Intent là lớp ghi đè theo lượt; dùng template hoặc để trống khi chưa có case hồi quy.*
 
@@ -1375,7 +1375,7 @@ Human message → classifier nhận Intent
 
 `Intent` là **nhãn mục đích của một lượt chat**, không phải KB, tool hay model. Nó quyết định chọn prompt theo Intent và hướng điều phối; hành vi retrieval chỉ có thể được kết luận sau khi quan sát trace.
 
-![Danh sách Intent và vùng prompt ghi đè](<knowledge/GS9 Knowledge VNG - Image Assets/27-agent-thong-tin-co-ban-va-intent.png>)
+![Danh sách Intent và vùng prompt ghi đè](<knowledge/GS9 Knowledge VNG AI/image-27-agent-thong-tin-co-ban-va-intent.png>)
 
 *Ảnh 14.4 – Tab cơ bản chứa prompt chính, dropdown Intent và prompt chuyên biệt.*
 
@@ -1388,7 +1388,7 @@ Human message → classifier nhận Intent
 | Summarize Response | Tóm tắt | Có trên UI; file/nguồn quyết định context thật |
 | Document Analysis Response | Phân tích tệp | **Đã kiểm chứng** với PDF ORCHID attachment |
 
-![Trace greeting thực tế](<knowledge/GS9 Knowledge VNG - Image Assets/38-agent-intent-trace-runtime.png>)
+![Trace greeting thực tế](<knowledge/GS9 Knowledge VNG AI/image-38-agent-intent-trace-runtime.png>)
 
 *Ảnh 14.5 – Greeting runtime trả lời trực tiếp; UI không hiển thị nhãn classifier nên đây là quan sát hành vi, không phải bằng chứng nội bộ về thuật toán.*
 
@@ -1437,14 +1437,14 @@ Một prompt production nên tách rõ **luật bất biến** và **hướng d�
 - [ ] Mỗi prompt thay đổi có câu hồi quy và source trace.
 <!-- /MODULE -->
 
-<!-- MODULE:15-model-reranker-suy-luan-va-quota.md -->
+<!-- MODULE:doc-15-model-reranker-suy-luan-va-quota.md -->
 ## 15 - Agent: model, reranker, suy luận và quota {#15-model-reranker-suy-luan-va-quota}
 
 ### Khái niệm
 
 Model chat tổng hợp answer và có thể điều phối tool; reranker chấm lại độ liên quan của ứng viên retrieval trước khi context đi vào model. Hai lớp này khác nhau: đổi LLM không sửa embedding/chunk gốc; tắt reranker không thay nội dung KB. Trong UI 11/08/2026, bốn model thấy được là `deepseek-v4-flash`, `gpt-oss-120b`, `hosted_vllm/qwen3.6-35b` và `qwen3.6-plus`; reranker thấy được là `bge-reranker-v2-m3`.
 
-![Cấu hình model, reranker, temperature và reasoning](<knowledge/GS9 Knowledge VNG - Image Assets/28-agent-cau-hinh-mo-hinh.png>)
+![Cấu hình model, reranker, temperature và reasoning](<knowledge/GS9 Knowledge VNG AI/image-28-agent-cau-hinh-mo-hinh.png>)
 
 *Ảnh 15.1 – Tab cấu hình model; danh sách là snapshot UI, không cam kết quota còn hiệu lực.*
 
@@ -1460,7 +1460,7 @@ Model chat tổng hợp answer và có thể điều phối tool; reranker chấ
 | Timeout LLM | Chặn một call quá lâu | 120 giây trong Agent test | Hết thời gian trước câu trả lời |
 | Tool song song | Có thể gọi nhiều tool đồng thời | A/B, khôi phục baseline | Thứ tự/nguồn khác hoặc lỗi đồng thời |
 
-![A/B model trong composer và menu model](<knowledge/GS9 Knowledge VNG - Image Assets/39-agent-model-ab-va-request-info.png>)
+![A/B model trong composer và menu model](<knowledge/GS9 Knowledge VNG AI/image-39-agent-model-ab-va-request-info.png>)
 
 *Ảnh 15.2 – Model có thể đổi cho chat; test phải ghi model thật ở lượt đó.*
 
@@ -1499,7 +1499,7 @@ Không suy luận model nào “thông minh hơn” chỉ từ một câu, đặ
 - **Đã kiểm chứng:** UI trình bày bốn model và reranker nêu trên; Agent test dùng max loops 10 và timeout 120 giây.
 - **Có điều kiện:** không đủ quota/quyền để kết luận cả bốn model đều chạy ba lượt hoặc có chất lượng tương đương.
 
-![Timeout/cảnh báo runtime là tín hiệu vận hành](<knowledge/GS9 Knowledge VNG - Image Assets/40-agent-quota-timeout-va-loi-runtime.png>)
+![Timeout/cảnh báo runtime là tín hiệu vận hành](<knowledge/GS9 Knowledge VNG AI/image-40-agent-quota-timeout-va-loi-runtime.png>)
 
 *Ảnh 15.3 – Timeout/lỗi runtime cần được ghi như tín hiệu điều tra, không bị gán nhầm cho KB.*
 
@@ -1544,14 +1544,14 @@ Không lưu request headers, token, service-account JSON hoặc internal diagnos
 - [ ] Không kết luận chất lượng model nếu retrieval hoặc quota không tương đương.
 <!-- /MODULE -->
 
-<!-- MODULE:16-kho-tri-thuc-cong-cu-va-truy-hoi.md -->
+<!-- MODULE:doc-16-kho-tri-thuc-cong-cu-va-truy-hoi.md -->
 ## 16 - Agent: kho tri thức, công cụ và truy hồi {#16-kho-tri-thuc-cong-cu-va-truy-hoi}
 
 ### Khái niệm
 
 Tab **Kho tri thức** xác định corpus mà Agent được phép tìm. UI có ba phạm vi: tất cả KB được phép, KB đã chọn và không dùng KB. Với Agent Knowledge VNG, chọn rõ **Knowledge VNG AI**; asset host chỉ giữ PNG để Markdown tham chiếu. UI cho lọc theo loại tệp như `MD`, `PDF`, `CSV`, `DOCX`, `TXT`, `XLSX`, `XLS`, `JSON`, `PPTX`, `HTML`, `MSG`, `EML` (danh sách tenant có thể đổi).
 
-![Phạm vi KB và lọc loại tệp](<knowledge/GS9 Knowledge VNG - Image Assets/29-agent-kho-tri-thuc.png>)
+![Phạm vi KB và lọc loại tệp](<knowledge/GS9 Knowledge VNG AI/image-29-agent-kho-tri-thuc.png>)
 
 *Ảnh 16.1 – Chọn KB là control bảo mật và chất lượng, không chỉ là tiện lợi.*
 
@@ -1569,11 +1569,11 @@ Tab **Kho tri thức** xác định corpus mà Agent được phép tìm. UI có
 | List chunks / Document info | Duyệt/đọc metadata | Debug candidate và nguồn | Tool thừa làm loop dài |
 | Wiki/data tools | Wiki, SQL, Data Analysis, Schema | Chỉ cho KB/file tương thích | Kết luận sai vì tool không có dữ liệu |
 
-![Công cụ, loops, timeout và parallel](<knowledge/GS9 Knowledge VNG - Image Assets/30-agent-cong-cu.png>)
+![Công cụ, loops, timeout và parallel](<knowledge/GS9 Knowledge VNG AI/image-30-agent-cong-cu.png>)
 
 *Ảnh 16.2 – Tool set hiệu lực phải được kiểm tra sau preset.*
 
-![Chiến lược truy hồi: Top K, ngưỡng và reranker](<knowledge/GS9 Knowledge VNG - Image Assets/31-agent-chien-luoc-truy-hoi.png>)
+![Chiến lược truy hồi: Top K, ngưỡng và reranker](<knowledge/GS9 Knowledge VNG AI/image-31-agent-chien-luoc-truy-hoi.png>)
 
 *Ảnh 16.3 – Retrieval strategy là lớp lọc candidate trước context; chỉ thay một tham số trong mỗi lần A/B.*
 
@@ -1595,7 +1595,7 @@ KB scope + file filter + @ per-turn
      → reranker (nếu bật) → context → answer + source chips
 ```
 
-![Hai KB trong Agent test](<knowledge/GS9 Knowledge VNG - Image Assets/41-agent-test-kb-da-nguon.png>)
+![Hai KB trong Agent test](<knowledge/GS9 Knowledge VNG AI/image-41-agent-test-kb-da-nguon.png>)
 
 *Ảnh 16.4 – Agent test được giới hạn vào KB TEST tổng hợp và Knowledge VNG AI để quan sát xung đột có kiểm soát.*
 
@@ -1611,15 +1611,15 @@ KB scope + file filter + @ per-turn
 | Vector threshold | 0,3 ↔ 0,7 | Recall/nhiễu thay đổi, không đánh giá chỉ bằng câu văn |
 | Reranker | tắt ↔ bật | Thứ tự/candidate cuối và nguồn phải được ghi |
 
-![Nhắc KB hoặc tệp bằng @](<knowledge/GS9 Knowledge VNG - Image Assets/42-agent-at-kho-tri-thuc-va-tep.png>)
+![Nhắc KB hoặc tệp bằng @](<knowledge/GS9 Knowledge VNG AI/image-42-agent-at-kho-tri-thuc-va-tep.png>)
 
 *Ảnh 16.5 – Dialog hiển thị cả KB và từng tệp có thể nhắc trong composer.*
 
-![Trace tools và source từ bốn file ORCHID](<knowledge/GS9 Knowledge VNG - Image Assets/43-agent-trace-cong-cu-truy-hoi.png>)
+![Trace tools và source từ bốn file ORCHID](<knowledge/GS9 Knowledge VNG AI/image-43-agent-trace-cong-cu-truy-hoi.png>)
 
 *Ảnh 16.6 – Runtime dùng keyword/semantic rồi hiển thị các file canonical, near-duplicate, CSV và PDF.*
 
-![A/B Top K, threshold và rerank](<knowledge/GS9 Knowledge VNG - Image Assets/44-agent-ab-topk-threshold-rerank.png>)
+![A/B Top K, threshold và rerank](<knowledge/GS9 Knowledge VNG AI/image-44-agent-ab-topk-threshold-rerank.png>)
 
 *Ảnh 16.7 – Các control phải được A/B một biến và khôi phục baseline, không chỉnh đồng thời.*
 
@@ -1661,7 +1661,7 @@ Khởi đầu thực dụng là: scope **Selected** = `Knowledge VNG AI`; loại
 - [ ] Có source trace trước khi đổi prompt/model.
 <!-- /MODULE -->
 
-<!-- MODULE:17-da-phuong-thuc-va-tep-dinh-kem.md -->
+<!-- MODULE:doc-17-da-phuong-thuc-va-tep-dinh-kem.md -->
 ## 17 - Agent: đa phương thức và tệp đính kèm {#17-da-phuong-thuc-va-tep-dinh-kem}
 
 ### Khái niệm
@@ -1673,7 +1673,7 @@ Agent có hai đường xử lý khác nhau cần tách biệt khi kiểm thử:
 
 Không suy luận PDF trong KB parse được thì PDF attachment chắc chắn hoạt động, hoặc composer nhận ảnh thì VLM đã nhận bytes. MD, PDF và CSV fixture ORCHID đều được KB TEST xử lý hoàn tất; PDF attachment cũng được Agent đọc đúng. Nhánh image/ASR vẫn có điều kiện tenant/model.
 
-![Tab cấu hình đa phương thức](<knowledge/GS9 Knowledge VNG - Image Assets/32-agent-cau-hinh-da-phuong-thuc.png>)
+![Tab cấu hình đa phương thức](<knowledge/GS9 Knowledge VNG AI/image-32-agent-cau-hinh-da-phuong-thuc.png>)
 
 *Ảnh 17.1 – Control tải ảnh, VLM và audio/ASR cần cấu hình riêng với retrieval tài liệu.*
 
@@ -1713,7 +1713,7 @@ Attachment:   Human file → upload validation → request/session → Intent/VL
 
 Hai path gặp nhau ở model nhưng có validation, quyền, model và timing khác nhau. Chẩn đoán đúng phải hỏi “file có tới request chưa?” trước “model đọc đúng chưa?”.
 
-![PDF nằm trong composer trước khi gửi](<knowledge/GS9 Knowledge VNG - Image Assets/45-agent-tep-dinh-kem.png>)
+![PDF nằm trong composer trước khi gửi](<knowledge/GS9 Knowledge VNG AI/image-45-agent-tep-dinh-kem.png>)
 
 *Ảnh 17.2 – Composer xác nhận PDF đã được đính kèm và hiển thị kích thước trước khi gửi.*
 
@@ -1728,11 +1728,11 @@ Hai path gặp nhau ở model nhưng có validation, quyền, model và timing k
 | Image attachment | PNG UI an toàn | mô tả nội dung | Ghi client/server error nếu bị chặn |
 | Audio attachment | audio chỉ khi có ASR | transcript | Chỉ pass khi ASR/tenant hoạt động |
 
-![Ảnh đính kèm bị từ chối ở client](<knowledge/GS9 Knowledge VNG - Image Assets/46-agent-image-analysis.png>)
+![Ảnh đính kèm bị từ chối ở client](<knowledge/GS9 Knowledge VNG AI/image-46-agent-image-analysis.png>)
 
 *Ảnh 17.3 – Bằng chứng lỗi “Định dạng tệp không hỗ trợ” với đường test này; không dùng nó để kết luận VLM hỏng.*
 
-![Document Analysis PDF trả về fact mong đợi](<knowledge/GS9 Knowledge VNG - Image Assets/47-agent-document-summarize.png>)
+![Document Analysis PDF trả về fact mong đợi](<knowledge/GS9 Knowledge VNG AI/image-47-agent-document-summarize.png>)
 
 *Ảnh 17.4 – Agent phân tích attachment PDF và nêu đúng mã, owner, SLA, priority.*
 
@@ -1778,14 +1778,14 @@ Hai Intent **Summarize Response** và **Document Analysis Response** không thay
 - [ ] Audit ghi model, loại file, lỗi/toast và Request Information phù hợp.
 <!-- /MODULE -->
 
-<!-- MODULE:18-chat-nguon-lich-su-va-danh-gia.md -->
+<!-- MODULE:doc-18-chat-nguon-lich-su-va-danh-gia.md -->
 ## 18 - Agent: chat, nguồn, lịch sử và đánh giá {#18-chat-nguon-lich-su-va-danh-gia}
 
 ### Khái niệm
 
 Chat là bề mặt Human nhìn thấy, còn source chips, history, feedback và Request Information là bề mặt quan sát để vận hành. Một câu trả lời “nghe hợp lý” chỉ là giả thuyết: phải mở nguồn, kiểm xem chunk/tài liệu có thật sự chứa claim hay không, rồi mới đánh giá Agent/KB. Chat mới tạo một session; follow-up phải được kiểm thử trong cùng history, không giả định Agent nhớ giữa session.
 
-![Câu trả lời RAG, nguồn và ảnh trong Markdown](<knowledge/GS9 Knowledge VNG - Image Assets/33-agent-chat-nguon-va-anh.png>)
+![Câu trả lời RAG, nguồn và ảnh trong Markdown](<knowledge/GS9 Knowledge VNG AI/image-33-agent-chat-nguon-va-anh.png>)
 
 *Ảnh 18.1 – Câu trả lời cần kiểm tra cả source chip và ảnh render, không chỉ phần văn bản.*
 
@@ -1833,7 +1833,7 @@ Lịch sử giúp tái hiện ngữ cảnh conversation; nó không thay audit c
 | Request info | mở UI | Có request metadata, không lưu data nhạy cảm |
 | Feedback | useful/not useful | Có đối tượng Hộp xử lý và mô tả nguyên nhân |
 
-![Tổng quan feedback và Hộp xử lý](<knowledge/GS9 Knowledge VNG - Image Assets/34-agent-danh-gia-cau-tra-loi.png>)
+![Tổng quan feedback và Hộp xử lý](<knowledge/GS9 Knowledge VNG AI/image-34-agent-danh-gia-cau-tra-loi.png>)
 
 *Ảnh 18.2 – Evaluation cần được vận hành như queue điều tra, không chỉ dashboard tỷ lệ.*
 
@@ -1844,7 +1844,7 @@ Lịch sử giúp tái hiện ngữ cảnh conversation; nó không thay audit c
 - **Đã kiểm chứng:** response có nút Sao chép, Thêm vào tri thức, Hữu ích, Chưa hữu ích và Thông tin request.
 - **Đã kiểm chứng:** Request Information UI hiện Request ID, Message ID, Session ID, method POST, URL và thời gian gửi; ảnh phân phối đã che các định danh.
 
-![Request Information đã che định danh](<knowledge/GS9 Knowledge VNG - Image Assets/48-agent-lich-su-va-request-information.png>)
+![Request Information đã che định danh](<knowledge/GS9 Knowledge VNG AI/image-48-agent-lich-su-va-request-information.png>)
 
 *Ảnh 18.3 – Chỉ dùng thông tin UI để định vị request; các giá trị định danh đã được che trước khi nạp asset KB.*
 
@@ -1886,14 +1886,14 @@ Một source không còn truy hồi được sau update cần được coi là r
 - [ ] Feedback có trạng thái, owner điều tra và test hồi quy trước khi đóng.
 <!-- /MODULE -->
 
-<!-- MODULE:19-vong-doi-phan-quyen-quan-sat-va-bao-tri.md -->
+<!-- MODULE:doc-19-vong-doi-phan-quyen-quan-sat-va-bao-tri.md -->
 ## 19 - Agent: vòng đời, phân quyền, quan sát và bảo trì {#19-vong-doi-phan-quyen-quan-sat-va-bao-tri}
 
 ### Khái niệm
 
 Vòng đời Agent gồm tạo, cấu hình, test, phát hành, sửa, nhân bản, tắt/bật, chia sẻ và xóa. Nội dung KB có vòng đời riêng: Agent có thể tiếp tục tồn tại khi Markdown bị thay; vì thế rollback Agent không thay thế rollback KB. Thao tác destructive hoặc quyền phải được kiểm soát theo owner và bằng chứng trước/sau.
 
-![Menu vòng đời và UI chia sẻ](<knowledge/GS9 Knowledge VNG - Image Assets/49-agent-chia-se-va-vong-doi.png>)
+![Menu vòng đời và UI chia sẻ](<knowledge/GS9 Knowledge VNG AI/image-49-agent-chia-se-va-vong-doi.png>)
 
 *Ảnh 19.1 – Menu Agent user-owned có Chat, Edit, Clone, Disable/Enable và Delete; UI chia sẻ chỉ được quan sát, không gửi lời mời trong audit.*
 

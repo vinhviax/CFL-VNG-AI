@@ -17,8 +17,40 @@ Module = namedtuple("Module", "name body")
 EXPECTED_MODULE_COUNT = 20
 KNOWLEDGE_DIR_NAME = "knowledge"
 CONSUMER_KB_NAME = "GS9 Knowledge VNG AI"
-ASSET_KB_NAME = "GS9 Knowledge VNG - Image Assets"
-LEGACY_GENERATED_MODULE_NAMES = ("13-tao-va-van-hanh-agent.md",)
+HUMAN_SOURCE_DIR_NAME = "docs KB/Human"
+HUMAN_SOURCE_SUBDIRS = ("KB", "Agent")
+# Tiền tố tính năng dùng cho tên file nguồn của sổ tay nền tảng.
+HUMAN_SOURCE_PREFIXES = ("KB", "Agent")
+
+# KB phụ sinh thẳng từ nguồn Human, không qua pipeline module/ảnh của sổ tay.
+# Mỗi mục: tiền tố tên file nguồn -> tên thư mục KB trong `knowledge/`.
+SIMPLE_KB_TARGETS = {
+    "AgentCFL": "GS9 CFL Knowledge Agent",
+    "KBCFL": "GS9 CFL Knowledge Agent",
+}
+LEGACY_GENERATED_MODULE_NAMES = (
+    "13-tao-va-van-hanh-agent.md",
+    "00-gioi-thieu-va-quick-start.md",
+    "01-chuan-bi-noi-dung.md",
+    "02-tao-kb-nhanh-va-nang-cao.md",
+    "03-tai-lieu-rag-wiki.md",
+    "04-faq-va-lap-chi-muc.md",
+    "05-mo-hinh-vlm-asr.md",
+    "06-parser-va-xu-ly-file.md",
+    "07-phan-doan-chunking.md",
+    "08-chia-se-va-nguon-du-lieu.md",
+    "09-van-hanh-documents-wiki-graph.md",
+    "10-van-hanh-faq.md",
+    "11-chat-kiem-thu-va-bao-tri.md",
+    "12-ket-noi-google-drive.md",
+    "13-agent-tong-quan-va-kien-truc.md",
+    "14-che-do-preset-prompt-va-intent.md",
+    "15-model-reranker-suy-luan-va-quota.md",
+    "16-kho-tri-thuc-cong-cu-va-truy-hoi.md",
+    "17-da-phuong-thuc-va-tep-dinh-kem.md",
+    "18-chat-nguon-lich-su-va-danh-gia.md",
+    "19-vong-doi-phan-quyen-quan-sat-va-bao-tri.md",
+)
 MODULE_RE = re.compile(
     r"<!-- MODULE:(?P<name>[^>]+) -->\s*(?P<body>.*?)\s*<!-- /MODULE -->",
     re.DOTALL,
@@ -106,6 +138,91 @@ def rebase_master_relative_links(source, source_root, output_dir):
     return "".join(rendered)
 
 
+def promote_headings_outside_fences(source):
+    """Nâng mọi heading lên một cấp, bỏ qua nội dung trong code fence.
+
+    `extract_modules` hạ heading một cấp vì master dùng `##` cho tiêu đề
+    module. Nguồn trong `docs KB/Human` đã viết ở đúng cấp hiển thị cuối
+    (`#` là tiêu đề bài), nên phải nâng trước để bù lại phép hạ đó.
+
+    Heading nằm trong code fence là nội dung mẫu cho người đọc chép theo,
+    không phải cấu trúc tài liệu — giữ nguyên.
+    """
+    rendered = []
+    fence = None
+    for line in source.splitlines(keepends=True):
+        marker = _fence_marker(line)
+        if marker:
+            fence = None if fence == marker else marker if fence is None else fence
+        elif fence is None and re.match(r"^#{1,5}\s", line):
+            line = "#" + line
+        rendered.append(line)
+    return "".join(rendered)
+
+
+def human_source_to_module_name(filename):
+    """Đổi tên nguồn Human sang tên tài liệu trên Web.
+
+    Nguồn dùng tiền tố tính năng cho người soạn dễ nhận ra file thuộc phần nào
+    (`KB-00-....md`, `Agent-13-....md`). Tài liệu trên Web phải giữ tiền tố
+    `doc-` theo quy ước đặt tên (DEC-042) vì regex đồng bộ khoá vào
+    `^(doc|image)-`. Hàm này chỉ thay tiền tố, giữ nguyên số và phần slug.
+    """
+    for prefix in HUMAN_SOURCE_PREFIXES:
+        if filename.startswith(f"{prefix}-"):
+            return "doc-" + filename[len(prefix) + 1 :]
+    return filename
+
+
+def load_source_from_dirs(root):
+    """Ghép các file nguồn theo function thành một chuỗi master.
+
+    Nguồn nằm phẳng trong `docs KB/Human/`, đặt tên `<TínhNăng>-<NN>-<slug>.md`.
+    Mỗi file là thân của một module; hàm này bọc lại bằng marker
+    `<!-- MODULE:... -->` để phần còn lại của builder dùng nguyên logic cũ.
+    Thư mục con theo tính năng và tên `doc-*.md` cũ vẫn được nhận để các bố cục
+    trước đây không làm gãy build.
+    """
+    root = Path(root)
+    human_dir = root / HUMAN_SOURCE_DIR_NAME
+    header_file = human_dir / "_master-header.txt"
+    header = header_file.read_text(encoding="utf-8") if header_file.exists() else ""
+
+    patterns = [f"{prefix}-*.md" for prefix in HUMAN_SOURCE_PREFIXES]
+    patterns.append("doc-*.md")
+    search_dirs = [human_dir] + [human_dir / sub for sub in HUMAN_SOURCE_SUBDIRS]
+
+    found = {}
+    for source_dir in search_dirs:
+        if not source_dir.is_dir():
+            continue
+        for pattern in patterns:
+            for path in source_dir.glob(pattern):
+                module_name = human_source_to_module_name(path.name)
+                found.setdefault(module_name, path)
+
+    if not found:
+        # Chưa dựng xong nguồn Human — quay về master gốc để build vẫn chạy.
+        legacy_master = root / "so-tay-tao-knowledge-base-v3.md"
+        if legacy_master.exists():
+            return legacy_master.read_text(encoding="utf-8")
+        raise ValueError(
+            f"Không tìm thấy nguồn nào trong {human_dir} và cũng không có master gốc."
+        )
+
+    parts = []
+    for module_name in sorted(found):
+        path = found[module_name]
+        body = path.read_text(encoding="utf-8")
+        if path.name != module_name:
+            # Chỉ nguồn Human (tên có tiền tố tính năng) mới cần bù cấp heading;
+            # file `doc-*.md` cũ vốn đã ở dạng master nên giữ nguyên.
+            body = promote_headings_outside_fences(body)
+        parts.append(f"<!-- MODULE:{module_name} -->\n{body}<!-- /MODULE -->\n")
+
+    return header + "\n".join(parts)
+
+
 def extract_modules(source: str):
     modules = []
     for match in MODULE_RE.finditer(source):
@@ -176,7 +293,7 @@ def write_modules(
         target = output_dir / module.name
         target.write_text(
             "<!-- GENERATED FILE - sửa nội dung tại "
-            "so-tay-tao-knowledge-base-v3.md -->\n\n"
+            "docs KB/Human/ -->\n\n"
             + module.body.rstrip()
             + "\n",
             encoding="utf-8",
@@ -347,15 +464,72 @@ document.querySelectorAll('.doc-section img,.intro-card img').forEach(image=>{im
     return output
 
 
+def build_simple_kbs(root):
+    """Sinh các KB phụ từ nguồn Human, không qua pipeline module/ảnh.
+
+    Khác `write_modules`: các KB này là tài liệu văn bản thuần, không nhúng
+    ảnh nên không cần `image-map.json` và không kiểm URI MinIO. Vẫn ghi header
+    `GENERATED FILE` để không ai sửa nhầm vào bản sinh, và vẫn buộc đúng một H1
+    mỗi tài liệu.
+
+    Chỉ xoá bản sinh cũ mang đúng header đó; file người dùng tự đặt vào thư mục
+    KB không bao giờ bị đụng tới.
+    """
+    root = Path(root)
+    human_dir = root / HUMAN_SOURCE_DIR_NAME
+    results = {}
+
+    # Nhiều tiền tố có thể cùng đổ về một KB (ví dụ `AgentCFL-` và `KBCFL-`).
+    # Gom theo KB trước rồi mới ghi, nếu không bước dọn của tiền tố sau sẽ xoá
+    # mất bản sinh của tiền tố trước.
+    by_kb = {}
+    for prefix, kb_name in SIMPLE_KB_TARGETS.items():
+        for path in human_dir.glob(f"{prefix}-*.md"):
+            by_kb.setdefault(kb_name, []).append((prefix, path))
+
+    for kb_name, sources in by_kb.items():
+        sources = sorted(sources, key=lambda pair: pair[1].name)
+
+        target_dir = root / KNOWLEDGE_DIR_NAME / kb_name
+        target_dir.mkdir(parents=True, exist_ok=True)
+
+        written = []
+        for prefix, path in sources:
+            target_name = "doc-" + path.name[len(prefix) + 1 :]
+            body = path.read_text(encoding="utf-8")
+            if count_h1(body) != 1:
+                raise ValueError(f"{path.name} must contain exactly one H1")
+            target = target_dir / target_name
+            target.write_text(
+                f"<!-- GENERATED FILE - sửa nội dung tại {HUMAN_SOURCE_DIR_NAME}/ -->\n\n"
+                + body.rstrip()
+                + "\n",
+                encoding="utf-8",
+                newline="\n",
+            )
+            written.append(target)
+
+        keep = {path.name for path in written}
+        for stale in target_dir.glob("doc-*.md"):
+            if stale.name in keep:
+                continue
+            if stale.read_text(encoding="utf-8").startswith(
+                "<!-- GENERATED FILE - sửa nội dung tại "
+            ):
+                stale.unlink()
+
+        results[kb_name] = written
+
+    return results
+
+
 def build_project(root, require_minio=True):
     root = Path(root).resolve()
-    master = root / "so-tay-tao-knowledge-base-v3.md"
     knowledge_dir = root / KNOWLEDGE_DIR_NAME
     module_dir = knowledge_dir / CONSUMER_KB_NAME
-    asset_dir = knowledge_dir / ASSET_KB_NAME
     image_map_file = module_dir / "image-map.json"
     html_output = root / "so-tay-tao-knowledge-base.html"
-    source = master.read_text(encoding="utf-8")
+    source = load_source_from_dirs(root)
     extracted = extract_modules(source)
     if len(extracted) != EXPECTED_MODULE_COUNT:
         raise ValueError(
@@ -372,11 +546,8 @@ def build_project(root, require_minio=True):
         image_map,
         require_minio=require_minio,
         source_root=root,
-        local_asset_prefix=f"../{ASSET_KB_NAME}",
+        local_asset_prefix=".",
     )
-
-    if not asset_dir.is_dir():
-        raise FileNotFoundError(f"Missing asset KB directory: {asset_dir}")
 
     # The v3.3 split replaces the former generated all-in-one Agent module.
     # Remove only this exact generated artifact after a successful write; never
@@ -408,7 +579,9 @@ def build_project(root, require_minio=True):
             raise ValueError(f"Offline HTML contains forbidden resource: {token}")
     if "data:image/" not in offline:
         raise ValueError("Offline HTML does not contain embedded images")
-    return {"modules": modules, "html": html_output}
+
+    simple_kbs = build_simple_kbs(root)
+    return {"modules": modules, "html": html_output, "simple_kbs": simple_kbs}
 
 
 def main(argv=None):
@@ -425,6 +598,8 @@ def main(argv=None):
     print("Build complete")
     print(f"- {EXPECTED_MODULE_COUNT} modules: {module_bytes:,} bytes")
     print(f"- Offline HTML: {result['html'].stat().st_size:,} bytes")
+    for kb_name, written in result.get("simple_kbs", {}).items():
+        print(f"- {kb_name}: {len(written)} tài liệu")
     return 0
 
 

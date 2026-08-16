@@ -1,5 +1,7 @@
 # Credentials and private keys — never commit, even to a private repository.
 /knowledge/GS9 CFL Item Profile/keys CFL ItemID/keys/
+/keys KB/
+**/keys/
 **/.env
 **/.env.*
 **/*credentials*.json

@@ -1,0 +1,2623 @@
+{
+  "schema_version": 1,
+  "bundle_name": "GS9 CFL Plan Version / V5",
+  "classification": "Đã kiểm chứng từ HTML nguồn",
+  "source": {
+    "file": "CFL5_0- Plan Ver 5.0-14082026.html",
+    "sha256": "593c34283ddd16f4a751b8ab4aa16bb8a2c6581f69ac2d0376042c1de86ef038",
+    "bytes": 2582011,
+    "encoding": "UTF-8",
+    "document_title": "Nội Dung Phiên Bản CFL 5.0",
+    "date_from_source_filename": "2026-08-14"
+  },
+  "coverage": {
+    "sections": 9,
+    "groups": 29,
+    "items": 115,
+    "item_descriptions_nonempty": 114,
+    "item_descriptions_empty": 1,
+    "key_points": 20,
+    "group_descriptions": 16,
+    "highlight_lists": 35,
+    "highlight_bullets": 91,
+    "figure_slots": 15,
+    "figures": 14,
+    "figures_with_images": 12,
+    "figure_placeholders": 2,
+    "schedule_placeholders": 1,
+    "images": 29,
+    "decoded_image_bytes": 1872262,
+    "ordered_concatenated_image_sha256": "69535d8f59b68a0b1cd99cd62e6a647c31f93e317cb36b1fe609169a848fdba4",
+    "dom_or_inline_hidden_elements": 0,
+    "css_hidden_empty_descriptions": 1
+  },
+  "modules": [
+    {
+      "file": "doc-v5-01-tong-quan-phien-ban.md",
+      "source_section_id": "ov",
+      "section_number": "00",
+      "section_title": "Tổng Quan Phiên Bản",
+      "groups": 0,
+      "items": 0,
+      "figures": 0,
+      "images": 0,
+      "placeholders": 0
+    },
+    {
+      "file": "doc-v5-02-lich-trinh-phien-ban.md",
+      "source_section_id": "sched",
+      "section_number": "—",
+      "section_title": "Lịch Trình Phiên Bản",
+      "groups": 0,
+      "items": 0,
+      "figures": 0,
+      "images": 0,
+      "placeholders": 1
+    },
+    {
+      "file": "doc-v5-03-cach-choi-moi.md",
+      "source_section_id": "gameplay",
+      "section_number": "01",
+      "section_title": "Cách Chơi Mới",
+      "groups": 5,
+      "items": 17,
+      "figures": 4,
+      "images": 8,
+      "placeholders": 0
+    },
+    {
+      "file": "doc-v5-04-he-thong-moi.md",
+      "source_section_id": "system",
+      "section_number": "02",
+      "section_title": "Hệ Thống Mới",
+      "groups": 6,
+      "items": 25,
+      "figures": 1,
+      "images": 2,
+      "placeholders": 0
+    },
+    {
+      "file": "doc-v5-05-nang-cao-chat-luong.md",
+      "source_section_id": "quality",
+      "section_number": "03",
+      "section_title": "Nâng Cao Chất Lượng",
+      "groups": 3,
+      "items": 6,
+      "figures": 1,
+      "images": 1,
+      "placeholders": 0
+    },
+    {
+      "file": "doc-v5-06-tiep-te-moi.md",
+      "source_section_id": "supply",
+      "section_number": "04",
+      "section_title": "Tiếp Tế Mới",
+      "groups": 3,
+      "items": 7,
+      "figures": 2,
+      "images": 5,
+      "placeholders": 0
+    },
+    {
+      "file": "doc-v5-07-hoat-dong-tang-do-hoat-dong.md",
+      "source_section_id": "act",
+      "section_number": "05",
+      "section_title": "Hoạt Động Mới · Tăng Độ Hoạt Động",
+      "groups": 3,
+      "items": 9,
+      "figures": 2,
+      "images": 2,
+      "placeholders": 0
+    },
+    {
+      "file": "doc-v5-08-hoat-dong-thuong-mai-hoa.md",
+      "source_section_id": "biz",
+      "section_number": "06",
+      "section_title": "Hoạt Động Mới · Thương Mại Hóa",
+      "groups": 6,
+      "items": 46,
+      "figures": 4,
+      "images": 11,
+      "placeholders": 2
+    },
+    {
+      "file": "doc-v5-09-ban-dia-hoa-va-phat-hanh.md",
+      "source_section_id": "pub",
+      "section_number": "07",
+      "section_title": "Bản Địa Hóa & Phát Hành",
+      "groups": 3,
+      "items": 5,
+      "figures": 0,
+      "images": 0,
+      "placeholders": 0
+    }
+  ],
+  "assets": [
+    {
+      "index": 1,
+      "file": "assets/image-v5-01-giao-dien-phoi-sung-ngoai-tran-ban-tieng-viet.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 53139,
+      "sha256": "27a255b358daac1591d1e763b6fb6f2309fa5ac87026171321c000afdabd93ff",
+      "width": 1100,
+      "height": 613,
+      "alt_text": "Giao diện phối súng ngoài trận (bản tiếng Việt)",
+      "source_caption": "Giao diện phối súng ngoài trận (bản tiếng Việt)",
+      "figure_code": "FIG-01",
+      "figure_caption": "Giao diện phối súng ngoài trận, giao diện đổi skin ngoài trận FIG-01",
+      "source_section_id": "gameplay",
+      "source_group": "C4 Kinh Tế 2.0"
+    },
+    {
+      "index": 2,
+      "file": "assets/image-v5-02-giao-dien-doi-skin-ngoai-tran.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 92979,
+      "sha256": "09e9819a243e56c10323c7cd029240311d718974ff5bfb5cab599c3502de70ef",
+      "width": 1100,
+      "height": 613,
+      "alt_text": "Giao diện đổi skin ngoài trận",
+      "source_caption": "Giao diện đổi skin ngoài trận",
+      "figure_code": "FIG-01",
+      "figure_caption": "Giao diện phối súng ngoài trận, giao diện đổi skin ngoài trận FIG-01",
+      "source_section_id": "gameplay",
+      "source_group": "C4 Kinh Tế 2.0"
+    },
+    {
+      "index": 3,
+      "file": "assets/image-v5-03-joker.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 63207,
+      "sha256": "9e1bdbe00986f69826bb519096629995e719a7463c33c8de14af862634614eab",
+      "width": 720,
+      "height": 391,
+      "alt_text": "Joker",
+      "source_caption": "Joker",
+      "figure_code": "FIG-02",
+      "figure_caption": "Ảnh chụp cách chơi Joker, Không Gian Mất Trọng Lực, Parkour-Kỹ Thuật FIG-02",
+      "source_section_id": "gameplay",
+      "source_group": "Mở rộng cách chơi Arcade"
+    },
+    {
+      "index": 4,
+      "file": "assets/image-v5-04-khong-gian-mat-trong-luc.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 56479,
+      "sha256": "807073d296b05b096cb10500f3fcdc0a9fa8f9047d61347c7ddb771994136767",
+      "width": 720,
+      "height": 416,
+      "alt_text": "Không Gian Mất Trọng Lực",
+      "source_caption": "Không Gian Mất Trọng Lực",
+      "figure_code": "FIG-02",
+      "figure_caption": "Ảnh chụp cách chơi Joker, Không Gian Mất Trọng Lực, Parkour-Kỹ Thuật FIG-02",
+      "source_section_id": "gameplay",
+      "source_group": "Mở rộng cách chơi Arcade"
+    },
+    {
+      "index": 5,
+      "file": "assets/image-v5-05-parkour-ky-thuat.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 53277,
+      "sha256": "eeed9bd3c4a680daab4061172d1de0c9b7b2d2b4e2e4e1648167b45778ddc5a0",
+      "width": 720,
+      "height": 403,
+      "alt_text": "Parkour-Kỹ Thuật",
+      "source_caption": "Parkour-Kỹ Thuật",
+      "figure_code": "FIG-02",
+      "figure_caption": "Ảnh chụp cách chơi Joker, Không Gian Mất Trọng Lực, Parkour-Kỹ Thuật FIG-02",
+      "source_section_id": "gameplay",
+      "source_group": "Mở rộng cách chơi Arcade"
+    },
+    {
+      "index": 6,
+      "file": "assets/image-v5-06-boss-the-gioi-varanus.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 85756,
+      "sha256": "b800b3678a75d65b578c350ca267796675ec3fc53633471c92607a2140a74a2c",
+      "width": 1100,
+      "height": 585,
+      "alt_text": "BOSS Thế Giới Varanus",
+      "source_caption": "BOSS Thế Giới Varanus",
+      "figure_code": "FIG-03",
+      "figure_caption": "Hình ảnh BOSS Varanus + ảnh chụp chiến đấu FIG-03",
+      "source_section_id": "gameplay",
+      "source_group": "PVE · BOSS Thế Giới"
+    },
+    {
+      "index": 7,
+      "file": "assets/image-v5-07-giao-dien-rut-buff-zombie-toi-thuong.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 82282,
+      "sha256": "734cfa5d3c157485534b20206b0b1acbfa20a7bc823a28799276e695afdefec2",
+      "width": 1100,
+      "height": 611,
+      "alt_text": "Giao diện rút BUFF Zombie Tối Thượng",
+      "source_caption": "Giao diện rút BUFF Zombie Tối Thượng",
+      "figure_code": "FIG-04",
+      "figure_caption": "Hình ảnh Kẻ Hủy Diệt Xanh, giao diện BUFF Zombie Tối Thượng FIG-04",
+      "source_section_id": "gameplay",
+      "source_group": "Cập nhật nội dung Zombie"
+    },
+    {
+      "index": 8,
+      "file": "assets/image-v5-08-hien-thi-buff-don-trong-tran.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 148977,
+      "sha256": "155bd906faa3bac2b5049440e8e4dc3c52d79c148a7065b3f6c004c1ad43ce6f",
+      "width": 1100,
+      "height": 620,
+      "alt_text": "Hiển thị BUFF đơn trong trận",
+      "source_caption": "Hiển thị BUFF đơn trong trận",
+      "figure_code": "FIG-04",
+      "figure_caption": "Hình ảnh Kẻ Hủy Diệt Xanh, giao diện BUFF Zombie Tối Thượng FIG-04",
+      "source_section_id": "gameplay",
+      "source_group": "Cập nhật nội dung Zombie"
+    },
+    {
+      "index": 9,
+      "file": "assets/image-v5-09-trang-ket-toan-dau-rank-phien-ban-moi.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 79619,
+      "sha256": "e94fa5561524c54e16165ab4fa2f7f80f23bc9efc57e187dc98417f1e571b4ff",
+      "width": 1100,
+      "height": 499,
+      "alt_text": "Trang kết toán Đấu Rank phiên bản mới",
+      "source_caption": "Trang kết toán Đấu Rank phiên bản mới",
+      "figure_code": "FIG-05",
+      "figure_caption": "Ảnh chụp giao diện Đấu Rank phiên bản mới FIG-05",
+      "source_section_id": "system",
+      "source_group": "Nâng cấp trải nghiệm Đấu Rank"
+    },
+    {
+      "index": 10,
+      "file": "assets/image-v5-10-hien-thi-tien-trinh-nhiem-vu-vu-khi-mua-giai.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 120432,
+      "sha256": "cfb76a94ca2fc6247cd609c5e2ab943f3fa4eaa838c9d4d1f978fcd970530a59",
+      "width": 1100,
+      "height": 613,
+      "alt_text": "Hiển thị tiến trình nhiệm vụ vũ khí mùa giải",
+      "source_caption": "Hiển thị tiến trình nhiệm vụ vũ khí mùa giải",
+      "figure_code": "FIG-05",
+      "figure_caption": "Ảnh chụp giao diện Đấu Rank phiên bản mới FIG-05",
+      "source_section_id": "system",
+      "source_group": "Nâng cấp trải nghiệm Đấu Rank"
+    },
+    {
+      "index": 11,
+      "file": "assets/image-v5-11-nang-cao-chat-luong-hud-trong-tran.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 118042,
+      "sha256": "16c178ebb92305dea2a8a4603f015dd2e1da345d904f180039481c0c3e0a8cf9",
+      "width": 1100,
+      "height": 620,
+      "alt_text": "Nâng cao chất lượng HUD trong trận",
+      "source_caption": "Nâng cao chất lượng HUD trong trận",
+      "figure_code": "FIG-06",
+      "figure_caption": "Ảnh so sánh trước và sau khi nâng độ phân giải (cùng cảnh, cùng máy, 1 ảnh chất lượng cao và 1 ảnh chất lượng thấp) FIG-06",
+      "source_section_id": "quality",
+      "source_group": "Hình Ảnh & Giao Diện"
+    },
+    {
+      "index": 12,
+      "file": "assets/image-v5-12-an94-smilodon.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 57959,
+      "sha256": "4ed55f6b008e456214c72aca9791d2c17ed03ea34d9b39d1bea8809c9f30d058",
+      "width": 720,
+      "height": 532,
+      "alt_text": "AN94-Smilodon",
+      "source_caption": "AN94-Smilodon",
+      "figure_code": "FIG-07",
+      "figure_caption": "Hình ảnh AN94-Smilodon, AK47-S-Rifle Knife, VSK-94-Gold Empire, QCW05-Predator FIG-07",
+      "source_section_id": "supply",
+      "source_group": "Tiếp Tế Giới Hạn"
+    },
+    {
+      "index": 13,
+      "file": "assets/image-v5-13-ak47-s-rifle-knife.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 59203,
+      "sha256": "0136b8162b1d39dcad250eb799dec6f6a8272c442123f30eb6b54836b349dd79",
+      "width": 720,
+      "height": 398,
+      "alt_text": "AK47-S-Rifle Knife",
+      "source_caption": "AK47-S-Rifle Knife",
+      "figure_code": "FIG-07",
+      "figure_caption": "Hình ảnh AN94-Smilodon, AK47-S-Rifle Knife, VSK-94-Gold Empire, QCW05-Predator FIG-07",
+      "source_section_id": "supply",
+      "source_group": "Tiếp Tế Giới Hạn"
+    },
+    {
+      "index": 14,
+      "file": "assets/image-v5-14-vsk-94-gold-empire.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 66258,
+      "sha256": "4873b48a1aae91bd62c3b6e6a3a02517a3763b33acf2873d89482c1e5acfb172",
+      "width": 720,
+      "height": 390,
+      "alt_text": "VSK-94-Gold Empire",
+      "source_caption": "VSK-94-Gold Empire",
+      "figure_code": "FIG-07",
+      "figure_caption": "Hình ảnh AN94-Smilodon, AK47-S-Rifle Knife, VSK-94-Gold Empire, QCW05-Predator FIG-07",
+      "source_section_id": "supply",
+      "source_group": "Tiếp Tế Giới Hạn"
+    },
+    {
+      "index": 15,
+      "file": "assets/image-v5-15-qcw05-predator.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 63538,
+      "sha256": "b59e50ca30f3c06d27d705eb8bb2210059c736674eaac77e47f045e6c75c22ec",
+      "width": 720,
+      "height": 389,
+      "alt_text": "QCW05-Predator",
+      "source_caption": "QCW05-Predator",
+      "figure_code": "FIG-07",
+      "figure_caption": "Hình ảnh AN94-Smilodon, AK47-S-Rifle Knife, VSK-94-Gold Empire, QCW05-Predator FIG-07",
+      "source_section_id": "supply",
+      "source_group": "Tiếp Tế Giới Hạn"
+    },
+    {
+      "index": 16,
+      "file": "assets/image-v5-16-m14ebr-black-tortoise.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 124441,
+      "sha256": "07f545900fb9b0f113e04e4a461fec6e119037299e7b7788e210aa39539a5397",
+      "width": 1100,
+      "height": 624,
+      "alt_text": "M14EBR-Black Tortoise",
+      "source_caption": "M14EBR-Black Tortoise",
+      "figure_code": "FIG-08",
+      "figure_caption": "Hình ảnh M14EBR-Black Tortoise FIG-08",
+      "source_section_id": "supply",
+      "source_group": "Tiếp Tế Tinh Anh"
+    },
+    {
+      "index": 17,
+      "file": "assets/image-v5-17-hoat-dong-chu-de-halloween.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 147344,
+      "sha256": "d031e4575bfe33e82677e44561455042424df5f7931318ed1070e3fa74f0c175",
+      "width": 1100,
+      "height": 614,
+      "alt_text": "Hoạt động chủ đề Halloween",
+      "source_caption": "Hoạt động chủ đề Halloween",
+      "figure_code": "FIG-09",
+      "figure_caption": "KV chủ đề Cơ Giáp, KV chủ đề Halloween, hình nền sảnh chờ, hình trung tâm hoạt động FIG-09",
+      "source_section_id": "act",
+      "source_group": "Hoạt Động Lớn Hàng Tháng"
+    },
+    {
+      "index": 18,
+      "file": "assets/image-v5-18-lich-noi-bat-loi-vao-tong-hop-hoat-dong.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 91323,
+      "sha256": "af43d8a1babecda703dc8a815d8df0da90e5a93985f72cd7e33c6da891871fd4",
+      "width": 1100,
+      "height": 613,
+      "alt_text": "Lịch Nổi Bật (lối vào tổng hợp hoạt động)",
+      "source_caption": "Lịch Nổi Bật (lối vào tổng hợp hoạt động)",
+      "figure_code": "FIG-14",
+      "figure_caption": "Giao diện Lịch Nổi Bật / lối vào tổng hợp hoạt động FIG-14",
+      "source_section_id": "act",
+      "source_group": "Xây dựng năng lực hệ thống hoạt động"
+    },
+    {
+      "index": 19,
+      "file": "assets/image-v5-19-pp19-bizon-papercraft-chua-thuc-tinh.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 42942,
+      "sha256": "20054a77e74a64e7b01e0d7f506d239c3d2d21f7653c91631e25cd8238425486",
+      "width": 1100,
+      "height": 573,
+      "alt_text": "PP19 Bizon-Papercraft (chưa thức tỉnh)",
+      "source_caption": "PP19 Bizon-Papercraft (chưa thức tỉnh)",
+      "figure_code": "FIG-10",
+      "figure_caption": "Hình ảnh phần thưởng cốt lõi Battle Pass S5 (PP19 Bizon-Papercraft / Guan Xiaoyu) FIG-10",
+      "source_section_id": "biz",
+      "source_group": "Battle Pass & Đăng Ký"
+    },
+    {
+      "index": 20,
+      "file": "assets/image-v5-20-pp19-bizon-papercraft-dang-thuc-tinh.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 52416,
+      "sha256": "17c3607ff44de9d7ad8bc68b577fb6d8105d39c198856d13184db466260c8c0c",
+      "width": 1100,
+      "height": 573,
+      "alt_text": "PP19 Bizon-Papercraft (dạng thức tỉnh)",
+      "source_caption": "PP19 Bizon-Papercraft (dạng thức tỉnh)",
+      "figure_code": "FIG-10",
+      "figure_caption": "Hình ảnh phần thưởng cốt lõi Battle Pass S5 (PP19 Bizon-Papercraft / Guan Xiaoyu) FIG-10",
+      "source_section_id": "biz",
+      "source_group": "Battle Pass & Đăng Ký"
+    },
+    {
+      "index": 21,
+      "file": "assets/image-v5-21-ak47-steel-empire-noble-gold.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 17234,
+      "sha256": "8fd1bda5f3888ff73ed21cd561492b86b62a2ec861807e5b8a0401f4549eff6b",
+      "width": 720,
+      "height": 360,
+      "alt_text": "AK47-Steel Empire-Noble Gold",
+      "source_caption": "AK47-Steel Empire-Noble Gold",
+      "figure_code": "FIG-13",
+      "figure_caption": "Hình ảnh Luân Hồi Vương Giả (Thành Điện Thích), Rương Kho Báu, Máy Gắp Thú Bông kỳ 2 FIG-13",
+      "source_section_id": "biz",
+      "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên"
+    },
+    {
+      "index": 22,
+      "file": "assets/image-v5-22-kukri-beast-noble-gold-heartshot.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 17254,
+      "sha256": "3135f08dd64f0c6be9777c831026c371563f9f496324bbd395bb39b7c70d4912",
+      "width": 720,
+      "height": 360,
+      "alt_text": "Kukri-Beast-Noble Gold-HeartShot",
+      "source_caption": "Kukri-Beast-Noble Gold-HeartShot",
+      "figure_code": "FIG-13",
+      "figure_caption": "Hình ảnh Luân Hồi Vương Giả (Thành Điện Thích), Rương Kho Báu, Máy Gắp Thú Bông kỳ 2 FIG-13",
+      "source_section_id": "biz",
+      "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên"
+    },
+    {
+      "index": 23,
+      "file": "assets/image-v5-23-desert-eagle-born-beast-noble-gold-heartshot.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 30243,
+      "sha256": "1e59dd3b2cf6c117c74cc0316131b0107b426375952d427eb10aa73990890135",
+      "width": 720,
+      "height": 480,
+      "alt_text": "Desert Eagle-Born Beast-Noble Gold-HeartShot",
+      "source_caption": "Desert Eagle-Born Beast-Noble Gold-HeartShot",
+      "figure_code": "FIG-13",
+      "figure_caption": "Hình ảnh Luân Hồi Vương Giả (Thành Điện Thích), Rương Kho Báu, Máy Gắp Thú Bông kỳ 2 FIG-13",
+      "source_section_id": "biz",
+      "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên"
+    },
+    {
+      "index": 24,
+      "file": "assets/image-v5-24-cop-357-iron-beast-prime.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 62368,
+      "sha256": "b27afa1d97ebf08f4e2bb22a091a74972b962dcec1c48e3776dbd94d3d826bba",
+      "width": 720,
+      "height": 720,
+      "alt_text": "COP 357-Iron Beast-Prime",
+      "source_caption": "COP 357-Iron Beast-Prime",
+      "figure_code": "FIG-13",
+      "figure_caption": "Hình ảnh Luân Hồi Vương Giả (Thành Điện Thích), Rương Kho Báu, Máy Gắp Thú Bông kỳ 2 FIG-13",
+      "source_section_id": "biz",
+      "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên"
+    },
+    {
+      "index": 25,
+      "file": "assets/image-v5-25-m4a1-iron-beast-prime.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 20679,
+      "sha256": "bf6640a999c56522d54851ed7d6df21c68df005dea1687c4cc54c5f65be0f188",
+      "width": 720,
+      "height": 432,
+      "alt_text": "M4A1-Iron Beast-Prime",
+      "source_caption": "M4A1-Iron Beast-Prime",
+      "figure_code": "FIG-13",
+      "figure_caption": "Hình ảnh Luân Hồi Vương Giả (Thành Điện Thích), Rương Kho Báu, Máy Gắp Thú Bông kỳ 2 FIG-13",
+      "source_section_id": "biz",
+      "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên"
+    },
+    {
+      "index": 26,
+      "file": "assets/image-v5-26-thunder-hammer-prime.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 15004,
+      "sha256": "9f403f29d8409eb6eca5a235a9fdb1dc60d6249e06d37ae70e9e583479c122c2",
+      "width": 720,
+      "height": 225,
+      "alt_text": "Thunder Hammer-Prime",
+      "source_caption": "Thunder Hammer-Prime",
+      "figure_code": "FIG-13",
+      "figure_caption": "Hình ảnh Luân Hồi Vương Giả (Thành Điện Thích), Rương Kho Báu, Máy Gắp Thú Bông kỳ 2 FIG-13",
+      "source_section_id": "biz",
+      "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên"
+    },
+    {
+      "index": 27,
+      "file": "assets/image-v5-27-an94-spaceship.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 14503,
+      "sha256": "1d7cd704370478b1d602661936ab19d001db78a6b271c1bb08b5af6bc1e4d594",
+      "width": 720,
+      "height": 525,
+      "alt_text": "AN94-Spaceship",
+      "source_caption": "AN94-Spaceship",
+      "figure_code": "FIG-13",
+      "figure_caption": "Hình ảnh Luân Hồi Vương Giả (Thành Điện Thích), Rương Kho Báu, Máy Gắp Thú Bông kỳ 2 FIG-13",
+      "source_section_id": "biz",
+      "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên"
+    },
+    {
+      "index": 28,
+      "file": "assets/image-v5-28-ak47-ranger-autumn-water.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 14242,
+      "sha256": "fe7967cfa499f1ebce7842f6a923c96587cf6047df21ab9bd5d74ada62929e67",
+      "width": 720,
+      "height": 225,
+      "alt_text": "AK47-Ranger-Autumn Water",
+      "source_caption": "AK47-Ranger-Autumn Water",
+      "figure_code": "FIG-13",
+      "figure_caption": "Hình ảnh Luân Hồi Vương Giả (Thành Điện Thích), Rương Kho Báu, Máy Gắp Thú Bông kỳ 2 FIG-13",
+      "source_section_id": "biz",
+      "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên"
+    },
+    {
+      "index": 29,
+      "file": "assets/image-v5-29-qbb95-bo-ngua.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 21122,
+      "sha256": "c331383c2201ce00c6fe90211927a85c0af8b84ad85d5961fb7b19f6084726c4",
+      "width": 720,
+      "height": 720,
+      "alt_text": "QBB95-Bọ Ngựa",
+      "source_caption": "QBB95-Bọ Ngựa",
+      "figure_code": "FIG-13",
+      "figure_caption": "Hình ảnh Luân Hồi Vương Giả (Thành Điện Thích), Rương Kho Báu, Máy Gắp Thú Bông kỳ 2 FIG-13",
+      "source_section_id": "biz",
+      "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên"
+    }
+  ],
+  "records": {
+    "key_points": [
+      {
+        "source_id": "gameplay-kp01",
+        "source_section_id": "gameplay",
+        "code": "01",
+        "text": "C4 Kinh Tế bước vào 2.0: hoàn thiện phối súng và phối skin ngoài trận"
+      },
+      {
+        "source_id": "gameplay-kp02",
+        "source_section_id": "gameplay",
+        "code": "02",
+        "text": "3 cách chơi Arcade mới + BOSS Thế Giới, phục vụ người chơi nhẹ nhàng và giải trí"
+      },
+      {
+        "source_id": "gameplay-kp03",
+        "source_section_id": "gameplay",
+        "code": "03",
+        "text": "Nội dung tuyến Zombie tiếp tục cập nhật, Kẻ Hủy Diệt và BUFF mới xuất trận"
+      },
+      {
+        "source_id": "system-kp01",
+        "source_section_id": "system",
+        "code": "01",
+        "text": "Nâng cấp trọn bộ trải nghiệm Đấu Rank, ưu tiên cảm giác ghép trận và kết toán"
+      },
+      {
+        "source_id": "system-kp02",
+        "source_section_id": "system",
+        "code": "02",
+        "text": "Củng cố chuỗi trận đầu tiên của người chơi mới, giảm tỉ lệ rời bỏ ngay từ đầu"
+      },
+      {
+        "source_id": "system-kp03",
+        "source_section_id": "system",
+        "code": "03",
+        "text": "Trau chuốt nhiều điểm trải nghiệm về xã hội, phát triển nhân vật và kho đồ"
+      },
+      {
+        "source_id": "quality-kp01",
+        "source_section_id": "quality",
+        "code": "01",
+        "text": "Nâng cao cảm quan hình ảnh và giao diện"
+      },
+      {
+        "source_id": "quality-kp02",
+        "source_section_id": "quality",
+        "code": "02",
+        "text": "Hiệu chỉnh chi tiết cảm giác bắn súng"
+      },
+      {
+        "source_id": "quality-kp03",
+        "source_section_id": "quality",
+        "code": "03",
+        "text": "Tiếp tục tối ưu dung lượng gói và tương thích máy"
+      },
+      {
+        "source_id": "supply-kp01",
+        "source_section_id": "supply",
+        "code": "01",
+        "text": "4 skin Tiếp Tế Giới Hạn + 1 Tiếp Tế Tinh Anh"
+      },
+      {
+        "source_id": "supply-kp02",
+        "source_section_id": "supply",
+        "code": "02",
+        "text": "Tối ưu trải nghiệm rút và hiển thị tiếp tế"
+      },
+      {
+        "source_id": "act-kp01",
+        "source_section_id": "act",
+        "code": "01",
+        "text": "Song chủ đề liên tiếp: tháng 9–10 Cơ Giáp / tháng 11–12 Halloween"
+      },
+      {
+        "source_id": "act-kp02",
+        "source_section_id": "act",
+        "code": "02",
+        "text": "Xây dựng năng lực nền tảng cho hệ thống hoạt động, tăng tốc cho các phiên bản sau"
+      },
+      {
+        "source_id": "biz-kp01",
+        "source_section_id": "biz",
+        "code": "01",
+        "text": "Battle Pass S5 song hành cùng hệ thống đăng ký"
+      },
+      {
+        "source_id": "biz-kp02",
+        "source_section_id": "biz",
+        "code": "02",
+        "text": "Ra mắt hệ thống Xu CF giới hạn thời gian"
+      },
+      {
+        "source_id": "biz-kp03",
+        "source_section_id": "biz",
+        "code": "03",
+        "text": "Tối ưu trải nghiệm sảnh quay thưởng + triển khai tài nguyên tập trung"
+      },
+      {
+        "source_id": "biz-kp04",
+        "source_section_id": "biz",
+        "code": "04",
+        "text": "Nhân vật nhóm nhạc nữ và hợp tác IP Siêu Đại Chiến"
+      },
+      {
+        "source_id": "pub-kp01",
+        "source_section_id": "pub",
+        "code": "01",
+        "text": "Phối hợp chuyên đề với phía VNG Việt Nam"
+      },
+      {
+        "source_id": "pub-kp02",
+        "source_section_id": "pub",
+        "code": "02",
+        "text": "Thúc đẩy công tác chuẩn bị thị trường mới"
+      },
+      {
+        "source_id": "pub-kp03",
+        "source_section_id": "pub",
+        "code": "03",
+        "text": "Kênh Phân Phối & Tuân Thủ Quy Định"
+      }
+    ],
+    "groups": [
+      {
+        "source_id": "gameplay-g01",
+        "source_section_id": "gameplay",
+        "title": "C4 Kinh Tế 2.0",
+        "description": "Sau khi C4 Kinh Tế ra mắt lần đầu ở phiên bản tháng 6, phiên bản này bước vào giai đoạn 2: bổ sung khâu chuẩn bị ngoài trận, người chơi có thể hoàn tất phối súng và phối skin trước khi vào trận.",
+        "figure_code": "FIG-01"
+      },
+      {
+        "source_id": "gameplay-g02",
+        "source_section_id": "gameplay",
+        "title": "C4 Kinh Tế · Tối ưu trải nghiệm",
+        "description": "Tối ưu có hệ thống các vấn đề trải nghiệm trận đấu được ghi nhận sau khi phiên bản tháng 6 lên sóng.",
+        "figure_code": null
+      },
+      {
+        "source_id": "gameplay-g03",
+        "source_section_id": "gameplay",
+        "title": "Mở rộng cách chơi Arcade",
+        "description": "Phiên bản này chuyển 3 cách chơi Arcade đã trưởng thành từ bản Trung Quốc sang, làm phong phú nguồn nội dung giải trí. Sảnh Arcade đồng thời triển khai chế độ và làm mới hình lối vào.",
+        "figure_code": "FIG-02"
+      },
+      {
+        "source_id": "gameplay-g04",
+        "source_section_id": "gameplay",
+        "title": "PVE · BOSS Thế Giới",
+        "description": "Tiếp nối khung cách chơi BOSS Thế Giới từ phiên bản tháng 6, kỳ này ra mắt con BOSS thứ hai.",
+        "figure_code": "FIG-03"
+      },
+      {
+        "source_id": "gameplay-g05",
+        "source_section_id": "gameplay",
+        "title": "Cập nhật nội dung Zombie",
+        "description": "Tuyến nội dung Zombie ở phiên bản này chủ yếu là cấu hình và chuyển từ bản khác sang, mở rộng kho nhân vật và cách chơi BUFF.",
+        "figure_code": "FIG-04"
+      },
+      {
+        "source_id": "system-g01",
+        "source_section_id": "system",
+        "title": "Nâng cấp trải nghiệm Đấu Rank",
+        "description": "Sau khi Đấu Rank Kinh Tế lên sóng ở phiên bản tháng 6, hệ thống Đấu Rank bước vào giai đoạn tối ưu. Phiên bản này cải tổ có hệ thống về giao diện, ghép trận, cách hiển thị phần thưởng, trải nghiệm người dùng mới.",
+        "figure_code": "FIG-05"
+      },
+      {
+        "source_id": "system-g02",
+        "source_section_id": "system",
+        "title": "Tối ưu Giải Đấu",
+        "description": "Hệ thống Giải Đấu ở phiên bản này tập trung giải quyết tính công bằng khi ghép trận và trải nghiệm lập đội.",
+        "figure_code": null
+      },
+      {
+        "source_id": "system-g03",
+        "source_section_id": "system",
+        "title": "Củng cố trải nghiệm người chơi mới",
+        "description": "Một loạt cải tiến nhắm vào vấn đề rời bỏ ở trận đầu tiên của người chơi mới.",
+        "figure_code": null
+      },
+      {
+        "source_id": "system-g04",
+        "source_section_id": "system",
+        "title": "Xã hội & Hiển thị cá nhân",
+        "description": "Một loạt tối ưu về chuỗi xã hội và hiển thị hình ảnh cá nhân.",
+        "figure_code": null
+      },
+      {
+        "source_id": "system-g05",
+        "source_section_id": "system",
+        "title": "Phát Triển & Kho Đồ",
+        "description": "Hoàn thiện các tính năng trong chuỗi phát triển vũ khí.",
+        "figure_code": null
+      },
+      {
+        "source_id": "system-g06",
+        "source_section_id": "system",
+        "title": "Cập nhật hệ thống khác",
+        "description": "",
+        "figure_code": null
+      },
+      {
+        "source_id": "quality-g01",
+        "source_section_id": "quality",
+        "title": "Hình Ảnh & Giao Diện",
+        "description": "",
+        "figure_code": "FIG-06"
+      },
+      {
+        "source_id": "quality-g02",
+        "source_section_id": "quality",
+        "title": "Thao Tác & Cảm Giác Chơi",
+        "description": "",
+        "figure_code": null
+      },
+      {
+        "source_id": "quality-g03",
+        "source_section_id": "quality",
+        "title": "Dung Lượng & Tương Thích",
+        "description": "",
+        "figure_code": null
+      },
+      {
+        "source_id": "supply-g01",
+        "source_section_id": "supply",
+        "title": "Tiếp Tế Giới Hạn",
+        "description": "",
+        "figure_code": "FIG-07"
+      },
+      {
+        "source_id": "supply-g02",
+        "source_section_id": "supply",
+        "title": "Tiếp Tế Tinh Anh",
+        "description": "",
+        "figure_code": "FIG-08"
+      },
+      {
+        "source_id": "supply-g03",
+        "source_section_id": "supply",
+        "title": "Tối ưu trải nghiệm tiếp tế",
+        "description": "",
+        "figure_code": null
+      },
+      {
+        "source_id": "act-g01",
+        "source_section_id": "act",
+        "title": "Hoạt Động Lớn Hàng Tháng",
+        "description": "Mỗi hoạt động lớn đi kèm bộ hình ảnh đầy đủ: ảnh đại diện, khung ảnh, loading, hình popup, hình trung tâm hoạt động. Tính năng chia sẻ kết nối với Facebook (phụ thuộc vào thành phần chia sẻ ảnh chụp màn hình).",
+        "figure_code": "FIG-09"
+      },
+      {
+        "source_id": "act-g02",
+        "source_section_id": "act",
+        "title": "Hoạt Động Chuyên Đề",
+        "description": "",
+        "figure_code": null
+      },
+      {
+        "source_id": "act-g03",
+        "source_section_id": "act",
+        "title": "Xây dựng năng lực hệ thống hoạt động",
+        "description": "Mở rộng năng lực của hệ thống hoạt động trong phiên bản này, cung cấp thêm nhiều công cụ cấu hình cho việc vận hành hoạt động ở các phiên bản sau.",
+        "figure_code": "FIG-14"
+      },
+      {
+        "source_id": "biz-g01",
+        "source_section_id": "biz",
+        "title": "Battle Pass & Đăng Ký",
+        "description": "",
+        "figure_code": "FIG-10"
+      },
+      {
+        "source_id": "biz-g02",
+        "source_section_id": "biz",
+        "title": "Hệ thống Xu CF giới hạn thời gian",
+        "description": "Một thay đổi mang tính cấu trúc trong thương mại hóa của phiên bản này: đưa vào Xu CF giới hạn thời gian như một loại tiền tệ chính, có thể quy đổi 1:1, đồng thời chuyển các hệ thống quay thưởng hiện có sang tính theo Xu CF.",
+        "figure_code": "FIG-11"
+      },
+      {
+        "source_id": "biz-g03",
+        "source_section_id": "biz",
+        "title": "Hệ thống quay thưởng · Tối ưu sảnh chờ & trải nghiệm",
+        "description": "Quay thưởng là lối vào trả phí chính, phiên bản này thực hiện một đợt tối ưu thống nhất về cấu trúc lối vào, thông báo bảo đảm và câu chữ quảng bá.",
+        "figure_code": null
+      },
+      {
+        "source_id": "biz-g04",
+        "source_section_id": "biz",
+        "title": "Hệ thống quay thưởng · Triển khai tài nguyên",
+        "description": "Cách sắp xếp tài nguyên của các hệ thống quay thưởng trong phiên bản này.",
+        "figure_code": "FIG-13"
+      },
+      {
+        "source_id": "biz-g05",
+        "source_section_id": "biz",
+        "title": "Nhân Vật & Hợp Tác",
+        "description": "",
+        "figure_code": "FIG-12"
+      },
+      {
+        "source_id": "biz-g06",
+        "source_section_id": "biz",
+        "title": "Cửa Hàng & Triển Khai Kèm Theo",
+        "description": "Triển khai thương mại hóa đi kèm nội dung phiên bản, đạo cụ cụ thể sẽ được xác định dựa trên các hoạt động khác của phiên bản.",
+        "figure_code": null
+      },
+      {
+        "source_id": "pub-g01",
+        "source_section_id": "pub",
+        "title": "Việt Nam (VNG)",
+        "description": "",
+        "figure_code": null
+      },
+      {
+        "source_id": "pub-g02",
+        "source_section_id": "pub",
+        "title": "Chuẩn Bị Thị Trường Mới",
+        "description": "",
+        "figure_code": null
+      },
+      {
+        "source_id": "pub-g03",
+        "source_section_id": "pub",
+        "title": "Kênh Phân Phối & Tuân Thủ Quy Định",
+        "description": "",
+        "figure_code": null
+      }
+    ],
+    "items": [
+      {
+        "source_id": "gameplay-g01-i01",
+        "source_section_id": "gameplay",
+        "source_group_id": "gameplay-g01",
+        "source_group": "C4 Kinh Tế 2.0",
+        "title": "Phối súng ngoài trận",
+        "description": "C4 Kinh Tế bổ sung tính năng phối súng ngoài trận. Người chơi có thể thiết lập sẵn phương án mua súng trước khi vào trận, đầu trận sẽ tự động mua theo phương án đã đặt, giảm đáng kể áp lực thời gian và thao tác mua súng trong trận.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Giảm ngưỡng hiểu và thao tác của trận đấu kinh tế, phục vụ trực tiếp việc giữ chân người chơi mới",
+          "Kèm theo hướng dẫn phối súng ngoài trận cho người chơi mới, kích hoạt khi vào tab Đấu Rank Kinh Tế hoặc Thi Đấu"
+        ]
+      },
+      {
+        "source_id": "gameplay-g01-i02",
+        "source_section_id": "gameplay",
+        "source_group_id": "gameplay-g01",
+        "source_group": "C4 Kinh Tế 2.0",
+        "title": "Đổi skin ngoài trận",
+        "description": "C4 Kinh Tế hỗ trợ phối skin ngoài trận. Trên tiền đề chỉ số được đồng nhất để đảm bảo công bằng, vẫn giữ lại khả năng thể hiện cá tính qua ngoại hình cho người chơi — vừa đảm bảo công bằng thi đấu, vừa không làm giảm giá trị hiển thị của skin trả phí.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Chỉ số đồng nhất, ngoại hình tự do, cân bằng giữa công bằng và thương mại hóa"
+        ]
+      },
+      {
+        "source_id": "gameplay-g01-i03",
+        "source_section_id": "gameplay",
+        "source_group_id": "gameplay-g01",
+        "source_group": "C4 Kinh Tế 2.0",
+        "title": "Hướng dẫn phối súng ngoài trận cho người chơi mới",
+        "description": "Hướng dẫn phối súng ngoài trận đi kèm trận đấu kinh tế 2.0. Kích hoạt khi người chơi vào tab \"Đấu Rank Kinh Tế\" hoặc \"Thi Đấu\", diễn ra sau bước hướng dẫn cài đặt, giúp người chơi mới hiểu cơ chế phối súng ngoài trận đặc thù của trận đấu kinh tế.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Điểm kích hoạt được đẩy lên ngay sau bước hướng dẫn cài đặt, giảm ngưỡng hiểu ở trận đầu tiên"
+        ]
+      },
+      {
+        "source_id": "gameplay-g02-i01",
+        "source_section_id": "gameplay",
+        "source_group_id": "gameplay-g02",
+        "source_group": "C4 Kinh Tế · Tối ưu trải nghiệm",
+        "title": "Giới hạn mua đồ ném / vũ khí mỗi hiệp",
+        "description": "Bổ sung giới hạn số lượng đồ ném và vũ khí có thể mua trong 1 hiệp, tránh việc dồn vật phẩm phá vỡ cân bằng hiệp đấu.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "gameplay-g02-i02",
+        "source_section_id": "gameplay",
+        "source_group_id": "gameplay-g02",
+        "source_group": "C4 Kinh Tế · Tối ưu trải nghiệm",
+        "title": "Rơi đồ ném và kềm cắt",
+        "description": "Sau khi hy sinh, đồ ném và kềm gỡ bom có thể rơi ra và được nhặt lại, giúp tài nguyên chiến thuật luân chuyển trong hiệp đấu, tăng thêm chiều sâu đấu trí ở giai đoạn cuối hiệp.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "gameplay-g02-i03",
+        "source_section_id": "gameplay",
+        "source_group_id": "gameplay-g02",
+        "source_group": "C4 Kinh Tế · Tối ưu trải nghiệm",
+        "title": "Tối ưu hiển thị thu nhập kinh tế",
+        "description": "Thu nhập trận đấu đổi sang hiển thị theo phe, đồng thời hiển thị số tiền tối thiểu sẽ có ở hiệp sau, giúp quyết định mua súng rõ ràng hơn.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "gameplay-g02-i04",
+        "source_section_id": "gameplay",
+        "source_group_id": "gameplay-g02",
+        "source_group": "C4 Kinh Tế · Tối ưu trải nghiệm",
+        "title": "Tối ưu AI Nhân Hóa",
+        "description": "Mở rộng hệ thống AI Nhân Hóa trong trận đấu kinh tế. Trước đây chỉ có 2 loại \"trận ấm áp\" là trận người mới và trận hồi quy, lần này bổ sung thêm 2 kịch bản \"trận ấm áp khi thất bại liên tục\" và \"trận cân bằng\", giúp việc can thiệp của AI sát với hoàn cảnh thực tế của người chơi hơn.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Trận người mới: áp dụng cho toàn bộ người chơi dưới 1500 điểm, độ khó thấp nhất",
+          "Trận hồi quy: độ khó cao hơn một chút, chỉ diễn ra 1 trận",
+          "Trận ấm áp khi thất bại liên tục: kích hoạt khi người chơi thua liên tiếp, tự động điều chỉnh độ khó để đảm bảo thắng, giới hạn 2500 điểm",
+          "Trận cân bằng: kích hoạt khi ghép trận với người thật quá lâu không thành, độ khó cố định, giới hạn 3000 điểm",
+          "Chủng loại vũ khí của AI mở rộng từ súng trường tấn công, súng tiểu liên sang súng bắn tỉa và súng shotgun"
+        ]
+      },
+      {
+        "source_id": "gameplay-g02-i05",
+        "source_section_id": "gameplay",
+        "source_group_id": "gameplay-g02",
+        "source_group": "C4 Kinh Tế · Tối ưu trải nghiệm",
+        "title": "Tối ưu giao diện xem trận",
+        "description": "Sắp xếp lại cấp độ thông tin ở góc nhìn xem trận, giúp người xem dễ nắm bắt tình trạng kinh tế và trang bị.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "gameplay-g02-i06",
+        "source_section_id": "gameplay",
+        "source_group_id": "gameplay-g02",
+        "source_group": "C4 Kinh Tế · Tối ưu trải nghiệm",
+        "title": "Tối ưu hiển thị thông tin vũ khí",
+        "description": "Tối ưu cách hiển thị dữ liệu vũ khí ở giao diện mua súng, tham khảo các sản phẩm thi đấu cùng thể loại để cung cấp thông tin vũ khí đầy đủ hơn, giúp người chơi đưa ra lựa chọn rõ ràng hơn.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "gameplay-g03-i01",
+        "source_section_id": "gameplay",
+        "source_group_id": "gameplay-g03",
+        "source_group": "Mở rộng cách chơi Arcade",
+        "title": "Joker",
+        "description": "Chuyển cách chơi Arcade \"Joker\" từ bản Trung Quốc, phân phối qua gói tải giải trí, không làm tăng dung lượng gói cài đặt chính.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Cả lối vào Arcade ở sảnh chờ và lối vào bên trong Arcade đều có hình ảnh riêng",
+          "Bổ sung giới thiệu chế độ Joker trong phần giải thích luật chơi"
+        ]
+      },
+      {
+        "source_id": "gameplay-g03-i02",
+        "source_section_id": "gameplay",
+        "source_group_id": "gameplay-g03",
+        "source_group": "Mở rộng cách chơi Arcade",
+        "title": "Không Gian Mất Trọng Lực",
+        "description": "Chuyển cách chơi Arcade \"Không Gian Mất Trọng Lực\" từ bản Trung Quốc, mang lại trải nghiệm đối kháng khác biệt trong môi trường trọng lực thấp, phân phối qua gói tải giải trí.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Cả lối vào Arcade ở sảnh chờ và lối vào bên trong Arcade đều có hình ảnh riêng",
+          "Bổ sung giới thiệu chế độ Không Gian Mất Trọng Lực trong phần giải thích luật chơi"
+        ]
+      },
+      {
+        "source_id": "gameplay-g03-i03",
+        "source_section_id": "gameplay",
+        "source_group_id": "gameplay-g03",
+        "source_group": "Mở rộng cách chơi Arcade",
+        "title": "Parkour Kỹ Thuật",
+        "description": "Chuyển cách chơi giải trí \"Parkour-Kỹ Thuật\" từ bản Trung Quốc, bản đồ là \"Mê Cung\" theo luật giới hạn thời gian. Nội dung chạy nhảy đua tốc độ nhẹ nhàng, làm phong phú lựa chọn giải trí phi đối kháng.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Đội 8 người, dùng chung hệ thống lập đội với các chế độ khác",
+          "Trang ghép trận tối đa 20 người, hiển thị thanh tiến trình và tên bản đồ",
+          "Mỗi ngày 3 lượt nhận thưởng",
+          "Bổ sung tab riêng giới thiệu cách chơi trong phần giải thích luật chơi giải trí"
+        ]
+      },
+      {
+        "source_id": "gameplay-g04-i01",
+        "source_section_id": "gameplay",
+        "source_group_id": "gameplay-g04",
+        "source_group": "PVE · BOSS Thế Giới",
+        "title": "BOSS Thế Giới: Varanus",
+        "description": "Chính thức chuyển nội dung PVE nổi tiếng từ bản Trung Quốc \"BOSS Thế Giới-Varanus\". Người chơi lập đội thử thách BOSS khổng lồ, cần né tránh kỹ năng của nó; sau khi bị hút vào bên trong BOSS, phải vừa né kỹ năng vừa tấn công tim, phá vỡ tim hoặc hết thời gian sẽ trở về mặt đất.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "3 mức độ khó: Thường không giới hạn số lần, Khó và Địa Ngục giới hạn số lần mỗi ngày",
+          "Độ khó Thường thưởng bằng mở rương; Khó và Địa Ngục thưởng bằng lật bài",
+          "Có thể tiêu Gem để lật bài thêm và nhận EXP",
+          "PVE có 2 lối vào từ sảnh chờ và Arcade, khi chuyển chế độ hình nền sảnh chờ sẽ thay đổi đồng bộ"
+        ]
+      },
+      {
+        "source_id": "gameplay-g05-i01",
+        "source_section_id": "gameplay",
+        "source_group_id": "gameplay-g05",
+        "source_group": "Cập nhật nội dung Zombie",
+        "title": "Cách chơi BUFF Zombie Tối Thượng",
+        "description": "Chế độ Zombie Tối Thượng bổ sung cách chơi BUFF (lần này chỉ ra mắt BUFF đơn). Đầu mỗi hiệp sẽ tự động rút cho mỗi bên 1 BUFF, chỉ có hiệu lực trong hiệp đó, sang hiệp sau sẽ rút lại, giúp tổ hợp chiến thuật mỗi trận không lặp lại.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Trang rút có hiệu ứng cuộn biểu tượng, có thể xem tên và mô tả chi tiết của BUFF",
+          "Biểu tượng BUFF của 2 phe hiển thị cố định phía trên màn hình trong trận",
+          "Một số BUFF diện rộng có kèm hiệu ứng khung cảnh",
+          "BUFF đặc biệt \"Diệt Vong & Hy Vọng\": khi đầy tiến trình sẽ kích hoạt biến hình, Ma biến thành Ma Mẹ Tối Thượng, Lính Đánh Thuê biến thành Thợ Săn Tối Thượng, kèm hiệu ứng giáng thế toàn màn hình"
+        ]
+      },
+      {
+        "source_id": "gameplay-g05-i02",
+        "source_section_id": "gameplay",
+        "source_group_id": "gameplay-g05",
+        "source_group": "Cập nhật nội dung Zombie",
+        "title": "Zombie Truy Đuổi · Chuyển Kẻ Hủy Diệt từ bản Trung Quốc",
+        "description": "Cách chơi Zombie Truy Đuổi đưa vào Ma Mẹ Tối Thượng \"Kẻ Hủy Diệt Xanh\" từ bản Trung Quốc, là phiên bản Kẻ Hủy Diệt cấp cao, bao phủ 2 giai đoạn: biến hình thành Ma lần đầu và biến hình thành Kẻ Hủy Diệt lần hai.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Giai đoạn biến hình hỗ trợ cấu hình",
+          "Anh hùng Zombie mới và Kẻ Hủy Diệt được cấu hình lên sóng đồng thời"
+        ]
+      },
+      {
+        "source_id": "gameplay-g05-i03",
+        "source_section_id": "gameplay",
+        "source_group_id": "gameplay-g05",
+        "source_group": "Cập nhật nội dung Zombie",
+        "title": "Anh hùng Zombie mới + cấu hình Kẻ Hủy Diệt lên sóng",
+        "description": "Cách chơi Zombie Truy Đuổi đưa vào Ma Mẹ Tối Thượng \"Kẻ Hủy Diệt Xanh\" từ bản Trung Quốc, là phiên bản Kẻ Hủy Diệt cấp cao, bao phủ 2 giai đoạn: biến hình thành Ma lần đầu và biến hình thành Kẻ Hủy Diệt lần hai.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Giai đoạn biến hình hỗ trợ cấu hình",
+          "Anh hùng Zombie mới và Kẻ Hủy Diệt được cấu hình lên sóng đồng thời"
+        ]
+      },
+      {
+        "source_id": "gameplay-g05-i04",
+        "source_section_id": "gameplay",
+        "source_group_id": "gameplay-g05",
+        "source_group": "Cập nhật nội dung Zombie",
+        "title": "Điều chỉnh thời lượng trận Zombie ngắn",
+        "description": "Giảm số hiệp trong chế độ Zombie, rút ngắn thời lượng mỗi trận để phù hợp với thời gian rảnh rỗi trên di động.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "system-g01-i01",
+        "source_section_id": "system",
+        "source_group_id": "system-g01",
+        "source_group": "Nâng cấp trải nghiệm Đấu Rank",
+        "title": "Cải tiến giao diện Đấu Rank",
+        "description": "Cải tiến giao diện Đấu Rank, phiên bản hiện tại chưa có tính năng sức mạnh chiến đấu, các hiển thị liên quan sẽ được ẩn đi.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "system-g01-i02",
+        "source_section_id": "system",
+        "source_group_id": "system-g01",
+        "source_group": "Nâng cấp trải nghiệm Đấu Rank",
+        "title": "Cảnh báo thời gian ghép trận",
+        "description": "Khi ghép trận quá 30 giây, hiển thị thông báo thân thiện cho người chơi, gợi ý thử chế độ khác, tránh việc chờ đợi quá lâu gây rời bỏ.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Mỗi loại Đấu Rank có thể cấu hình ngưỡng riêng",
+          "Sau khi hiển thị 5 giây, thông báo sẽ tự động quay lại thành \"Thời gian ghép trận dự kiến\""
+        ]
+      },
+      {
+        "source_id": "system-g01-i03",
+        "source_section_id": "system",
+        "source_group_id": "system-g01",
+        "source_group": "Nâng cấp trải nghiệm Đấu Rank",
+        "title": "Tối ưu hiển thị phần thưởng Đấu Rank",
+        "description": "Tiến trình nhiệm vụ vũ khí mùa giải mở rộng từ \"chỉ hiển thị trong Sổ Tay Mùa Giải\" sang hiển thị cả ở sảnh Đấu Rank và trang kết toán, đồng thời luôn hiển thị mục tiêu phần thưởng.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Khi chưa đạt điều kiện, phần thưởng hiển thị bằng hình tĩnh để giữ cảm giác mục tiêu",
+          "Khi có thể nhận sẽ thêm hiệu ứng vòng sáng và nút nhận, nhấn vào sẽ chuyển đến Sổ Tay Mùa Giải"
+        ]
+      },
+      {
+        "source_id": "system-g01-i04",
+        "source_section_id": "system",
+        "source_group_id": "system-g01",
+        "source_group": "Nâng cấp trải nghiệm Đấu Rank",
+        "title": "Điều chỉnh phần thưởng Đấu Rank",
+        "description": "Điều chỉnh cấu trúc phần thưởng Đấu Rank (cấu hình bảng), phương án cụ thể đang được lên kế hoạch.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "system-g01-i05",
+        "source_section_id": "system",
+        "source_group_id": "system-g01",
+        "source_group": "Nâng cấp trải nghiệm Đấu Rank",
+        "title": "Logic chọn bản đồ Đấu Rank",
+        "description": "Luật chọn bản đồ Đấu Rank quay về phương án của bản Trung Quốc: bậc điểm thấp chọn ngẫu nhiên bản đồ trực tiếp, bậc điểm cao khôi phục cơ chế bình chọn \"chọn 1 trong 10\", đội ngũ thiết kế sẽ cấu hình mốc điểm.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "system-g01-i06",
+        "source_section_id": "system",
+        "source_group_id": "system-g01",
+        "source_group": "Nâng cấp trải nghiệm Đấu Rank",
+        "title": "Tối ưu trải nghiệm người dùng mới trong Đấu Rank",
+        "description": "Sửa lỗi phân mảnh bậc điểm trong trải nghiệm Đấu Rank của người dùng mới. Trước đây người chơi có số đuôi ID 00–04 không có \"trận ấm áp\" AI, khiến bậc điểm của họ dừng ở khoảng 1200 điểm, trong khi người chơi khác đã đạt 1400–1500 điểm, hai nhóm không thể ghép trận với nhau, khiến nhóm trước phải chờ ghép trận rất lâu.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Thống nhất chiến lược triển khai AI cho người dùng mới, xóa bỏ khác biệt theo dải số ID",
+          "Rút ngắn thời gian chờ ghép trận Đấu Rank của người dùng mới"
+        ]
+      },
+      {
+        "source_id": "system-g01-i07",
+        "source_section_id": "system",
+        "source_group_id": "system-g01",
+        "source_group": "Nâng cấp trải nghiệm Đấu Rank",
+        "title": "Tối ưu tài nguyên cá nhân hóa trong Đấu Rank",
+        "description": "Tinh giản các hiển thị cá nhân hóa dư thừa trong Đấu Rank.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "system-g01-i08",
+        "source_section_id": "system",
+        "source_group_id": "system-g01",
+        "source_group": "Nâng cấp trải nghiệm Đấu Rank",
+        "title": "Cập nhật giao diện lập đội + bản đồ mùa giải",
+        "description": "Đồng bộ giao diện lập đội theo phiên bản mới nhất của bản Trung Quốc, bao phủ lập đội Đấu Rank và Thi Đấu ở các chế độ Đặt Bom, Đồng Đội, C4 Kinh Tế, C4 Kinh Tế Tốc Độ, đồng thời bổ sung trang bản đồ mùa giải.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "system-g02-i01",
+        "source_section_id": "system",
+        "source_group_id": "system-g02",
+        "source_group": "Tối ưu Giải Đấu",
+        "title": "Vào nhóm ghép trận theo bậc điểm",
+        "description": "Nhóm ghép trận Giải Đấu được chia theo bậc thực lực, tránh việc chênh lệch thực lực quá lớn làm ảnh hưởng trải nghiệm.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Lấy điểm ghép trận MMR làm căn cứ phân chia",
+          "Phiên bản đầu chia thành 5 nhóm, mỗi nhóm cách nhau 400 điểm",
+          "Người chơi chỉ ghép trận trong nhóm của mình, không ghép qua nhóm khác",
+          "Số lượng nhóm và khoảng cách điểm đều có thể cấu hình, để dành không gian mở rộng"
+        ]
+      },
+      {
+        "source_id": "system-g02-i02",
+        "source_section_id": "system",
+        "source_group_id": "system-g02",
+        "source_group": "Tối ưu Giải Đấu",
+        "title": "Giảm mức độ thể hiện yếu tố Đấu Rank",
+        "description": "Giảm hiển thị yếu tố Đấu Rank bên trong Giải Đấu, tách biệt trải nghiệm với hệ thống Đấu Rank.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "system-g02-i03",
+        "source_section_id": "system",
+        "source_group_id": "system-g02",
+        "source_group": "Tối ưu Giải Đấu",
+        "title": "Giao diện lập đội được cập nhật theo",
+        "description": "Giao diện lập đội của Giải Đấu được đồng nhất với giao diện lập đội của Đấu Rank.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "system-g03-i01",
+        "source_section_id": "system",
+        "source_group_id": "system-g03",
+        "source_group": "Củng cố trải nghiệm người chơi mới",
+        "title": "Tối ưu trường bắn người mới (Tàu Vận Chuyển)",
+        "description": "Tối ưu quy trình trường bắn người mới (Tàu Vận Chuyển), kèm AB-TEST để kiểm chứng hiệu quả.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "system-g03-i02",
+        "source_section_id": "system",
+        "source_group_id": "system-g03",
+        "source_group": "Củng cố trải nghiệm người chơi mới",
+        "title": "Hướng dẫn người mới · Hướng dẫn cài đặt",
+        "description": "Tối ưu hướng dẫn cài đặt cho người chơi mới, giúp người chơi hoàn tất các thiết lập thao tác quan trọng trước trận đầu tiên.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "system-g04-i01",
+        "source_section_id": "system",
+        "source_group_id": "system-g04",
+        "source_group": "Xã hội & Hiển thị cá nhân",
+        "title": "Tối ưu danh thiếp",
+        "description": "Bao phủ toàn bộ các nơi hiển thị danh thiếp: trong trận, sảnh chờ, bạn bè, trò chuyện, chiến đội, phòng lập đội.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "system-g04-i02",
+        "source_section_id": "system",
+        "source_group_id": "system-g04",
+        "source_group": "Xã hội & Hiển thị cá nhân",
+        "title": "Tối ưu chuỗi thêm bạn trong game",
+        "description": "Đơn giản hóa quy trình thêm bạn trong game, giảm số bước thao tác để tăng tỉ lệ thêm bạn thành công, đặt nền tảng cho việc giữ chân người chơi qua yếu tố xã hội.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "system-g04-i03",
+        "source_section_id": "system",
+        "source_group_id": "system-g04",
+        "source_group": "Xã hội & Hiển thị cá nhân",
+        "title": "Popup hướng dẫn kết bạn mới",
+        "description": "Bổ sung popup hướng dẫn người chơi thêm bạn, chủ động thúc đẩy xây dựng quan hệ xã hội vào thời điểm phù hợp.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "system-g04-i04",
+        "source_section_id": "system",
+        "source_group_id": "system-g04",
+        "source_group": "Xã hội & Hiển thị cá nhân",
+        "title": "Chụp màn hình kích hoạt thành phần chia sẻ",
+        "description": "Chụp màn hình trong trận có thể kích hoạt chia sẻ trực tiếp, hỗ trợ tải về máy và chia sẻ qua Facebook.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "system-g05-i01",
+        "source_section_id": "system",
+        "source_group_id": "system-g05",
+        "source_group": "Phát Triển & Kho Đồ",
+        "title": "Ghép linh kiện vũ khí thông dụng",
+        "description": "Tính năng ghép linh kiện vũ khí thông dụng, giải quyết vấn đề mảnh vũ khí giá trị thấp, bị trùng lặp không thể sử dụng, đồng thời giúp người chơi bỏ lỡ chu kỳ hoạt động vẫn có cách để có đủ vũ khí hoàn chỉnh.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Nâng cao tỉ lệ sử dụng tổng thể của tài nguyên linh kiện",
+          "Giảm bớt cảm giác bực bội khi bỏ lỡ hoạt động là mất linh kiện vĩnh viễn"
+        ]
+      },
+      {
+        "source_id": "system-g05-i02",
+        "source_section_id": "system",
+        "source_group_id": "system-g05",
+        "source_group": "Phát Triển & Kho Đồ",
+        "title": "Trực quan hóa tiến trình ghép mảnh",
+        "description": "Hiển thị trực tiếp tiến trình ghép mảnh vũ khí/đạo cụ ngay trong popup nhận thưởng.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "system-g05-i03",
+        "source_section_id": "system",
+        "source_group_id": "system-g05",
+        "source_group": "Phát Triển & Kho Đồ",
+        "title": "Chuyển Weapon Laboratory",
+        "description": "Chuyển \"Weapon Laboratory\" từ bản Trung Quốc và bản địa hóa. Người chơi có thể dùng thử vũ khí mới và tham gia đánh giá, hệ thống đánh giá đổi từ bình luận văn bản sang chấm điểm 1–5.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "3 lớp phản hồi: dùng thử vũ khí + chấm điểm + thả tim",
+          "Số lượt thả tim được làm mới mỗi ngày",
+          "Mang vũ khí dùng thử vào trận đủ số lần quy định sẽ nhận thêm lượt thả tim",
+          "Hiển thị kết quả thống kê sau khi kết thúc bình chọn"
+        ]
+      },
+      {
+        "source_id": "system-g06-i01",
+        "source_section_id": "system",
+        "source_group_id": "system-g06",
+        "source_group": "Cập nhật hệ thống khác",
+        "title": "Triển khai chế độ ở sảnh Arcade 5.0",
+        "description": "Sảnh Arcade ra mắt lối vào chế độ mới của phiên bản này.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "system-g06-i02",
+        "source_section_id": "system",
+        "source_group_id": "system-g06",
+        "source_group": "Cập nhật hệ thống khác",
+        "title": "Làm mới hình lối vào Arcade",
+        "description": "Sửa lỗi làm mới hình lối vào Arcade, đảm bảo hình ảnh lối vào khớp với nội dung thực tế.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "system-g06-i03",
+        "source_section_id": "system",
+        "source_group_id": "system-g06",
+        "source_group": "Cập nhật hệ thống khác",
+        "title": "Tối ưu AI",
+        "description": "Tối ưu tên, ảnh đại diện, nhân vật, cấu hình vũ khí của AI, nâng cao độ giống người thật.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "system-g06-i04",
+        "source_section_id": "system",
+        "source_group_id": "system-g06",
+        "source_group": "Cập nhật hệ thống khác",
+        "title": "Loại nhiệm vụ mới",
+        "description": "Bổ sung 2 loại luật xét nhiệm vụ, ngăn chặn việc lập phòng để cày nhiệm vụ: \"Hoàn thành 1 trận ở chế độ chỉ định\" cần đấu đến trang kết toán, thoát giữa chừng sẽ không tính; \"Tham gia 1 trận ở chế độ chỉ định\" chỉ cần tham gia là được tính, cả hai đều loại trừ phòng tự tạo.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "system-g06-i05",
+        "source_section_id": "system",
+        "source_group_id": "system-g06",
+        "source_group": "Cập nhật hệ thống khác",
+        "title": "Tối ưu giao tiếp trong trận",
+        "description": "Thống nhất và bản địa hóa hệ thống giao tiếp chiến thuật trong trận. Hợp nhất nội dung hiển thị và cách phát ra của tin nhắn nhanh và tin nhắn bộ đàm, kèm giọng nói nhân vật và cung cấp bản địa hóa 4 ngôn ngữ.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Tin nhắn chung có thời gian hồi 10 giây, gửi liên tiếp tối đa 4 tin",
+          "Loại bỏ các thông tin chiến thuật trùng lặp ý nghĩa, đưa thông tin thường dùng lên vị trí trước",
+          "Bổ sung thêm nhiều cách diễn đạt chiến thuật, ví dụ \"Tôi solo\", \"Ném khói qua điểm\", \"Tôi mang C4\""
+        ]
+      },
+      {
+        "source_id": "quality-g01-i01",
+        "source_section_id": "quality",
+        "source_group_id": "quality-g01",
+        "source_group": "Hình Ảnh & Giao Diện",
+        "title": "Nâng cấp chất lượng quy trình trận đấu Đấu Rank",
+        "description": "Nâng cấp toàn diện chất lượng hình ảnh trong trận. Độ phân giải game sẽ theo thiết lập chất lượng hình ảnh — khi chọn chất lượng cao nhất, độ phân giải sẽ khôi phục 1:1, đồng thời HUD trong trận được nâng cao toàn diện.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Độ phân giải được gộp vào mục thiết lập chất lượng hình ảnh, không đặt công tắc riêng",
+          "Tối ưu tập hình trong trận: bổ sung Icon, giảm tỉ lệ hiển thị của chữ dựng bằng code",
+          "Thời điểm áp dụng giống với thiết lập chất lượng hình ảnh (loading giữa các cảnh hoặc khởi động lại)"
+        ]
+      },
+      {
+        "source_id": "quality-g01-i02",
+        "source_section_id": "quality",
+        "source_group_id": "quality-g01",
+        "source_group": "Hình Ảnh & Giao Diện",
+        "title": "Làm mới HUD 5.0",
+        "description": "Tiếp nối phần công việc làm mới HUD trong trận còn lại từ phiên bản 4.0.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "quality-g01-i03",
+        "source_section_id": "quality",
+        "source_group_id": "quality-g01",
+        "source_group": "Hình Ảnh & Giao Diện",
+        "title": "Mặc định thay thế khi chưa tải tài nguyên Sơn Xịt",
+        "description": "Khi chưa tải tài nguyên Sơn Xịt, hệ thống sẽ tự động dùng Sơn Xịt mặc định để hiển thị, tránh hiện trạng để trống làm gián đoạn trải nghiệm.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "quality-g02-i01",
+        "source_section_id": "quality",
+        "source_group_id": "quality-g02",
+        "source_group": "Thao Tác & Cảm Giác Chơi",
+        "title": "Dễ làm quen hơn",
+        "description": "Bộ tối ưu cảm giác thao tác trên di động: giảm tốc độ di chuyển, điều chỉnh giảm tốc khi trúng đạn, tăng cường hỗ trợ ngắm bắn. Phiên bản này ưu tiên triển khai \"tính năng điều chỉnh hỗ trợ ngắm bắn thống nhất\".",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Nhắm thẳng vào ngưỡng làm quen của người chơi di động ở thị trường nước ngoài"
+        ]
+      },
+      {
+        "source_id": "quality-g03-i01",
+        "source_section_id": "quality",
+        "source_group_id": "quality-g03",
+        "source_group": "Dung Lượng & Tương Thích",
+        "title": "Dự án gói nhẹ tháng 9",
+        "description": "Tiếp tục nén dung lượng gói cài đặt đầu tiên.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "quality-g03-i02",
+        "source_section_id": "quality",
+        "source_group_id": "quality-g03",
+        "source_group": "Dung Lượng & Tương Thích",
+        "title": "Tương thích Dynamic Island trên iOS",
+        "description": "Tương thích hiển thị trên các dòng iPhone có Dynamic Island.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "supply-g01-i01",
+        "source_section_id": "supply",
+        "source_group_id": "supply-g01",
+        "source_group": "Tiếp Tế Giới Hạn",
+        "title": "AN94-Smilodon",
+        "description": "Triển khai Tiếp Tế Giới Hạn: AN94-Smilodon, vũ khí chất lượng Vàng V.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "supply-g01-i02",
+        "source_section_id": "supply",
+        "source_group_id": "supply-g01",
+        "source_group": "Tiếp Tế Giới Hạn",
+        "title": "AK47-S-Rifle Knife",
+        "description": "Triển khai Tiếp Tế Giới Hạn: AK47-S-Rifle Knife, vũ khí chất lượng Vàng V.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "supply-g01-i03",
+        "source_section_id": "supply",
+        "source_group_id": "supply-g01",
+        "source_group": "Tiếp Tế Giới Hạn",
+        "title": "VSK-94-Gold Empire",
+        "description": "Triển khai Tiếp Tế Giới Hạn: VSK-94-Gold Empire, vũ khí chất lượng Vàng V.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "supply-g01-i04",
+        "source_section_id": "supply",
+        "source_group_id": "supply-g01",
+        "source_group": "Tiếp Tế Giới Hạn",
+        "title": "QCW05-Predator",
+        "description": "Triển khai Tiếp Tế Giới Hạn: QCW05-Predator, vũ khí chất lượng Vàng V.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "supply-g02-i01",
+        "source_section_id": "supply",
+        "source_group_id": "supply-g02",
+        "source_group": "Tiếp Tế Tinh Anh",
+        "title": "M14EBR-Black Tortoise",
+        "description": "Triển khai Tiếp Tế Tinh Anh: M14EBR-Black Tortoise, vũ khí chất lượng Vàng V.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "supply-g03-i01",
+        "source_section_id": "supply",
+        "source_group_id": "supply-g03",
+        "source_group": "Tối ưu trải nghiệm tiếp tế",
+        "title": "Dùng thử & Nhận vũ khí",
+        "description": "Tất cả các gói tiếp tế bổ sung nút \"Dùng thử & Nhận\" cho vũ khí tương ứng (phiên bản không hiệu ứng), giảm ngưỡng quyết định.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "supply-g03-i02",
+        "source_section_id": "supply",
+        "source_group_id": "supply-g03",
+        "source_group": "Tối ưu trải nghiệm tiếp tế",
+        "title": "Đếm ngược Tiếp Tế Giới Hạn",
+        "description": "Trang phụ của Tiếp Tế Giới Hạn hiển thị số ngày còn lại, nêu rõ thời gian kết thúc.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "act-g01-i01",
+        "source_section_id": "act",
+        "source_group_id": "act-g01",
+        "source_group": "Hoạt Động Lớn Hàng Tháng",
+        "title": "Hoạt Động Lớn Hàng Tháng tháng 9–10 · Chủ đề Cơ Giáp",
+        "description": "Hoạt động lớn hàng tháng với chủ đề \"Thợ Săn Tinh Không: Cơ Giáp Thức Tỉnh\". Người chơi hoàn thành nhiệm vụ ngày để tích lũy \"Điểm Cải Tiến\", dùng để nâng cấp từng bậc cho cơ giáp riêng của mình — mỗi lần nâng cấp, ngoại hình cơ giáp sẽ thay đổi ngay lập tức, tạo cảm giác thành tựu phát triển rõ ràng. Tiến trình cải tiến đồng thời đẩy thanh tiến trình phần thưởng, khi đầy thanh có thể tiếp tục kích hoạt phần thưởng vòng lặp.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Phát triển bằng Điểm Cải Tiến: nhận từ nhiệm vụ → nâng cấp cơ giáp → ngoại hình tiến hóa ngay lập tức",
+          "Phần thưởng theo thanh tiến trình + phần thưởng vòng lặp khi đầy thanh, duy trì liên tục dài hạn",
+          "Mỗi ngày lần đầu nhấn vào \"Chiến Đấu Ngay\" sẽ có quà, làm mới lúc 10 giờ ngày hôm sau",
+          "Phần thưởng đăng nhập phát theo ngày chỉ định, phối hợp thời gian hoạt động để kéo người chơi quay lại",
+          "Hỗ trợ chuyển hướng đến cửa hàng và các hoạt động khác, dẫn dắt lưu lượng người chơi"
+        ]
+      },
+      {
+        "source_id": "act-g01-i02",
+        "source_section_id": "act",
+        "source_group_id": "act-g01",
+        "source_group": "Hoạt Động Lớn Hàng Tháng",
+        "title": "Hoạt Động Lớn Hàng Tháng tháng 11–12 · Chủ đề Halloween",
+        "description": "Hoạt động lớn hàng tháng chủ đề Halloween lấy lâu đài \"Biệt Thự Bóng Đêm\" làm bối cảnh. Bốn nhân vật Lan (phiên bản Halloween), White Wolf, Qingya, Lan Xi'er bị Ma Zombie xâm nhiễm, người chơi cần mở từng cánh cửa phòng trong lâu đài, mỗi cánh cửa tương ứng một màn chơi khác nhau, từng bước hé lộ sự thật về tòa biệt thự.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Dẫn dắt bằng cốt truyện: 4 nhân vật ra mắt tạo hình giới hạn Halloween",
+          "Cấu trúc nhiều phòng trong lâu đài, mỗi phòng tương ứng một bộ cách chơi",
+          "Đi kèm trọn bộ tài nguyên chủ đề: ảnh đại diện, khung ảnh, loading, hình popup, hình trung tâm hoạt động",
+          "Biểu tượng lối vào hoạt động ở sảnh chờ + hướng dẫn dạng bong bóng, cả nội dung chữ và hình nền đều có thể cấu hình theo khu vực"
+        ]
+      },
+      {
+        "source_id": "act-g02-i01",
+        "source_section_id": "act",
+        "source_group_id": "act-g02",
+        "source_group": "Hoạt Động Chuyên Đề",
+        "title": "Hoạt động Triệu Hồi Cựu Binh",
+        "description": "Hoạt động triệu hồi hướng đến người chơi đã rời bỏ game, được xếp vào hoạt động tăng độ hoạt động cấp S. Tự động kích hoạt khi người chơi offline đủ số ngày quy định, quay lại là có thể nhận quà khởi động, đồng thời mở khóa \"Sổ Tay Trở Lại\" — tập hợp nhiều hoạt động con, giúp người chơi cũ nhanh chóng bắt kịp tiến trình phiên bản hiện tại.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Tự động kích hoạt theo số ngày offline, người chơi không cần chủ động tìm kiếm",
+          "Lối vào đặc biệt ở trang chủ sảnh chờ, hiển thị trực tiếp số ngày còn lại trên biểu tượng",
+          "Hai lớp tiếp nhận: quà khởi động + Sổ Tay Trở Lại (tổng hợp nhiều hoạt động)",
+          "Đồng thời gắn với đặc quyền cựu binh và chuyển đổi thương mại hóa"
+        ]
+      },
+      {
+        "source_id": "act-g02-i02",
+        "source_section_id": "act",
+        "source_group_id": "act-g02",
+        "source_group": "Hoạt Động Chuyên Đề",
+        "title": "Hoạt động hướng dẫn người mới",
+        "description": "Hoạt động mang tính hướng dẫn, phối hợp với dự án trải nghiệm người mới, dùng phần thưởng hoạt động để dẫn dắt người chơi mới hoàn thành các mốc hướng dẫn quan trọng.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "act-g03-i01",
+        "source_section_id": "act",
+        "source_group_id": "act-g03",
+        "source_group": "Xây dựng năng lực hệ thống hoạt động",
+        "title": "Lịch Hoạt Động",
+        "description": "Sảnh hoạt động bổ sung mẫu \"Lịch Hoạt Động\", tập trung hiển thị các cách chơi và hoạt động nổi bật đang diễn ra hoặc sắp mở, người chơi nhấn vào là có thể tham gia ngay.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Hiển thị thời gian diễn ra và phần thưởng chính của hoạt động",
+          "Hình lớn cố định vị trí đầu tiên, hình nhỏ sắp xếp theo thứ tự thời gian",
+          "Lên sóng hoàn toàn bằng cấu hình, có thể điều chỉnh mà không cần cập nhật phiên bản"
+        ]
+      },
+      {
+        "source_id": "act-g03-i02",
+        "source_section_id": "act",
+        "source_group_id": "act-g03",
+        "source_group": "Xây dựng năng lực hệ thống hoạt động",
+        "title": "Toàn bộ hoạt động cấu hình hỗ trợ lên sóng theo từng khu vực",
+        "description": "Cải tiến bản địa hóa: hoạt động có thể lên sóng khác nhau theo từng khu vực, hỗ trợ nhịp độ vận hành riêng cho từng khu vực.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "act-g03-i03",
+        "source_section_id": "act",
+        "source_group_id": "act-g03",
+        "source_group": "Xây dựng năng lực hệ thống hoạt động",
+        "title": "Hoạt động Victoria hỗ trợ dán từ clipboard",
+        "description": "Ô nhập của hoạt động hỗ trợ dán mã code đã lưu sẵn trên máy, đơn giản hóa thao tác đổi thưởng cho người chơi.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "act-g03-i04",
+        "source_section_id": "act",
+        "source_group_id": "act-g03",
+        "source_group": "Xây dựng năng lực hệ thống hoạt động",
+        "title": "Nâng cấp SDK, tích hợp phát triển Mini App",
+        "description": "Hoạt động Victoria được tích hợp vào lối vào trung tâm hoạt động, kết nối liền mạch giữa hoạt động Mini App và trong game.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "act-g03-i05",
+        "source_section_id": "act",
+        "source_group_id": "act-g03",
+        "source_group": "Xây dựng năng lực hệ thống hoạt động",
+        "title": "Tối ưu Kế Hoạch Tích Gem",
+        "description": "Tối ưu tiến trình nhiệm vụ và trải nghiệm nhận thưởng của Kế Hoạch Tích Gem.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Hiển thị tiến trình nhóm nhiệm vụ ngay tại nút nhận (ví dụ 3/5)",
+          "Khi nhận nhiều nhiệm vụ cùng lúc, popup chúc mừng sẽ gộp hiển thị tổng số toàn bộ phần thưởng"
+        ]
+      },
+      {
+        "source_id": "biz-g01-i01",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g01",
+        "source_group": "Battle Pass & Đăng Ký",
+        "title": "Battle Pass S5",
+        "description": "Battle Pass bước vào mùa 5, người chơi tăng cấp thông qua đối đấu và nhiệm vụ, mở khóa phần thưởng riêng của mùa giải.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Vũ khí cốt lõi: PP19 Bizon-Papercraft và dạng thức tỉnh của nó",
+          "Nhân vật mùa giải: Guan Xiaoyu",
+          "Thời gian kết thúc mùa giải sẽ được xác định sau"
+        ]
+      },
+      {
+        "source_id": "biz-g01-i02",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g01",
+        "source_group": "Battle Pass & Đăng Ký",
+        "title": "Tính năng VIP",
+        "description": "Ra mắt hệ thống đặc quyền VIP, lối vào nằm ở tab \"Đặc Quyền V\" trong trang nạp Xu CF ở góc trên bên phải sảnh chờ.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g01-i03",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g01",
+        "source_group": "Battle Pass & Đăng Ký",
+        "title": "Tối ưu tính năng Thẻ Tháng",
+        "description": "Bổ sung thông báo khi mua, giảm mua nhầm và bỏ sót mua.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g01-i04",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g01",
+        "source_group": "Battle Pass & Đăng Ký",
+        "title": "Khung ảnh thưởng nạp lần đầu trong mùa giải",
+        "description": "Cấu hình phần thưởng nạp lần đầu cho hoạt động theo mùa giải.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g02-i01",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g02",
+        "source_group": "Hệ thống Xu CF giới hạn thời gian",
+        "title": "Xu CF giới hạn thời gian + Cửa hàng Xu CF giới hạn thời gian",
+        "description": "Ra mắt cửa hàng Xu CF giới hạn thời gian, là loại tiền tệ chính có thể quy đổi 1:1, kèm theo cửa hàng đổi thưởng riêng cho lễ kỷ niệm.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Lối vào: Sảnh chờ → Trung tâm hoạt động → Cửa hàng Xu CF giới hạn thời gian"
+        ]
+      },
+      {
+        "source_id": "biz-g02-i02",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g02",
+        "source_group": "Hệ thống Xu CF giới hạn thời gian",
+        "title": "Các hệ thống quay thưởng còn lại đổi sang Xu CF",
+        "description": "Các hệ thống quay thưởng còn lại như Luân Hồi Vương Giả, Rương Kho Báu... đều thống nhất đổi sang quay thưởng bằng Xu CF.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g02-i03",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g02",
+        "source_group": "Hệ thống Xu CF giới hạn thời gian",
+        "title": "Nhiệm vụ liên quan đến Xu CF",
+        "description": "Bổ sung 2 loại nhiệm vụ: hoàn thành nhiệm vụ quay thưởng để nhận thưởng, tiêu một lượng Xu CF nhất định trong quay thưởng để nhận thưởng, áp dụng cho toàn bộ hệ thống quay thưởng.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g02-i04",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g02",
+        "source_group": "Hệ thống Xu CF giới hạn thời gian",
+        "title": "Xu CF từ rương không tính vào nạp tích lũy",
+        "description": "Khi mở rương nhận được Xu CF, số lượng đó sẽ không được tính vào thống kê nạp tích lũy.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g03-i01",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g03",
+        "source_group": "Hệ thống quay thưởng · Tối ưu sảnh chờ & trải nghiệm",
+        "title": "Gộp các tab quay thưởng",
+        "description": "Sảnh quay thưởng đổi sang dạng chuyển đổi theo danh sách (đồng bộ với bản Trung Quốc), nâng cao hiệu quả sử dụng lưu lượng người chơi.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g03-i02",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g03",
+        "source_group": "Hệ thống quay thưởng · Tối ưu sảnh chờ & trải nghiệm",
+        "title": "Tối ưu logic chuyển hướng của hình quảng cáo",
+        "description": "Tối ưu logic chuyển hướng từ hình quảng cáo đến sảnh quay thưởng.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g03-i03",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g03",
+        "source_group": "Hệ thống quay thưởng · Tối ưu sảnh chờ & trải nghiệm",
+        "title": "Tối ưu thông báo chiến lược bảo đảm",
+        "description": "Khi vào giao diện, khu vực thưởng lớn sẽ hiển thị thông báo dạng bong bóng (biến mất sau 3 giây); phía trên nút luôn hiển thị số lượt bảo đảm còn lại.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g03-i04",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g03",
+        "source_group": "Hệ thống quay thưởng · Tối ưu sảnh chờ & trải nghiệm",
+        "title": "Câu quảng bá Mỗi Rút Mỗi Giảm",
+        "description": "Hoạt động quay thưởng hoàn toàn mới hướng đến người chơi nạp mức trung bình và nhỏ: tổng cộng 8 phần thưởng, phần đã nhận sẽ không xuất hiện lại, sau khi rút được thưởng lớn nhất vẫn có thể tiếp tục rút cho đến khi nhận hết toàn bộ phần thưởng.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Phần thưởng không trùng lặp, có thể dự đoán số lượt rút",
+          "Chỉ dùng Xu CF để quay thưởng, lượt rút đầu tiên được giảm giá",
+          "Chi phí tăng dần theo số lượt rút",
+          "Hiệu ứng lật bài, quá trình quay thưởng có phản hồi rõ ràng"
+        ]
+      },
+      {
+        "source_id": "biz-g03-i05",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g03",
+        "source_group": "Hệ thống quay thưởng · Tối ưu sảnh chờ & trải nghiệm",
+        "title": "Mỗi Rút Mỗi Giảm · Dành cho người chơi nạp vừa và nhỏ",
+        "description": "Hoạt động quay thưởng hoàn toàn mới hướng đến người chơi nạp mức trung bình và nhỏ: tổng cộng 8 phần thưởng, phần đã nhận sẽ không xuất hiện lại, sau khi rút được thưởng lớn nhất vẫn có thể tiếp tục rút cho đến khi nhận hết toàn bộ phần thưởng.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Phần thưởng không trùng lặp, có thể dự đoán số lượt rút",
+          "Chỉ dùng Xu CF để quay thưởng, lượt rút đầu tiên được giảm giá",
+          "Chi phí tăng dần theo số lượt rút",
+          "Hiệu ứng lật bài, quá trình quay thưởng có phản hồi rõ ràng"
+        ]
+      },
+      {
+        "source_id": "biz-g03-i06",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g03",
+        "source_group": "Hệ thống quay thưởng · Tối ưu sảnh chờ & trải nghiệm",
+        "title": "Giảm ngưỡng tham gia gói quà quay thưởng trong cửa hàng",
+        "description": "Giảm ngưỡng tham gia gói quà quay thưởng trong cửa hàng, giúp nhiều người chơi nạp mức vừa và nhỏ hơn có thể tham gia. Lối vào nằm ở trang gói quà trong cửa hàng tại sảnh chờ.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g03-i07",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g03",
+        "source_group": "Hệ thống quay thưởng · Tối ưu sảnh chờ & trải nghiệm",
+        "title": "Mở rương bằng 1 nút",
+        "description": "Các rương có thể nhận hỗ trợ mở toàn bộ chỉ bằng 1 nút, kèm theo tối ưu giao diện popup mở rương.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g03-i08",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g03",
+        "source_group": "Hệ thống quay thưởng · Tối ưu sảnh chờ & trải nghiệm",
+        "title": "Tối ưu hiệu ứng Rương Kỳ Diệu",
+        "description": "Tối ưu hiệu ứng khi mở Rương Kỳ Diệu.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g03-i09",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g03",
+        "source_group": "Hệ thống quay thưởng · Tối ưu sảnh chờ & trải nghiệm",
+        "title": "Bù thưởng nhiệm vụ nạp/tiêu",
+        "description": "Phần thưởng nhiệm vụ nạp/tiêu đã hoàn thành nhưng chưa nhận sẽ được gửi bù qua thư, sẽ hết hạn sau khi hoạt động kết thúc.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g04-i01",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g04",
+        "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên",
+        "title": "Luân Hồi Vương Giả",
+        "description": "Hoạt động quay thưởng giá trị cao \"Luân Hồi Vương Giả\", nổi bật với dòng phần thưởng \"AK47-Steel Empire-Noble Gold\".",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g04-i02",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g04",
+        "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên",
+        "title": "Rương Kho Báu",
+        "description": "Quay thưởng rương với chủ đề \"Đỉnh cao võ đạo, bậc thánh vô song\", phần thưởng cốt lõi là dòng Quan Vũ.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Phần thưởng cốt lõi: M4A1-Quan Vũ, GLOCK18-Quan Vũ, Thanh Long Yển Nguyệt Đao",
+          "Trưng bày toàn bộ 7 vũ khí, 3 phần thưởng cốt lõi đều có KV riêng"
+        ]
+      },
+      {
+        "source_id": "biz-g04-i03",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g04",
+        "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên",
+        "title": "Máy Gắp Thú Bông kỳ 2",
+        "description": "Kỳ 2 của cách chơi Máy Gắp Thú Bông, tiếp nối trải nghiệm quay thưởng mang tính giải trí nhẹ nhàng.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Đi kèm trọn bộ tài nguyên: hình lối vào hoạt động, giao diện chính, hình popup, vị trí đề xuất trong cửa hàng và hình loading"
+        ]
+      },
+      {
+        "source_id": "biz-g04-i04",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g04",
+        "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên",
+        "title": "Đổi giải nhỏ của Đoạt Bảo May Mắn",
+        "description": "Cập nhật tài nguyên kho giải nhỏ của Đoạt Bảo May Mắn.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g04-i05",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g04",
+        "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên",
+        "title": "Lucky Spin · Iron Beast-Prime",
+        "description": "Triển khai Lucky Spin: Iron Beast-Prime.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g04-i06",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g04",
+        "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên",
+        "title": "Lucky Spin · HeartShot",
+        "description": "Triển khai Lucky Spin dòng HeartShot: Desert Eagle-Born Beast-Noble Gold-HeartShot (súng lục), Kukri-Beast-Noble Gold-HeartShot (cận chiến).",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g04-i07",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g04",
+        "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên",
+        "title": "Lucky Spin · Ranger-Purple Demon",
+        "description": "Triển khai Lucky Spin: Ranger-Purple Demon.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g04-i08",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g04",
+        "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên",
+        "title": "Lucky Spin · Bộ Born Beast-Purple Demon",
+        "description": "Triển khai Lucky Spin: bộ trang phục Born Beast-Purple Demon.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g04-i09",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g04",
+        "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên",
+        "title": "Zombie Đoạt Bảo · Magic Circle",
+        "description": "Triển khai Zombie Đoạt Bảo: Magic Circle.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g04-i10",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g04",
+        "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên",
+        "title": "Zombie Đoạt Bảo · Bọ Ngựa",
+        "description": "Triển khai Zombie Đoạt Bảo: Bọ Ngựa.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g04-i11",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g04",
+        "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên",
+        "title": "PVE Đoạt Bảo · AN94-Spaceship",
+        "description": "Triển khai PVE Đoạt Bảo: AN94-Spaceship.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g04-i12",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g04",
+        "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên",
+        "title": "PVE Đoạt Bảo · M240B-Gold Steel",
+        "description": "Triển khai PVE Đoạt Bảo: M240B-Gold Steel.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g04-i13",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g04",
+        "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên",
+        "title": "Rương Quay Thưởng · M12S-Gun Girl",
+        "description": "Triển khai Rương Quay Thưởng: M12S-Gun Girl. Phong cách tươi mới, chất liệu nổi bật, tông hồng ở góc biểu tượng.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Giảm giá lượt rút đầu + cơ chế bảo đảm",
+          "Mỗi kỳ gói quà được thiết kế tài nguyên mỹ thuật riêng"
+        ]
+      },
+      {
+        "source_id": "biz-g04-i14",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g04",
+        "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên",
+        "title": "Rương Quay Thưởng · Barrett M82A1-Angela",
+        "description": "Triển khai Rương Quay Thưởng: Barrett M82A1-Angela. Biểu tượng góc dạng lông vũ, hình nền được thiết kế mang tính thông dụng để dễ tái sử dụng sau này.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Giảm giá lượt rút đầu + cơ chế bảo đảm"
+        ]
+      },
+      {
+        "source_id": "biz-g04-i15",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g04",
+        "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên",
+        "title": "Rương Quay Thưởng · QCW05-Future Soldier",
+        "description": "Triển khai Rương Quay Thưởng: QCW05-Future Soldier. Phong cách biểu tượng góc mang cảm giác công nghệ tương lai.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Giảm giá lượt rút đầu + cơ chế bảo đảm"
+        ]
+      },
+      {
+        "source_id": "biz-g04-i16",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g04",
+        "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên",
+        "title": "Đổi giao diện rương theo phong cách Cơ Giáp",
+        "description": "Bổ sung đạo cụ \"Rương Kỳ Diệu\" chủ đề Cơ Giáp, bao bì ngoại hình đồng bộ với chủ đề Cơ Giáp, kho thưởng và nội dung luật chơi đều do đội thiết kế cấu hình.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g04-i17",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g04",
+        "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên",
+        "title": "Đổi giao diện rương theo phong cách Halloween",
+        "description": "Bổ sung đạo cụ \"Rương Kỳ Diệu\" chủ đề Halloween, bao bì ngoại hình đồng bộ với chủ đề Halloween, kho thưởng và nội dung luật chơi đều do đội thiết kế cấu hình.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g05-i01",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g05",
+        "source_group": "Nhân Vật & Hợp Tác",
+        "title": "Nhân vật nhóm nhạc nữ-Lan Xi'er",
+        "description": "Nhân vật nhóm nhạc nữ \"Lan Xi'er\" ra mắt, trang quay thưởng có chủ đề \"Tạp Chí Tập Hợp Chiến Đội\".",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g05-i02",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g05",
+        "source_group": "Nhân Vật & Hợp Tác",
+        "title": "Hoạt động quay thưởng Siêu Đại Chiến",
+        "description": "Hoạt động quay thưởng hợp tác \"Siêu Đại Chiến Đoạt Bảo\", triển khai 1 nhân vật mới và 3 vũ khí/skin mới.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g05-i03",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g05",
+        "source_group": "Nhân Vật & Hợp Tác",
+        "title": "Bao bì Siêu Đại Chiến trên Tàu Vận Chuyển",
+        "description": "Hoạt động quay thưởng hợp tác \"Siêu Đại Chiến Đoạt Bảo\", triển khai 1 nhân vật mới và 3 vũ khí/skin mới.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g05-i04",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g05",
+        "source_group": "Nhân Vật & Hợp Tác",
+        "title": "Cấu hình Thẻ Giọng Nói cho nhân vật mới",
+        "description": "Yêu cầu hiện tại là tích hợp giọng nói đơn ngôn ngữ tiếng Nhật.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g05-i05",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g05",
+        "source_group": "Nhân Vật & Hợp Tác",
+        "title": "Triển khai gói quà bundle Thẻ Giọng Nói",
+        "description": "Gói quà Bundle Thẻ Giọng Nói, hỗ trợ mua lẻ hoặc mua trọn gói bằng Xu CF. Về hình ảnh, thể hiện phong cách trẻ trung của nhóm nhạc nữ với Lan Xi'er đứng phía trước chính diện, Yun Youyou quay lưng nghiêng mặt, mức độ ưu tiên hiển thị của Thẻ Giọng Nói cao hơn nhân vật.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": [
+          "Hỗ trợ 2 hình thức mua: mua lẻ và mua trọn gói",
+          "Nội dung gói quà có thể nhấn để chuyển hướng"
+        ]
+      },
+      {
+        "source_id": "biz-g05-i06",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g05",
+        "source_group": "Nhân Vật & Hợp Tác",
+        "title": "Bản địa hóa giao diện Thẻ Giọng Nói nhân vật",
+        "description": "Cải tiến bản địa hóa giao diện Thẻ Giọng Nói.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g06-i01",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g06",
+        "source_group": "Cửa Hàng & Triển Khai Kèm Theo",
+        "title": "Hoạt động nạp/tiêu kèm theo (5 hoạt động)",
+        "description": "Các hoạt động nạp tiêu đi kèm hoạt động quay thưởng ra mắt cùng phiên bản 5.0, tổng cộng 5 hoạt động, nội dung cụ thể sẽ được cấu hình sau khi hoạt động quay thưởng được chốt cuối cùng.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g06-i02",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g06",
+        "source_group": "Cửa Hàng & Triển Khai Kèm Theo",
+        "title": "Đạo cụ lên kệ trong cửa hàng theo phiên bản",
+        "description": "Triển khai đạo cụ dựa trên các hoạt động khác của phiên bản.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g06-i03",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g06",
+        "source_group": "Cửa Hàng & Triển Khai Kèm Theo",
+        "title": "Đạo cụ lên kệ trên cửa hàng web",
+        "description": "",
+        "description_status": "empty_in_dom",
+        "css_fallback": "Sẽ bổ sung chi tiết sau",
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g06-i04",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g06",
+        "source_group": "Cửa Hàng & Triển Khai Kèm Theo",
+        "title": "Đạo cụ đi kèm Tiếp Tế Giới Hạn",
+        "description": "Đạo cụ lên kệ phối hợp với 5 vũ khí tiếp tế của phiên bản này.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g06-i05",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g06",
+        "source_group": "Cửa Hàng & Triển Khai Kèm Theo",
+        "title": "Hình hiển thị trang chủ cửa hàng",
+        "description": "Triển khai dựa trên các hoạt động khác của phiên bản.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "biz-g06-i06",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g06",
+        "source_group": "Cửa Hàng & Triển Khai Kèm Theo",
+        "title": "Hình Ảnh Thương Mại Hóa",
+        "description": "Hình loading, hình chạy ngang ở sảnh chờ, hình popup, hình chạy ngang ở trang đề xuất, hình bán chạy, hình gói quà.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "pub-g01-i01",
+        "source_section_id": "pub",
+        "source_group_id": "pub-g01",
+        "source_group": "Việt Nam (VNG)",
+        "title": "Tài nguyên Sơn Xịt bản địa Việt Nam",
+        "description": "VNG chịu trách nhiệm sản xuất, phía Tencent chịu trách nhiệm tích hợp, bao gồm sản xuất biểu tượng và hiệu ứng hình xịt.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "pub-g01-i02",
+        "source_section_id": "pub",
+        "source_group_id": "pub-g01",
+        "source_group": "Việt Nam (VNG)",
+        "title": "Ảnh đại diện + Khung ảnh của VNG",
+        "description": "Tài nguyên ảnh đại diện và khung ảnh bản địa hóa Việt Nam.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "pub-g02-i01",
+        "source_section_id": "pub",
+        "source_group_id": "pub-g02",
+        "source_group": "Chuẩn Bị Thị Trường Mới",
+        "title": "Chuẩn bị liên quan đến phát hành tại Brazil",
+        "description": "Công tác chuẩn bị phát hành tại thị trường Brazil, sẽ khởi động sau khi kế hoạch phát hành Brazil được xác nhận chính thức.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "pub-g03-i01",
+        "source_section_id": "pub",
+        "source_group_id": "pub-g03",
+        "source_group": "Kênh Phân Phối & Tuân Thủ Quy Định",
+        "title": "Tính năng thành tựu qua kênh Google",
+        "description": "Tích hợp hệ thống thành tựu của Google Play.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      },
+      {
+        "source_id": "pub-g03-i02",
+        "source_section_id": "pub",
+        "source_group_id": "pub-g03",
+        "source_group": "Kênh Phân Phối & Tuân Thủ Quy Định",
+        "title": "Tích hợp SDK Kiểm Soát Phụ Huynh",
+        "description": "Tích hợp các module SDK Kiểm Soát Phụ Huynh của phiên bản quốc tế, đáp ứng yêu cầu tuân thủ quy định ở thị trường nước ngoài.",
+        "description_status": "present_in_dom",
+        "css_fallback": null,
+        "highlights": []
+      }
+    ],
+    "figures": [
+      {
+        "source_order": 1,
+        "source_id": "sched-fig-00",
+        "figure_code": "FIG-00",
+        "status": "schedule_placeholder",
+        "source_section_id": "sched",
+        "source_group_id": null,
+        "source_group": null,
+        "image_indices": [],
+        "caption": "",
+        "placeholder_title": "Sơ đồ lịch trình phiên bản 5.0 (sẽ bổ sung sau)",
+        "placeholder_detail": "Sẽ bổ sung sau khi xác nhận thời gian lên sóng của từng nội dung"
+      },
+      {
+        "source_order": 2,
+        "source_id": "gameplay-g01-fig",
+        "figure_code": "FIG-01",
+        "status": "embedded_images",
+        "source_section_id": "gameplay",
+        "source_group_id": "gameplay-g01",
+        "source_group": "C4 Kinh Tế 2.0",
+        "image_indices": [
+          1,
+          2
+        ],
+        "caption": "Giao diện phối súng ngoài trận, giao diện đổi skin ngoài trận FIG-01",
+        "placeholder_title": "",
+        "placeholder_detail": ""
+      },
+      {
+        "source_order": 3,
+        "source_id": "gameplay-g03-fig",
+        "figure_code": "FIG-02",
+        "status": "embedded_images",
+        "source_section_id": "gameplay",
+        "source_group_id": "gameplay-g03",
+        "source_group": "Mở rộng cách chơi Arcade",
+        "image_indices": [
+          3,
+          4,
+          5
+        ],
+        "caption": "Ảnh chụp cách chơi Joker, Không Gian Mất Trọng Lực, Parkour-Kỹ Thuật FIG-02",
+        "placeholder_title": "",
+        "placeholder_detail": ""
+      },
+      {
+        "source_order": 4,
+        "source_id": "gameplay-g04-fig",
+        "figure_code": "FIG-03",
+        "status": "embedded_images",
+        "source_section_id": "gameplay",
+        "source_group_id": "gameplay-g04",
+        "source_group": "PVE · BOSS Thế Giới",
+        "image_indices": [
+          6
+        ],
+        "caption": "Hình ảnh BOSS Varanus + ảnh chụp chiến đấu FIG-03",
+        "placeholder_title": "",
+        "placeholder_detail": ""
+      },
+      {
+        "source_order": 5,
+        "source_id": "gameplay-g05-fig",
+        "figure_code": "FIG-04",
+        "status": "embedded_images",
+        "source_section_id": "gameplay",
+        "source_group_id": "gameplay-g05",
+        "source_group": "Cập nhật nội dung Zombie",
+        "image_indices": [
+          7,
+          8
+        ],
+        "caption": "Hình ảnh Kẻ Hủy Diệt Xanh, giao diện BUFF Zombie Tối Thượng FIG-04",
+        "placeholder_title": "",
+        "placeholder_detail": ""
+      },
+      {
+        "source_order": 6,
+        "source_id": "system-g01-fig",
+        "figure_code": "FIG-05",
+        "status": "embedded_images",
+        "source_section_id": "system",
+        "source_group_id": "system-g01",
+        "source_group": "Nâng cấp trải nghiệm Đấu Rank",
+        "image_indices": [
+          9,
+          10
+        ],
+        "caption": "Ảnh chụp giao diện Đấu Rank phiên bản mới FIG-05",
+        "placeholder_title": "",
+        "placeholder_detail": ""
+      },
+      {
+        "source_order": 7,
+        "source_id": "quality-g01-fig",
+        "figure_code": "FIG-06",
+        "status": "embedded_images",
+        "source_section_id": "quality",
+        "source_group_id": "quality-g01",
+        "source_group": "Hình Ảnh & Giao Diện",
+        "image_indices": [
+          11
+        ],
+        "caption": "Ảnh so sánh trước và sau khi nâng độ phân giải (cùng cảnh, cùng máy, 1 ảnh chất lượng cao và 1 ảnh chất lượng thấp) FIG-06",
+        "placeholder_title": "",
+        "placeholder_detail": ""
+      },
+      {
+        "source_order": 8,
+        "source_id": "supply-g01-fig",
+        "figure_code": "FIG-07",
+        "status": "embedded_images",
+        "source_section_id": "supply",
+        "source_group_id": "supply-g01",
+        "source_group": "Tiếp Tế Giới Hạn",
+        "image_indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "caption": "Hình ảnh AN94-Smilodon, AK47-S-Rifle Knife, VSK-94-Gold Empire, QCW05-Predator FIG-07",
+        "placeholder_title": "",
+        "placeholder_detail": ""
+      },
+      {
+        "source_order": 9,
+        "source_id": "supply-g02-fig",
+        "figure_code": "FIG-08",
+        "status": "embedded_images",
+        "source_section_id": "supply",
+        "source_group_id": "supply-g02",
+        "source_group": "Tiếp Tế Tinh Anh",
+        "image_indices": [
+          16
+        ],
+        "caption": "Hình ảnh M14EBR-Black Tortoise FIG-08",
+        "placeholder_title": "",
+        "placeholder_detail": ""
+      },
+      {
+        "source_order": 10,
+        "source_id": "act-g01-fig",
+        "figure_code": "FIG-09",
+        "status": "embedded_images",
+        "source_section_id": "act",
+        "source_group_id": "act-g01",
+        "source_group": "Hoạt Động Lớn Hàng Tháng",
+        "image_indices": [
+          17
+        ],
+        "caption": "KV chủ đề Cơ Giáp, KV chủ đề Halloween, hình nền sảnh chờ, hình trung tâm hoạt động FIG-09",
+        "placeholder_title": "",
+        "placeholder_detail": ""
+      },
+      {
+        "source_order": 11,
+        "source_id": "act-g03-fig",
+        "figure_code": "FIG-14",
+        "status": "embedded_images",
+        "source_section_id": "act",
+        "source_group_id": "act-g03",
+        "source_group": "Xây dựng năng lực hệ thống hoạt động",
+        "image_indices": [
+          18
+        ],
+        "caption": "Giao diện Lịch Nổi Bật / lối vào tổng hợp hoạt động FIG-14",
+        "placeholder_title": "",
+        "placeholder_detail": ""
+      },
+      {
+        "source_order": 12,
+        "source_id": "biz-g01-fig",
+        "figure_code": "FIG-10",
+        "status": "embedded_images",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g01",
+        "source_group": "Battle Pass & Đăng Ký",
+        "image_indices": [
+          19,
+          20
+        ],
+        "caption": "Hình ảnh phần thưởng cốt lõi Battle Pass S5 (PP19 Bizon-Papercraft / Guan Xiaoyu) FIG-10",
+        "placeholder_title": "",
+        "placeholder_detail": ""
+      },
+      {
+        "source_order": 13,
+        "source_id": "biz-g02-fig",
+        "figure_code": "FIG-11",
+        "status": "figure_placeholder",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g02",
+        "source_group": "Hệ thống Xu CF giới hạn thời gian",
+        "image_indices": [],
+        "caption": "",
+        "placeholder_title": "Hình ảnh phiên bản 5.0 (sẽ bổ sung sau)",
+        "placeholder_detail": "Hình ảnh phiên bản 5.0 (sẽ bổ sung sau) Giao diện cửa hàng Xu CF giới hạn thời gian"
+      },
+      {
+        "source_order": 14,
+        "source_id": "biz-g04-fig",
+        "figure_code": "FIG-13",
+        "status": "embedded_images",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g04",
+        "source_group": "Hệ thống quay thưởng · Triển khai tài nguyên",
+        "image_indices": [
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29
+        ],
+        "caption": "Hình ảnh Luân Hồi Vương Giả (Thành Điện Thích), Rương Kho Báu, Máy Gắp Thú Bông kỳ 2 FIG-13",
+        "placeholder_title": "",
+        "placeholder_detail": ""
+      },
+      {
+        "source_order": 15,
+        "source_id": "biz-g05-fig",
+        "figure_code": "FIG-12",
+        "status": "figure_placeholder",
+        "source_section_id": "biz",
+        "source_group_id": "biz-g05",
+        "source_group": "Nhân Vật & Hợp Tác",
+        "image_indices": [],
+        "caption": "",
+        "placeholder_title": "Hình ảnh phiên bản 5.0 (sẽ bổ sung sau)",
+        "placeholder_detail": "Hình ảnh phiên bản 5.0 (sẽ bổ sung sau) Hình đứng nhân vật nhóm nhạc nữ Lan Xi'er, hình ảnh hợp tác Siêu Đại Chiến"
+      }
+    ]
+  },
+  "duplicate_descriptions": [
+    {
+      "description": "Cách chơi Zombie Truy Đuổi đưa vào Ma Mẹ Tối Thượng \"Kẻ Hủy Diệt Xanh\" từ bản Trung Quốc, là phiên bản Kẻ Hủy Diệt cấp cao, bao phủ 2 giai đoạn: biến hình thành Ma lần đầu và biến hình thành Kẻ Hủy Diệt lần hai.",
+      "occurrences": [
+        {
+          "source_section_id": "gameplay",
+          "source_group": "Cập nhật nội dung Zombie",
+          "item_title": "Zombie Truy Đuổi · Chuyển Kẻ Hủy Diệt từ bản Trung Quốc"
+        },
+        {
+          "source_section_id": "gameplay",
+          "source_group": "Cập nhật nội dung Zombie",
+          "item_title": "Anh hùng Zombie mới + cấu hình Kẻ Hủy Diệt lên sóng"
+        }
+      ]
+    },
+    {
+      "description": "Hoạt động quay thưởng hoàn toàn mới hướng đến người chơi nạp mức trung bình và nhỏ: tổng cộng 8 phần thưởng, phần đã nhận sẽ không xuất hiện lại, sau khi rút được thưởng lớn nhất vẫn có thể tiếp tục rút cho đến khi nhận hết toàn bộ phần thưởng.",
+      "occurrences": [
+        {
+          "source_section_id": "biz",
+          "source_group": "Hệ thống quay thưởng · Tối ưu sảnh chờ & trải nghiệm",
+          "item_title": "Câu quảng bá Mỗi Rút Mỗi Giảm"
+        },
+        {
+          "source_section_id": "biz",
+          "source_group": "Hệ thống quay thưởng · Tối ưu sảnh chờ & trải nghiệm",
+          "item_title": "Mỗi Rút Mỗi Giảm · Dành cho người chơi nạp vừa và nhỏ"
+        }
+      ]
+    },
+    {
+      "description": "Hoạt động quay thưởng hợp tác \"Siêu Đại Chiến Đoạt Bảo\", triển khai 1 nhân vật mới và 3 vũ khí/skin mới.",
+      "occurrences": [
+        {
+          "source_section_id": "biz",
+          "source_group": "Nhân Vật & Hợp Tác",
+          "item_title": "Hoạt động quay thưởng Siêu Đại Chiến"
+        },
+        {
+          "source_section_id": "biz",
+          "source_group": "Nhân Vật & Hợp Tác",
+          "item_title": "Bao bì Siêu Đại Chiến trên Tàu Vận Chuyển"
+        }
+      ]
+    }
+  ],
+  "generated_files": [
+    "doc-v5-00-index-va-pham-vi.md",
+    "doc-v5-01-tong-quan-phien-ban.md",
+    "doc-v5-02-lich-trinh-phien-ban.md",
+    "doc-v5-03-cach-choi-moi.md",
+    "doc-v5-04-he-thong-moi.md",
+    "doc-v5-05-nang-cao-chat-luong.md",
+    "doc-v5-06-tiep-te-moi.md",
+    "doc-v5-07-hoat-dong-tang-do-hoat-dong.md",
+    "doc-v5-08-hoat-dong-thuong-mai-hoa.md",
+    "doc-v5-09-ban-dia-hoa-va-phat-hanh.md",
+    "doc-v5-10-danh-muc-hinh-anh.md",
+    "doc-v5-11-ghi-chu-va-truy-nguyen.md",
+    "source-manifest.json",
+    "assets/image-v5-01-giao-dien-phoi-sung-ngoai-tran-ban-tieng-viet.jpg",
+    "assets/image-v5-02-giao-dien-doi-skin-ngoai-tran.jpg",
+    "assets/image-v5-03-joker.jpg",
+    "assets/image-v5-04-khong-gian-mat-trong-luc.jpg",
+    "assets/image-v5-05-parkour-ky-thuat.jpg",
+    "assets/image-v5-06-boss-the-gioi-varanus.jpg",
+    "assets/image-v5-07-giao-dien-rut-buff-zombie-toi-thuong.jpg",
+    "assets/image-v5-08-hien-thi-buff-don-trong-tran.jpg",
+    "assets/image-v5-09-trang-ket-toan-dau-rank-phien-ban-moi.jpg",
+    "assets/image-v5-10-hien-thi-tien-trinh-nhiem-vu-vu-khi-mua-giai.jpg",
+    "assets/image-v5-11-nang-cao-chat-luong-hud-trong-tran.jpg",
+    "assets/image-v5-12-an94-smilodon.jpg",
+    "assets/image-v5-13-ak47-s-rifle-knife.jpg",
+    "assets/image-v5-14-vsk-94-gold-empire.jpg",
+    "assets/image-v5-15-qcw05-predator.jpg",
+    "assets/image-v5-16-m14ebr-black-tortoise.jpg",
+    "assets/image-v5-17-hoat-dong-chu-de-halloween.jpg",
+    "assets/image-v5-18-lich-noi-bat-loi-vao-tong-hop-hoat-dong.jpg",
+    "assets/image-v5-19-pp19-bizon-papercraft-chua-thuc-tinh.jpg",
+    "assets/image-v5-20-pp19-bizon-papercraft-dang-thuc-tinh.jpg",
+    "assets/image-v5-21-ak47-steel-empire-noble-gold.jpg",
+    "assets/image-v5-22-kukri-beast-noble-gold-heartshot.jpg",
+    "assets/image-v5-23-desert-eagle-born-beast-noble-gold-heartshot.jpg",
+    "assets/image-v5-24-cop-357-iron-beast-prime.jpg",
+    "assets/image-v5-25-m4a1-iron-beast-prime.jpg",
+    "assets/image-v5-26-thunder-hammer-prime.jpg",
+    "assets/image-v5-27-an94-spaceship.jpg",
+    "assets/image-v5-28-ak47-ranger-autumn-water.jpg",
+    "assets/image-v5-29-qbb95-bo-ngua.jpg"
+  ]
+}
