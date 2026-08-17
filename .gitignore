@@ -13,6 +13,11 @@
 **/*.p12
 **/*.pfx
 
+# Artifact sinh tự động, nặng ~31 MB vì nhúng 49 ảnh base64 (DEC-066).
+# Sinh lại bất cứ lúc nào bằng `python scripts/build_handbook.py`.
+# Không theo dõi để mỗi lần build không bơm thêm một blob 31 MB vào lịch sử git.
+/so-tay-tao-knowledge-base.html
+
 # Local caches and operating-system metadata.
 __pycache__/
 *.py[cod]

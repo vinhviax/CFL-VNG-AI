@@ -6,6 +6,7 @@
 
 - Cách đánh giá một câu trả lời bằng nguồn, không chỉ bằng văn phong.
 - Cách làm ảnh xuất hiện trong chat.
+- Cách lưu một câu trả lời thành tài liệu mới ngay trong lúc chat, và vì sao phải Xuất bản mới dùng được.
 - Cách duy trì KB mà không mất khả năng phục hồi.
 
 ## Quy trình kiểm thử chat
@@ -53,9 +54,42 @@ Quy trình chuẩn cho một bộ tài liệu có ảnh:
 7. Xác nhận ảnh thật xuất hiện và nguồn tham khảo trỏ đúng liên kết mới.
 8. Không xóa ảnh đã nạp khi vẫn còn tài liệu Markdown tham chiếu tới nó.
 
+## Thêm kiến thức ngay trong lúc chat
+
+Đọc xong bạn biết cách lưu một câu trả lời hay thành tài liệu mới trong kho, ngay trong khung chat, không cần rời ra soạn file rồi tải lên.
+
+1. Rê chuột vào một câu trả lời của trợ lý — một hàng biểu tượng ẩn hiện ra bên dưới.
+2. Bấm biểu tượng dấu **+** (chú thích **"Thêm vào tri thức"**).
+
+![Hàng biểu tượng dưới câu trả lời, mũi tên chỉ vào nút Thêm vào tri thức](<knowledge/GS9 Knowledge VNG AI/image-50-them-tri-thuc-nut-tren-cau-tra-loi.png>)
+
+*Ảnh 11.2 - Nút "Thêm vào tri thức" chỉ hiện khi rê chuột vào câu trả lời.*
+
+3. Hộp thoại **Tạo tri thức Markdown** mở ra:
+   - **Kho tri thức đích** — mặc định là kho trợ lý đang gắn, đổi được sang kho khác bạn có quyền.
+   - **Tiêu đề tri thức** — tự điền từ câu hỏi trước đó, sửa được, tối đa 100 ký tự.
+   - Ô soạn thảo Markdown — tự điền **nguyên văn câu trả lời của trợ lý**, sửa được trước khi lưu.
+
+![Hộp thoại Tạo tri thức Markdown với kho đích, tiêu đề và ô soạn thảo](<knowledge/GS9 Knowledge VNG AI/image-51-them-tri-thuc-hop-thoai-tao-markdown.png>)
+
+*Ảnh 11.3 - Hộp thoại cho đổi kho đích, sửa tiêu đề và sửa cả nội dung trước khi lưu.*
+
+4. **Đọc lại nội dung trong ô soạn thảo trước khi lưu.** Đây là câu trả lời do mô hình viết ra ở đúng lượt đó — có thể đúng, cũng có thể chỉ là suy luận theo kiến thức chung khi kho không có nguồn. Sửa lại cho khớp sự thật, đừng lưu nguyên văn nếu chưa chắc đúng.
+5. Chọn một trong hai nút:
+   - **Lưu nháp** — tài liệu vào kho ở trạng thái **Bản nháp**, nguồn ghi **Thủ công**.
+   - **Xuất bản** — tài liệu được đưa vào xử lý như một tệp nạp bình thường.
+
+![Tài liệu mới trong danh sách, nguồn Thủ công, trạng thái Bản nháp](<knowledge/GS9 Knowledge VNG AI/image-52-them-tri-thuc-tai-lieu-ban-nhap-trong-kho.png>)
+
+*Ảnh 11.4 - Sau khi lưu nháp: nguồn hiện "Thủ công", trạng thái "Bản nháp", khác hẳn tài liệu đồng bộ từ Google Drive.*
+
+**Dễ hiểu lầm nhất:** nút này lưu **câu trả lời của trợ lý**, không lưu nguyên văn tin nhắn bạn gõ. Kể cả khi bạn tự gõ hẳn nội dung đúng vào khung chat, thứ được lưu vào kho vẫn là **lời trợ lý viết lại** ở lượt trả lời kế tiếp — trừ khi trợ lý chép nguyên văn lại thành công.
+
+**Vì sao phải cẩn trọng:** cách này đưa nội dung vào kho nhanh hơn hẳn quy trình soạn và duyệt tài liệu thông thường. Không có bước duyệt nào bắt buộc giữa Lưu nháp và Xuất bản — người bấm Xuất bản là người quyết định nội dung đó thành sự thật trong kho. Dùng cho kho sự thật đã chốt rủi ro cao hơn hẳn dùng cho kho đang thử nghiệm.
+
 ## Bản nháp không phải nguồn chat
 
-Nội dung ở trạng thái **Bản nháp** không được đưa vào chỉ mục nên chat không truy hồi được.
+Nội dung ở trạng thái **Bản nháp** — dù nạp qua tệp bình thường hay qua nút "Thêm vào tri thức" ở trên — đều không được đưa vào chỉ mục nên chat không truy hồi được.
 
 Checklist phát hành vì vậy luôn phải có ba bước: **Xuất bản**, chờ lập chỉ mục xong, rồi chạy câu hỏi xác nhận.
 

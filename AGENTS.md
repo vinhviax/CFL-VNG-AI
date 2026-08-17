@@ -31,10 +31,11 @@ Khi bắt đầu phiên, đọc `HANDOFF.md`, `STATUS.md`, `PROJECT.md` và `DEC
 | `agent/` | Dev và người phụ trách Agent | Không |
 
 - Nguồn build là `docs KB/Human/` (tên `KB-NN-...`, `Agent-NN-...`). Builder đổi tiền tố tính năng sang `doc-` khi sinh, giữ DEC-042 vì regex đồng bộ khoá `^(doc|image)-`.
-- `so-tay-tao-knowledge-base-v3.md` **không còn là nguồn chính**; builder chỉ đọc tới nó khi `docs KB/Human` rỗng.
+- Master cũ `so-tay-tao-knowledge-base-v3.md` **đã hết vai trò nguồn build**, nay nằm ở `audit/archive/` (DEC-066). Builder chỉ đọc tới nó khi `docs KB/Human` rỗng — không còn xảy ra. Đừng sửa nội dung ở đó và mong nó lên Web.
+- Chủ đề KB thêm mới đánh số **từ 20 trở đi** (`KB-20`, `KB-21`…) vì dải 00–12 đã kín và 13–19 thuộc `Agent-NN`. Thêm module phải sửa kèm `EXPECTED_MODULE_COUNT` trong builder và các test khoá danh sách.
 - Nội dung Dev (`DEC-xxx`, link `audit/`, `Mức bằng chứng`, "chưa kiểm chứng") **không được xuất hiện** trong `docs KB/Human` và `knowledge/`. Test hồi quy kiểm điều này cho 7 module Agent.
-- `scripts/build_handbook.py` sinh 20 module (`doc-00`→`doc-19`) và `so-tay-tao-knowledge-base.html` tự chứa vào `knowledge/GS9 Knowledge VNG AI/`, cùng thư mục với 49 ảnh.
-- Không sửa trực tiếp 20 module sinh hoặc HTML. `image-map.json` là dependency build và phải giữ 49 URI MinIO duy nhất, khoá đặt tên `image-NN-...`.
+- `scripts/build_handbook.py` sinh 21 module (`doc-00`→`doc-20`) vào `knowledge/GS9 Knowledge VNG AI/` cùng thư mục với 49 ảnh, và `so-tay-tao-knowledge-base.html` tự chứa ở root. **HTML này không được git theo dõi** (nặng ~31 MB) — sinh lại bằng build khi cần.
+- Không sửa trực tiếp 21 module sinh hoặc HTML. `image-map.json` là dependency build và phải giữ 49 URI MinIO duy nhất, khoá đặt tên `image-NN-...`.
 - Mỗi module dùng URI MinIO hoạt động cho Web và comment `LOCAL_ASSET` trỏ `./image-NN-...` (cùng thư mục).
 - **URI ảnh có thể chết sau khi ảnh được re-sync qua Drive connector.** Lấy lại hàng loạt bằng MCP `list_documents`, trường `file_path` (DEC-052) — dạng `minio://.../10012/<knowledge_id>/<uuid>.png` đã kiểm chứng render đúng.
 - `knowledge/GS9 CFL Knowledge Agent/` (28 file) **viết tay, ngoài pipeline builder** — và đang lẫn nội dung Dev, chưa tách xong. Xem `HANDOFF.md`.

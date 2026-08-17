@@ -68,9 +68,14 @@ def expected_after_layout_change(rendered):
 
 def main():
     root = Path(__file__).resolve().parents[1]
-    master = root / "so-tay-tao-knowledge-base-v3.md"
-    if master.exists():
-        raise FileExistsError(f"Refusing to overwrite existing master: {master}")
+    # Master đã hết vai trò nguồn build (DEC-053) và dời vào `audit/archive/`
+    # ngày 17/08/2026 (DEC-066). Script này chỉ còn là công cụ khôi phục khẩn
+    # cấp, nên dựng lại vào đúng chỗ lưu trữ và vẫn từ chối ghi đè bản cũ ở root.
+    master = root / "audit" / "archive" / "so-tay-tao-knowledge-base-v3.md"
+    for existing in (master, root / "so-tay-tao-knowledge-base-v3.md"):
+        if existing.exists():
+            raise FileExistsError(f"Refusing to overwrite existing master: {existing}")
+    master.parent.mkdir(parents=True, exist_ok=True)
 
     consumer = (
         root

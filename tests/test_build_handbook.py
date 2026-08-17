@@ -20,16 +20,32 @@ def load_builder():
 
 
 class BuildHandbookTests(unittest.TestCase):
-    def test_master_uses_current_workspace_layout_and_release_counts(self):
-        master = (ROOT / "so-tay-tao-knowledge-base-v3.md").read_text(
-            encoding="utf-8"
+    def test_archived_master_is_out_of_the_build_path(self):
+        """Master cũ là bản lưu trữ, không còn là nguồn build.
+
+        Từ 16/08/2026 builder đọc `docs KB/Human` (DEC-053); nhánh master chỉ
+        chạy khi thư mục đó rỗng. Ngày 17/08/2026 master được dời vào
+        `audit/archive/` (DEC-066). Gate nay kiểm đúng hai điều còn ý nghĩa:
+        master không nằm ở root nữa, và nguồn thật sinh đủ module — thay cho
+        các assert khoá chuỗi số đếm trên một file đã hết vai trò.
+        """
+        self.assertFalse(
+            (ROOT / "so-tay-tao-knowledge-base-v3.md").exists(),
+            "master cũ phải nằm ở audit/archive/, không còn ở root",
+        )
+        self.assertTrue(
+            (ROOT / "audit" / "archive" / "so-tay-tao-knowledge-base-v3.md").is_file(),
+            "bản lưu trữ master phải còn để các tài liệu Dev truy nguyên được",
         )
 
-        self.assertNotIn("knowledge-vng/", master)
-        self.assertIn("đúng 20 file `.md`", master)
-        self.assertIn("đủ 49 ảnh PNG", master)
-        self.assertIn("knowledge/GS9 Knowledge VNG AI/", master)
-        self.assertIn("knowledge/GS9 Knowledge VNG - Image Assets/", master)
+        human_dir = ROOT / "docs KB" / "Human"
+        sources = sorted(
+            path
+            for pattern in ("KB-*.md", "Agent-*.md")
+            for path in human_dir.glob(pattern)
+        )
+        builder = load_builder()
+        self.assertEqual(len(sources), builder.EXPECTED_MODULE_COUNT)
 
     def test_project_layout_uses_exact_web_knowledge_base_names(self):
         builder = load_builder()
@@ -303,6 +319,7 @@ Nội dung kiểm thử.
                 "doc-17-da-phuong-thuc-va-tep-dinh-kem.md",
                 "doc-18-chat-nguon-lich-su-va-danh-gia.md",
                 "doc-19-vong-doi-phan-quyen-quan-sat-va-bao-tri.md",
+                "doc-20-thiet-ke-danh-muc-kho.md",
             ]
         )
         bodies = {}
@@ -329,18 +346,18 @@ Nội dung kiểm thử.
             )
             for module_name, body in bodies.items():
                 index = int(module_name.split("-")[1])
-                sub = "Agent" if index >= 13 else "KB"
+                sub = "Agent" if 13 <= index < 20 else "KB"
                 (human_dir / sub / module_name).write_text(body, encoding="utf-8")
 
             result = builder.build_project(root, require_minio=True)
 
-            self.assertEqual(len(result["modules"]), 20)
+            self.assertEqual(len(result["modules"]), 21)
             self.assertEqual(
                 result["modules"][-1].name,
-                "doc-19-vong-doi-phan-quyen-quan-sat-va-bao-tri.md",
+                "doc-20-thiet-ke-danh-muc-kho.md",
             )
             self.assertTrue(result["html"].exists())
-            self.assertEqual(len(list(consumer_dir.glob("*.md"))), 20)
+            self.assertEqual(len(list(consumer_dir.glob("*.md"))), 21)
             self.assertFalse((root / "knowledge-vng").exists())
 
     def test_live_project_has_exact_agent_deep_split_and_sixty_image_pairs(self):
@@ -365,6 +382,7 @@ Nội dung kiểm thử.
             "doc-17-da-phuong-thuc-va-tep-dinh-kem.md",
             "doc-18-chat-nguon-lich-su-va-danh-gia.md",
             "doc-19-vong-doi-phan-quyen-quan-sat-va-bao-tri.md",
+            "doc-20-thiet-ke-danh-muc-kho.md",
         }
         module_paths = sorted(CONSUMER_DIR.glob("doc-*.md"))
         self.assertEqual({path.name for path in module_paths}, expected_modules)
@@ -374,10 +392,10 @@ Nội dung kiểm thử.
         # ("minio://.../10012/<knowledge_id>/<uuid>.png") render đúng, thay
         # thế toàn bộ 49 URI "exports/" cũ đã chết sau khi ảnh được re-sync
         # qua Google Drive connector. Đếm theo tiền tố chung, không khoá dạng.
-        self.assertEqual(rendered.count("minio://knowledge-base-prd/10012/"), 60)
+        self.assertEqual(rendered.count("minio://knowledge-base-prd/10012/"), 61)
         self.assertEqual(
             rendered.count("<!-- LOCAL_ASSET: ./image-"),
-            60,
+            61,
         )
 
     def test_agent_modules_are_operational_guides_without_dev_content(self):

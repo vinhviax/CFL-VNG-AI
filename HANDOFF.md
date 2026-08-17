@@ -1,7 +1,7 @@
 # Handoff — Knowledge Base VNG
 
-**Cập nhật:** 17/08/2026 (phiên 4 — kho tạm, công cụ truy hồi, chat-test, case study)
-**Phiên bản:** 3.6.0 · **Test:** `Ran 30 tests` / `OK` (6 skip do thiếu HTML nguồn Plan V5 trên máy này)
+**Cập nhật:** 17/08/2026 (phiên 5, máy công ty — converter Plan V5 kiểm chứng, KB-20, dọn artifact dư thừa, sửa file thuyết trình, tính năng "Thêm vào tri thức", đính chính DEC-052)
+**Phiên bản:** 3.7.0 · **Test:** `Ran 30 tests` — **1 FAIL đã biết** (`test_project_image_map_covers_all_merged_assets`, thiếu URI MinIO cho 3 ảnh mới `image-50/51/52`, đang chờ KB xử lý xong — xem mục 4.9)
 
 ---
 
@@ -12,7 +12,7 @@
 | 1 | `AGENTS.md` | Quy tắc làm việc, ranh giới an toàn, bảng phân loại đối tượng đọc |
 | 2 | File này | Trạng thái và việc đang mở |
 | 3 | `STATUS.md` | Nhật ký theo phiên, chi tiết hơn |
-| 4 | `DECISIONS.md` | 62 quyết định — tra khi không hiểu vì sao làm vậy |
+| 4 | `DECISIONS.md` | 70 quyết định — tra khi không hiểu vì sao làm vậy |
 | 5 | `PROJECT.md` | Cây thư mục chuẩn, hợp đồng artifact |
 
 ---
@@ -114,7 +114,13 @@ Gắn KB **không** tự cho Agent quyền đọc kho. Công cụ `Tìm theo ng�
 
 **Đã vá tạm:** gắn cảnh báo "ảnh chụp một thời điểm" cạnh 7 ảnh mang danh sách trong nguồn Human. **Không giải quyết gốc.**
 
-**Việc phiên sau:** đợi KB xử lý xong → chạy lại câu hỏi Case 2 → nếu vẫn sai thì **thử tắt VLM/đọc ảnh ở KB thuần hướng dẫn** (`GS9 Knowledge VNG AI`, `GS9 CFL Knowledge Agent`), giữ VLM ở KB nghiệp vụ (`Plan Version` — Case 1 chứng minh chạy tốt) → so 3 kết quả. Chi tiết: `audit/agent-chat-test-2026-08-17.md` mục 6.
+**CẬP NHẬT 17/08/2026 (phiên 5) — chưa chạy lại được, và có giả thuyết cạnh tranh mới.** Đọc trực tiếp trạng thái phân tích tệp trên Web: **49 ảnh đã `Hoàn tất`, nhưng cả 21 tài liệu chữ đang `Chờ xử lý`** (1 file `Đang xử lý`, hàng đợi chạy tuần tự). Nghĩa là hiện tại **ảnh là nguồn duy nhất trong chỉ mục**.
+
+→ Sinh ra giả thuyết cạnh tranh chưa loại trừ: Case 2 sai **không phải vì Agent ưu tiên ảnh hơn chữ**, mà có thể vì lúc đó **chữ cũng chưa vào chỉ mục** nên ảnh là thứ duy nhất truy hồi được. Khớp với chi tiết vòng tìm ngữ nghĩa đầu tiên trả `Không có kết quả`.
+
+→ **Không chạy lại Case 2 khi chữ còn Chờ xử lý** — sẽ tái hiện lỗi vì lý do tầm thường, không phân biệt được hai giả thuyết. **Điều kiện để chạy:** lọc `Chờ xử lý` + `Đang xử lý` đều rỗng, và lọc `Hoàn tất` đếm đủ **70** tài liệu.
+
+**Việc phiên sau:** đợi đủ điều kiện trên → chạy lại câu hỏi Case 2, ghi rõ model → nếu vẫn sai thì **thử tắt VLM/đọc ảnh ở KB thuần hướng dẫn** (`GS9 Knowledge VNG AI`, `GS9 CFL Knowledge Agent`), giữ VLM ở KB nghiệp vụ (`Plan Version` — Case 1 chứng minh chạy tốt) → so 3 kết quả. Chi tiết: `audit/agent-chat-test-2026-08-17.md` mục 6, 7 và **8**.
 
 ### 4.6 Việc phát sinh khác từ chat-test
 
@@ -127,17 +133,38 @@ Người dùng phát hiện cuối phiên 4: **cả file thuyết trình lẫn k
 
 **Đã vá một nửa:** thêm vào HTML mục 10 phần *"Bắt đầu từ đâu — bốn loại kho hầu như nhóm nào cũng cần"* (kho sự thật đã chốt · quy trình và chính sách · kế hoạch và lịch · kết quả), kèm 3 câu hỏi quyết định tách/gộp (ai được xem · bao lâu đổi một lần · đã chốt hay chưa) và cảnh báo lỗi hay gặp là chia kho theo *nguồn dữ liệu* thay vì theo *câu hỏi người ta sẽ hỏi*.
 
-**CÒN THIẾU — việc phiên sau:** đưa nội dung này vào **kho `GS9 Knowledge VNG AI`** để Agent tra được, không chỉ nằm trong file HTML.
-Vướng kỹ thuật: dải `KB-NN-*` đang kín 00–12, `KB-13` sẽ **đụng** `Agent-13`. Hai cách:
-1. Chèn vào một file đã có — hợp nhất là `KB-03-tai-lieu-rag-wiki.md` (đang nói về loại kho) hoặc `KB-00-gioi-thieu-va-quick-start.md`.
-2. Mở rộng dải trong `HUMAN_SOURCE_PREFIXES` (`scripts/build_handbook.py`) rồi tạo file mới — phải sửa cả test khoá số lượng module (`test_build_handbook.py` đang khoá đúng 20 module).
+**ĐÃ LÀM 17/08/2026 (phiên 5, DEC-065).** Tạo `docs KB/Human/KB-20-thiet-ke-danh-muc-kho.md` → sinh ra `doc-20-thiet-ke-danh-muc-kho.md` trong `GS9 Knowledge VNG AI`.
 
-Cách 1 nhanh và không đụng gate. **Chưa làm, chờ người dùng chọn.**
+Đính chính ghi chép cũ: **không cần mở rộng `HUMAN_SOURCE_PREFIXES`** — hằng đó chỉ liệt kê tiền tố (`KB`, `Agent`), **không khoá dải số nào**. Chỉ cần đánh số từ 20 trở đi là tránh được va chạm với `Agent-13`. Năm chỗ khoá cứng số 20 đã sửa: `EXPECTED_MODULE_COUNT` trong builder, 3 chỗ trong `test_build_handbook.py`, `so-tay-tao-knowledge-base-v3.md`, `PROJECT.md`.
+
+Nội dung gồm: nguyên tắc quyền ở cấp kho · bảng 4 loại kho nên dựng theo thứ tự · 3 câu hỏi tách/gộp · lỗi chia kho theo nguồn dữ liệu · cách đặt tên kho · khi nào rà lại danh mục.
+
+**ĐÃ LÊN WEB** — người dùng nạp `doc-20` vào KB `GS9 Knowledge VNG AI` trên `vnggames.ai` ngày 17/08/2026. Mục 4.7 khép lại. Chưa chat-test xem Agent có tra trúng tài liệu này không.
 
 ### 4.8 Chưa kiểm chứng
-- Converter Plan V5 chạy với bố cục ảnh phẳng mới (DEC-054) — 6 test luôn skip vì HTML nguồn chỉ có trên máy công ty
 - Hành vi connector khi **đổi tên / di chuyển / xoá** tệp
 - Ảnh render 2 lần trong chat (xem mục 5) — chưa báo cho ai chịu trách nhiệm nền tảng
+
+**Đã đóng 17/08/2026 (phiên 5, máy công ty, DEC-063):** Converter Plan V5 bố cục ảnh phẳng (DEC-054) nay **đã kiểm chứng end-to-end**. 6 test trước đây skip nay chạy và pass, 29 ảnh sinh ra khớp SHA256 tuyệt đối với bundle đang commit. Sửa 1 dòng test sai vị trí thư mục (`tests/test_convert_cfl_plan_html.py:94`). Gate hiện tại: `Ran 30 tests / OK`, 0 skip.
+
+### 4.9 ⚠️ VIỆC ƯU TIÊN ĐẦU PHIÊN SAU — đang chờ KB xử lý ảnh, chưa hoàn tất
+
+**Bối cảnh:** cuối phiên 5, người dùng (1) đưa tính năng mới **"Thêm vào tri thức"** (nút `+` dưới câu trả lời chat, lưu thành tài liệu Markdown vào kho, có `Lưu nháp`/`Xuất bản`) — đã viết vào `KB-11-chat-kiem-thu-va-bao-tri.md`, kèm 3 ảnh `image-50/51/52`; (2) crop lại 23 ảnh cũ cho gọn (nội dung không đổi) — `image-01`→`image-14` (trừ vài số), `image-26`→`image-34`; (3) đồng bộ cả 26 ảnh (23 sửa + 3 mới) lên Web.
+
+**Trạng thái lúc dừng phiên:** 26/52 ảnh trong `GS9 Knowledge VNG AI` đứng ở `pending`/`processing`/`finalizing`, **0 tiến triển sau 25 phút theo dõi** (2 lần kiểm qua MCP `list_documents`, cách nhau 20 phút, số liệu y hệt). Nghi hàng đợi xử lý ảnh trên nền tảng bị tắc — đã đề nghị người dùng tự kiểm trên Web (mục Documents, lọc trạng thái, xem có rơi vào "Lỗi" không, thử "Phân tích lại" một file) nhưng **chưa có phản hồi trước khi dừng phiên**.
+
+**Việc phải làm khi vào lại, theo thứ tự:**
+1. Hỏi người dùng tình trạng hàng đợi (có tự hết tắc chưa, có phải bấm gì không).
+2. Kiểm lại qua MCP: `list_documents(knowledge_base_id="cefadf09-4187-46ac-a765-591e3255a4a4", page_size=100)`, lọc `file_type == "png"`, đếm `parse_status`. Cần **52/52 `completed`**.
+3. Khi đủ điều kiện: lấy `file_path` của **26 ảnh vừa xử lý xong** (không phải cả 52 — 26 ảnh còn lại giữ nguyên URI, xem DEC-069), viết lại `image-map.json`.
+4. `python scripts/build_handbook.py` — sẽ tự nhúng URI mới vào các module tham chiếu, gồm cả `doc-11` (nội dung mới "Thêm kiến thức ngay trong lúc chat" chưa từng build thành công vì thiếu URI).
+5. Sửa 2 chỗ khoá cứng "49 ảnh" → "52 ảnh" còn sót trong test (chạy `Ran 30 tests` xem còn FAIL ở đâu, hiện tại chỉ có `test_project_image_map_covers_all_merged_assets`).
+6. Chạy full gate (`build_handbook.py`, `unittest discover`, `link_plan_v5_minio.py --check`), báo người dùng đủ 30 test OK.
+7. Người dùng đồng bộ các `.md` đã build lại (ít nhất `doc-11`) lên Web lần cuối.
+
+**Đừng lặp lại sai lầm cũ:** không cần rà lại URI của tất cả 52 ảnh — DEC-069 đã chứng minh 26 ảnh không đổi giữ nguyên URI, chỉ cần lấy URI cho đúng 26 ảnh vừa chuyển trạng thái.
+
+**Việc 1 (ưu tiên cao, mục 4.5) vẫn đang chờ đúng điều kiện tương tự** — không chạy lại Case 2 cho tới khi toàn bộ 21 tài liệu chữ + 52 ảnh đều `Hoàn tất` (xem `audit/agent-chat-test-2026-08-17.md` mục 8).
 
 ---
 
@@ -182,7 +209,17 @@ python scripts\link_plan_v5_minio.py --check
 
 ## 8. Tài liệu thuyết trình
 
-`gioi-thieu-knowledge-base-va-agent.html` — bản giới thiệu cho team, **12 phần** (0,66 MB, tự chứa, in PDF được): vấn đề · KB là gì · Agent là gì · cách phối hợp · quy trình 6 bước · 10 kho của CFL · 16 trợ lý · bảng binding · **case study** · **đề xuất cấu trúc** · nguyên tắc an toàn · trạng thái.
+`gioi-thieu-knowledge-base-va-agent.html` — bản giới thiệu cho team, **12 mục gom thành 5 phần** (1,35 MB, tự chứa, in PDF được), sắp xếp lại 17/08/2026 theo DEC-067:
+
+| Phần | Mục |
+|---|---|
+| **I Vì sao cần** | 01 Vấn đề đang giải |
+| **II KB và Agent là gì** | 02 Knowledge Base · 03 Agent · 04 Cách phối hợp |
+| **III Có lợi thế nào** | 05 Thử thật trên dữ liệu CFL (3 case) |
+| **IV Đang có gì** | 06 Kho của CFL · 07 Trợ lý của CFL · 08 Ai gắn kho nào · 09 Trạng thái |
+| **V Xây tiếp thế nào** | 10 Đề xuất cấu trúc · 11 Quy trình 6 bước · 12 Nguyên tắc an toàn |
+
+**Sửa file này phải biết:** mốc `<!-- N -->` giữa các section trong bản gốc **không đồng nhất** (có mục thiếu, có mục ghi sai số). Tách section phải quét theo thẻ `<section id=>`, đừng dựa vào mốc comment. Ghi qua tệp tạm + `os.replace`, sao lưu trước, rồi kiểm lại số section, link mục lục, cân bằng `<div>`, số ảnh.
 
 - **Mục 09 Thử thật trên dữ liệu CFL** — 3 case chat-test ngày 17/08/2026 kèm **5 ảnh chụp hội thoại thật** do người dùng cung cấp (`docs KB/Asset/chat/`). **Chỉ trình bày phần năng lực**: case 1 làm được việc thật, case 2 biết nói "không tìm thấy" thay vì bịa, case 3 CS Copilot ra bản DRAFT trả lời khách + đề xuất chuyển tiếp.
 

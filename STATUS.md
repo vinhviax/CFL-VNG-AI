@@ -1,7 +1,32 @@
 # Trạng thái Knowledge Base VNG
 
-**Ngày snapshot:** 17/08/2026 (phiên 4 — gắn kho tạm, bật công cụ truy hồi, chat-test thật, dựng case study)
-**Phiên bản:** 3.6.0
+**Ngày snapshot:** 17/08/2026 (phiên 5, máy công ty)
+**Phiên bản:** 3.7.0
+
+## MỚI 17/08/2026 (phiên 5, máy công ty) — converter Plan V5, KB-20, dọn artifact, sửa file thuyết trình, tính năng "Thêm vào tri thức", đính chính DEC-052
+
+**1. Converter Plan V5 kiểm chứng end-to-end (DEC-063).** Máy công ty có HTML nguồn Plan V5 nên 6 test trước đây skip nay chạy và **pass toàn bộ**. 29 ảnh converter sinh ra khớp SHA256 tuyệt đối với bundle đang commit. Sửa 1 dòng test còn khoá bố cục `assets/` cũ (đã đổi sang phẳng từ DEC-054).
+
+**2. `KB-20-thiet-ke-danh-muc-kho.md` — nội dung "nên dựng những loại kho nào" đã vào kho thật (DEC-065).** Trước đó chỉ có trong file HTML thuyết trình. Đính chính ghi chép cũ: không cần sửa `HUMAN_SOURCE_PREFIXES` (hằng đó không khoá dải số), chỉ cần đánh số tiếp từ 20. Đã build ra `doc-20`, người dùng đã nạp lên Web — `GS9 Knowledge VNG AI` nay 21 tài liệu.
+
+**3. Dọn 2 artifact dư thừa ở root (DEC-066).** `so-tay-tao-knowledge-base-v3.md` — kiểm bằng số liệu (20 khối `MODULE` vs 21 file nguồn Human thật) xác nhận đây là code chết, dời vào `audit/archive/` bằng `git mv`. `so-tay-tao-knowledge-base.html` (31MB, tăng dần mỗi lần build) — gỡ khỏi git, giữ nguyên trên đĩa.
+
+**4. `gioi-thieu-knowledge-base-va-agent.html` sửa nhiều đợt theo phản hồi người dùng (DEC-067/068/070):**
+- Sắp xếp lại 12 mục thành 5 phần theo mục đích (Vì sao cần → KB/Agent là gì → Có lợi thế nào → Đang có gì → Xây tiếp thế nào).
+- Chuyển mục lục từ thanh ngang sang cột trái cố định.
+- Phát hiện và sửa 1 ảnh nằm lạc từ trước (ảnh "chat hiện được hình" nằm sai trong mục An toàn, chuyển đúng về mục Knowledge Base là gì).
+- Thay 8 ảnh bằng bản người dùng crop lại (`case1-bang-doi-chieu`, `case2-trace-lay-tai-lieu-anh`, `case3-tu-choi`, `image-01/02/08/26/27/29/33`) — xác định từng cặp bằng cách đọc nội dung, không suy đoán theo tên (file không có manifest nối ảnh nhúng với nguồn).
+- Sửa số liệu cũ (20→21 tài liệu, bỏ mục đã xong khỏi "đang làm tiếp").
+
+**5. Tính năng nền tảng mới ghi nhận — "Thêm vào tri thức" (viết vào `KB-11-chat-kiem-thu-va-bao-tri.md`).** Nút `+` dưới câu trả lời chat lưu thành tài liệu Markdown vào kho tri thức bất kỳ. Hai điểm dễ hiểu lầm: (a) nội dung lưu là **câu trả lời của trợ lý**, không phải nguyên văn người dùng gõ; (b) `Lưu nháp` khác `Xuất bản` — nháp không vào chỉ mục, trợ lý chưa tra được. Không có bước duyệt bắt buộc giữa hai nút này — rủi ro thật với kho sự thật đã chốt.
+
+**6. Đính chính quan trọng DEC-052 → DEC-069.** DEC-052 từng ghi "đồng bộ Drive làm chết URI ảnh" theo cách đọc sai là *mọi* lần đồng bộ. Kiểm lại bằng dữ liệu thật (người dùng crop 23 ảnh + thêm 3 ảnh mới, đồng bộ, đọc qua MCP `list_documents`): **chỉ 26 ảnh thay đổi/mới chuyển sang xử lý lại; 26 ảnh không đổi giữ nguyên `parse_status: completed` VÀ giữ nguyên URI y hệt** (đối chiếu khớp tuyệt đối với `image-map.json` đang có). Nguyên nhân chết URI 49/49 ngày 11/08 thực ra là **di trú giữa hai KB khác nhau** (DEC-043), không phải bản chất của đồng bộ trong cùng KB. Sửa quy tắc vận hành: từ nay chỉ cần lấy URI cho đúng tập ảnh vừa đổi trạng thái, không cần rà lại toàn bộ.
+
+**7. Việc treo cuối phiên — hàng đợi xử lý ảnh có dấu hiệu tắc.** 26/52 ảnh (23 crop lại + 3 mới) đứng ở `pending`/`processing`/`finalizing` **0 tiến triển sau 25 phút** theo dõi qua MCP (2 lần kiểm, cách 20 phút, số liệu y hệt). Đã đề nghị người dùng tự kiểm trên Web, chưa có phản hồi khi dừng phiên. Xem `HANDOFF.md` mục 4.9 để biết việc cần làm tiếp khi vào lại.
+
+**Gate cuối phiên:** `Ran 30 tests` — **1 FAIL đã biết** (`test_project_image_map_covers_all_merged_assets`, chờ URI 3 ảnh mới). Đây là tín hiệu đúng, không phải lỗi — sẽ tự hết khi ảnh xử lý xong và `image-map.json` được viết lại.
+
+## Snapshot trước đó — phiên 4 (17/08/2026, gắn kho tạm, bật công cụ truy hồi, chat-test thật, dựng case study)
 
 ## MỚI 17/08/2026 (phiên 4, tiếp) — chat-test thật và case study, DEC-061/062
 

@@ -13,7 +13,7 @@ Phiên bản nội dung hiện hành là v3.3.0: 13 module Knowledge Base/Google
 **Tái cấu trúc 15/08/2026 (DEC-043/044):** hai vai trò consumer + asset host đã gộp vật lý cục bộ thành một thư mục. Web KB `GS9 Knowledge VNG - Image Assets` vẫn còn nguyên trạng cho tới khi Phase 3 (Google Drive connector sync) hoàn tất và chat-test đạt.
 
 ```text
-so-tay-tao-knowledge-base-v3.md
+docs KB/Human/{KB,Agent}-NN-*.md
             │
             ├── strict builder ──> knowledge/GS9 Knowledge VNG AI/doc-NN-*.md
             │                              │                    (cùng thư mục)
@@ -55,8 +55,7 @@ Knowledge Base VNG/
 │   ├── GS9 CFL Plan Version/V5/       # 12 doc-v5-NN-*.md + 29 image-v5-NN-*.jpg (cùng thư mục)
 │   └── GS9 CFL .../                   # dữ liệu các KB CFL khác
 ├── agent/                             # config chi tiết từng Agent, cho Dev đọc
-├── so-tay-tao-knowledge-base-v3.md    # master cũ — nay là nguồn dự phòng, xem ghi chú dưới
-├── so-tay-tao-knowledge-base.html     # artifact offline sinh tự động
+├── so-tay-tao-knowledge-base.html     # artifact offline sinh tự động — KHÔNG theo dõi bằng git (DEC-066)
 ├── scripts/                           # builder
 ├── tests/                             # test hồi quy
 ├── samples/                           # dữ liệu mẫu còn dùng
@@ -73,7 +72,7 @@ Knowledge Base VNG/
 
 **Tách nội dung theo đối tượng đọc (16/08/2026).** `docs KB/Dev` và `docs KB/Human` là ma trận hai chiều: trục dọc là ai đọc, trục ngang là tính năng nào (tiền tố tên file `KB-`, `Agent-`; thêm tính năng mới thì thêm tiền tố, không tạo thư mục con). Quy tắc phân loại: câu hỏi mà người dùng cuối đặt ra khi đang chat thì thuộc Human; câu hỏi chỉ người sửa hệ thống mới cần thì thuộc Dev. Chi tiết kiểm chứng, mã `DEC-xxx`, link `audit/` không được xuất hiện trong `docs KB/Human`.
 
-Khi build, tiền tố tính năng được đổi thành `doc-` để giữ quy ước đặt tên trên Web (DEC-042) — regex đồng bộ khoá vào `^(doc|image)-`. `so-tay-tao-knowledge-base-v3.md` không còn là nguồn chính: builder chỉ đọc tới nó khi `docs KB/Human` chưa có file nào.
+Khi build, tiền tố tính năng được đổi thành `doc-` để giữ quy ước đặt tên trên Web (DEC-042) — regex đồng bộ khoá vào `^(doc|image)-`. Master cũ `so-tay-tao-knowledge-base-v3.md` **đã hết vai trò nguồn build** và nằm ở `audit/archive/` từ 17/08/2026 (DEC-066): builder chỉ đọc tới nó khi `docs KB/Human` rỗng, điều không còn xảy ra. Giữ bản lưu trữ vì nhiều tài liệu trong `docs KB/Dev` trích dẫn nó làm nguồn truy nguyên.
 
 `docs human/` (layout cũ, 2 file hướng dẫn rời) đã bị xoá — nội dung thuộc về `docs KB/Human`.
 
@@ -92,8 +91,8 @@ Khi build, tiền tố tính năng được đổi thành `doc-` để giữ quy
 
 ## Hợp đồng artifact
 
-- `docs KB/Human` có đúng 20 file nguồn (`KB-00`→`KB-12`, `Agent-13`→`Agent-19`); builder đổi tiền tố sang `doc-` khi sinh.
-- `GS9 Knowledge VNG AI` local có 20 Markdown (`doc-00`→`doc-19`), 49 PNG thật với signature PNG hợp lệ (`image-01`→`image-49`) và một map — cùng một thư mục (DEC-043).
+- `docs KB/Human` có đúng 21 file nguồn (`KB-00`→`KB-12`, `Agent-13`→`Agent-19`, `KB-20`); builder đổi tiền tố sang `doc-` khi sinh. Dải `KB-NN` kín 00–12 nên chủ đề KB thêm mới đánh số từ 20 trở đi để không đụng dải `Agent-13`→`Agent-19`.
+- `GS9 Knowledge VNG AI` local có 21 Markdown (`doc-00`→`doc-19`, `doc-20`), 49 PNG thật với signature PNG hợp lệ (`image-01`→`image-49`) và một map — cùng một thư mục (DEC-043).
 - Map có 49 key khớp 49 tên PNG `image-NN-...` và 49 URI `minio://knowledge-base-prd/10012/...` duy nhất. Dạng URI hiện dùng là `file_path` lấy qua MCP `list_documents` (DEC-052); dạng `exports/` cũ vẫn hợp lệ.
 - 20 module có 60 link MinIO và 60 `LOCAL_ASSET` dạng `./image-NN-...` (cùng thư mục); HTML không phụ thuộc tài nguyên remote khi đọc.
 - Nội dung chỉ sửa tại `docs KB/Human` rồi build; folder `GS9 Knowledge VNG AI` là mirror phát hành, không phải nơi biên tập trực tiếp.

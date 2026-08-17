@@ -91,7 +91,7 @@ class ConvertCflPlanHtmlTests(unittest.TestCase):
                 sorted(path.name for path in output.glob("*.md")),
                 EXPECTED_MODULES,
             )
-            self.assertEqual(len(list((output / "assets").glob("*.jpg"))), 29)
+            self.assertEqual(len(list(output.glob("*.jpg"))), 29)
             self.assertTrue((output / "source-manifest.json").is_file())
 
             first = tree_snapshot(output)

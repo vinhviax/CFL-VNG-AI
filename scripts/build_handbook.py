@@ -14,7 +14,7 @@ import markdown
 
 
 Module = namedtuple("Module", "name body")
-EXPECTED_MODULE_COUNT = 20
+EXPECTED_MODULE_COUNT = 21
 KNOWLEDGE_DIR_NAME = "knowledge"
 CONSUMER_KB_NAME = "GS9 Knowledge VNG AI"
 HUMAN_SOURCE_DIR_NAME = "docs KB/Human"
@@ -203,9 +203,16 @@ def load_source_from_dirs(root):
 
     if not found:
         # Chưa dựng xong nguồn Human — quay về master gốc để build vẫn chạy.
-        legacy_master = root / "so-tay-tao-knowledge-base-v3.md"
-        if legacy_master.exists():
-            return legacy_master.read_text(encoding="utf-8")
+        # Master đã ngừng là nguồn build từ 16/08/2026 (DEC-053) và được dời vào
+        # `audit/archive/` ngày 17/08/2026 (DEC-066). Vẫn dò cả vị trí cũ ở root
+        # để bản sao chưa cập nhật của repo không gãy build.
+        legacy_candidates = (
+            root / "audit" / "archive" / "so-tay-tao-knowledge-base-v3.md",
+            root / "so-tay-tao-knowledge-base-v3.md",
+        )
+        for legacy_master in legacy_candidates:
+            if legacy_master.exists():
+                return legacy_master.read_text(encoding="utf-8")
         raise ValueError(
             f"Không tìm thấy nguồn nào trong {human_dir} và cũng không có master gốc."
         )

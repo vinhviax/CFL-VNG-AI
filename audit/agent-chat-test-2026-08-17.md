@@ -191,3 +191,36 @@ Kết hợp với mục 6.1 (ảnh sinh chunk `image_caption` + `text` lúc nạ
 **Vẫn còn biến số:** lượt chạy này dùng model **`deepseek-v4-flash`** (khác lượt trước, `hosted_vllm/qwen3.6-...`), và KB có thể đã phân tích thêm tệp. Khi test lại phải ghi rõ model đang dùng.
 
 **Không đổi kết luận về hướng xử lý** — vẫn là: thử tắt VLM/đọc ảnh ở KB thuần hướng dẫn, giữ ở KB nghiệp vụ, rồi so kết quả.
+
+---
+
+## 8. GIẢ THUYẾT CẠNH TRANH MẠNH (phiên 5, máy công ty) — lúc test, ảnh có thể là nguồn DUY NHẤT
+
+Trước khi chạy lại Case 2, đã đọc trực tiếp trạng thái phân tích tệp của `GS9 Knowledge VNG AI` trên Web (`Documents` → lọc theo `Trạng thái`).
+
+**Số liệu đọc được:**
+
+| Nhóm tệp | Số lượng | Trạng thái | Ngày cập nhật |
+|---|---|---|---|
+| Ảnh `.png` | 49 | **Hoàn tất** — đã index, mỗi ảnh có mô tả sinh sẵn hiển thị ngay dưới tên | 15–16/08/2026 |
+| Markdown `doc-09` | 1 | Đang xử lý | 17/08/2026 |
+| Markdown còn lại (`doc-00`→`doc-20` trừ `doc-09`) | 20 | **Chờ xử lý** | 17/08/2026 |
+
+Tức là **toàn bộ 21 tài liệu chữ chưa vào chỉ mục, trong khi cả 49 ảnh đã vào**. Hàng đợi chạy tuần tự từng tệp một.
+
+**Hệ quả với kết luận ở mục 6 và 7.** Mệnh đề "ảnh trong kho được truy hồi làm nguồn" vẫn đúng — trace bước `Lấy tài liệu: image-01-...png` là bằng chứng trực tiếp, không phụ thuộc trạng thái chỉ mục. **Nhưng** có một cách giải thích cạnh tranh chưa loại trừ được cho việc Agent trả lời sai:
+
+> Không phải "Agent ưu tiên ảnh hơn chữ", mà có thể là **lúc chạy Case 2, ảnh là nguồn duy nhất tồn tại trong chỉ mục** — tài liệu chữ khi đó cũng đang ở trạng thái chờ xử lý như bây giờ.
+
+Điều này khớp với chi tiết đã ghi ở mục 2: vòng tìm ngữ nghĩa đầu tiên trả **`Không có kết quả`**, và cả hai vòng chỉ moi được rất ít kết quả. Nếu 21 tài liệu chữ đã có trong chỉ mục thì câu hỏi về Agent và kho lẽ ra phải trúng `doc-02`, `doc-13`, `doc-16`.
+
+**Chưa chứng minh** giả thuyết này, vì không có ảnh chụp trạng thái chỉ mục tại đúng thời điểm chạy Case 2 ngày 17/08. Ghi lại để không kết luận vội theo hướng đổ hết cho VLM.
+
+**Hệ quả với cách test:** **không được chạy lại Case 2 khi 21 tài liệu chữ còn ở trạng thái Chờ xử lý.** Chạy lúc này chắc chắn tái hiện lỗi, nhưng vì lý do tầm thường (chữ chưa index), không phân biệt được hai giả thuyết. Phải đợi đủ hai điều kiện rồi mới chạy:
+
+1. Bộ lọc `Chờ xử lý` và `Đang xử lý` của KB trả về **rỗng**.
+2. Bộ lọc `Hoàn tất` đếm đủ **70** tài liệu (49 ảnh + 21 chữ).
+
+Khi đó mới ghi model và chạy đúng câu hỏi Case 2.
+
+**Quan sát phụ, củng cố mục 6.1:** trong danh sách `Hoàn tất`, phần mô tả của nhiều ảnh hiện thẳng nội dung sinh tự động — ví dụ `image-02` mô tả *"The document depicts a configuration modal window for a Knowledge…"*, `image-06` mô tả *"The document describes the 'Chia sẻ' (Share) configuration interface…"*. Đây là chữ tra cứu được, đúng như đã ghi ở mục 6.1. Một số ảnh khác có mô tả bắt đầu bằng chuỗi `![image-...](minio://...` — tức trường mô tả chứa cả cú pháp nhúng ảnh.
