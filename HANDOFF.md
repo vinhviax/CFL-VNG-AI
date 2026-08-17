@@ -106,7 +106,9 @@ Gắn KB **không** tự cho Agent quyền đọc kho. Công cụ `Tìm theo ng�
 
 **Đã kiểm chứng bằng `keyword_search` vào chỉ mục:** nền tảng OCR ảnh **và** sinh mô tả ảnh **lúc nạp**, lưu thành chunk chữ tra cứu được (`chunk_type: image_caption` và `text`).
 
-**Chưa kết luận:** chưa chứng minh câu trả lời lấy đúng từ chunk đó; KB **chưa phân tích xong** tệp mới sync lúc test; chưa loại trừ khả năng Agent bịa.
+**BẰNG CHỨNG MỚI cuối phiên — đã rõ cơ chế.** Trace lượt chạy lại ghi thẳng bước `Lấy tài liệu: image-01-tong-quan-danh-sach-knowledge.png` (ảnh `docs KB/Asset/chat/case2-trace-lay-tai-lieu-anh.png`). Agent **chủ động truy hồi một tài liệu ảnh làm nguồn**, gọi đích danh tên tệp `.png`. Mệnh đề "ảnh trong kho được truy hồi làm nguồn, nội dung trong ảnh thành dữ kiện" nay ở mức **Đã kiểm chứng**.
+
+**Biến số còn lại:** lượt này chạy model `deepseek-v4-flash` (khác lượt trước `hosted_vllm/qwen3.6-...`); test lại phải ghi rõ model.
 
 **Không dùng lời Agent tự nhận làm bằng chứng.** Khi bị hỏi vặn nó quay ra nhận "tự chế toàn bộ" và nói 4 KB "không tồn tại / rỗng" — **cả 4 đều sai** (thực tế 7, 8, 8, 8 tài liệu).
 

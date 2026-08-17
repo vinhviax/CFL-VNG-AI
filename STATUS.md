@@ -36,7 +36,9 @@ Phát sinh cuối phiên 4, **chưa chốt nguyên nhân, phải test lại**. C
 
 **Đã kiểm chứng (truy vấn thẳng chỉ mục bằng `keyword_search`):** nền tảng OCR nội dung ảnh **và** sinh mô tả ảnh **ngay lúc nạp**, lưu thành chunk văn bản tra cứu được. Có thật hai chunk từ `image-25`: `chunk_type: "image_caption"` ghi *"a connected data source: 'Drive CFL Viax' (Google Drive)… every 15 minutes… status 'Thành công'"*, và `chunk_type: "text"` do OCR. Chuỗi này còn nằm ở `image-15` và `image-33`.
 
-**Chưa kết luận — đây là chỗ phải cẩn thận:**
+**BẰNG CHỨNG MỚI cuối phiên:** trace lượt chạy lại ghi rõ bước **`Lấy tài liệu: image-01-tong-quan-danh-sach-knowledge.png`** — Agent chủ động truy hồi **một tài liệu ảnh** làm nguồn, gọi đích danh tên tệp. Ảnh: `docs KB/Asset/chat/case2-trace-lay-tai-lieu-anh.png`. Mệnh đề "ảnh trong kho được truy hồi làm nguồn và nội dung trong ảnh trở thành dữ kiện" nay **Đã kiểm chứng**. Lượt này dùng model `deepseek-v4-flash`, khác lượt trước.
+
+**Vẫn chưa kết luận:**
 - Chưa chứng minh câu trả lời sai **lấy đúng** từ các chunk đó. Trùng chuỗi rất mạnh nhưng không có trace chỉ đích danh chunk.
 - **KB chưa phân tích xong** các tệp mới sync tại thời điểm test → trạng thái còn biến động, kết quả có thể khác khi xử lý xong.
 - Chưa loại trừ giả thuyết Agent bịa, hoặc giữ lại thông tin cũ từ ngữ cảnh khác.

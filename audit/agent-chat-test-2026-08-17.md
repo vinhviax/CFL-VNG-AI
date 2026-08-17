@@ -167,3 +167,27 @@ Khi bị hỏi vặn *"có phải bạn tự đọc ảnh rồi tự chế ra kh
 3. Che phần danh sách khi chụp ảnh minh hoạ.
 
 **Việc phải làm phiên sau:** thử tắt VLM trên một KB hướng dẫn, chạy lại đúng câu hỏi Case 2, so kết quả.
+
+---
+
+## 7. BẰNG CHỨNG MỚI (cuối phiên) — Agent truy hồi thẳng một tài liệu ảnh
+
+Người dùng chạy lại Case 2 và cung cấp ảnh chụp cây suy luận: `docs KB/Asset/chat/case2-trace-lay-tai-lieu-anh.png`.
+
+Cây 9 bước ghi rõ, theo thứ tự:
+
+1. `Đang tìm trong kho tri thức: "CFL game chính sách xử phạt người chơi gian lận, CFL cheating penalty policy…"` → **Không có kết quả**
+2. `Tìm theo từ khoá: "CFL|cheating|gian lận|xử phạt|penalty"` → **12 khớp**
+3. `Đang tìm trong kho tri thức: "CFL Agent nào xử lý chính sách game, Các Agent mặc định và Agent CFL trên GS9…"` → **1 kết quả**
+4. `Tìm theo từ khoá: "Agent.*CFL|CFL.*Agent|trợ lý.*CFL|CFL.*trợ lý"` → **6 khớp**
+5. **`Lấy tài liệu: image-01-tong-quan-danh-sach-knowledge.png`**
+
+**Bước 5 là bằng chứng trực tiếp:** Agent chủ động lấy **một tài liệu ảnh** làm nguồn trả lời, gọi đích danh tên tệp `.png`. Trước đó ta chỉ suy từ việc trùng chuỗi; nay có trace gọi thẳng.
+
+Kết hợp với mục 6.1 (ảnh sinh chunk `image_caption` + `text` lúc nạp), **cơ chế đã rõ**: ảnh nằm trong kho là tài liệu tra cứu được như mọi tài liệu khác, và nội dung hiển thị bên trong ảnh trở thành dữ kiện.
+
+**Nâng mức phân loại:** từ *Có điều kiện* lên **Đã kiểm chứng** cho mệnh đề "ảnh trong kho được truy hồi làm nguồn và nội dung trong ảnh trở thành dữ kiện trả lời".
+
+**Vẫn còn biến số:** lượt chạy này dùng model **`deepseek-v4-flash`** (khác lượt trước, `hosted_vllm/qwen3.6-...`), và KB có thể đã phân tích thêm tệp. Khi test lại phải ghi rõ model đang dùng.
+
+**Không đổi kết luận về hướng xử lý** — vẫn là: thử tắt VLM/đọc ảnh ở KB thuần hướng dẫn, giữ ở KB nghiệp vụ, rồi so kết quả.
