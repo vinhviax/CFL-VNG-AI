@@ -149,6 +149,8 @@ Bấm **Tạo & đồng bộ ngay**.
 
 *Ảnh 12.11 - Card nguồn báo Đã kết nối và Kết quả Thành công.*
 
+> **Ảnh chụp một thời điểm, không phải danh mục hiện hành.** Tên kho, tên trợ lý, tên nguồn dữ liệu và các con số đếm nhìn thấy trong ảnh là của lúc chụp màn hình để viết hướng dẫn này. Chúng đổi liên tục. Xem ảnh để biết **giao diện nằm ở đâu**, đừng lấy ảnh để biết **hệ thống đang có gì** — mở thẳng hệ thống mà xem.
+
 Card nguồn hiển thị: Trạng thái, Chế độ đồng bộ, Phạm vi, Lịch, Đồng bộ gần nhất và Kết quả. Đọc lại card và đối chiếu từng ô với đúng cấu hình bạn vừa chọn, nhất là chế độ và phạm vi.
 
 Card báo **Thành công** chưa đủ. Vẫn phải:

@@ -14,19 +14,28 @@ Ba điều cần nhớ trước khi đọc bảng dưới:
 
 ## Bảng các kho tri thức của GS9 CFL
 
+Số tài liệu là số đếm trên nền tảng ngày 17/08/2026.
+
 | Kho | Chứa gì | Số tài liệu | Trạng thái |
 |---|---|---|---|
+| `GS9 CFL Kho Dữ Liệu Tổng Hợp` | Gom dữ liệu từ nhiều nguồn riêng lẻ để xem bức tranh toàn cảnh | 101 | Dùng được, là kho **dẫn xuất** |
+| `GS9 Knowledge VNG AI` | Hướng dẫn dùng chính nền tảng: tạo kho, nạp dữ liệu, cấu hình trợ lý. Kèm ảnh minh họa | 69 | Dùng được |
 | `GS9 CFL Plan Version` | Nội dung kế hoạch của từng phiên bản game, kèm ảnh minh họa. Nhiều phiên bản nằm chung một kho | 41 | Dùng được, là tài liệu nội bộ chưa chốt |
-| `GS9 CFL Kho Dữ Liệu Tổng Hợp` | Gom dữ liệu từ nhiều nguồn riêng lẻ để xem bức tranh toàn cảnh | 97 | Dùng được, là kho **dẫn xuất** |
-| `GS9 CFL PUM` | Báo cáo kết quả theo từng tháng, gồm phần marketing và phần sản phẩm | 7 | Dùng được |
 | `GS9 CFL Data Daily` | Số liệu vận hành theo ngày, hạt mịn hơn báo cáo tháng | 8 | Dùng được |
-| `GS9 CFL Item Profile` | Thông tin ItemID và các vật phẩm đã ra mắt, kèm dữ liệu cấp người chơi | 10 | **Dữ liệu nhạy cảm — kho cách ly** |
-| `GS9 CFL Sentiment Feedback User` | Phản hồi người chơi thu từ Fanpage và Store | 1 | **Có yếu tố dữ liệu cá nhân** |
+| `GS9 CFL Item Profile` | Thông tin ItemID và các vật phẩm đã ra mắt, kèm dữ liệu cấp người chơi | 8 | **Dữ liệu nhạy cảm — kho cách ly** |
+| `GS9 CFL Knowledge Agent` | Chính bộ tài liệu bạn đang đọc: hướng dẫn về trợ lý và về kho tri thức của CFL | 8 | Dùng được |
+| `GS9 CFL PUM` | Báo cáo kết quả theo từng tháng, gồm phần marketing và phần sản phẩm | 7 | Dùng được |
 | `GS9 CFL Glossary & Systems` | Thuật ngữ chính thức và tên các hệ thống trong game | 3 | **Bản nháp** |
+| `GS9 CFL Sentiment Feedback User` | Phản hồi người chơi thu từ Fanpage và Store | 1 | **Có yếu tố dữ liệu cá nhân** |
 | `GS9 CFL CS FAQ & Policy` | Câu hỏi thường gặp và chính sách chăm sóc khách hàng | 1 | **Bản nháp** |
-| `GS9 CFL Knowledge Agent` | Chính bộ tài liệu bạn đang đọc: hướng dẫn về trợ lý và về kho tri thức của CFL | — | Dùng được |
 
 ## Từng kho dùng cho việc gì
+
+### `GS9 Knowledge VNG AI`
+
+Kho hướng dẫn dùng nền tảng: cách tạo kho tri thức, nạp dữ liệu, cấu hình trợ lý, kèm ảnh chụp màn hình từng bước. Đây là kho dùng chung cho cả team GS9, không riêng CFL.
+
+Đây **không phải kho nghiệp vụ**. Nó trả lời được "làm thế nào để dựng một kho", không trả lời được "chính sách xử phạt của CFL là gì" hay "sự kiện tháng sau có gì". Một vài trợ lý đang tạm gắn kho này trong lúc chờ kho chuyên môn của chúng được dựng — với những trợ lý đó, đừng dùng câu trả lời làm căn cứ nghiệp vụ.
 
 ### `GS9 CFL Plan Version`
 

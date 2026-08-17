@@ -1,7 +1,85 @@
 # Trạng thái Knowledge Base VNG
 
-**Ngày snapshot:** 17/08/2026 (phiên 3, tiếp — khôi phục sau sự cố Google Drive, chèn ảnh minh họa)
-**Phiên bản:** 3.4.1
+**Ngày snapshot:** 17/08/2026 (phiên 4 — gắn kho tạm, bật công cụ truy hồi, chat-test thật, dựng case study)
+**Phiên bản:** 3.6.0
+
+## MỚI 17/08/2026 (phiên 4, tiếp) — chat-test thật và case study, DEC-061/062
+
+**Đối chiếu số tài liệu Web vs local: khớp 100%.** Kiểm cả 10 KB: `GS9 Knowledge VNG AI` 69, `Plan Version` 41, `Knowledge Agent` 8, `Data Daily` 8, `Item Profile` 8, `PUM` 7, `Glossary` 3, `Sentiment` 1, `CS FAQ` 1, `Kho Dữ Liệu Tổng Hợp` 101. Người dùng đã đồng bộ đủ. Hai thay đổi so với tài liệu cũ: KB `GS9 Knowledge VNG - Image Assets` **không còn trong danh sách** (đã gỡ), và `Kho Dữ Liệu Tổng Hợp` tăng từ 16 (audit 14/08) lên **101**.
+
+**Phát hiện chặn đường — gắn KB thôi chưa đủ (DEC-061).** Chat-test lượt đầu của `Player Communications` thất bại với `tool not found: search_knowledge_base (available: ask_user, thinking, todo_write)`. Công cụ truy hồi là tập cấu hình **riêng**, trước đây bị mờ vì Agent chưa có KB, sau khi bind mới bật được nhưng **không tự bật**. Đã bật `Tìm theo ngữ nghĩa` + `Tìm theo từ khóa` cho 3 Agent (Player Communications 3→5 tool, Economy Offer Analyst 3→5, GM Policy Advisor 2→4); `CS Copilot` chế độ Trả lời nhanh không có tab Công cụ. **Quy tắc mới: dựng Agent phải kiểm bước "đã bật công cụ truy hồi chưa".**
+
+**Chat-test 3 Agent trên KB an toàn (DEC-062), bằng chứng `audit/agent-chat-test-2026-08-17.md`:**
+
+| Agent | Kết quả | Ghi chú |
+|---|---|---|
+| `Player Communications` × Plan Version | **Đạt** | 31 bước/5m24s, 5 tính năng V5 khớp nguồn, ảnh render thật, tự để trống ô nguồn ở 2/5 khẳng định thiếu bằng chứng |
+| `Knowledge Curator` × 2 kho | **Có điều kiện** | Từ chối bịa điều khoản xử phạt (đúng), nhưng khẳng định sai "chỉ có 6 Agent mặc định" và liệt kê KB đã bị gỡ |
+| `CS Copilot` × Knowledge VNG AI | **Đạt về guardrail** | Từ chối trả lời vì kho không phải nguồn CS được duyệt — bằng chứng kho tạm không thay được kho đúng |
+
+**Gate 4.2 mở một phần** — lần đầu có Agent đạt chat-test đầy đủ. 13/16 Agent vẫn *Bị chặn–Chưa xác định*. Ba Agent gắn KB nhạy cảm (PUM, Sentiment, Kho Tổng Hợp) chưa test vì giới hạn phạm vi ở KB an toàn.
+
+**File thuyết trình `gioi-thieu-knowledge-base-va-agent.html` nâng từ 10 lên 12 mục:**
+- Mục 08 vá bảng binding theo trạng thái mới, thêm cảnh báo 4 Agent đang dùng kho tạm.
+- **Mục 09 mới — Case study**, 3 case thật kèm 3 ảnh Plan V5 nhúng base64, giữ nguyên cả phần lỗi vì đó là lập luận cho việc dựng đủ kho.
+- **Mục 10 mới — Đề xuất cấu trúc**, hai phương án đặt cạnh nhau (A chia theo mức nhạy cảm/nhịp cập nhật, B chia theo 4 nhóm công việc) kèm đánh đổi từng bên, bảng 4 kho cần dựng và ai phải cung cấp gì, gợi ý thứ tự làm, 4 câu hỏi để team chốt.
+- **Sửa lỗi tồn tại từ trước:** 10 ảnh cũ có `loading="lazy"` nên **không render khi in PDF**. Đã bỏ lazy toàn bộ — nay 13/13 ảnh tải, kiểm chứng bằng trình duyệt.
+- Vá số đếm KB lệch trong mục 06 (`~97`→`101`, Item Profile `7`→`8`). File 0,44 → 0,66 MB.
+
+**Nguồn Human đã vá:** `KBCFL-10-cac-kho-tri-thuc-cua-cfl.md` cập nhật số đếm 10 kho theo Web, bổ sung mục `GS9 Knowledge VNG AI` kèm cảnh báo đây không phải kho nghiệp vụ. Rebuild sinh lại `doc-02` và `doc-10` trong meta-KB.
+
+## ⚠️ NGHI VẤN CHƯA KẾT LUẬN — ảnh minh hoạ có thể đang thành nguồn dữ kiện sai (ưu tiên kiểm lại)
+
+Phát sinh cuối phiên 4, **chưa chốt nguyên nhân, phải test lại**. Chi tiết đầy đủ ở `audit/agent-chat-test-2026-08-17.md` mục 6.
+
+**Hiện tượng.** `Knowledge Curator` khẳng định ba thứ sai: hệ thống "chỉ có 6 trợ lý mặc định, không có agent nào tên CFL"; tồn tại kho `Knowledge VNG - Image Assets`; có nguồn `Drive CFL Viax` sync mỗi 15 phút. Cả ba khớp gần như từng ký tự với nội dung nhìn thấy trong 3 ảnh nằm trong `GS9 Knowledge VNG AI`: `image-26-agent-tong-quan-danh-sach.png`, `image-41-agent-test-kb-da-nguon.png`, `image-25-google-drive-dong-bo-thanh-cong.png`.
+
+**Đã kiểm chứng (truy vấn thẳng chỉ mục bằng `keyword_search`):** nền tảng OCR nội dung ảnh **và** sinh mô tả ảnh **ngay lúc nạp**, lưu thành chunk văn bản tra cứu được. Có thật hai chunk từ `image-25`: `chunk_type: "image_caption"` ghi *"a connected data source: 'Drive CFL Viax' (Google Drive)… every 15 minutes… status 'Thành công'"*, và `chunk_type: "text"` do OCR. Chuỗi này còn nằm ở `image-15` và `image-33`.
+
+**Chưa kết luận — đây là chỗ phải cẩn thận:**
+- Chưa chứng minh câu trả lời sai **lấy đúng** từ các chunk đó. Trùng chuỗi rất mạnh nhưng không có trace chỉ đích danh chunk.
+- **KB chưa phân tích xong** các tệp mới sync tại thời điểm test → trạng thái còn biến động, kết quả có thể khác khi xử lý xong.
+- Chưa loại trừ giả thuyết Agent bịa, hoặc giữ lại thông tin cũ từ ngữ cảnh khác.
+
+**Lời Agent tự nhận KHÔNG dùng làm bằng chứng.** Khi bị hỏi vặn "có phải bạn tự chế ra không", nó quay ra nhận đã bịa toàn bộ và nói `GS9 CFL PUM`, `GS9 CFL Data Daily`, `GS9 CFL Item Profile` "không hề tồn tại", `GS9 CFL Knowledge Agent` "rỗng 0 tài liệu" — **cả bốn đều sai**, thực tế lần lượt 7, 8, 8, 8 tài liệu. Nó nhận bừa theo hướng câu hỏi gợi ý. Không tin lời Agent tự mô tả về chính nó theo cả hai chiều; kiểm bằng API/UI.
+
+**Đã vá tạm:** gắn dòng cảnh báo "ảnh chụp một thời điểm, không phải danh mục hiện hành" cạnh 7 ảnh mang danh sách trong nguồn Human (`Agent-13` ×1, `Agent-16` ×3, `KB-08` ×2, `KB-12` ×1).
+
+**Vá tạm không giải quyết gốc** — không thể chụp lại ảnh mỗi lần hệ thống đổi, trong khi ảnh chỉ để minh hoạ giao diện. Hướng người dùng đề xuất, **cần thử ở phiên sau**:
+1. **Tắt VLM / đọc ảnh ở KB thuần hướng dẫn** (`GS9 Knowledge VNG AI`, `GS9 CFL Knowledge Agent`). Chưa biết nền tảng có cho tắt riêng từng KB không, và tắt rồi ảnh có còn hiện trong câu trả lời không.
+2. **Giữ VLM ở KB nghiệp vụ** như `GS9 CFL Plan Version` — ở đó nội dung trong ảnh chính là thứ cần tra, Case 1 chứng minh chạy tốt.
+3. Che phần danh sách khi chụp ảnh minh hoạ.
+
+**Cách test lại:** đợi KB xử lý xong toàn bộ tệp → chạy lại đúng câu hỏi Case 2 → nếu vẫn sai thì tắt VLM một KB hướng dẫn → chạy lại lần nữa → so ba kết quả.
+
+**Không đưa nghi vấn này vào `gioi-thieu-knowledge-base-va-agent.html`** — file đó để present cho team, chỉ chứa kết luận đã chốt.
+
+**Việc phát sinh còn mở khác:** lỗi truy hồi của `Knowledge Curator` (kho có nội dung nhưng lấy nhầm đoạn) — thử tăng Top K hoặc bật `Thông tin tài liệu` rồi test lại; truy hồi bỏ sót 2 ảnh có thật trong kho ở case 1; `CS Copilot` không render thân câu trả lời.
+
+## Snapshot trước đó trong cùng ngày — phiên 4, phần đầu
+
+## MỚI 17/08/2026 (phiên 4) — gắn kho tạm cho 4 Agent, DEC-060
+
+**Bốn Agent custom cuối cùng nay đã có KB.** Trước phiên này `CS Copilot`, `Economy Offer Analyst`, `GM Policy Advisor`, `Player Communications` đều ở `kb_selection_mode: none`. Đã kiểm tra và xác định nguyên nhân gốc **không phải thiếu quyền mà là thiếu nội dung**: bốn KB nghiệp vụ đúng cho từng vai trò chưa có nội dung hoặc chưa tồn tại. Người dùng quyết định hoãn việc soạn nội dung, gắn tạm kho gần đúng nhất, phần thiếu ghi lại chuẩn bị sau.
+
+| Agent | Kho tạm đã gắn | KB đúng còn thiếu |
+|---|---|---|
+| `GS9 CFL Player Communications` | `GS9 CFL Plan Version` | `GS9 CFL Event Calendar & Brief` |
+| `GS9 CFL Economy Offer Analyst` | `GS9 CFL Data Daily` | `GS9 CFL Item Catalog` (phải tách khỏi Item Profile, có dữ liệu P0) |
+| `GS9 CFL CS Copilot` | `GS9 Knowledge VNG AI` (fallback) | `GS9 CFL CS FAQ & Policy` (mới có file định dạng) |
+| `GS9 CFL GM Policy Advisor` | `GS9 Knowledge VNG AI` (fallback) | `GS9 CFL GM Policy & Sanction` (chưa tồn tại) |
+
+**Cách làm:** mở dialog cấu hình từng Agent trên Web bằng `claude-in-chrome`, tab `Kho tri thức`, đổi từ `Không dùng kho tri thức` sang `Kho tri thức đã chọn`, chọn đúng một KB, `Lưu`. Cả 4 lần đều nhận toast `Đã cập nhật trợ lý`. **Sau đó mở lại cả 4 dialog đọc trực tiếp để xác minh** — không tin toast. Không đụng mode chạy, model, tool, prompt hay chia sẻ. Agent ID đọc được: `Player Communications` = `4b8e6d78-9217-4dbb-8ab3-919628a48440`.
+
+**Kho tạm không đóng được lý do chặn ban đầu ở DEC-058.** `CS Copilot` và `GM Policy Advisor` đang trỏ kho hướng dẫn nền tảng, hoàn toàn không chứa chính sách CS hay điều khoản xử phạt — câu trả lời của chúng về hai mảng đó vẫn không có nguồn CFL bảo chứng. Chất lượng runtime của cả 4 vẫn **Bị chặn–Chưa xác định** vì chưa chat-test.
+
+**Đã cập nhật:** `audit/agent-kb-binding-4-agent-2026-08-17.md` (bằng chứng), `DECISIONS.md` (DEC-060), `docs KB/Human/AgentCFL-02-ma-tran-so-sanh-16-agent.md` (bảng ai gắn kho nào + bảng kho tạm/kho đúng), `docs KB/Dev/Agent-ho-so-16-agent-cfl.md` (3 chỗ: bảng binding Web actual, bảng hồ sơ 10 Agent, mục 3.5 lý do chặn). Gate: strict build ra 20 module + 8 doc KB Agent, `Ran 30 tests`/`OK` (6 skip), `link_plan_v5_minio.py --check` = 0 thay đổi.
+
+**Cạm bẫy kỹ thuật mới ghi nhận (chi tiết trong audit):** toạ độ ảnh chụp trình duyệt không khớp toạ độ click — viewport thật `2080x1032` nhưng ảnh trả về `1568x778`, phải nhân `1.3265`, không nhân thì mở nhầm Agent khác. Phím `Escape` đóng cả dialog và mất thay đổi chưa lưu, muốn đóng dropdown phải click vùng trống trong dialog.
+
+## Snapshot trước đó — 17/08/2026 (phiên 3, tiếp)
+
+**Phiên bản khi đó:** 3.4.1
 **Giai đoạn:** Nguồn nội dung đã tách ba tầng (DEC-053): `docs KB/Dev` (25 file, không lên Web) → `docs KB/Human` (29 file, nguồn build) → `knowledge/` (bản sinh, lên Web). `build_handbook.py` sinh 2 KB: `GS9 Knowledge VNG AI` (20 doc + 49 ảnh) và `GS9 CFL Knowledge Agent` (8 doc — 5 về Agent CFL, 3 về KB CFL). Toàn bộ URI ảnh đã vá: 49 ảnh sổ tay (DEC-052) và 29 ảnh Plan V5 (DEC-057). **Chat-test ảnh ĐẠT** — ảnh render thật trong câu trả lời. Đã chèn luật trích dẫn ảnh vào System Prompt của 10/10 Agent custom (DEC-056). Bảng ai gắn kho nào đã bổ sung cho cả bản Human và Dev; hai binding rủi ro (Incident Triage → PUM, Player Voice Analyst → Sentiment) đã được người dùng xác nhận giữ nguyên vì nền tảng chỉ dùng nội bộ (DEC-058). `Ran 30 tests`/`OK`.
 
 **Sự cố Google Drive ngày 17/08/2026 (DEC-059) — đã khôi phục hoàn toàn, không mất dữ liệu đã commit.** Drive mất kết nối rồi tự "Restore" ra một layout trộn cấu trúc cũ (trước 15/08) chồng lên cấu trúc mới, làm thư mục `knowledge` thật bị đẩy thành `knowledge (1)`, `.git` hỏng mất lịch sử. Khôi phục bằng cách: clone bản sạch từ GitHub ra ngoài Drive để đối chiếu, đổi tên `knowledge (1)` → `knowledge` (giữ nguyên ID nên **không mất kết nối Web**), thay `.git` hỏng bằng bản sạch, `git restore` + `git clean` dọn file cũ chui vào. Rà soát kỹ toàn bộ cây thư mục sau đó, xoá 6 thư mục rác Drive để lại (`V5/assets`, `V5/assets (1)`, `docs KB/Dev/Agent`, `docs KB/Dev/KB`, `docs KB/Asset/New folder`, `knowledge/Test`). Xác nhận cuối: `git diff --stat origin/main HEAD` rỗng tuyệt đối, `Ran 30 tests OK`. Bài học ghi vào memory hệ thống: ghi file phải qua file tạm rồi `os.replace`, không ghi đè trực tiếp khi làm việc trên Drive.

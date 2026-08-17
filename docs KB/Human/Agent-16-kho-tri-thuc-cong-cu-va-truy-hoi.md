@@ -25,6 +25,8 @@ Nếu bạn nhân bản một Agent mặc định, bản sao sẽ kế thừa ph
 
 *Ảnh 16.1 - Chọn KB là control bảo mật và chất lượng, không chỉ là tiện lợi.*
 
+> **Ảnh chụp một thời điểm, không phải danh mục hiện hành.** Tên kho, tên trợ lý, tên nguồn dữ liệu và các con số đếm nhìn thấy trong ảnh là của lúc chụp màn hình để viết hướng dẫn này. Chúng đổi liên tục. Xem ảnh để biết **giao diện nằm ở đâu**, đừng lấy ảnh để biết **hệ thống đang có gì** — mở thẳng hệ thống mà xem.
+
 ### Lọc loại tệp
 
 Loại tệp thường có trên giao diện: `MD`, `PDF`, `CSV`, `DOCX`, `TXT`, `XLSX`, `XLS`, `JSON`, `PPTX`, `HTML`, `MSG`, `EML`. Danh sách có thể khác theo tenant.
@@ -104,6 +106,8 @@ Giá trị mặc định của hộp tạo mới và giá trị đang lưu trên
 
 *Ảnh 16.4 - Một Agent có thể gắn nhiều KB; giữ danh sách gọn giúp quan sát nguồn dễ hơn.*
 
+> **Ảnh chụp một thời điểm, không phải danh mục hiện hành.** Tên kho, tên trợ lý, tên nguồn dữ liệu và các con số đếm nhìn thấy trong ảnh là của lúc chụp màn hình để viết hướng dẫn này. Chúng đổi liên tục. Xem ảnh để biết **giao diện nằm ở đâu**, đừng lấy ảnh để biết **hệ thống đang có gì** — mở thẳng hệ thống mà xem.
+
 ## Baseline cho Agent hỏi đáp Knowledge VNG AI
 
 Khởi đầu thực dụng:
@@ -127,6 +131,8 @@ Sau đó chọn một câu hỏi từ mỗi chủ đề quan trọng, một câu
 ![Nhắc KB hoặc tệp bằng @](<knowledge/GS9 Knowledge VNG AI/image-42-agent-at-kho-tri-thuc-va-tep.png>)
 
 *Ảnh 16.5 - Hộp thoại hiển thị cả KB và từng tệp có thể nhắc trong khung chat.*
+
+> **Ảnh chụp một thời điểm, không phải danh mục hiện hành.** Tên kho, tên trợ lý, tên nguồn dữ liệu và các con số đếm nhìn thấy trong ảnh là của lúc chụp màn hình để viết hướng dẫn này. Chúng đổi liên tục. Xem ảnh để biết **giao diện nằm ở đâu**, đừng lấy ảnh để biết **hệ thống đang có gì** — mở thẳng hệ thống mà xem.
 
 ## Ma trận kiểm thử
 

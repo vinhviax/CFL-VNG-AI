@@ -32,6 +32,8 @@ Agent nghiệp vụ chọn kho tri thức chứa nội dung nghiệp vụ làm n
 
 *Ảnh 13.1 - Danh sách Agent, bộ lọc phạm vi và điểm bắt đầu tạo Agent.*
 
+> **Ảnh chụp một thời điểm, không phải danh mục hiện hành.** Tên kho, tên trợ lý, tên nguồn dữ liệu và các con số đếm nhìn thấy trong ảnh là của lúc chụp màn hình để viết hướng dẫn này. Chúng đổi liên tục. Xem ảnh để biết **giao diện nằm ở đâu**, đừng lấy ảnh để biết **hệ thống đang có gì** — mở thẳng hệ thống mà xem.
+
 ## Sáu tab của hộp Tạo trợ lý
 
 | # | Tab | Quyết định điều gì |

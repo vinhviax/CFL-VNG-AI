@@ -16,9 +16,9 @@
 
 > **Chưa Agent nào chat-test đạt.** Gate **G6** (chat-test grounding, xác nhận `Nguồn tham khảo` đúng và không lộ PII) chưa chạy tính đến 15/08/2026. Toàn bộ 16 Agent ở mức **Bị chặn–Chưa xác định** về chất lượng runtime.
 
-### Binding KB thật — đọc từ API ngày 16/08/2026
+### Binding KB thật — đọc trực tiếp từ dialog Web ngày 17/08/2026
 
-Lấy trực tiếp từ `GET /kb/v1/api/agents`, trường `config.kb_selection_mode` và `config.knowledge_bases`. Đây là **Web actual**, không phải thiết kế:
+Sáu hàng đầu lấy từ `GET /kb/v1/api/agents` ngày 16/08/2026 (trường `config.kb_selection_mode`, `config.knowledge_bases`). Bốn hàng cuối là mutation thực hiện ngày 17/08/2026 và đã đọc lại trực tiếp từ dialog `Kho tri thức` của từng Agent. Đây là **Web actual**, không phải thiết kế:
 
 | Agent custom | `kb_selection_mode` | KB đang gắn |
 |---|---|---|
@@ -28,10 +28,10 @@ Lấy trực tiếp từ `GET /kb/v1/api/agents`, trường `config.kb_selection
 | `Player Voice Analyst` | `selected` | **`GS9 CFL Sentiment Feedback User`** |
 | `LiveOps Planner` | `selected` | `GS9 Knowledge VNG AI` |
 | `Release Reviewer` | `selected` | `GS9 Knowledge VNG AI` |
-| `CS Copilot` | `none` | — |
-| `Economy Offer Analyst` | `none` | — |
-| `GM Policy Advisor` | `none` | — |
-| `Player Communications` | `none` | — |
+| `Player Communications` | `selected` | `GS9 CFL Plan Version` — **kho tạm** |
+| `Economy Offer Analyst` | `selected` | `GS9 CFL Data Daily` — **kho tạm** |
+| `CS Copilot` | `selected` | `GS9 Knowledge VNG AI` — **kho tạm, fallback nền tảng** |
+| `GM Policy Advisor` | `selected` | `GS9 Knowledge VNG AI` — **kho tạm, fallback nền tảng** |
 
 **Hai binding từng bị đánh giá là rủi ro — nay đã được chấp nhận (16/08/2026):**
 
@@ -42,7 +42,18 @@ Hồ sơ Agent cũ và audit 14/08 từng ghi hai cặp này là *"chặn"* / *"
 
 Vẫn giữ nguyên tắc chung khi bind kho mới: chỉ gắn kho mà công việc của Agent thật sự cần, không gắn thừa.
 
-**Bốn Agent `kb_selection_mode: none`** trả lời hoàn toàn không có nguồn CFL nào — kết quả của chúng không có gì bảo chứng. Con số *"6/10 đã bind"* ở bảng trên khớp với dữ liệu API này.
+**Bốn kho tạm gắn ngày 17/08/2026 (DEC-060).** Trước đó cả bốn ở `kb_selection_mode: none`. Nguyên nhân gốc không phải thiếu quyền mà là **thiếu nguồn**: KB nghiệp vụ đúng cho từng vai trò chưa có nội dung hoặc chưa tồn tại. Người dùng chọn hoãn soạn nội dung và gắn tạm kho gần đúng nhất, phần thiếu ghi lại chuẩn bị sau.
+
+| Agent | Kho tạm | KB nghiệp vụ đúng còn thiếu | Việc phải làm để thay |
+|---|---|---|---|
+| `Player Communications` | `GS9 CFL Plan Version` | `GS9 CFL Event Calendar & Brief` | soạn lịch sự kiện, brief đã duyệt, mẫu thông báo |
+| `Economy Offer Analyst` | `GS9 CFL Data Daily` | `GS9 CFL Item Catalog` | tách khỏi `GS9 CFL Item Profile`, rà dữ liệu P0 trước khi tách |
+| `CS Copilot` | `GS9 Knowledge VNG AI` | `GS9 CFL CS FAQ & Policy` | mới có file định dạng, cần top câu hỏi CS + câu trả lời chuẩn + ranh giới escalation |
+| `GM Policy Advisor` | `GS9 Knowledge VNG AI` | `GS9 CFL GM Policy & Sanction` | soạn bảng điều khoản xử phạt, quy trình, tiền lệ |
+
+Kho tạm **không có tác dụng bảo chứng chuyên môn**. `CS Copilot` và `GM Policy Advisor` đang trỏ kho hướng dẫn nền tảng, hoàn toàn không chứa chính sách CS hay điều khoản xử phạt — câu trả lời của chúng về hai mảng đó vẫn không có nguồn CFL nào bảo chứng. Khi KB đúng có nội dung, phải đổi binding và cập nhật lại bảng này.
+
+Bằng chứng mutation và xác minh: `audit/agent-kb-binding-4-agent-2026-08-17.md`.
 
 **Phạm vi thật hẹp hơn tên gọi:** `Incident Triage` chỉ có report tháng, chưa có runbook sự cố. `LiveOps Planner` và `Release Reviewer` gắn kho hướng dẫn nền tảng, chưa gắn kho nghiệp vụ LiveOps. Đừng suy từ tên Agent ra phạm vi dữ liệu.
 
@@ -106,10 +117,10 @@ Web actual ngày **15/08/2026**. Nguồn: 10 thư mục `agent/GS9 CFL */`, `aud
 | `GS9 CFL KPI Experiment Analyst` | Phân tích KPI và thử nghiệm LiveOps; giải thích cohort, segment, phương sai, bất thường, caveat thống kê | `GS9 CFL Kho Dữ Liệu Tổng Hợp` (1) | 6 | Có KB · **chưa chat-test** |
 | `GS9 CFL Player Voice Analyst` | Phân tích phản hồi người chơi đã ẩn danh/tổng hợp: chủ đề, sentiment, pain point, feature request | `GS9 CFL Sentiment Feedback User` (1) | 4 | Có KB · **chưa chat-test** |
 | `GS9 CFL Knowledge Curator` | Biến bằng chứng event/sự cố thành draft postmortem, bài học, action item, đề xuất cập nhật KB | `GS9 Knowledge VNG AI` + `GS9 CFL Knowledge Agent` (2) | 6 | Có KB · **chưa chat-test** |
-| `GS9 CFL Economy Offer Analyst` | Rà soát đề xuất kinh tế và gói ưu đãi theo bằng chứng item, tiền tệ, phần thưởng, giá, hiệu quả lịch sử | **Không bind** | 3 | **Chặn** — thiếu KB hợp lệ |
-| `GS9 CFL Player Communications` | Soạn nội dung hướng ra người chơi và biến thể bản địa hóa từ brief/claim/lịch/thuật ngữ đã duyệt | **Không bind** | 3 | **Chặn** — chờ KB nguồn |
-| `GS9 CFL GM Policy Advisor` | Tra cứu và giải thích chính sách xử phạt, quy trình, tiền lệ cho GM được phân quyền | **Không bind** | 2 | **Chặn** — chờ KB chính sách |
-| `GS9 CFL CS Copilot` | Phân loại ticket và soạn draft trả lời/escalation cho CS dựa trên chính sách đã duyệt | **Không bind** | 0 | **Chặn** — thiếu KB, mode không có tab Công cụ |
+| `GS9 CFL Economy Offer Analyst` | Rà soát đề xuất kinh tế và gói ưu đãi theo bằng chứng item, tiền tệ, phần thưởng, giá, hiệu quả lịch sử | `GS9 CFL Data Daily` (1) — **tạm** | 3 | Có KB tạm · **chưa chat-test** · chờ `Item Catalog` |
+| `GS9 CFL Player Communications` | Soạn nội dung hướng ra người chơi và biến thể bản địa hóa từ brief/claim/lịch/thuật ngữ đã duyệt | `GS9 CFL Plan Version` (1) — **tạm** | 3 | Có KB tạm · **chưa chat-test** · chờ `Event Calendar & Brief` |
+| `GS9 CFL GM Policy Advisor` | Tra cứu và giải thích chính sách xử phạt, quy trình, tiền lệ cho GM được phân quyền | `GS9 Knowledge VNG AI` (1) — **tạm, fallback** | 2 | KB tạm không đúng chuyên môn · chờ `GM Policy & Sanction` |
+| `GS9 CFL CS Copilot` | Phân loại ticket và soạn draft trả lời/escalation cho CS dựa trên chính sách đã duyệt | `GS9 Knowledge VNG AI` (1) — **tạm, fallback** | 0 | KB tạm không đúng chuyên môn · chờ `CS FAQ & Policy` · mode không có tab Công cụ |
 
 ### 3.2 Cấu hình chung — Web actual 15/08/2026
 
@@ -162,16 +173,18 @@ Xác minh **tên + ID trong dialog** trước mọi thao tác. Danh sách Agent 
 
 Chiến lược truy hồi **giữ mặc định** cho cả 10: không đổi Top K hay ngưỡng vector/keyword vì chưa có dữ liệu eval. Tài liệu thiết kế cũng ghi các ngưỡng này "must be tuned by eval".
 
-### 3.5 Lý do bốn Agent chưa bind KB
+### 3.5 Bốn Agent gắn kho tạm — lịch sử và điều kiện thay
 
-Đây là quyết định có chủ đích, không phải việc bỏ sót.
+Cả bốn từng ở `kb_selection_mode: none` vì thiếu nguồn hợp lệ, không phải bỏ sót. Ngày 17/08/2026 người dùng chọn gắn tạm kho gần đúng nhất thay vì chờ (DEC-060). Kho tạm là giải pháp cầu, **không** đáp ứng lý do chặn ban đầu.
 
-| Agent | Lý do | Điều kiện gỡ chặn |
-|---|---|---|
-| `GS9 CFL Player Communications` | Đề xuất cũ định bind `GS9 CFL PUM`, nhưng PUM chứa **doanh thu thực, ngân sách marketing, chi phí UA, roadmap chưa công bố**. Agent này soạn nội dung **hướng ra người chơi** → retrieval kéo chunk tài chính vào bản nháp thông báo là rò rỉ dữ liệu nội bộ. System Prompt hiện chỉ cấm "invent benefits", **không** cấm trích số liệu nội bộ. | `GS9 CFL Plan Version` có nội dung (hiện 0 tài liệu tại thời điểm quyết định) **và** guardrail C1/C2 được duyệt |
-| `GS9 CFL Economy Offer Analyst` | KB đúng (`GS9 CFL Item Catalog`, chỉ dữ liệu item-level) **chưa tồn tại**. `GS9 CFL Item Profile` **bị cấm bind** vì chứa dữ liệu player — blocker **P0** | Tạo KB item-level sạch, hoặc đóng G2 |
-| `GS9 CFL GM Policy Advisor` | Vai trò đã đổi từ điều tra case-scoped sang tra cứu chính sách (DEC-039). KB đích `GS9 CFL GM Policy & Sanction` **cần tạo**. Bằng chứng từng vụ đi qua **tệp đính kèm hội thoại**, không qua KB | Tạo KB chính sách/tiền lệ |
-| `GS9 CFL CS Copilot` | Chưa có KB FAQ/CS policy nào tồn tại. Mode `Trả lời nhanh` **không có tab `Công cụ`** (thay bằng tab `Hội thoại`) nên không bật được tool RAG explicit | Tạo KB CS policy; cân nhắc đổi mode nếu cần tool |
+| Agent | Lý do chặn ban đầu | Kho tạm hiện gắn | Điều kiện thay bằng kho đúng |
+|---|---|---|---|
+| `GS9 CFL Player Communications` | Đề xuất cũ định bind `GS9 CFL PUM`, nhưng PUM chứa **doanh thu thực, ngân sách marketing, chi phí UA, roadmap chưa công bố**. Agent này soạn nội dung **hướng ra người chơi** → retrieval kéo chunk tài chính vào bản nháp thông báo là rò rỉ dữ liệu nội bộ. System Prompt hiện chỉ cấm "invent benefits", **không** cấm trích số liệu nội bộ. | `GS9 CFL Plan Version` — nay đã có 12 doc + 29 ảnh, là kế hoạch nội bộ nên vẫn phải áp guardrail G-B (kế hoạch nội bộ ≠ brief duyệt) | `GS9 CFL Event Calendar & Brief` có nội dung **và** guardrail C1/C2 được duyệt |
+| `GS9 CFL Economy Offer Analyst` | KB đúng (`GS9 CFL Item Catalog`, chỉ dữ liệu item-level) **chưa tồn tại**. `GS9 CFL Item Profile` **bị cấm bind** vì chứa dữ liệu player — blocker **P0** | `GS9 CFL Data Daily` — số liệu nạp theo ngày, không có bảng giá/gói | Tạo KB item-level sạch, hoặc đóng G2 |
+| `GS9 CFL GM Policy Advisor` | Vai trò đã đổi từ điều tra case-scoped sang tra cứu chính sách (DEC-039). KB đích `GS9 CFL GM Policy & Sanction` **cần tạo**. Bằng chứng từng vụ đi qua **tệp đính kèm hội thoại**, không qua KB | `GS9 Knowledge VNG AI` — fallback nền tảng, **không chứa điều khoản xử phạt nào** | Tạo KB chính sách/tiền lệ |
+| `GS9 CFL CS Copilot` | Chưa có KB FAQ/CS policy nào tồn tại. Mode `Trả lời nhanh` **không có tab `Công cụ`** (thay bằng tab `Hội thoại`) nên không bật được tool RAG explicit | `GS9 Knowledge VNG AI` — fallback nền tảng, **không chứa chính sách CS nào** | Tạo KB CS policy; cân nhắc đổi mode nếu cần tool |
+
+Hai hàng cuối là fallback thuần: kho gắn vào không liên quan chuyên môn, chỉ để Agent có nguồn thay vì rỗng. Không được coi câu trả lời của chúng về CS/GM là có nguồn bảo chứng.
 
 ### 3.6 System Prompt — không sửa
 

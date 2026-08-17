@@ -36,6 +36,8 @@ Tab **Nguồn dữ liệu** có ba connector:
 
 *Ảnh 08.2 - Khi chưa cấu hình, trang hiện nút thêm nguồn dữ liệu đầu tiên.*
 
+> **Ảnh chụp một thời điểm, không phải danh mục hiện hành.** Tên kho, tên trợ lý, tên nguồn dữ liệu và các con số đếm nhìn thấy trong ảnh là của lúc chụp màn hình để viết hướng dẫn này. Chúng đổi liên tục. Xem ảnh để biết **giao diện nằm ở đâu**, đừng lấy ảnh để biết **hệ thống đang có gì** — mở thẳng hệ thống mà xem.
+
 Wizard có bốn bước:
 
 1. Chọn loại.
@@ -191,6 +193,8 @@ Trường **Định dạng parser** không phải danh sách engine, mà là dan
 ![Google Drive đã kết nối và đồng bộ thành công](minio://knowledge-base-prd/10012/305934e0-eb75-43df-9f77-ef21d82c160c/8d4dc399-0524-4779-89be-49cf500ec1f4.png)
 
 *Ảnh 08.13 - Card nguồn hiển thị Đã kết nối và Kết quả Thành công.*
+
+> **Ảnh chụp một thời điểm, không phải danh mục hiện hành.** Tên kho, tên trợ lý, tên nguồn dữ liệu và các con số đếm nhìn thấy trong ảnh là của lúc chụp màn hình để viết hướng dẫn này. Chúng đổi liên tục. Xem ảnh để biết **giao diện nằm ở đâu**, đừng lấy ảnh để biết **hệ thống đang có gì** — mở thẳng hệ thống mà xem.
 
 Card nguồn hiển thị các thông tin để bạn đối chiếu với cấu hình đã đặt:
 

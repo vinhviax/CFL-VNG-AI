@@ -48,16 +48,25 @@ Cả mười đều dùng chung một mô hình và chưa được ký duyệt p
 | `Player Voice Analyst` | `GS9 CFL Sentiment Feedback User` |
 | `LiveOps Planner` | `GS9 Knowledge VNG AI` |
 | `Release Reviewer` | `GS9 Knowledge VNG AI` |
-| `CS Copilot` | **chưa gắn kho nào** |
-| `Economy Offer Analyst` | **chưa gắn kho nào** |
-| `GM Policy Advisor` | **chưa gắn kho nào** |
-| `Player Communications` | **chưa gắn kho nào** |
+| `Player Communications` | `GS9 CFL Plan Version` |
+| `Economy Offer Analyst` | `GS9 CFL Data Daily` |
+| `CS Copilot` | `GS9 Knowledge VNG AI` |
+| `GM Policy Advisor` | `GS9 Knowledge VNG AI` |
 
-Bốn trợ lý chưa gắn kho vẫn trả lời được, nhưng câu trả lời **không dựa trên nguồn nào của CFL** — đừng dùng kết quả của chúng làm căn cứ.
+Bốn trợ lý cuối bảng đang gắn **kho tạm**, không phải kho đúng chuyên môn của chúng. Kho riêng cho từng vai trò chưa được dựng xong, nên trong lúc chờ, mỗi trợ lý được gắn kho gần nhất còn dùng được:
+
+| Trợ lý | Kho tạm đang dùng | Kho riêng đang chờ dựng |
+|---|---|---|
+| `Player Communications` | `GS9 CFL Plan Version` | kho lịch sự kiện và brief đã duyệt |
+| `Economy Offer Analyst` | `GS9 CFL Data Daily` | kho danh mục vật phẩm và giá |
+| `CS Copilot` | `GS9 Knowledge VNG AI` | kho câu hỏi và chính sách chăm sóc khách hàng |
+| `GM Policy Advisor` | `GS9 Knowledge VNG AI` | kho điều khoản xử phạt và tiền lệ |
+
+Với bốn trợ lý này, hãy tự kiểm nguồn trong câu trả lời trước khi dùng: chúng có thể trích từ kho tạm không đúng chuyên môn. Riêng `CS Copilot` và `GM Policy Advisor` đang gắn kho hướng dẫn nền tảng, nên câu trả lời về chính sách CS hay xử phạt GM **chưa có nguồn CFL nào bảo chứng** — đừng dùng làm căn cứ.
 
 Hai kho `PUM` và `Sentiment Feedback User` chứa số liệu kinh doanh và phản hồi người chơi. Chúng được gắn có chủ đích cho công việc nội bộ, nhưng khi bạn sao chép kết quả ra ngoài nhóm thì vẫn nên tự lọc: bỏ số liệu chi tiết và thông tin nhận dạng người chơi.
 
-Sáu trợ lý còn lại cũng cần đọc kỹ cột bên phải: phạm vi thật của chúng hẹp hơn tên gọi nhiều. `Incident Triage` chỉ tra được report tháng, chưa có runbook sự cố. `LiveOps Planner` và `Release Reviewer` đang gắn kho hướng dẫn nền tảng, chưa gắn kho nghiệp vụ LiveOps.
+Sáu trợ lý còn lại cũng cần đọc kỹ: phạm vi thật của chúng hẹp hơn tên gọi nhiều. `Incident Triage` chỉ tra được report tháng, chưa có runbook sự cố. `LiveOps Planner` và `Release Reviewer` đang gắn kho hướng dẫn nền tảng, chưa gắn kho nghiệp vụ LiveOps.
 
 Bảng này là ảnh chụp một thời điểm. Kho gắn cho trợ lý đổi được bất cứ lúc nào, nên trước khi tin một câu trả lời quan trọng, hãy mở trợ lý ra xem nó đang gắn kho nào.
 

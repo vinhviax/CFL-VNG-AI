@@ -1,7 +1,7 @@
 # Handoff — Knowledge Base VNG
 
-**Cập nhật:** 16/08/2026 (phiên 3)
-**Phiên bản:** 3.4.0 · **Test:** `Ran 30 tests` / `OK` (6 skip do thiếu HTML nguồn Plan V5 trên máy này)
+**Cập nhật:** 17/08/2026 (phiên 4 — kho tạm, công cụ truy hồi, chat-test, case study)
+**Phiên bản:** 3.6.0 · **Test:** `Ran 30 tests` / `OK` (6 skip do thiếu HTML nguồn Plan V5 trên máy này)
 
 ---
 
@@ -12,7 +12,7 @@
 | 1 | `AGENTS.md` | Quy tắc làm việc, ranh giới an toàn, bảng phân loại đối tượng đọc |
 | 2 | File này | Trạng thái và việc đang mở |
 | 3 | `STATUS.md` | Nhật ký theo phiên, chi tiết hơn |
-| 4 | `DECISIONS.md` | 57 quyết định — tra khi không hiểu vì sao làm vậy |
+| 4 | `DECISIONS.md` | 62 quyết định — tra khi không hiểu vì sao làm vậy |
 | 5 | `PROJECT.md` | Cây thư mục chuẩn, hợp đồng artifact |
 
 ---
@@ -65,13 +65,61 @@ Thêm tính năng mới thì thêm tiền tố vào `HUMAN_SOURCE_PREFIXES` ho�
 2. ~~Up lại `knowledge/GS9 CFL Plan Version/V5` (12 file, URI đã vá)~~ ✅
 3. ~~Chat-test `GS9 CFL Knowledge Curator` xem luật trích dẫn ảnh có ăn không~~ ✅
 
-### 4.2 Bốn Agent chưa gắn KB
-`CS Copilot`, `Economy Offer Analyst`, `GM Policy Advisor`, `Player Communications` — `kb_selection_mode: none`. Luật trích dẫn ảnh đã dán nhưng vô tác dụng vì không có nguồn. Xem bảng đầy đủ ai gắn kho nào ở DEC-058, `AgentCFL-02-ma-tran-so-sanh-16-agent.md` (Human) và `Agent-ho-so-16-agent-cfl.md` (Dev).
+### 4.2 ĐÃ XỬ TẠM 17/08/2026 — bốn Agent nay đã có KB, nhưng là **kho tạm**
 
-### 4.3 Gate chất lượng chưa chạy
-**Chưa Agent nào chat-test đạt** theo nghĩa đầy đủ (bộ câu hỏi mẫu, xác nhận nguồn, không lộ PII). Toàn bộ 16 Agent vẫn ở mức *Bị chặn–Chưa xác định* về chất lượng runtime.
+`Player Communications` → `GS9 CFL Plan Version`; `Economy Offer Analyst` → `GS9 CFL Data Daily`; `CS Copilot` và `GM Policy Advisor` → `GS9 Knowledge VNG AI` (fallback nền tảng). Đã xác minh bằng cách đọc lại dialog Web sau khi lưu (DEC-060, `audit/agent-kb-binding-4-agent-2026-08-17.md`).
 
-### 4.4 Chưa kiểm chứng
+**Chưa đóng được gap thật.** Kho tạm là giải pháp cầu. Bốn KB nghiệp vụ đúng vẫn cần soạn nội dung, khi có phải đổi binding và cập nhật lại bảng ở `AgentCFL-02-ma-tran-so-sanh-16-agent.md` (Human) + `Agent-ho-so-16-agent-cfl.md` (Dev):
+
+| Agent | KB đúng còn thiếu | Cần gì để dựng |
+|---|---|---|
+| `CS Copilot` | `GS9 CFL CS FAQ & Policy` | mới có file định dạng — cần top câu hỏi CS, câu trả lời chuẩn, ranh giới escalation GM/kỹ thuật, chính sách hoàn tiền |
+| `GM Policy Advisor` | `GS9 CFL GM Policy & Sanction` | chưa tồn tại — cần bảng điều khoản xử phạt, quy trình, tiền lệ |
+| `Player Communications` | `GS9 CFL Event Calendar & Brief` | chưa tồn tại — cần lịch sự kiện, brief đã duyệt, mẫu thông báo |
+| `Economy Offer Analyst` | `GS9 CFL Item Catalog` | chưa tồn tại — phải tách khỏi `GS9 CFL Item Profile`, rà dữ liệu P0 trước |
+
+Đặc biệt lưu ý `CS Copilot` và `GM Policy Advisor`: kho đang gắn **không chứa chính sách CS hay điều khoản xử phạt nào**, nên câu trả lời của chúng về hai mảng đó vẫn không có nguồn CFL bảo chứng.
+
+### 4.3 Gate chất lượng — đã mở một phần 17/08/2026
+
+Chat-test thật 3 Agent trên KB an toàn (DEC-062, `audit/agent-chat-test-2026-08-17.md`):
+
+| Agent | Kết quả |
+|---|---|
+| `Player Communications` × Plan Version | **Đạt** — nội dung khớp nguồn, ảnh render thật, tự đánh dấu chỗ thiếu bằng chứng |
+| `Knowledge Curator` × 2 kho | **Có điều kiện** — không bịa chính sách, nhưng sai sự thật về cấu hình hệ thống |
+| `CS Copilot` × Knowledge VNG AI | **Đạt về guardrail** — từ chối trả lời vì kho không đúng loại nguồn |
+
+**13/16 Agent vẫn *Bị chặn–Chưa xác định*.** Chưa test 3 Agent gắn KB nhạy cảm (`Incident Triage`→PUM, `Player Voice Analyst`→Sentiment, `KPI Experiment Analyst`→Kho Tổng Hợp) vì lượt này giới hạn ở KB an toàn.
+
+### 4.4 CẠM BẪY MỚI — gắn KB xong phải bật công cụ truy hồi (DEC-061)
+
+Gắn KB **không** tự cho Agent quyền đọc kho. Công cụ `Tìm theo ngữ nghĩa` / `Tìm theo từ khóa` là tập cấu hình riêng, bị mờ khi Agent chưa có KB, và **không tự bật** sau khi bind. Triệu chứng: cây suy luận trả `tool not found: search_knowledge_base (available: ask_user, thinking, todo_write)` rồi Agent quay ra hỏi lại người dùng.
+
+Đã bật cho 3 Agent (Player Communications 3→5 tool, Economy Offer Analyst 3→5, GM Policy Advisor 2→4). `CS Copilot` chế độ Trả lời nhanh không có tab Công cụ, truy hồi chạy ngầm.
+
+**Dựng Agent mới luôn phải kiểm bước này.**
+
+### 4.5 ⚠️ ƯU TIÊN CAO — nghi vấn ảnh minh hoạ thành nguồn dữ kiện sai, CHƯA KẾT LUẬN
+
+`Knowledge Curator` khẳng định 3 thứ sai (hệ thống "chỉ có 6 trợ lý"; có kho `Knowledge VNG - Image Assets`; có nguồn `Drive CFL Viax` sync 15 phút). Cả 3 khớp gần như từng ký tự với nội dung trong 3 **ảnh chụp màn hình** nằm trong `GS9 Knowledge VNG AI` (`image-26`, `image-41`, `image-25`).
+
+**Đã kiểm chứng bằng `keyword_search` vào chỉ mục:** nền tảng OCR ảnh **và** sinh mô tả ảnh **lúc nạp**, lưu thành chunk chữ tra cứu được (`chunk_type: image_caption` và `text`).
+
+**Chưa kết luận:** chưa chứng minh câu trả lời lấy đúng từ chunk đó; KB **chưa phân tích xong** tệp mới sync lúc test; chưa loại trừ khả năng Agent bịa.
+
+**Không dùng lời Agent tự nhận làm bằng chứng.** Khi bị hỏi vặn nó quay ra nhận "tự chế toàn bộ" và nói 4 KB "không tồn tại / rỗng" — **cả 4 đều sai** (thực tế 7, 8, 8, 8 tài liệu).
+
+**Đã vá tạm:** gắn cảnh báo "ảnh chụp một thời điểm" cạnh 7 ảnh mang danh sách trong nguồn Human. **Không giải quyết gốc.**
+
+**Việc phiên sau:** đợi KB xử lý xong → chạy lại câu hỏi Case 2 → nếu vẫn sai thì **thử tắt VLM/đọc ảnh ở KB thuần hướng dẫn** (`GS9 Knowledge VNG AI`, `GS9 CFL Knowledge Agent`), giữ VLM ở KB nghiệp vụ (`Plan Version` — Case 1 chứng minh chạy tốt) → so 3 kết quả. Chi tiết: `audit/agent-chat-test-2026-08-17.md` mục 6.
+
+### 4.6 Việc phát sinh khác từ chat-test
+
+- Lỗi truy hồi `Knowledge Curator`: kho có nội dung nhưng lấy nhầm đoạn → thử tăng Top K hoặc bật `Thông tin tài liệu` rồi test lại.
+- Case 1 bỏ sót 2 ảnh **có thật** trong kho (`image-v5-06`, `image-v5-07`) khi lập bảng đối chiếu.
+
+### 4.7 Chưa kiểm chứng
 - Converter Plan V5 chạy với bố cục ảnh phẳng mới (DEC-054) — 6 test luôn skip vì HTML nguồn chỉ có trên máy công ty
 - Hành vi connector khi **đổi tên / di chuyển / xoá** tệp
 - Ảnh render 2 lần trong chat (xem mục 5) — chưa báo cho ai chịu trách nhiệm nền tảng
@@ -119,6 +167,13 @@ python scripts\link_plan_v5_minio.py --check
 
 ## 8. Tài liệu thuyết trình
 
-`gioi-thieu-knowledge-base-va-agent.html` — bản giới thiệu cho team, 10 phần: vấn đề, KB là gì, Agent là gì, cách phối hợp, quy trình 6 bước, 10 kho của CFL, 16 trợ lý, bảng binding, nguyên tắc an toàn, trạng thái. Tự chứa, mở bằng trình duyệt, in PDF được.
+`gioi-thieu-knowledge-base-va-agent.html` — bản giới thiệu cho team, **12 phần** (0,66 MB, tự chứa, in PDF được): vấn đề · KB là gì · Agent là gì · cách phối hợp · quy trình 6 bước · 10 kho của CFL · 16 trợ lý · bảng binding · **case study** · **đề xuất cấu trúc** · nguyên tắc an toàn · trạng thái.
 
-**Số liệu trong đó là ảnh chụp 16/08/2026** — nếu binding hay danh sách KB đổi thì phải cập nhật lại file này.
+- **Mục 09 Thử thật trên dữ liệu CFL** — 3 case chat-test ngày 17/08/2026 kèm **5 ảnh chụp hội thoại thật** do người dùng cung cấp (`docs KB/Asset/chat/`). **Chỉ trình bày phần năng lực**: case 1 làm được việc thật, case 2 biết nói "không tìm thấy" thay vì bịa, case 3 CS Copilot ra bản DRAFT trả lời khách + đề xuất chuyển tiếp.
+
+  ⚠️ **File HTML là bản GIỚI THIỆU tính năng để present cho team** — chỉ đưa vào những gì đã chốt và cho thấy giá trị. **Không đưa lỗi, nghi vấn, hay điều tra nội bộ vào file này** (người dùng đã nhắc thẳng hai lần). Chỗ đó thuộc `STATUS.md` và `audit/`. Ảnh case 2 đã được **cắt bỏ phần chứa thông tin sai** trước khi nhúng.
+- **Mục 10 Đề xuất cấu trúc** — hai phương án đặt cạnh nhau kèm đánh đổi: **A** chia theo mức nhạy cảm × đối tượng đọc × nhịp cập nhật (bản 7 tầng đã chốt, viết lại cho dễ đọc), **B** chia theo 4 nhóm công việc. Kèm bảng 4 kho cần dựng + ai cung cấp gì, gợi ý thứ tự làm, 4 câu hỏi để team chốt. **Đây là phần soạn để team bàn, chưa chốt.**
+
+**Đã sửa lỗi tồn tại từ trước:** 10 ảnh cũ có `loading="lazy"` nên **không render khi in PDF**. Đã bỏ lazy toàn bộ, kiểm chứng 13/13 ảnh tải được.
+
+**Số liệu trong file là ảnh chụp 17/08/2026** — binding và danh sách KB đổi thì phải cập nhật lại.
