@@ -51,42 +51,44 @@ Thêm tính năng mới thì thêm tiền tố vào `HUMAN_SOURCE_PREFIXES` ho�
 
 | KB | Local | Web | Ghi chú |
 |---|---|---|---|
-| `GS9 Knowledge VNG AI` | 20 doc + 49 ảnh | **69 tài liệu, đã sync** | Chat-test ảnh ĐẠT |
-| `GS9 CFL Knowledge Agent` | 8 doc | **0 tài liệu — chưa sync** | Việc mở số 1 |
+| `GS9 Knowledge VNG AI` | 20 doc + 49 ảnh | **Đã sync** | Chat-test ảnh ĐẠT |
+| `GS9 CFL Knowledge Agent` | 8 doc | **Đã sync** (17/08) | Có bảng binding Agent-KB |
 
-`GS9 CFL Plan Version`: 12 doc + 29 ảnh, URI đã vá xong, **chưa up bản mới lên Web**.
+`GS9 CFL Plan Version`: 12 doc + 29 ảnh, URI đã vá, **đã up lên Web** (17/08).
 
 ---
 
 ## 4. Việc đang mở
 
-### 4.1 Sync 2 KB lên Web — làm ngay
-1. `knowledge/GS9 CFL Knowledge Agent` (8 file) — KB trên Web đang **trống**
-2. `knowledge/GS9 CFL Plan Version/V5` (12 file `.md`) — URI ảnh đã vá, cần up lại
+### 4.1 ĐÃ XONG — người dùng xác nhận 17/08/2026
+1. ~~Sync `knowledge/GS9 CFL Knowledge Agent` (8 file) lên Web~~ ✅
+2. ~~Up lại `knowledge/GS9 CFL Plan Version/V5` (12 file, URI đã vá)~~ ✅
+3. ~~Chat-test `GS9 CFL Knowledge Curator` xem luật trích dẫn ảnh có ăn không~~ ✅
 
-### 4.2 Chat-test luật trích dẫn ảnh của Agent
-Đã chèn luật vào System Prompt của 10/10 Agent custom (DEC-056) nhưng **chưa test**. Nên thử `GS9 CFL Knowledge Curator` vì nó gắn `GS9 Knowledge VNG AI` (KB có ảnh). Hỏi câu buộc trả lời kèm hình, xem Agent có phát ra `![...](minio://...)` không.
+### 4.2 Bốn Agent chưa gắn KB
+`CS Copilot`, `Economy Offer Analyst`, `GM Policy Advisor`, `Player Communications` — `kb_selection_mode: none`. Luật trích dẫn ảnh đã dán nhưng vô tác dụng vì không có nguồn. Xem bảng đầy đủ ai gắn kho nào ở DEC-058, `AgentCFL-02-ma-tran-so-sanh-16-agent.md` (Human) và `Agent-ho-so-16-agent-cfl.md` (Dev).
 
-### 4.3 Bốn Agent chưa gắn KB
-`CS Copilot`, `Economy Offer Analyst`, `GM Policy Advisor`, `Player Communications` — `kb_selection_mode: none`. Luật trích dẫn ảnh đã dán nhưng vô tác dụng vì không có nguồn.
+### 4.3 Gate chất lượng chưa chạy
+**Chưa Agent nào chat-test đạt** theo nghĩa đầy đủ (bộ câu hỏi mẫu, xác nhận nguồn, không lộ PII). Toàn bộ 16 Agent vẫn ở mức *Bị chặn–Chưa xác định* về chất lượng runtime.
 
-### 4.4 Gate chất lượng chưa chạy
-**Chưa Agent nào chat-test đạt.** Toàn bộ 16 Agent vẫn ở mức *Bị chặn–Chưa xác định* về chất lượng runtime.
-
-### 4.5 Chưa kiểm chứng
+### 4.4 Chưa kiểm chứng
 - Converter Plan V5 chạy với bố cục ảnh phẳng mới (DEC-054) — 6 test luôn skip vì HTML nguồn chỉ có trên máy công ty
 - Hành vi connector khi **đổi tên / di chuyển / xoá** tệp
+- Ảnh render 2 lần trong chat (xem mục 5) — chưa báo cho ai chịu trách nhiệm nền tảng
 
 ---
 
 ## 5. Cạm bẫy đã gặp thật
 
-**Google Drive khoá file.** Project nằm trên Drive nên file hay bị khoá ngay sau khi ghi. Dấu hiệu: `Invalid request code` / `OSError: Errno 22` / `Incorrect function`, và `stat` cho `Links: 0`. Không tool nào của agent vượt qua được — chỉ File Explorer ép tải về được.
+**Google Drive mất kết nối rồi tự "Restore" ra layout cũ (DEC-059, 17/08/2026).** Đây là sự cố nặng nhất từng gặp: Drive rớt mount, sau đó tự phục hồi nhưng trộn cấu trúc cũ (trước 15/08) chồng lên cấu trúc mới — thư mục `knowledge` thật bị đẩy thành `knowledge (1)`, `.git` mất lịch sử, hàng trăm file lệch nội dung.
+→ **Cách khôi phục đã dùng, làm lại được nếu tái diễn:** (1) clone bản sạch từ GitHub ra **ngoài** Drive để đối chiếu, không sửa gì trên Drive trước khi biết rõ; (2) nếu thư mục thật đổi tên thành `(1)` thì **đổi tên lại** (không xoá-tạo-mới) để giữ ID và không đứt kết nối connector; (3) thay `.git` hỏng bằng bản sạch từ clone; (4) `git restore .` rồi `git clean -f` từng thư mục con; (5) rà thủ công toàn cây tìm file/thư mục kiểu `(1)`, `(2)`, `Copy of`, thư mục chỉ có `desktop.ini`; (6) xác nhận cuối bằng `git diff --stat origin/main HEAD` phải **rỗng tuyệt đối**, không chỉ tin `git status`.
+
+**Google Drive khoá file khi ghi.** Project nằm trên Drive nên file hay bị khoá ngay sau khi ghi. Dấu hiệu: `Invalid request code` / `OSError: Errno 22` / `Incorrect function`, và `stat` cho `Links: 0`. Không tool nào của agent vượt qua được — chỉ File Explorer ép tải về được.
 → **Ghi file qua file tạm rồi `os.replace`.** Ghi đè trực tiếp đã từng làm **mất sạch nội dung một file nguồn** (16/08).
 
 **URI ảnh chết sau khi re-sync.** Nạp lại ảnh qua connector là URI cũ chết toàn bộ. Lấy lại hàng loạt bằng trường `file_path` của API, đừng lấy URI trong `description` (chỉ 24/49 ảnh có, nhiều ảnh lại có 2 URI khó chọn).
 
-**MCP không thấy mọi KB.** `list_knowledge_bases` chỉ trả KB đã share vào space. Với KB chưa share (ví dụ `GS9 CFL Plan Version`), lấy token qua `/api/auth/token?sub_app=kb` rồi gọi `https://miniapp.vnggames.ai/kb/v1/api/...` kèm `Authorization: Bearer` — gọi bằng cookie bị CORS chặn.
+**MCP không thấy mọi KB.** `list_knowledge_bases` chỉ trả KB đã share vào space. Với KB chưa share (ví dụ `GS9 CFL Plan Version`), lấy token qua `/api/auth/token?sub_app=kb` rồi gọi `https://miniapp.vnggames.ai/kb/v1/api/...` kèm `Authorization: Bearer` — gọi bằng cookie bị CORS chặn. Cùng API này (`GET /kb/v1/api/agents`) dùng để lấy binding KB thật của từng Agent qua trường `config.knowledge_bases`.
 
 **Trang web dùng shadow DOM.** App KB chạy trong micro-frontend qiankun. Tool đọc trang thường không thấy nội dung; phải qua `document.getElementById('__qiankun_microapp_wrapper_for_kb__').shadowRoot`. Dialog cấu hình Agent thì lại render ở document chính.
 

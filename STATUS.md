@@ -1,8 +1,12 @@
 # Trạng thái Knowledge Base VNG
 
-**Ngày snapshot:** 16/08/2026 (phiên 3 — tách nội dung theo đối tượng đọc, vá URI ảnh, cấu hình Agent)
-**Phiên bản:** 3.4.0
-**Giai đoạn:** Nguồn nội dung đã tách ba tầng (DEC-053): `docs KB/Dev` (25 file, không lên Web) → `docs KB/Human` (29 file, nguồn build) → `knowledge/` (bản sinh, lên Web). `build_handbook.py` sinh 2 KB: `GS9 Knowledge VNG AI` (20 doc + 49 ảnh) và `GS9 CFL Knowledge Agent` (8 doc — 5 về Agent CFL, 3 về KB CFL). Toàn bộ URI ảnh đã vá: 49 ảnh sổ tay (DEC-052) và 29 ảnh Plan V5 (DEC-057). **Chat-test ảnh ĐẠT** — ảnh render thật trong câu trả lời. Đã chèn luật trích dẫn ảnh vào System Prompt của 10/10 Agent custom (DEC-056). `Ran 30 tests`/`OK`.
+**Ngày snapshot:** 17/08/2026 (phiên 3, tiếp — khôi phục sau sự cố Google Drive, chèn ảnh minh họa)
+**Phiên bản:** 3.4.1
+**Giai đoạn:** Nguồn nội dung đã tách ba tầng (DEC-053): `docs KB/Dev` (25 file, không lên Web) → `docs KB/Human` (29 file, nguồn build) → `knowledge/` (bản sinh, lên Web). `build_handbook.py` sinh 2 KB: `GS9 Knowledge VNG AI` (20 doc + 49 ảnh) và `GS9 CFL Knowledge Agent` (8 doc — 5 về Agent CFL, 3 về KB CFL). Toàn bộ URI ảnh đã vá: 49 ảnh sổ tay (DEC-052) và 29 ảnh Plan V5 (DEC-057). **Chat-test ảnh ĐẠT** — ảnh render thật trong câu trả lời. Đã chèn luật trích dẫn ảnh vào System Prompt của 10/10 Agent custom (DEC-056). Bảng ai gắn kho nào đã bổ sung cho cả bản Human và Dev; hai binding rủi ro (Incident Triage → PUM, Player Voice Analyst → Sentiment) đã được người dùng xác nhận giữ nguyên vì nền tảng chỉ dùng nội bộ (DEC-058). `Ran 30 tests`/`OK`.
+
+**Sự cố Google Drive ngày 17/08/2026 (DEC-059) — đã khôi phục hoàn toàn, không mất dữ liệu đã commit.** Drive mất kết nối rồi tự "Restore" ra một layout trộn cấu trúc cũ (trước 15/08) chồng lên cấu trúc mới, làm thư mục `knowledge` thật bị đẩy thành `knowledge (1)`, `.git` hỏng mất lịch sử. Khôi phục bằng cách: clone bản sạch từ GitHub ra ngoài Drive để đối chiếu, đổi tên `knowledge (1)` → `knowledge` (giữ nguyên ID nên **không mất kết nối Web**), thay `.git` hỏng bằng bản sạch, `git restore` + `git clean` dọn file cũ chui vào. Rà soát kỹ toàn bộ cây thư mục sau đó, xoá 6 thư mục rác Drive để lại (`V5/assets`, `V5/assets (1)`, `docs KB/Dev/Agent`, `docs KB/Dev/KB`, `docs KB/Asset/New folder`, `knowledge/Test`). Xác nhận cuối: `git diff --stat origin/main HEAD` rỗng tuyệt đối, `Ran 30 tests OK`. Bài học ghi vào memory hệ thống: ghi file phải qua file tạm rồi `os.replace`, không ghi đè trực tiếp khi làm việc trên Drive.
+
+**Đã bổ sung ảnh minh họa vào file thuyết trình** `gioi-thieu-knowledge-base-va-agent.html` — 10 ảnh chụp màn hình thật, nén và nhúng base64 (0,43 MB), có lightbox phóng to khi bấm.
 
 **Đã commit lên GitHub trong phiên này.**
 
