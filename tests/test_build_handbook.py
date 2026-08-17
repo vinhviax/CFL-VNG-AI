@@ -84,8 +84,8 @@ class BuildHandbookTests(unittest.TestCase):
         )
         self.assertEqual(payload["tenant_id"], "10012")
         self.assertEqual(set(images), assets)
-        self.assertEqual(len(images), 49)
-        self.assertEqual(len(set(images.values())), 49)
+        self.assertEqual(len(images), 52)
+        self.assertEqual(len(set(images.values())), 52)
         # Đã kiểm chứng 16/08/2026 (doc-02, DEC-052): dạng file_path
         # ("minio://.../10012/<knowledge_id>/<uuid>.png") render đúng trong
         # Document preview, y hệt dạng "exports/" cũ. Chấp nhận cả hai.

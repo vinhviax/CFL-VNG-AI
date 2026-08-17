@@ -1,7 +1,21 @@
 # Trạng thái Knowledge Base VNG
 
-**Ngày snapshot:** 17/08/2026 (phiên 5, máy công ty)
+**Ngày snapshot:** 18/08/2026 (phiên 6, máy nhà)
 **Phiên bản:** 3.7.0
+
+## MỚI 18/08/2026 (phiên 6, máy nhà) — hàng đợi xử lý của nền tảng tắc thật, không phải lỗi file; DEC-069 được xác nhận lần hai
+
+**1. Hàng đợi xử lý tài liệu tắc ở tầng nền tảng (DEC-071).** 26 ảnh nạp lên lúc 17/08 18:48–18:49 tới 18/08 04:20 vẫn **0 ảnh `completed`** (21 `pending`, 4 `processing`, 1 `finalizing`). Mở panel "Xem tiến trình" trên Web cho `image-28` và `image-02`: cả hai đều **`Chờ` · 0/5 giai đoạn**, cả 5 bước (Phân tích tài liệu → Chia đoạn → Vector hóa → Đa phương thức → Hậu xử lý) đều "Đang chờ", và có bộ đếm lần thử `#1 #2` / `#1 #2 #3` — tức job được xếp hàng, hết giờ, xếp lại, **không worker nào chạy**. `image-28` từng lên tới `finalizing` rồi tụt về `pending`, `failed_stages.summary = "failed to update knowledge: context deadline exceeded"`. → "Phân tích lại" chỉ thêm một lần thử nữa, **không gỡ được tắc**; việc cần làm là báo team vận hành nền tảng.
+
+**2. Toàn bộ 21 `doc-*.md` bị nạp lại lúc 00:00–00:01 ngày 18/08** — document ID mới, `parse_status: pending`, `enable_status: disabled`. Hệ quả đang có: KB `GS9 Knowledge VNG AI` **hiện không có tài liệu chữ nào được lập chỉ mục**; Agent trỏ vào kho này (`CS Copilot`, `GM Policy Advisor`, `Knowledge Curator`) chỉ còn tra được ảnh. Không phải do ai sửa nội dung — đây là lần chạy đồng bộ định kỳ (xem DEC-072).
+
+**3. DEC-069 được xác nhận lần hai bằng dữ liệu mới (DEC-072).** Đối chiếu bằng script toàn bộ 26 ảnh `completed` với `image-map.json` (sinh 16/08): **26/26 URI khớp tuyệt đối, 0 lệch**. Chuyện này xảy ra **sau** một lần đồng bộ chạy ở chế độ `Toàn bộ` — nên quy tắc đúng là: kể cả chế độ Toàn bộ, file không đổi nội dung vẫn giữ nguyên document và URI; chỉ file đổi hash hoặc file mới mới bị tạo lại.
+
+**4. Trạng thái `image-map.json` hiện tại:** 49 entry — **26 còn sống**, **23 đã chết** (23 ảnh crop lại có document ID mới, ví dụ `image-01` map `009e72d5…` vs live `493336f4…`), **thiếu hẳn `image-50/51/52`**. Cần đủ 52 URI hợp lệ mới build lại được `doc-11`.
+
+**5. Đã sửa 2 chỗ khoá cứng "49 ảnh" trong test** (`tests/test_build_handbook.py:87-88`, `49` → `52`). Cả hai nằm trong test đang FAIL sẵn (`test_project_image_map_covers_all_merged_assets`) nên không làm hỏng thêm test nào. **Còn một chỗ phải sửa sau khi có URI:** `test_live_project_has_exact_agent_deep_split_and_sixty_image_pairs` đang khoá số lượt tham chiếu ảnh là `61`; khi `doc-11` nhúng thêm 3 ảnh mới, số này sẽ đổi.
+
+**Gate cuối phiên:** vẫn đúng **1 FAIL đã biết** (`test_project_image_map_covers_all_merged_assets`) — chờ nền tảng xử lý xong ảnh, không được che bằng `--allow-missing-minio`.
 
 ## MỚI 17/08/2026 (phiên 5, máy công ty) — converter Plan V5, KB-20, dọn artifact, sửa file thuyết trình, tính năng "Thêm vào tri thức", đính chính DEC-052
 

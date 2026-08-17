@@ -1,6 +1,6 @@
 # Handoff — Knowledge Base VNG
 
-**Cập nhật:** 17/08/2026 (phiên 5, máy công ty — converter Plan V5 kiểm chứng, KB-20, dọn artifact dư thừa, sửa file thuyết trình, tính năng "Thêm vào tri thức", đính chính DEC-052)
+**Cập nhật:** 18/08/2026 (phiên 6, máy nhà — xác định hàng đợi nền tảng tắc thật, xem mục 4.9) · trước đó 17/08/2026 (phiên 5, máy công ty — converter Plan V5 kiểm chứng, KB-20, dọn artifact dư thừa, sửa file thuyết trình, tính năng "Thêm vào tri thức", đính chính DEC-052)
 **Phiên bản:** 3.7.0 · **Test:** `Ran 30 tests` — **1 FAIL đã biết** (`test_project_image_map_covers_all_merged_assets`, thiếu URI MinIO cho 3 ảnh mới `image-50/51/52`, đang chờ KB xử lý xong — xem mục 4.9)
 
 ---
@@ -147,18 +147,28 @@ Nội dung gồm: nguyên tắc quyền ở cấp kho · bảng 4 loại kho nê
 
 **Đã đóng 17/08/2026 (phiên 5, máy công ty, DEC-063):** Converter Plan V5 bố cục ảnh phẳng (DEC-054) nay **đã kiểm chứng end-to-end**. 6 test trước đây skip nay chạy và pass, 29 ảnh sinh ra khớp SHA256 tuyệt đối với bundle đang commit. Sửa 1 dòng test sai vị trí thư mục (`tests/test_convert_cfl_plan_html.py:94`). Gate hiện tại: `Ran 30 tests / OK`, 0 skip.
 
-### 4.9 ⚠️ VIỆC ƯU TIÊN ĐẦU PHIÊN SAU — đang chờ KB xử lý ảnh, chưa hoàn tất
+### 4.9 ⚠️ VIỆC ƯU TIÊN ĐẦU PHIÊN SAU — hàng đợi nền tảng tắc, đã xác định nguyên nhân, chờ team nền tảng
 
 **Bối cảnh:** cuối phiên 5, người dùng (1) đưa tính năng mới **"Thêm vào tri thức"** (nút `+` dưới câu trả lời chat, lưu thành tài liệu Markdown vào kho, có `Lưu nháp`/`Xuất bản`) — đã viết vào `KB-11-chat-kiem-thu-va-bao-tri.md`, kèm 3 ảnh `image-50/51/52`; (2) crop lại 23 ảnh cũ cho gọn (nội dung không đổi) — `image-01`→`image-14` (trừ vài số), `image-26`→`image-34`; (3) đồng bộ cả 26 ảnh (23 sửa + 3 mới) lên Web.
 
-**Trạng thái lúc dừng phiên:** 26/52 ảnh trong `GS9 Knowledge VNG AI` đứng ở `pending`/`processing`/`finalizing`, **0 tiến triển sau 25 phút theo dõi** (2 lần kiểm qua MCP `list_documents`, cách nhau 20 phút, số liệu y hệt). Nghi hàng đợi xử lý ảnh trên nền tảng bị tắc — đã đề nghị người dùng tự kiểm trên Web (mục Documents, lọc trạng thái, xem có rơi vào "Lỗi" không, thử "Phân tích lại" một file) nhưng **chưa có phản hồi trước khi dừng phiên**.
+**Cập nhật 18/08/2026 (phiên 6) — đã kiểm chứng, không còn là nghi vấn:**
+
+- Sau ~9,5 tiếng (17/08 18:49 → 18/08 04:20) vẫn **0/26 ảnh `completed`**: 21 `pending`, 4 `processing` (`image-02/27/51/52`), 1 `finalizing` (`image-28`).
+- Panel **"Xem tiến trình"** (menu ⋯ của từng tài liệu trên Web) cho `image-28` và `image-02`: cả hai **`Chờ` · 0/5 giai đoạn**, 5 bước đều "Đang chờ", kèm bộ đếm lần thử `#1 #2` và `#1 #2 #3`. → job **được xếp hàng và thử lại nhiều lần nhưng không worker nào chạy**. Đây là tắc ở tầng nền tảng, không phải lỗi nội dung file hay lỗi cấu hình KB (DEC-071).
+- `image-28` có `failed_stages.summary = "failed to update knowledge: context deadline exceeded"`, từng lên `finalizing` rồi tụt về `pending`.
+- **Không lọc ra tài liệu nào ở trạng thái "Lỗi"** — MCP không trả `parse_status` lỗi cho tài liệu nào.
+- **"Phân tích lại" không gỡ được tắc** (chỉ thêm một lần thử vào hàng đợi đang không chạy) → đừng bấm hàng loạt.
+- Phát sinh thêm: **21 `doc-*.md` bị nạp lại lúc 00:00–00:01 ngày 18/08**, ID mới, `pending`, `disabled` → KB hiện **không có tài liệu chữ nào được lập chỉ mục** (DEC-072).
+- **Việc cần làm tiếp là báo team vận hành nền tảng**, kèm: KB id `cefadf09-4187-46ac-a765-591e3255a4a4`, tenant `10012`, 47 tài liệu treo (26 png + 21 md), mốc treo 17/08 18:49 và 18/08 00:01, thông điệp lỗi ở trên.
+
+**Trạng thái lúc dừng phiên 5:** 26/52 ảnh trong `GS9 Knowledge VNG AI` đứng ở `pending`/`processing`/`finalizing`, **0 tiến triển sau 25 phút theo dõi** (2 lần kiểm qua MCP `list_documents`, cách nhau 20 phút, số liệu y hệt). Nghi hàng đợi xử lý ảnh trên nền tảng bị tắc — đã đề nghị người dùng tự kiểm trên Web (mục Documents, lọc trạng thái, xem có rơi vào "Lỗi" không, thử "Phân tích lại" một file) nhưng **chưa có phản hồi trước khi dừng phiên**.
 
 **Việc phải làm khi vào lại, theo thứ tự:**
 1. Hỏi người dùng tình trạng hàng đợi (có tự hết tắc chưa, có phải bấm gì không).
 2. Kiểm lại qua MCP: `list_documents(knowledge_base_id="cefadf09-4187-46ac-a765-591e3255a4a4", page_size=100)`, lọc `file_type == "png"`, đếm `parse_status`. Cần **52/52 `completed`**.
 3. Khi đủ điều kiện: lấy `file_path` của **26 ảnh vừa xử lý xong** (không phải cả 52 — 26 ảnh còn lại giữ nguyên URI, xem DEC-069), viết lại `image-map.json`.
 4. `python scripts/build_handbook.py` — sẽ tự nhúng URI mới vào các module tham chiếu, gồm cả `doc-11` (nội dung mới "Thêm kiến thức ngay trong lúc chat" chưa từng build thành công vì thiếu URI).
-5. Sửa 2 chỗ khoá cứng "49 ảnh" → "52 ảnh" còn sót trong test (chạy `Ran 30 tests` xem còn FAIL ở đâu, hiện tại chỉ có `test_project_image_map_covers_all_merged_assets`).
+5. ~~Sửa 2 chỗ khoá cứng "49 ảnh" → "52 ảnh" trong test~~ — **đã làm 18/08** (`tests/test_build_handbook.py:87-88`). Còn một chỗ phải sửa **sau khi build lại**: `test_live_project_has_exact_agent_deep_split_and_sixty_image_pairs` khoá số lượt tham chiếu ảnh là `61`, sẽ đổi khi `doc-11` nhúng thêm 3 ảnh.
 6. Chạy full gate (`build_handbook.py`, `unittest discover`, `link_plan_v5_minio.py --check`), báo người dùng đủ 30 test OK.
 7. Người dùng đồng bộ các `.md` đã build lại (ít nhất `doc-11`) lên Web lần cuối.
 
