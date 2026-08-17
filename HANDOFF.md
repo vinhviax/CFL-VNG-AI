@@ -121,7 +121,20 @@ Gắn KB **không** tự cho Agent quyền đọc kho. Công cụ `Tìm theo ng�
 - Lỗi truy hồi `Knowledge Curator`: kho có nội dung nhưng lấy nhầm đoạn → thử tăng Top K hoặc bật `Thông tin tài liệu` rồi test lại.
 - Case 1 bỏ sót 2 ảnh **có thật** trong kho (`image-v5-06`, `image-v5-07`) khi lập bảng đối chiếu.
 
-### 4.7 Chưa kiểm chứng
+### 4.7 THIẾU NỘI DUNG — chưa có tài liệu "nên dựng những loại kho nào"
+
+Người dùng phát hiện cuối phiên 4: **cả file thuyết trình lẫn kho `GS9 Knowledge VNG AI` đều không có phần hướng dẫn thiết kế danh mục kho.** Đã kiểm: `docs KB/Human/` chỉ có `KB-03-tai-lieu-rag-wiki.md` (loại kho **kỹ thuật**: Tài liệu vs FAQ) và `KBCFL-12-quy-uoc-va-ranh-gioi-du-lieu.md` (ranh giới dữ liệu riêng của CFL). Không tài liệu nào trả lời "một nhóm mới bắt đầu thì nên dựng những kho nào".
+
+**Đã vá một nửa:** thêm vào HTML mục 10 phần *"Bắt đầu từ đâu — bốn loại kho hầu như nhóm nào cũng cần"* (kho sự thật đã chốt · quy trình và chính sách · kế hoạch và lịch · kết quả), kèm 3 câu hỏi quyết định tách/gộp (ai được xem · bao lâu đổi một lần · đã chốt hay chưa) và cảnh báo lỗi hay gặp là chia kho theo *nguồn dữ liệu* thay vì theo *câu hỏi người ta sẽ hỏi*.
+
+**CÒN THIẾU — việc phiên sau:** đưa nội dung này vào **kho `GS9 Knowledge VNG AI`** để Agent tra được, không chỉ nằm trong file HTML.
+Vướng kỹ thuật: dải `KB-NN-*` đang kín 00–12, `KB-13` sẽ **đụng** `Agent-13`. Hai cách:
+1. Chèn vào một file đã có — hợp nhất là `KB-03-tai-lieu-rag-wiki.md` (đang nói về loại kho) hoặc `KB-00-gioi-thieu-va-quick-start.md`.
+2. Mở rộng dải trong `HUMAN_SOURCE_PREFIXES` (`scripts/build_handbook.py`) rồi tạo file mới — phải sửa cả test khoá số lượng module (`test_build_handbook.py` đang khoá đúng 20 module).
+
+Cách 1 nhanh và không đụng gate. **Chưa làm, chờ người dùng chọn.**
+
+### 4.8 Chưa kiểm chứng
 - Converter Plan V5 chạy với bố cục ảnh phẳng mới (DEC-054) — 6 test luôn skip vì HTML nguồn chỉ có trên máy công ty
 - Hành vi connector khi **đổi tên / di chuyển / xoá** tệp
 - Ảnh render 2 lần trong chat (xem mục 5) — chưa báo cho ai chịu trách nhiệm nền tảng
@@ -174,7 +187,7 @@ python scripts\link_plan_v5_minio.py --check
 - **Mục 09 Thử thật trên dữ liệu CFL** — 3 case chat-test ngày 17/08/2026 kèm **5 ảnh chụp hội thoại thật** do người dùng cung cấp (`docs KB/Asset/chat/`). **Chỉ trình bày phần năng lực**: case 1 làm được việc thật, case 2 biết nói "không tìm thấy" thay vì bịa, case 3 CS Copilot ra bản DRAFT trả lời khách + đề xuất chuyển tiếp.
 
   ⚠️ **File HTML là bản GIỚI THIỆU tính năng để present cho team** — chỉ đưa vào những gì đã chốt và cho thấy giá trị. **Không đưa lỗi, nghi vấn, hay điều tra nội bộ vào file này** (người dùng đã nhắc thẳng hai lần). Chỗ đó thuộc `STATUS.md` và `audit/`. Ảnh case 2 đã được **cắt bỏ phần chứa thông tin sai** trước khi nhúng.
-- **Mục 10 Đề xuất cấu trúc** — hai phương án đặt cạnh nhau kèm đánh đổi: **A** chia theo mức nhạy cảm × đối tượng đọc × nhịp cập nhật (bản 7 tầng đã chốt, viết lại cho dễ đọc), **B** chia theo 4 nhóm công việc. Kèm bảng 4 kho cần dựng + ai cung cấp gì, gợi ý thứ tự làm, 4 câu hỏi để team chốt. **Đây là phần soạn để team bàn, chưa chốt.**
+- **Mục 10 Đề xuất cấu trúc** — mở đầu bằng *"Bắt đầu từ đâu — bốn loại kho hầu như nhóm nào cũng cần"* (bổ sung cuối phiên, xem 4.7), rồi hai phương án đặt cạnh nhau kèm đánh đổi: **A** chia theo mức nhạy cảm × đối tượng đọc × nhịp cập nhật (bản 7 tầng đã chốt, viết lại cho dễ đọc), **B** chia theo 4 nhóm công việc. Kèm bảng 4 kho cần dựng + ai cung cấp gì, gợi ý thứ tự làm, 4 câu hỏi để team chốt. **Đây là phần soạn để team bàn, chưa chốt.**
 
 **Đã sửa lỗi tồn tại từ trước:** 10 ảnh cũ có `loading="lazy"` nên **không render khi in PDF**. Đã bỏ lazy toàn bộ, kiểm chứng 13/13 ảnh tải được.
 
