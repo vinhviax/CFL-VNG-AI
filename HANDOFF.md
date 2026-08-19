@@ -1,7 +1,7 @@
 # Handoff — Knowledge Base VNG
 
-**Cập nhật:** 18/08/2026 (phiên 6, máy nhà — xác định hàng đợi nền tảng tắc thật, xem mục 4.9) · trước đó 17/08/2026 (phiên 5, máy công ty — converter Plan V5 kiểm chứng, KB-20, dọn artifact dư thừa, sửa file thuyết trình, tính năng "Thêm vào tri thức", đính chính DEC-052)
-**Phiên bản:** 3.7.0 · **Test:** `Ran 30 tests` — **1 FAIL đã biết** (`test_project_image_map_covers_all_merged_assets`, thiếu URI MinIO cho 3 ảnh mới `image-50/51/52`, đang chờ KB xử lý xong — xem mục 4.9)
+**Cập nhật:** 19/08/2026 (phiên 7, máy nhà — hàng đợi thông, gate sạch hoàn toàn, xem mục 4.9) · trước đó 18/08/2026 (phiên 6, máy nhà) · 17/08/2026 (phiên 5, máy công ty — converter Plan V5 kiểm chứng, KB-20, dọn artifact dư thừa, sửa file thuyết trình, tính năng "Thêm vào tri thức", đính chính DEC-052)
+**Phiên bản:** 3.8.0 · **Test:** `Ran 30 tests OK` — không còn FAIL nào (xem mục 4.9, hàng đợi đã thông 19/08)
 
 ---
 
@@ -147,7 +147,7 @@ Nội dung gồm: nguyên tắc quyền ở cấp kho · bảng 4 loại kho nê
 
 **Đã đóng 17/08/2026 (phiên 5, máy công ty, DEC-063):** Converter Plan V5 bố cục ảnh phẳng (DEC-054) nay **đã kiểm chứng end-to-end**. 6 test trước đây skip nay chạy và pass, 29 ảnh sinh ra khớp SHA256 tuyệt đối với bundle đang commit. Sửa 1 dòng test sai vị trí thư mục (`tests/test_convert_cfl_plan_html.py:94`). Gate hiện tại: `Ran 30 tests / OK`, 0 skip.
 
-### 4.9 ⚠️ VIỆC ƯU TIÊN ĐẦU PHIÊN SAU — hàng đợi nền tảng tắc, đã xác định nguyên nhân, chờ team nền tảng
+### 4.9 ĐÃ XONG 19/08/2026 — hàng đợi nền tảng thông, gate sạch (DEC-073)
 
 **Bối cảnh:** cuối phiên 5, người dùng (1) đưa tính năng mới **"Thêm vào tri thức"** (nút `+` dưới câu trả lời chat, lưu thành tài liệu Markdown vào kho, có `Lưu nháp`/`Xuất bản`) — đã viết vào `KB-11-chat-kiem-thu-va-bao-tri.md`, kèm 3 ảnh `image-50/51/52`; (2) crop lại 23 ảnh cũ cho gọn (nội dung không đổi) — `image-01`→`image-14` (trừ vài số), `image-26`→`image-34`; (3) đồng bộ cả 26 ảnh (23 sửa + 3 mới) lên Web.
 

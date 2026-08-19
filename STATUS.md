@@ -1,7 +1,21 @@
 # Trạng thái Knowledge Base VNG
 
-**Ngày snapshot:** 18/08/2026 (phiên 6, máy nhà)
+**Ngày snapshot:** 19/08/2026 (phiên 7, máy nhà)
 **Phiên bản:** 3.7.0
+
+## MỚI 19/08/2026 (phiên 7, máy nhà) — hàng đợi nền tảng thông, gate sạch hoàn toàn (DEC-073)
+
+**Hàng đợi đã thông.** Kiểm qua MCP `list_documents` (4 trang, `page_size=20`): **52/52 ảnh PNG và 21/21 tài liệu `.md` đều `parse_status: completed` + `enable_status: enabled`** trong `GS9 Knowledge VNG AI`. Đúng 26 ảnh đổi URI (23 crop lại + 3 ảnh mới `image-50/51/52`), 26 ảnh còn lại giữ nguyên URI như dự đoán DEC-069/072 — khớp tuyệt đối.
+
+**Đã viết lại `image-map.json` đủ 52 entry, build lại 20 module bị ảnh hưởng** (`build_handbook.py`), trong đó `doc-11-chat-kiem-thu-va-bao-tri.md` lần đầu build thành công với 3 ảnh mới (6 tham chiếu: 3 comment `LOCAL_ASSET` + 3 URI `minio://`).
+
+**Sửa nốt chỗ khoá cứng cuối cùng:** `test_live_project_has_exact_agent_deep_split_and_sixty_image_pairs` khoá số lượt tham chiếu ảnh `61` → `64` (tăng đúng 3, khớp 3 ảnh mới trong `doc-11`).
+
+**Gate sạch hoàn toàn:** `Ran 30 tests OK` (6 skip do thiếu nguồn Plan V5 ở máy nhà, bình thường) — **không còn FAIL nào**. `link_plan_v5_minio.py --check` báo 0 thay đổi cần thiết.
+
+**Sự cố vận hành gặp giữa phiên (đã tự xử lý, không mất dữ liệu):** `git commit` đầu tiên bị Bash tool cắt ngang ở mốc 2 phút vì ghi 20 file qua Google Drive chậm — tiến trình con vẫn chạy ngầm và để lại 3 file khoá rác (`HEAD.lock`, `refs/heads/main.lock`, `objects/maintenance.lock`, cái cuối có từ 17/08). Xác nhận không còn tiến trình `git` nào chạm tới repo này (`Get-CimInstance Win32_Process` lọc theo đường dẫn) trước khi xoá tay từng lock — đúng runbook git tự khuyến nghị khi lock bị treo. Commit thứ hai `3cec768` thành công, không mất staged changes.
+
+**Việc còn lại:** báo người dùng đồng bộ `.md` đã build lại lên Web (ít nhất `doc-11`, nội dung "Thêm kiến thức ngay trong lúc chat" giờ mới có ảnh minh hoạ).
 
 ## MỚI 18/08/2026 (phiên 6, máy nhà) — hàng đợi xử lý của nền tảng tắc thật, không phải lỗi file; DEC-069 được xác nhận lần hai
 
