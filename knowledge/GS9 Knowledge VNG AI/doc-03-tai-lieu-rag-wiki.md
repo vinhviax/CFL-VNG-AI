@@ -41,7 +41,7 @@ Tab Wiki của KB Tài liệu có:
 - Liên kết từ node Graph sang **Mở trong Wiki** khi node có trang liên quan.
 
 <!-- LOCAL_ASSET: ./image-09-wiki-muc-luc-va-trang.png -->
-![Tab Wiki với mục lục và trang tổng hợp](minio://knowledge-base-prd/10012/d46509e6-b745-4da2-b458-4a31d3877026/a9cb1bb2-c6f5-45a0-afa6-cbb9b5c7b8a5.png)
+![Tab Wiki với mục lục và trang tổng hợp](minio://knowledge-base-prd/10012/6be054ec-0575-44c9-9a48-397600a28b7b/9fef9ce5-94cb-4475-9174-870cf5e007b6.png)
 
 *Ảnh 03.1 - Wiki là lớp nội dung tổng hợp, tách với danh sách file gốc.*
 
@@ -58,7 +58,7 @@ FAQ không có control bật Wiki trong cấu hình. Đây là khung giao diện
 Chú giải Graph gồm **Tóm tắt, Thực thể, Khái niệm, Tổng hợp, So sánh**.
 
 <!-- LOCAL_ASSET: ./image-10-graph-cac-loai-node.png -->
-![Graph với chú giải năm loại node](minio://knowledge-base-prd/10012/41d24d9a-2fdb-4af7-8883-724b10785519/d6cfd054-2660-4a43-b39a-bcc806b1e235.png)
+![Graph với chú giải năm loại node](minio://knowledge-base-prd/10012/c50a4387-e929-4d15-be00-25094ccfdced/f9a6364f-c4fd-4c22-ab1d-7c6687896714.png)
 
 *Ảnh 03.2 - Chú giải có Tổng hợp và So sánh, nhưng KB test vẫn chưa sinh được hai loại node này.*
 

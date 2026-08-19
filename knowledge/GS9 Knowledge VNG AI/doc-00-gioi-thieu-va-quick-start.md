@@ -18,7 +18,7 @@ Knowledge Base, viết tắt là KB, là kho nội dung có cấu trúc để h�
 Hai loại này phục vụ hai bài toán khác nhau. Không cần ép toàn bộ tri thức vào một KB duy nhất.
 
 <!-- LOCAL_ASSET: ./image-01-tong-quan-danh-sach-knowledge.png -->
-![Trang danh sách Knowledge Base và nút tạo Knowledge Base mới](minio://knowledge-base-prd/10012/009e72d5-a746-48b4-b594-4d286ed2c547/d6746417-8921-4501-b61f-372b0ff7e65b.png)
+![Trang danh sách Knowledge Base và nút tạo Knowledge Base mới](minio://knowledge-base-prd/10012/493336f4-536f-4040-b934-7efaac187152/d52d6a4c-e239-48fd-a37c-e44a8e0901e0.png)
 
 *Ảnh 00.1 - Trang Knowledge hiển thị danh sách kho và nút `Knowledge Base mới`.*
 

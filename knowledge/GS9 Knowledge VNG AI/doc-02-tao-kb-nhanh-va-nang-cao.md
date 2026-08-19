@@ -24,7 +24,7 @@ Các lựa chọn RAG/Wiki, parser, phân đoạn, VLM, ASR hoặc cách lập c
 Chế độ Nâng cao hiển thị toàn bộ tab cấu hình theo loại KB. Với Tài liệu, tab **Tổng quan** cho thấy loại và chiến lược RAG/Wiki; với FAQ, tab này có cấu hình lập chỉ mục câu hỏi.
 
 <!-- LOCAL_ASSET: ./image-02-cau-hinh-tong-quan-document.png -->
-![Tab Tổng quan của KB Tài liệu với loại, RAG, Wiki, tên và mô tả](minio://knowledge-base-prd/10012/986e3126-9af8-401b-a6ca-7d0bcc0f0b90/7429057a-d835-4927-8216-90e33c726bb0.png)
+![Tab Tổng quan của KB Tài liệu với loại, RAG, Wiki, tên và mô tả](minio://knowledge-base-prd/10012/2e2932bd-46f9-4ace-b3f0-e286ad11b822/c10f50f6-f058-4018-ab65-bb57f6e5a954.png)
 
 *Ảnh 02.1 - Tab Tổng quan của KB Tài liệu đã có nội dung; một số lựa chọn bị khóa.*
 

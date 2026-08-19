@@ -99,7 +99,7 @@ Câu hỏi của người dùng → hệ thống nhận diện Intent
 ```
 
 <!-- LOCAL_ASSET: ./image-27-agent-thong-tin-co-ban-va-intent.png -->
-![Danh sách Intent và vùng prompt ghi đè](minio://knowledge-base-prd/10012/5f6fdf72-6acd-4a17-a1de-a49a568ee463/de3b0aa4-5b6b-4011-8ce2-8f9782113bfc.png)
+![Danh sách Intent và vùng prompt ghi đè](minio://knowledge-base-prd/10012/a5337d31-4300-4627-a8e2-d00e0fa79efe/69667a43-c73b-4e34-be69-25c7b8dd03b3.png)
 
 *Ảnh 14.4 - Tab cơ bản chứa prompt chính, dropdown Intent và prompt chuyên biệt.*
 

@@ -28,7 +28,7 @@ Hai suy luận thường sai:
 - Khung soạn tin đã hiện ảnh, nên mô hình đã nhận được ảnh.
 
 <!-- LOCAL_ASSET: ./image-32-agent-cau-hinh-da-phuong-thuc.png -->
-![Tab cấu hình đa phương thức](minio://knowledge-base-prd/10012/cd05c218-6441-47f9-9636-bea972fdac71/0c8f6a20-9548-4e66-913d-4ad615cc3ab0.png)
+![Tab cấu hình đa phương thức](minio://knowledge-base-prd/10012/524d81d7-99fd-4f9e-a271-6ab3b0695619/e8883a27-0679-4170-9062-1986c8b9ef63.png)
 
 *Ảnh 17.1 - Control tải ảnh, VLM và âm thanh cần cấu hình riêng, tách khỏi phần truy hồi tài liệu.*
 

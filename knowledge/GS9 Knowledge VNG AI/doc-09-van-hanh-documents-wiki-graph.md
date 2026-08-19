@@ -20,7 +20,7 @@ Menu **Thêm tài liệu** có bốn lựa chọn:
 - **Soạn thảo trực tuyến**
 
 <!-- LOCAL_ASSET: ./image-08-tai-tep-thu-muc-va-soan-thao.png -->
-![Menu thêm tài liệu với tải tệp, tải thư mục, nhập URL và soạn trực tuyến](minio://knowledge-base-prd/10012/dc81568f-b9bb-48b7-b68e-0ff079269cdc/5d002405-d9df-48a9-9b0d-83a97f14fa9f.png)
+![Menu thêm tài liệu với tải tệp, tải thư mục, nhập URL và soạn trực tuyến](minio://knowledge-base-prd/10012/0cae5894-ed0a-4380-b3f5-5577d9eb03d2/8349685e-136a-4901-ae2f-e037ec38e17e.png)
 
 *Ảnh 09.1 - `Nhập từ URL` đang vô hiệu hóa tại thời điểm kiểm tra.*
 

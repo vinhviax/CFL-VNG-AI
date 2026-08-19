@@ -8,6 +8,7 @@
 
 - Cách đánh giá một câu trả lời bằng nguồn, không chỉ bằng văn phong.
 - Cách làm ảnh xuất hiện trong chat.
+- Cách lưu một câu trả lời thành tài liệu mới ngay trong lúc chat, và vì sao phải Xuất bản mới dùng được.
 - Cách duy trì KB mà không mất khả năng phục hồi.
 
 ## Quy trình kiểm thử chat
@@ -41,7 +42,7 @@ Nguyên tắc chung: **nếu nguồn truy hồi đã sai thì đừng đổi mod
 - Nếu Markdown dùng **liên kết nội bộ của ảnh đã upload**, câu trả lời hiển thị đúng hình.
 
 <!-- LOCAL_ASSET: ./image-13-chat-hien-thi-anh-minio.png -->
-![Câu trả lời Knowledge VNG hiển thị ảnh khi nguồn Markdown dùng URI MinIO](minio://knowledge-base-prd/10012/626377f3-cbdb-4ab6-8ad5-9029a2d9c316/0ba30d71-7fd7-46d5-b548-69ee3e1741c3.png)
+![Câu trả lời Knowledge VNG hiển thị ảnh khi nguồn Markdown dùng URI MinIO](minio://knowledge-base-prd/10012/db257ba3-f812-44b9-8c0a-5d6ec2821f78/f39d2871-904f-4f66-8963-c904d9578bed.png)
 
 *Ảnh 11.1 - Trường hợp đạt: ảnh xuất hiện trực tiếp trong câu trả lời chat.*
 
@@ -56,9 +57,45 @@ Quy trình chuẩn cho một bộ tài liệu có ảnh:
 7. Xác nhận ảnh thật xuất hiện và nguồn tham khảo trỏ đúng liên kết mới.
 8. Không xóa ảnh đã nạp khi vẫn còn tài liệu Markdown tham chiếu tới nó.
 
+## Thêm kiến thức ngay trong lúc chat
+
+Đọc xong bạn biết cách lưu một câu trả lời hay thành tài liệu mới trong kho, ngay trong khung chat, không cần rời ra soạn file rồi tải lên.
+
+1. Rê chuột vào một câu trả lời của trợ lý — một hàng biểu tượng ẩn hiện ra bên dưới.
+2. Bấm biểu tượng dấu **+** (chú thích **"Thêm vào tri thức"**).
+
+<!-- LOCAL_ASSET: ./image-50-them-tri-thuc-nut-tren-cau-tra-loi.png -->
+![Hàng biểu tượng dưới câu trả lời, mũi tên chỉ vào nút Thêm vào tri thức](minio://knowledge-base-prd/10012/2b541c18-dca2-4c9f-ae16-30e3d3732aee/7b6bf23c-1dd5-406a-bf31-4262e9f2306f.png)
+
+*Ảnh 11.2 - Nút "Thêm vào tri thức" chỉ hiện khi rê chuột vào câu trả lời.*
+
+3. Hộp thoại **Tạo tri thức Markdown** mở ra:
+   - **Kho tri thức đích** — mặc định là kho trợ lý đang gắn, đổi được sang kho khác bạn có quyền.
+   - **Tiêu đề tri thức** — tự điền từ câu hỏi trước đó, sửa được, tối đa 100 ký tự.
+   - Ô soạn thảo Markdown — tự điền **nguyên văn câu trả lời của trợ lý**, sửa được trước khi lưu.
+
+<!-- LOCAL_ASSET: ./image-51-them-tri-thuc-hop-thoai-tao-markdown.png -->
+![Hộp thoại Tạo tri thức Markdown với kho đích, tiêu đề và ô soạn thảo](minio://knowledge-base-prd/10012/b246222a-4c84-4153-9420-7684dd6cab4f/0a0df9c2-d2fc-457f-896b-c815fa2eaf78.png)
+
+*Ảnh 11.3 - Hộp thoại cho đổi kho đích, sửa tiêu đề và sửa cả nội dung trước khi lưu.*
+
+4. **Đọc lại nội dung trong ô soạn thảo trước khi lưu.** Đây là câu trả lời do mô hình viết ra ở đúng lượt đó — có thể đúng, cũng có thể chỉ là suy luận theo kiến thức chung khi kho không có nguồn. Sửa lại cho khớp sự thật, đừng lưu nguyên văn nếu chưa chắc đúng.
+5. Chọn một trong hai nút:
+   - **Lưu nháp** — tài liệu vào kho ở trạng thái **Bản nháp**, nguồn ghi **Thủ công**.
+   - **Xuất bản** — tài liệu được đưa vào xử lý như một tệp nạp bình thường.
+
+<!-- LOCAL_ASSET: ./image-52-them-tri-thuc-tai-lieu-ban-nhap-trong-kho.png -->
+![Tài liệu mới trong danh sách, nguồn Thủ công, trạng thái Bản nháp](minio://knowledge-base-prd/10012/e4227c0f-c9d9-4d37-ad5b-e418131014c2/8bf2c185-38cf-478d-a934-6fd0e006a57b.png)
+
+*Ảnh 11.4 - Sau khi lưu nháp: nguồn hiện "Thủ công", trạng thái "Bản nháp", khác hẳn tài liệu đồng bộ từ Google Drive.*
+
+**Dễ hiểu lầm nhất:** nút này lưu **câu trả lời của trợ lý**, không lưu nguyên văn tin nhắn bạn gõ. Kể cả khi bạn tự gõ hẳn nội dung đúng vào khung chat, thứ được lưu vào kho vẫn là **lời trợ lý viết lại** ở lượt trả lời kế tiếp — trừ khi trợ lý chép nguyên văn lại thành công.
+
+**Vì sao phải cẩn trọng:** cách này đưa nội dung vào kho nhanh hơn hẳn quy trình soạn và duyệt tài liệu thông thường. Không có bước duyệt nào bắt buộc giữa Lưu nháp và Xuất bản — người bấm Xuất bản là người quyết định nội dung đó thành sự thật trong kho. Dùng cho kho sự thật đã chốt rủi ro cao hơn hẳn dùng cho kho đang thử nghiệm.
+
 ## Bản nháp không phải nguồn chat
 
-Nội dung ở trạng thái **Bản nháp** không được đưa vào chỉ mục nên chat không truy hồi được.
+Nội dung ở trạng thái **Bản nháp** — dù nạp qua tệp bình thường hay qua nút "Thêm vào tri thức" ở trên — đều không được đưa vào chỉ mục nên chat không truy hồi được.
 
 Checklist phát hành vì vậy luôn phải có ba bước: **Xuất bản**, chờ lập chỉ mục xong, rồi chạy câu hỏi xác nhận.
 

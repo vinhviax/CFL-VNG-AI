@@ -15,7 +15,7 @@ Quyền xem nằm ở **cấp kho**, không nằm ở từng tài liệu. Trợ 
 Hệ quả: **một tài liệu nhạy cảm kéo cả kho lên mức nhạy cảm đó.** Mọi cách chia kho đều phải sống được với ràng buộc này. Nếu bạn định để một bảng dữ liệu người chơi chung với hướng dẫn vận hành, thì toàn bộ hướng dẫn vận hành cũng chỉ chia sẻ được cho nhóm được xem dữ liệu người chơi.
 
 <!-- LOCAL_ASSET: ./image-06-chia-se-va-phan-quyen.png -->
-![Tab Chia sẻ với lựa chọn Space và quyền Chỉnh sửa hoặc Chỉ đọc](minio://knowledge-base-prd/10012/4ab738a4-8895-46b5-acf5-017d3087c51a/5f83573b-3478-4fb6-8540-67508b8caa7b.png)
+![Tab Chia sẻ với lựa chọn Space và quyền Chỉnh sửa hoặc Chỉ đọc](minio://knowledge-base-prd/10012/f47c0a5d-fa87-41b5-8d5e-beae0efc12da/4bf7d84d-16b5-4f3e-8af1-b51af1f6e821.png)
 
 *Ảnh 20.1 - Quyền được đặt cho cả kho, không đặt được cho từng tài liệu bên trong. Đây là ràng buộc chi phối mọi quyết định tách hay gộp kho.*
 

@@ -28,7 +28,7 @@ Human → Agent nhận lượt chat → phân loại Intent
 Agent nghiệp vụ chọn kho tri thức chứa nội dung nghiệp vụ làm nguồn trả lời. Ảnh và tài liệu Markdown để chung một kho được: ảnh vẫn hiện trong câu trả lời vì Markdown tham chiếu tới liên kết nội bộ của ảnh đó.
 
 <!-- LOCAL_ASSET: ./image-26-agent-tong-quan-danh-sach.png -->
-![Trang danh sách và nút Tạo trợ lý](minio://knowledge-base-prd/10012/5267ca6e-9ffc-4091-ba24-89d4b0075e80/7cda390e-4f99-43c0-8e92-279519831e71.png)
+![Trang danh sách và nút Tạo trợ lý](minio://knowledge-base-prd/10012/334ba6ad-15b7-45ea-95b5-ea384cdc608f/9d11733f-721b-42c4-a814-37634b5afe2e.png)
 
 *Ảnh 13.1 - Danh sách Agent, bộ lọc phạm vi và điểm bắt đầu tạo Agent.*
 

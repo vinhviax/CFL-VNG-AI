@@ -19,7 +19,7 @@ Mở **Cài đặt → Mô hình** của Knowledge Base. Ở đây có các vai 
 VLM và ASR nằm trong khối **Tùy chọn mô hình nâng cao**, bấm mở rộng ở phía dưới ba dropdown chính. Khối này không có ở KB FAQ.
 
 <!-- LOCAL_ASSET: ./image-03-cau-hinh-mo-hinh-vlm-asr.png -->
-![Tab Mô hình với model chat, Embedding, Wiki, VLM và ASR](minio://knowledge-base-prd/10012/9856f987-df97-4434-8f31-99b462ba0f51/23f448df-8ba0-4ac2-a0cc-b88fddbc6b96.png)
+![Tab Mô hình với model chat, Embedding, Wiki, VLM và ASR](minio://knowledge-base-prd/10012/53a6afa4-dba0-4272-85f9-9cb020175146/61a980d4-7f6e-40ec-b97b-a337a0fdd0cd.png)
 
 *Ảnh 05.1 - Tab Mô hình của KB Tài liệu.*
 

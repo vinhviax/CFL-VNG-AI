@@ -18,7 +18,7 @@ Một câu trả lời trôi chảy chỉ là giả thuyết. Phải mở nguồ
 Mỗi lần bấm **Cuộc trò chuyện mới** là một phiên riêng. Câu hỏi nối tiếp phải được thử **trong cùng một hội thoại**. Đừng giả định Agent nhớ những gì đã nói ở phiên trước.
 
 <!-- LOCAL_ASSET: ./image-33-agent-chat-nguon-va-anh.png -->
-![Câu trả lời RAG, nguồn và ảnh trong Markdown](minio://knowledge-base-prd/10012/b211db99-3998-40d2-ac2f-190becd86008/ba25c89e-5909-4656-bf78-3ec5b1384da4.png)
+![Câu trả lời RAG, nguồn và ảnh trong Markdown](minio://knowledge-base-prd/10012/2d11a645-29e0-4510-b1a0-2c1bb5309519/75e16bb5-648c-4372-b592-1c5ef03da8e2.png)
 
 *Ảnh 18.1 - Câu trả lời cần kiểm cả nguồn tham khảo và ảnh hiển thị, không chỉ phần chữ.*
 
@@ -69,7 +69,7 @@ Lịch sử giúp tái hiện ngữ cảnh hội thoại. Nó không thay việc
 | Đánh giá | Bấm Hữu ích / Chưa hữu ích | Phản hồi xuất hiện trong Hộp xử lý kèm mô tả |
 
 <!-- LOCAL_ASSET: ./image-34-agent-danh-gia-cau-tra-loi.png -->
-![Tổng quan feedback và Hộp xử lý](minio://knowledge-base-prd/10012/9e924efb-908a-45e0-8f27-7ad48eef0bf0/a2eab4ab-b837-4f68-9ef0-c995badd4880.png)
+![Tổng quan feedback và Hộp xử lý](minio://knowledge-base-prd/10012/7d175880-981d-4b02-b25b-65fe05b3ad5b/b56a82cd-8bf0-47c2-b6a8-de9f350a2db3.png)
 
 *Ảnh 18.2 - Phần đánh giá nên vận hành như một hàng đợi điều tra, không chỉ là bảng tỷ lệ.*
 

@@ -12,7 +12,7 @@ Tab **Chia sẻ** cho phép chọn Space và gán quyền:
 - **Chỉ đọc:** thành viên đọc, truy hồi hoặc hỏi đáp nhưng không sửa nội dung.
 
 <!-- LOCAL_ASSET: ./image-06-chia-se-va-phan-quyen.png -->
-![Tab Chia sẻ với lựa chọn Space và quyền Chỉnh sửa hoặc Chỉ đọc](minio://knowledge-base-prd/10012/4ab738a4-8895-46b5-acf5-017d3087c51a/5f83573b-3478-4fb6-8540-67508b8caa7b.png)
+![Tab Chia sẻ với lựa chọn Space và quyền Chỉnh sửa hoặc Chỉ đọc](minio://knowledge-base-prd/10012/f47c0a5d-fa87-41b5-8d5e-beae0efc12da/4bf7d84d-16b5-4f3e-8af1-b51af1f6e821.png)
 
 *Ảnh 08.1 - Chia sẻ là quyết định quyền truy cập, không phải cách nạp dữ liệu.*
 
@@ -32,7 +32,7 @@ Tab **Nguồn dữ liệu** có ba connector:
 - **NAS**
 
 <!-- LOCAL_ASSET: ./image-07-nguon-du-lieu-notion-drive-nas.png -->
-![Tab Nguồn dữ liệu với Notion, Google Drive và NAS](minio://knowledge-base-prd/10012/290342ca-a20f-48aa-aa3f-7777f196b780/edbd9f6c-4985-4c18-8ee9-5c60a023c354.png)
+![Tab Nguồn dữ liệu với Notion, Google Drive và NAS](minio://knowledge-base-prd/10012/67c662b7-b301-4333-aed2-3a2f2fbf3f66/e3d116ab-6004-4d41-8f22-3a7f6719ffb8.png)
 
 *Ảnh 08.2 - Khi chưa cấu hình, trang hiện nút thêm nguồn dữ liệu đầu tiên.*
 

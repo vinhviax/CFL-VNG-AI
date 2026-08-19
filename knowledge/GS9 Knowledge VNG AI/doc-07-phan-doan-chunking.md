@@ -13,7 +13,7 @@ Mục **Phân đoạn** nằm ở **Cài đặt → Xử lý**, chỉ có ở KB
 **Mọi con số kích thước đều tính bằng KÝ TỰ, không phải TỪ.** Nếu tài liệu nội bộ nào của bạn ghi "200-500 từ" thì con số đó sai cả đơn vị lẫn giá trị.
 
 <!-- LOCAL_ASSET: ./image-05-xu-ly-phan-doan-cha-con.png -->
-![Tab Xử lý với chế độ phân đoạn cha-con và các kích thước](minio://knowledge-base-prd/10012/7978cfac-c07a-4776-9e8d-617a5776d4d2/a9137a62-d677-42b8-b5a8-864c011f64dc.png)
+![Tab Xử lý với chế độ phân đoạn cha-con và các kích thước](minio://knowledge-base-prd/10012/9e2241ea-bffb-4953-be21-cb809768bd46/a2b3b676-c434-4505-a5ed-9deea50601e8.png)
 
 *Ảnh 07.1 - Giao diện cấu hình chunk cha-con trong KB Tài liệu.*
 

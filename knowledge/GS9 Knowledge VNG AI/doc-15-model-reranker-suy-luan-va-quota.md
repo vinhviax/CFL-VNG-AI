@@ -20,7 +20,7 @@ Danh sách model tùy tenant. Các model thường thấy trên dropdown: `deeps
 Có tên trong dropdown **không** bảo đảm model còn quota. Sau khi lưu, phải chat thử một lượt để xác nhận model thật sự trả lời được.
 
 <!-- LOCAL_ASSET: ./image-28-agent-cau-hinh-mo-hinh.png -->
-![Cấu hình model, reranker, nhiệt độ và chế độ suy nghĩ](minio://knowledge-base-prd/10012/de907389-0e07-4518-ab19-c80539ac07b0/4abe1947-c3fc-405a-8340-5a48bf4388c2.png)
+![Cấu hình model, reranker, nhiệt độ và chế độ suy nghĩ](minio://knowledge-base-prd/10012/7a292f44-0841-47f9-9dd2-c534f3220765/2fafbaf8-836e-4970-b6e3-856f90031c2e.png)
 
 *Ảnh 15.1 - Tab cấu hình model; danh sách model có thể khác theo tenant và theo quota còn lại.*
 

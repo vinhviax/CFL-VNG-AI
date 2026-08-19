@@ -19,7 +19,7 @@ Form **Thêm Q&A** có:
 - **Phân loại**.
 
 <!-- LOCAL_ASSET: ./image-12-faq-bieu-mau-them-qa.png -->
-![Biểu mẫu Thêm Q&A với câu hỏi chuẩn, biến thể, loại trừ và câu trả lời](minio://knowledge-base-prd/10012/6d2fb066-c135-4929-9e40-c2a4ba9d14d7/40bc64b9-4191-48db-b32c-f143dbd5667b.png)
+![Biểu mẫu Thêm Q&A với câu hỏi chuẩn, biến thể, loại trừ và câu trả lời](minio://knowledge-base-prd/10012/e03a2f9b-1f85-4a6a-9a64-1cb6247c52d3/580e5aea-9f29-4ee8-9dd5-1e951837a04b.png)
 
 *Ảnh 04.1 - Mỗi mục FAQ có thể chứa nhiều biến thể và nhiều câu trả lời.*
 

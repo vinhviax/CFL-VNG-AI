@@ -24,7 +24,7 @@ Với Agent Knowledge VNG, chọn rõ **Knowledge VNG AI**. Kho ảnh chỉ gi�
 Nếu bạn nhân bản một Agent mặc định, bản sao sẽ kế thừa phạm vi **Tất cả kho tri thức**. Kiểm và thu hẹp lại ngay sau khi nhân bản.
 
 <!-- LOCAL_ASSET: ./image-29-agent-kho-tri-thuc.png -->
-![Phạm vi KB và lọc loại tệp](minio://knowledge-base-prd/10012/e986523c-a209-43e5-96bc-85f9a674cc75/329b197d-e77d-4129-8c48-56d7c22ff4f5.png)
+![Phạm vi KB và lọc loại tệp](minio://knowledge-base-prd/10012/152c62ab-1025-4903-a34c-e2c8e8214d25/2f7f5de5-3379-406b-9b3a-e5cc43aa9305.png)
 
 *Ảnh 16.1 - Chọn KB là control bảo mật và chất lượng, không chỉ là tiện lợi.*
 
@@ -68,14 +68,14 @@ Nhãn `WIKI` trong dropdown chỉ cho biết KB có bật Wiki, **không** chứ
 Nguyên tắc quyền tối thiểu: nhóm điều phối bật được ngay; nhóm truy hồi, Wiki, dữ liệu, CSDL và danh mục chỉ bật sau khi đã rà nguồn và quyền. Trước khi bật một tool gắn với nguồn dữ liệu, phải trả lời được sáu câu: ai sở hữu nguồn, quyền truy cập ra sao, dữ liệu giữ bao lâu, mức nhạy cảm thế nào, cập nhật đến đâu, và có bộ câu hỏi chuẩn để kiểm chưa.
 
 <!-- LOCAL_ASSET: ./image-30-agent-cong-cu.png -->
-![Công cụ, số vòng lặp, timeout và gọi song song](minio://knowledge-base-prd/10012/9e14727c-721c-4c5d-808f-48b3a8ad5fbe/f3c6cfa1-c1f1-478a-8b0a-8598c46533ac.png)
+![Công cụ, số vòng lặp, timeout và gọi song song](minio://knowledge-base-prd/10012/0e90211a-e678-4c4e-bc9f-103cb0fc9a06/0af752a5-9ef3-4c50-a65b-d19002c00109.png)
 
 *Ảnh 16.2 - Bộ tool có hiệu lực phải được kiểm lại sau khi chọn preset.*
 
 ## Chiến lược truy hồi
 
 <!-- LOCAL_ASSET: ./image-31-agent-chien-luoc-truy-hoi.png -->
-![Chiến lược truy hồi: Top K, ngưỡng và reranker](minio://knowledge-base-prd/10012/94720ca9-15d2-47dc-8f3b-35bcc5dd4750/e728fdb1-472a-4b2d-a652-bc0bdc2dd6ed.png)
+![Chiến lược truy hồi: Top K, ngưỡng và reranker](minio://knowledge-base-prd/10012/735dfe79-76f4-4c34-a22d-413ce015281f/02701d3a-ef3c-4099-882f-00291192a93a.png)
 
 *Ảnh 16.3 - Chiến lược truy hồi là lớp lọc ứng viên trước context; mỗi lần chỉ đổi một tham số.*
 

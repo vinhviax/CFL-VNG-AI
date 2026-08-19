@@ -21,7 +21,7 @@ Trang Documents của KB FAQ có:
 - **Thêm Q&A**
 
 <!-- LOCAL_ASSET: ./image-11-faq-danh-sach-nhap-xuat-tim-kiem.png -->
-![Danh sách FAQ với các nút kiểm tra tìm kiếm, xuất, nhập và thêm Q&A](minio://knowledge-base-prd/10012/9fb451d4-410d-41e1-8a31-3439c1adc6ce/114b0d87-cf21-4889-99af-ac9b712f0880.png)
+![Danh sách FAQ với các nút kiểm tra tìm kiếm, xuất, nhập và thêm Q&A](minio://knowledge-base-prd/10012/d6ed46f4-2f75-4146-878d-3cf72e3de6bd/308f357b-bdef-42f9-b55c-37f70b628814.png)
 
 *Ảnh 10.1 - Trang vận hành FAQ tập trung vào từng mục Q&A và chất lượng tìm kiếm.*
 

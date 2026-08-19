@@ -13,7 +13,7 @@ Parser nằm ở **Cài đặt → Xử lý** và **chỉ có ở KB Tài liệu
 Tên engine trên giao diện gồm **Built-in, Simple, MinerU, LLM, markitdown, liteparse**. Không định dạng nào có đủ cả sáu.
 
 <!-- LOCAL_ASSET: ./image-04-xu-ly-parser-theo-dinh-dang.png -->
-![Tab Xử lý với cấu hình parser theo từng định dạng file](minio://knowledge-base-prd/10012/57161186-309c-40c7-90de-05c4e539642e/342574bb-6d09-4a4c-acd6-649e2291563d.png)
+![Tab Xử lý với cấu hình parser theo từng định dạng file](minio://knowledge-base-prd/10012/006dceb5-3426-4053-9e65-35d35b35d9e8/deeca022-c7f5-434e-8258-b8c0f13f5d46.png)
 
 *Ảnh 06.1 - Các lựa chọn parser thay đổi theo từng nhóm file.*
 

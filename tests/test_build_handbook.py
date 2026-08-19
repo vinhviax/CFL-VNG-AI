@@ -392,10 +392,12 @@ Nội dung kiểm thử.
         # ("minio://.../10012/<knowledge_id>/<uuid>.png") render đúng, thay
         # thế toàn bộ 49 URI "exports/" cũ đã chết sau khi ảnh được re-sync
         # qua Google Drive connector. Đếm theo tiền tố chung, không khoá dạng.
-        self.assertEqual(rendered.count("minio://knowledge-base-prd/10012/"), 61)
+        # Cập nhật 18/08/2026 (DEC-071/072): 61 → 64 sau khi doc-11 build
+        # được với 3 ảnh mới image-50/51/52 (tính năng "Thêm vào tri thức").
+        self.assertEqual(rendered.count("minio://knowledge-base-prd/10012/"), 64)
         self.assertEqual(
             rendered.count("<!-- LOCAL_ASSET: ./image-"),
-            61,
+            64,
         )
 
     def test_agent_modules_are_operational_guides_without_dev_content(self):

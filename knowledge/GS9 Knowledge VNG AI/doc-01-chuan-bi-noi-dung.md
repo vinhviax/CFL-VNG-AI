@@ -70,7 +70,7 @@ Không dùng quy trình này cho lỗi INVALID_TOKEN.
 Nhưng chat Knowledge VNG **không render ảnh** từ đường dẫn tương đối, kể cả khi file Markdown và file ảnh đều đã được nạp vào KB.
 
 <!-- LOCAL_ASSET: ./image-14-chat-khong-hien-thi-duong-dan-tuong-doi.png -->
-![Câu trả lời có mô tả ảnh nhưng không render ảnh khi Markdown dùng đường dẫn tương đối](minio://knowledge-base-prd/10012/05b32274-609a-4191-a571-4f9fc7bc4905/b018b48c-8ef2-4f91-9066-d13d462498e3.png)
+![Câu trả lời có mô tả ảnh nhưng không render ảnh khi Markdown dùng đường dẫn tương đối](minio://knowledge-base-prd/10012/ec7c629c-1648-41a9-bc8e-d00e80abc180/35602691-18ca-48e6-96fc-ac7350dcfb6b.png)
 
 *Ảnh 01.1 - Trường hợp không đạt: câu trả lời có phần “Hình minh họa” nhưng không có ảnh nào hiện ra.*
 
