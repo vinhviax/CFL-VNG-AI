@@ -10,7 +10,7 @@ QUAN TRỌNG: Prompt này cung cấp bối cảnh, KHÔNG tự cấp quyền mut
 
 Xây và vận hành Knowledge Base + Agent trên nền tảng VNG AI (`vnggames.ai`, tenant `10012`) cho nghiệp vụ LiveOps game CrossFire Legends (CFL/CFM VN), team GS9 dùng.
 
-Hiện có **10 kho tri thức** và **16 trợ lý** (6 mặc định của nền tảng + 10 custom cho LiveOps). `GS9 Knowledge VNG AI` local có **21 tài liệu Markdown** (`doc-00`→`doc-20`) + **52 ảnh PNG** (`image-01`→`image-52`, kể cả 3 ảnh mới thêm hai phiên trước).
+Hiện có **10 kho tri thức** và **16 trợ lý** (6 mặc định của nền tảng + 10 custom cho LiveOps). `GS9 Knowledge VNG AI` local có **21 tài liệu Markdown** (`doc-00`→`doc-20`) + **52 ảnh PNG** (`image-01`→`image-52`) — **cả 73 tài liệu đều `Hoàn tất` trên Web** (xác nhận 20/08/2026, DEC-073/074), không còn tài liệu nào treo.
 
 File thuyết trình: `gioi-thieu-knowledge-base-va-agent.html` — **12 mục gộp thành 5 phần**, tự chứa, in PDF được, mục lục dạng cột trái.
 
@@ -18,7 +18,7 @@ File thuyết trình: `gioi-thieu-knowledge-base-va-agent.html` — **12 mục g
 1. VIỆC PHẢI LÀM ĐẦU TIÊN
 ==================================================
 
-Read-only: `git rev-parse --show-toplevel`, `git branch --show-current`, `git status --short`, `git log -3 --oneline`. Commit mới nhất phải là `af4a1e2` ("docs: xác định nguyên nhân hàng đợi tắc (DEC-071/072), sửa test khoá 49→52 ảnh") — đã push GitHub cuối phiên 6 (18/08, máy nhà).
+Read-only: `git rev-parse --show-toplevel`, `git branch --show-current`, `git status --short`, `git log -3 --oneline`. Commit mới nhất phải là `32b3e69` ("docs: ghi nhận hàng đợi nền tảng đã thông, gate sạch hoàn toàn (DEC-073)") — đã push GitHub cuối phiên 7 (20/08, máy nhà).
 
 **Luôn xác nhận local khớp remote trước khi tin `git status`:**
 ```powershell
@@ -27,46 +27,34 @@ git diff --stat origin/main HEAD
 ```
 Phải rỗng tuyệt đối. Nếu KHÔNG rỗng — có thể Drive lại gây sự cố như đã gặp nhiều lần (xem mục 7).
 
-Đọc theo thứ tự: `AGENTS.md` → `HANDOFF.md` (đặc biệt mục 4.9 — việc treo đầu phiên, đã cập nhật 18/08 với bằng chứng cụ thể) → `STATUS.md` (mục mới nhất trên cùng, mục 18/08 phiên 6). `DECISIONS.md` (72 quyết định) tra khi cần hiểu vì sao.
+Đọc theo thứ tự: `AGENTS.md` → `HANDOFF.md` (đặc biệt mục 4.5 — Case 2, việc ưu tiên số 1 giờ đã đủ điều kiện chạy; và mục 4.9 — đã ĐÓNG) → `STATUS.md` (mục mới nhất trên cùng, mục 20/08 phiên 7). `DECISIONS.md` (74 quyết định) tra khi cần hiểu vì sao.
 
 ==================================================
-2. VIỆC ƯU TIÊN SỐ 1 KHI VÀO PHIÊN — HÀNG ĐỢI NỀN TẢNG TẮC, ĐÃ XÁC ĐỊNH NGUYÊN NHÂN, CHỜ THÔNG
+2. VIỆC ƯU TIÊN SỐ 1 KHI VÀO PHIÊN — CHẠY LẠI CASE 2, ĐIỀU KIỆN ĐÃ ĐẠT (mục 4.5)
 ==================================================
 
-**Đã kiểm chứng ở phiên 6 (18/08, máy nhà) — không còn là nghi vấn:** hàng đợi xử lý của nền tảng bị tắc, không phải lỗi file hay cấu hình KB. Mở panel **"Xem tiến trình"** (menu ⋯ của tài liệu, trên Web, đọc qua shadow DOM) cho `image-28` và `image-02`: cả hai đứng ở **`Chờ` · 0/5 giai đoạn**, 5 bước (Phân tích tài liệu → Chia đoạn → Vector hóa → Đa phương thức → Hậu xử lý) đều "Đang chờ", kèm bộ đếm lần thử `#1 #2` / `#1 #2 #3` — job xếp hàng, hết giờ, xếp lại, **không worker nào chạy**. `image-28` có `failed_stages.summary = "failed to update knowledge: context deadline exceeded"`. Chi tiết đầy đủ: DEC-071, `HANDOFF.md` mục 4.9.
+**Bối cảnh (phiên 4, 17/08):** chat-test `Knowledge Curator` khẳng định sai ba thứ — "chỉ có 6 trợ lý mặc định", tồn tại kho `Knowledge VNG - Image Assets` (đã gỡ từ lâu), có nguồn `Drive CFL Viax` sync mỗi 15 phút. Cả ba khớp gần như từng ký tự với nội dung nhìn thấy trong 3 ảnh (`image-26`, `image-41`, `image-25`) chứ không phải tài liệu chữ. Nghi vấn: Agent có đang **ưu tiên ảnh hơn chữ làm nguồn dữ kiện** không, hay lúc đó **chữ chưa vào chỉ mục** nên ảnh là thứ duy nhất truy hồi được (giả thuyết cạnh tranh, khớp với chi tiết vòng tìm ngữ nghĩa đầu tiên trả "Không có kết quả")? Chi tiết đầy đủ: `audit/agent-chat-test-2026-08-17.md` mục 6, 7, 8.
 
-**Trạng thái treo, tính tới lúc dừng phiên 6:**
-- 26 ảnh (23 crop lại `image-01→14, 26→34` phần + 3 ảnh mới `image-50/51/52`), nạp lúc 17/08 18:48–18:49: **0/26 `completed`** (21 `pending`, 4 `processing`, 1 `finalizing`).
-- 21 file `doc-*.md`, bị nạp lại lúc 18/08 00:00–00:01 (một lần đồng bộ Toàn bộ định kỳ, không phải ai đó sửa tay — xem DEC-072): **0/21 `completed`**, tất cả `disabled`. Hệ quả: KB `GS9 Knowledge VNG AI` hiện **không có tài liệu chữ nào được lập chỉ mục**, Agent trỏ vào kho này (CS Copilot, GM Policy Advisor, Knowledge Curator) chỉ tra được ảnh.
-
-**Gate hiện đang có đúng 1 FAIL đã biết** (`test_project_image_map_covers_all_merged_assets`, thiếu URI MinIO cho `image-50/51/52`) — tín hiệu đúng, KHÔNG phải lỗi cần vá tạm. Đừng dùng `--allow-missing-minio`. Test khoá cứng "49 ảnh" đã sửa thành "52" (phiên 6) — đừng sửa lại lần nữa.
+**Điều kiện để chạy lại từng ghi "đủ 70 tài liệu Hoàn tất" — con số đó LỖI THỜI** (70 = 49 ảnh cũ + 21 md, tính trước khi thêm `image-50/51/52`). Con số đúng là **73** (52 ảnh + 21 md). **Đã đạt 20/08/2026** — xác nhận 73/73 `completed`/`enabled` qua MCP, cộng hash `doc-11` trên Web khớp tuyệt đối bản local (DEC-074).
 
 **Việc làm theo thứ tự:**
-1. Hỏi người dùng: đã báo team vận hành nền tảng chưa, có phản hồi gì không (bản mô tả sự cố soạn sẵn nằm trong lịch sử chat phiên 6, cũng có thể dựng lại từ DEC-071).
-2. Kiểm qua MCP: `list_documents(knowledge_base_id="cefadf09-4187-46ac-a765-591e3255a4a4", page_size=100)` (4 trang, page_size 20 mỗi lần nếu 100 quá dài), lọc `file_type=="png"` đếm `parse_status`, riêng lọc `file_type=="md"` đếm `parse_status`/`enable_status`. Cần đủ **52/52 png `completed`** VÀ **21/21 md `completed` + `enabled`**. Kết quả dài — ghi ra file rồi lọc bằng Python, đừng đọc thẳng cả JSON.
-3. Khi đủ điều kiện: lấy `file_path` của **đúng 26 ảnh vừa xử lý xong** (không phải cả 52 — xem mục 3 bên dưới lý do), viết lại `image-map.json` trong `knowledge/GS9 Knowledge VNG AI/image-map.json` (script: đọc JSON hiện có, merge, ghi qua file tạm + `os.replace`).
-4. `python scripts/build_handbook.py` — build lại 21 module, gồm cả `doc-11` (nội dung "Thêm kiến thức ngay trong lúc chat" chưa từng build thành công vì thiếu URI).
-5. Sửa nốt chỗ khoá cứng còn lại: `test_live_project_has_exact_agent_deep_split_and_sixty_image_pairs` (trong `tests/test_build_handbook.py`) đang khoá số lượt tham chiếu ảnh là `61` — tính lại số đúng sau khi `doc-11` có thêm 3 ảnh rồi sửa.
-6. Chạy full gate, xác nhận `Ran 30 tests OK` không còn FAIL nào.
-7. Báo người dùng — họ sẽ đồng bộ `.md` đã build lại lên Web lần cuối (ít nhất `doc-11`).
+1. Xác nhận lại nhanh qua MCP (`list_documents`, lọc `parse_status`/`enable_status`) rằng vẫn còn 73/73 `completed`/`enabled` — đừng giả định trạng thái cũ còn đúng, có thể có thay đổi từ khi dừng phiên 7.
+2. Chạy lại đúng câu hỏi Case 2 cũ với `Knowledge Curator` (nội dung câu hỏi trong `audit/agent-chat-test-2026-08-17.md` mục 6), ghi rõ model đang dùng.
+3. Nếu vẫn trả lời sai giống cũ (dẫn nội dung từ ảnh thay vì chữ) → nghi vấn "Agent ưu tiên ảnh hơn chữ" được củng cố, không phải do thiếu chỉ mục nữa (loại được giả thuyết cạnh tranh).
+4. Nếu sai → thử tắt cấu hình đọc ảnh (VLM/multimodal) ở 2 KB thuần hướng dẫn (`GS9 Knowledge VNG AI`, `GS9 CFL Knowledge Agent`), **giữ nguyên VLM** ở KB nghiệp vụ (`GS9 CFL Plan Version` — Case 1 đã chứng minh chạy tốt với VLM bật). So sánh 3 kết quả (VLM bật cả 2, tắt cả 2, và bản cũ) để kết luận.
+5. Ghi kết luận vào `DECISIONS.md` + cập nhật `HANDOFF.md` mục 4.5 dù kết quả là gì (đóng nghi vấn hoặc xác nhận cần sửa cấu hình).
 
-**Nếu hàng đợi vẫn 0 tiến triển khi vào phiên:** đừng tự chờ nhiều vòng — hỏi người dùng ngay tình trạng phản hồi từ team nền tảng, rồi làm việc khác không phụ thuộc hàng đợi (xem có việc gì ở mục 6 "Trạng thái Agent" có thể làm).
+**Nếu MCP cho thấy có tài liệu rơi lại `pending`/`disabled`** (từng xảy ra sau một lần đồng bộ Toàn bộ định kỳ, xem DEC-072) — hỏi người dùng trước, đừng chạy Case 2 khi chưa đủ 73/73 (sẽ tái hiện lỗi vì lý do tầm thường, không phân biệt được hai giả thuyết).
 
 ==================================================
-3. ĐÍNH CHÍNH QUAN TRỌNG — ĐỒNG BỘ GOOGLE DRIVE KHÔNG LÀM CHẾT MỌI URI (DEC-069, xác nhận lại DEC-072)
+3. LỊCH SỬ HÀNG ĐỢI TẮC 17–20/08 — ĐÃ ĐÓNG, THAM KHẢO KHI CẦN
 ==================================================
 
-Ghi chép cũ (DEC-052) từng khiến hiểu lầm rằng "mọi lần đồng bộ Drive đều làm chết URI ảnh". **Sai.** Vụ chết URI 49/49 ngày 11/08 có nguyên nhân riêng: 49 ảnh khi đó bị **di trú sang một KB khác hẳn** (từ `GS9 Knowledge VNG - Image Assets` sang `GS9 Knowledge VNG AI`, DEC-043) — tức tạo lại thành tài liệu mới trong KB mới, chắc chắn sinh ID/URI mới cho toàn bộ.
+**Đã đóng (DEC-071/072/073/074).** Từ 17/08 tới 19/08, 26 ảnh (23 crop lại + 3 mới `image-50/51/52`) và 21 file `doc-*.md` treo ở `pending`/`processing`/`finalizing` do hàng đợi xử lý của nền tảng tắc thật (kiểm bằng panel "Xem tiến trình": job xếp hàng nhiều lần thử nhưng không worker nào chạy — không phải lỗi file hay cấu hình KB). Ngày 19/08 hàng đợi tự thông (chưa xác nhận do team xử lý hay tự phục hồi). Đã viết lại `image-map.json` đủ 52 URI, build lại 20 module, sửa test, gate sạch, và đồng bộ 19 file `.md` lên Web — kiểm bằng hash `doc-11` khớp tuyệt đối.
 
-**Bằng chứng đo được hai lần độc lập:**
-- Phiên 5 (17/08): đồng bộ Tăng dần trong CÙNG một KB (23 ảnh sửa + 3 ảnh mới) → 26 ảnh không đổi giữ nguyên `completed` VÀ URI y hệt.
-- Phiên 6 (18/08, DEC-072): đọc trực tiếp cấu hình nguồn trên Web thấy **Chế độ đồng bộ = Toàn bộ** (không phải Tăng dần như tưởng), lần chạy ~00:00 ngày 18/08 tạo lại toàn bộ 21 `doc-*.md` nhưng **26 ảnh không đổi vẫn giữ nguyên document cũ và URI cũ** — đối chiếu bằng script: 26/26 khớp tuyệt đối với `image-map.json` sinh 16/08, 0 lệch.
+**Đính chính quan trọng vẫn còn giá trị (DEC-069, xác nhận lại DEC-072):** đồng bộ Google Drive KHÔNG mặc định làm chết mọi URI ảnh. Dù chế độ đồng bộ là Tăng dần hay Toàn bộ, chỉ file **thật sự đổi nội dung** (hash khác) hoặc file mới mới bị tạo lại document/URI mới; **không cần rà lại toàn bộ `image-map.json` sau mỗi lần sync** — chỉ cần xác định đúng tập file vừa chuyển trạng thái khỏi `completed` rồi lấy URI cho đúng tập đó. (Vụ chết URI 49/49 ngày 11/08 là do di trú giữa hai KB khác nhau — DEC-043 — không phải bản chất đồng bộ thường.)
 
-**Quy tắc đúng để dùng từ nay:** dù chế độ đồng bộ là Tăng dần hay Toàn bộ, chỉ file **thật sự đổi nội dung** (hash khác) hoặc file mới mới bị tạo lại document/URI; **không cần rà lại toàn bộ `image-map.json` sau mỗi lần sync** — chỉ cần xác định đúng tập file vừa chuyển trạng thái khỏi `completed` rồi lấy URI cho đúng tập đó.
-
-**Hệ quả cần nhớ (DEC-072):** một lần đồng bộ Toàn bộ có thể đưa cả kho tài liệu chữ về `pending`/`disabled` một khoảng thời gian (lần này toàn bộ 21 `doc-*.md`) — dù ảnh không đổi vẫn an toàn. Tránh sửa hàng loạt `.md` rồi đồng bộ sát giờ cần demo/chat-test.
-
-**Chưa làm rõ:** UI ghi lịch đồng bộ "Vào 02:00" nhưng lần chạy quan sát được lại ở ~00:00 — chưa biết vì sao lệch, chưa cần điều tra trừ khi ảnh hưởng việc đang làm.
+**Chưa làm rõ:** UI ghi lịch đồng bộ "Vào 02:00" nhưng lần chạy quan sát được lại ở ~00:00; và chưa xác nhận nguyên nhân hàng đợi tự thông ngày 19/08. Không cần điều tra trừ khi tái diễn.
 
 ==================================================
 4. KIẾN TRÚC NỘI DUNG — HIỂU SAI CHỖ NÀY LÀ LÀM HỎNG VIỆC
@@ -92,7 +80,7 @@ knowledge/<KB>/   bản sinh bởi scripts/build_handbook.py
 | `AgentCFL-NN-*` | 00–05 | `GS9 CFL Knowledge Agent` |
 | `KBCFL-NN-*` | 10–12 | `GS9 CFL Knowledge Agent` |
 
-Thêm tính năng mới thì **đánh số tiếp từ 20 trở lên** (KB-20 đã dùng, tiếp theo là KB-21). `HUMAN_SOURCE_PREFIXES` trong `scripts/build_handbook.py` chỉ liệt kê tiền tố (`KB`, `Agent`), KHÔNG khoá dải số — đừng phí công sửa hằng đó. Nhưng nhớ sửa `EXPECTED_MODULE_COUNT` trong builder và các chỗ khoá số trong `tests/test_build_handbook.py` mỗi lần thêm module (xem DEC-065 để biết đúng các chỗ phải sửa).
+Thêm tính năng mới thì **đánh số tiếp từ 20 trở lên** (KB-20 đã dùng, tiếp theo là KB-21). `HUMAN_SOURCE_PREFIXES` trong `scripts/build_handbook.py` chỉ liệt kê tiền tố (`KB`, `Agent`), KHÔNG khoá dải số — đừng phí công sửa hằng đó. Nhưng nhớ sửa `EXPECTED_MODULE_COUNT` trong builder và các chỗ khoá số trong `tests/test_build_handbook.py` mỗi lần thêm module (xem DEC-065 để biết đúng các chỗ phải sửa — và nhớ khoá số lượt tham chiếu ảnh cũng phải cập nhật nếu module mới có ảnh, xem bài học `61→64` ở DEC-073).
 
 **Quy tắc phân loại một câu:** câu hỏi người dùng cuối đặt ra khi đang chat → Human. Câu hỏi chỉ người sửa hệ thống mới cần → Dev. Mã `DEC-xxx`, link `audit/`, cụm "đã/chưa kiểm chứng", `Mức bằng chứng` KHÔNG được xuất hiện trong `docs KB/Human` và `knowledge/`.
 
@@ -131,11 +119,11 @@ Thêm tính năng mới thì **đánh số tiếp từ 20 trở lên** (KB-20 đ
 | `CS Copilot` | `GS9 Knowledge VNG AI` | `GS9 CFL CS FAQ & Policy` (mới có file định dạng) |
 | `GM Policy Advisor` | `GS9 Knowledge VNG AI` | `GS9 CFL GM Policy & Sanction` (chưa tồn tại) |
 
-`CS Copilot` và `GM Policy Advisor` đang trỏ kho hướng dẫn nền tảng — **không chứa chính sách CS hay điều khoản xử phạt nào**. Lưu ý thêm phiên 6: `GS9 Knowledge VNG AI` hiện tạm thời không có tài liệu chữ nào `completed` (xem mục 2) — hai Agent này đang **không tra được gì cả**, không riêng gì "sai kho".
+`CS Copilot` và `GM Policy Advisor` đang trỏ kho hướng dẫn nền tảng — **không chứa chính sách CS hay điều khoản xử phạt nào**. Kể từ 20/08, `GS9 Knowledge VNG AI` đã có đủ 73/73 tài liệu chữ + ảnh `Hoàn tất` trở lại — hai Agent này tra được nội dung hướng dẫn nền tảng bình thường, chỉ vẫn sai kho về mặt nghiệp vụ (không phải "không tra được gì" như hồi 18–19/08).
 
 **Gắn kho xong PHẢI bật công cụ truy hồi (DEC-061).** Gắn KB không tự cho Agent quyền đọc kho. Triệu chứng: `tool not found: search_knowledge_base` rồi Agent quay ra hỏi lại người dùng.
 
-**Gate chất lượng mở một phần (DEC-062):** `Player Communications` **ĐẠT** đầy đủ. `Knowledge Curator` **Có điều kiện**. `CS Copilot` **đạt về guardrail**. **13/16 Agent vẫn Bị chặn–Chưa xác định.** Chưa test 3 Agent gắn KB nhạy cảm (PUM, Sentiment, Kho Tổng Hợp).
+**Gate chất lượng mở một phần (DEC-062):** `Player Communications` **ĐẠT** đầy đủ. `Knowledge Curator` **Có điều kiện** (đang chờ chạy lại Case 2, xem mục 2). `CS Copilot` **đạt về guardrail**. **13/16 Agent vẫn Bị chặn–Chưa xác định.** Chưa test 3 Agent gắn KB nhạy cảm (PUM, Sentiment, Kho Tổng Hợp).
 
 ==================================================
 7. CẠM BẪY ĐÃ GẶP THẬT — ĐỌC KỸ
@@ -143,13 +131,15 @@ Thêm tính năng mới thì **đánh số tiếp từ 20 trở lên** (KB-20 đ
 
 **Google Drive mất kết nối rồi tự "Restore" ra layout cũ — đã gặp 2 lần (DEC-059, DEC-064).** Runbook đã kiểm chứng hoạt động đúng cả 2 lần: (1) KHÔNG sửa gì trước khi Drive sync xong hoàn toàn; (2) nếu thư mục thật bị đổi tên thành `(1)` thì **đổi tên lại**, KHÔNG xoá-tạo-mới (giữ ID, không đứt connector); (3) nếu `.git` hỏng, thay bằng bản clone sạch từ GitHub; (4) xác nhận cuối bằng `git diff --stat origin/main HEAD` rỗng tuyệt đối — **đừng chỉ tin `git status`**, và đừng chạy `git status` khi Drive còn đang đồng bộ dở (từng timeout 2 phút, cho trạng thái giả).
 
-**Google Drive khoá file khi đọc/ghi — có thể cần restart Drive for Desktop, không chỉ chờ.** Dấu hiệu: `Invalid request code` (Bash) / `OSError: Errno 22` (Python) / `Incorrect function` (PowerShell), lặp lại cả với `Read` tool và `cat`/`type`. Phiên 6 (18/08) gặp việc này ngay đầu phiên — mount G: còn sống (`ls` thấy file, đúng dung lượng) nhưng lớp đọc nội dung chết hẳn, PID `GoogleDriveFS.exe` đứng yên. Cách xử: người dùng Quit hẳn Google Drive for Desktop từ tray (không chỉ đóng cửa sổ) rồi mở lại — sau đó PID đổi và đọc lại được ngay. Khi ghi file: luôn qua file tạm rồi `os.replace`.
+**Google Drive khoá file khi đọc/ghi — có thể cần restart Drive for Desktop, không chỉ chờ.** Dấu hiệu: `Invalid request code` (Bash) / `OSError: Errno 22` (Python) / `Incorrect function` (PowerShell), lặp lại cả với `Read` tool và `cat`/`type`. Cách xử: người dùng Quit hẳn Google Drive for Desktop từ tray (không chỉ đóng cửa sổ) rồi mở lại. Khi ghi file: luôn qua file tạm rồi `os.replace`.
+
+**`git commit` nhiều file lớn qua Google Drive có thể vượt timeout công cụ (DEC-073, phiên 7).** Ghi/commit 20 file cùng lúc từng bị Bash tool cắt ngang ở mốc 2 phút trong khi tiến trình `git` con vẫn chạy ngầm thật (đang tính hash/ghi object qua lớp Drive), để lại file khoá rác (`HEAD.lock`, `refs/heads/main.lock`, đôi khi `objects/maintenance.lock`). **Đừng vội xoá lock hay kết luận thất bại** — trước tiên xác nhận không còn tiến trình `git` nào chạm tới đúng đường dẫn repo (`Get-CimInstance Win32_Process -Filter "Name='git.exe'"` lọc theo `CommandLine`), có thể cần đợi thêm vì tiến trình đang thật sự làm việc. Chỉ xoá lock khi chắc chắn không còn tiến trình sống — đúng cách git tự khuyến nghị trong thông báo lỗi.
 
 **Line ending.** Toàn bộ file trong repo dùng **CRLF**. Sau mỗi lần ghi bằng script, kiểm và ép lại CRLF (`grep -c $'\r$' file | so với wc -l file`).
 
 **Đồng bộ Drive không mặc định làm chết URI** — xem mục 3. Chỉ rà lại URI cho đúng tập file vừa đổi trạng thái.
 
-**Hàng đợi xử lý của nền tảng có thể tắc hoàn toàn (DEC-071, phiên 6).** Không phải mọi lần tài liệu đứng `pending` lâu là do đợi lượt — kiểm bằng panel "Xem tiến trình" (0/5 giai đoạn, đếm số lần thử) để phân biệt "đang xử lý chậm" với "worker không nhận job". "Phân tích lại" không gỡ được tắc thật, chỉ thêm job vào hàng đợi đang đứng yên.
+**Hàng đợi xử lý của nền tảng có thể tắc hoàn toàn (DEC-071).** Không phải mọi lần tài liệu đứng `pending` lâu là do đợi lượt — kiểm bằng panel "Xem tiến trình" (0/5 giai đoạn, đếm số lần thử) để phân biệt "đang xử lý chậm" với "worker không nhận job". "Phân tích lại" không gỡ được tắc thật, chỉ thêm job vào hàng đợi đang đứng yên. Đã từng tự thông sau ~2 ngày không rõ lý do (DEC-073) — không có cách chủ động gỡ tắc ngoài chờ hoặc báo team vận hành.
 
 **MCP không thấy mọi KB.** `list_knowledge_bases` chỉ trả KB đã share vào space. `list_documents` trả kết quả rất dài (>100K ký tự) — luôn bị chặn in thẳng ra, phải ghi ra file rồi lọc bằng Python/jq.
 
@@ -173,7 +163,7 @@ python -m unittest discover -s tests -v
 python scripts\link_plan_v5_minio.py --check
 ```
 
-Gate mục tiêu: 21 module + 8 doc KB Agent, HTML offline tự chứa, `Ran 30 tests`/`OK` — **hiện đang có 1 FAIL đã biết chờ ảnh xử lý xong, xem mục 2**. Không dùng `--allow-missing-minio` cho bản bàn giao.
+Gate mục tiêu: 21 module + 8 doc KB Agent, HTML offline tự chứa, `Ran 30 tests`/`OK`, 0 FAIL — **đã đạt từ 19/08 (DEC-073), giữ nguyên đến giờ**. Không dùng `--allow-missing-minio` cho bản bàn giao.
 
 Console Windows là cp1252 nên script in tiếng Việt sẽ crash ở dòng `print` cuối — chạy với `$env:PYTHONIOENCODING='utf-8'`.
 
@@ -185,7 +175,7 @@ Console Windows là cp1252 nên script in tiếng Việt sẽ crash ở dòng `p
 - `GS9 CFL Item Profile` chứa dữ liệu người chơi. KHÔNG mở, KHÔNG đọc nội dung.
 - Hai binding `Incident Triage → PUM` và `Player Voice Analyst → Sentiment Feedback User` **người dùng xác nhận giữ nguyên** (DEC-058). Đừng cảnh báo lại.
 - Space `CFL Member` để quyền **Được chỉnh sửa** cho 6 người → cấu hình Agent có thể bị người khác đổi bất cứ lúc nào. Đọc lại từ Web trước khi kết luận.
-- Tính năng "Thêm vào tri thức" (mục 2) không có bước duyệt bắt buộc giữa `Lưu nháp`/`Xuất bản` — nếu ai dùng nó để thêm nội dung vào kho sự thật đã chốt, nhắc họ tự đọc lại trước khi Xuất bản.
+- Tính năng "Thêm vào tri thức" (`KB-11-chat-kiem-thu-va-bao-tri.md`) không có bước duyệt bắt buộc giữa `Lưu nháp`/`Xuất bản` — nếu ai dùng nó để thêm nội dung vào kho sự thật đã chốt, nhắc họ tự đọc lại trước khi Xuất bản.
 - Không tự mutation live nếu nhiệm vụ hiện tại chưa cho phép rõ.
 
 ==================================================

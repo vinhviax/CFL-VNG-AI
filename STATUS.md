@@ -1,7 +1,7 @@
 # Trạng thái Knowledge Base VNG
 
 **Ngày snapshot:** 19/08/2026 (phiên 7, máy nhà)
-**Phiên bản:** 3.7.0
+**Phiên bản:** 3.8.0
 
 ## MỚI 19/08/2026 (phiên 7, máy nhà) — hàng đợi nền tảng thông, gate sạch hoàn toàn (DEC-073)
 
@@ -15,7 +15,9 @@
 
 **Sự cố vận hành gặp giữa phiên (đã tự xử lý, không mất dữ liệu):** `git commit` đầu tiên bị Bash tool cắt ngang ở mốc 2 phút vì ghi 20 file qua Google Drive chậm — tiến trình con vẫn chạy ngầm và để lại 3 file khoá rác (`HEAD.lock`, `refs/heads/main.lock`, `objects/maintenance.lock`, cái cuối có từ 17/08). Xác nhận không còn tiến trình `git` nào chạm tới repo này (`Get-CimInstance Win32_Process` lọc theo đường dẫn) trước khi xoá tay từng lock — đúng runbook git tự khuyến nghị khi lock bị treo. Commit thứ hai `3cec768` thành công, không mất staged changes.
 
-**Việc còn lại:** báo người dùng đồng bộ `.md` đã build lại lên Web (ít nhất `doc-11`, nội dung "Thêm kiến thức ngay trong lúc chat" giờ mới có ảnh minh hoạ).
+**Đã đóng vòng — người dùng xác nhận đã đồng bộ 19 file `.md` lên Web.** Kiểm bằng hash: `doc-11-chat-kiem-thu-va-bao-tri.md` trên Web có `file_hash` **khớp tuyệt đối** với bản local vừa build (`b12393cfa21bb51be7fe71d33f274181`), `parse_status: completed`, `enable_status: enabled`, cập nhật lúc 20/08/2026 04:16. **Toàn bộ 73 tài liệu (52 ảnh + 21 md) trong `GS9 Knowledge VNG AI` nay đều `Hoàn tất`.**
+
+**Hệ quả mở khoá:** điều kiện chạy lại Case 2 (mục 4.5 HANDOFF, nghi vấn Agent lấy ảnh làm nguồn dữ kiện sai) trước đây ghi "đủ 70 tài liệu Hoàn tất" — con số đó lỗi thời từ trước khi thêm `image-50/51/52` (70 = 49 ảnh cũ + 21 md). Điều kiện đúng bây giờ là **73/73**, và đã đạt. Việc phiên sau có thể chạy lại Case 2.
 
 ## MỚI 18/08/2026 (phiên 6, máy nhà) — hàng đợi xử lý của nền tảng tắc thật, không phải lỗi file; DEC-069 được xác nhận lần hai
 

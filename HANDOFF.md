@@ -118,9 +118,9 @@ Gắn KB **không** tự cho Agent quyền đọc kho. Công cụ `Tìm theo ng�
 
 → Sinh ra giả thuyết cạnh tranh chưa loại trừ: Case 2 sai **không phải vì Agent ưu tiên ảnh hơn chữ**, mà có thể vì lúc đó **chữ cũng chưa vào chỉ mục** nên ảnh là thứ duy nhất truy hồi được. Khớp với chi tiết vòng tìm ngữ nghĩa đầu tiên trả `Không có kết quả`.
 
-→ **Không chạy lại Case 2 khi chữ còn Chờ xử lý** — sẽ tái hiện lỗi vì lý do tầm thường, không phân biệt được hai giả thuyết. **Điều kiện để chạy:** lọc `Chờ xử lý` + `Đang xử lý` đều rỗng, và lọc `Hoàn tất` đếm đủ **70** tài liệu.
+→ **Không chạy lại Case 2 khi chữ còn Chờ xử lý** — sẽ tái hiện lỗi vì lý do tầm thường, không phân biệt được hai giả thuyết. **Điều kiện để chạy:** lọc `Chờ xử lý` + `Đang xử lý` đều rỗng, và lọc `Hoàn tất` đếm đủ tài liệu. ~~Con số cũ ghi 70~~ — **lỗi thời** (70 = 49 ảnh cũ + 21 md, tính trước khi thêm `image-50/51/52`). **Con số đúng là 73** (52 ảnh + 21 md). **Đạt 20/08/2026** — 73/73 `completed`/`enabled`, xác nhận qua MCP + hash `doc-11`.
 
-**Việc phiên sau:** đợi đủ điều kiện trên → chạy lại câu hỏi Case 2, ghi rõ model → nếu vẫn sai thì **thử tắt VLM/đọc ảnh ở KB thuần hướng dẫn** (`GS9 Knowledge VNG AI`, `GS9 CFL Knowledge Agent`), giữ VLM ở KB nghiệp vụ (`Plan Version` — Case 1 chứng minh chạy tốt) → so 3 kết quả. Chi tiết: `audit/agent-chat-test-2026-08-17.md` mục 6, 7 và **8**.
+**Việc phiên sau — điều kiện đã đạt, có thể làm ngay:** chạy lại câu hỏi Case 2, ghi rõ model → nếu vẫn sai thì **thử tắt VLM/đọc ảnh ở KB thuần hướng dẫn** (`GS9 Knowledge VNG AI`, `GS9 CFL Knowledge Agent`), giữ VLM ở KB nghiệp vụ (`Plan Version` — Case 1 chứng minh chạy tốt) → so 3 kết quả. Chi tiết: `audit/agent-chat-test-2026-08-17.md` mục 6, 7 và **8**.
 
 ### 4.6 Việc phát sinh khác từ chat-test
 
@@ -161,6 +161,8 @@ Nội dung gồm: nguyên tắc quyền ở cấp kho · bảng 4 loại kho nê
 - Phát sinh thêm: **21 `doc-*.md` bị nạp lại lúc 00:00–00:01 ngày 18/08**, ID mới, `pending`, `disabled` → KB hiện **không có tài liệu chữ nào được lập chỉ mục** (DEC-072).
 - **Việc cần làm tiếp là báo team vận hành nền tảng**, kèm: KB id `cefadf09-4187-46ac-a765-591e3255a4a4`, tenant `10012`, 47 tài liệu treo (26 png + 21 md), mốc treo 17/08 18:49 và 18/08 00:01, thông điệp lỗi ở trên.
 
+**ĐÃ ĐÓNG 20/08/2026:** hàng đợi tự thông (không rõ do team xử lý hay tự phục hồi — chưa xác nhận nguyên nhân). 52/52 png + 21/21 md `completed`/`enabled`. Đã viết lại `image-map.json`, build lại, sửa test, gate sạch (DEC-073). Người dùng đã đồng bộ 19 file `.md` lên Web — kiểm bằng hash `doc-11` khớp tuyệt đối local vs Web. **Điều kiện mục 4.5 (73/73 Hoàn tất) nay đã đạt** — xem cập nhật dưới đây.
+
 **Trạng thái lúc dừng phiên 5:** 26/52 ảnh trong `GS9 Knowledge VNG AI` đứng ở `pending`/`processing`/`finalizing`, **0 tiến triển sau 25 phút theo dõi** (2 lần kiểm qua MCP `list_documents`, cách nhau 20 phút, số liệu y hệt). Nghi hàng đợi xử lý ảnh trên nền tảng bị tắc — đã đề nghị người dùng tự kiểm trên Web (mục Documents, lọc trạng thái, xem có rơi vào "Lỗi" không, thử "Phân tích lại" một file) nhưng **chưa có phản hồi trước khi dừng phiên**.
 
 **Việc phải làm khi vào lại, theo thứ tự:**
@@ -174,7 +176,7 @@ Nội dung gồm: nguyên tắc quyền ở cấp kho · bảng 4 loại kho nê
 
 **Đừng lặp lại sai lầm cũ:** không cần rà lại URI của tất cả 52 ảnh — DEC-069 đã chứng minh 26 ảnh không đổi giữ nguyên URI, chỉ cần lấy URI cho đúng 26 ảnh vừa chuyển trạng thái.
 
-**Việc 1 (ưu tiên cao, mục 4.5) vẫn đang chờ đúng điều kiện tương tự** — không chạy lại Case 2 cho tới khi toàn bộ 21 tài liệu chữ + 52 ảnh đều `Hoàn tất` (xem `audit/agent-chat-test-2026-08-17.md` mục 8).
+**Việc 1 (mục 4.5) — điều kiện đã đạt 20/08/2026.** Toàn bộ 21 tài liệu chữ + 52 ảnh đều `Hoàn tất`. Có thể chạy lại Case 2 (xem `audit/agent-chat-test-2026-08-17.md` mục 8).
 
 ---
 
