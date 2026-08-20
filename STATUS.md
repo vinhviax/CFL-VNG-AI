@@ -1,5 +1,49 @@
 # Trạng thái Knowledge Base VNG
 
+**Ngày snapshot:** 21/08/2026 (phiên 9, máy công ty)
+**Phiên bản:** 4.1.0 — hoàn tất relink 81/81 ảnh, commit chốt kiến trúc mới
+
+## MỚI 21/08/2026 (phiên 9, máy công ty) — hoàn tất relink 81/81 ảnh (2 KB), commit xoá `knowledge/` local (DEC-080)
+
+**Đóng vòng mục 4.10 HANDOFF từ phiên trước.** Đầu phiên xác nhận: đường dẫn Drive công ty còn đúng, `get_document_info` **vẫn chưa** trả `file_path` (DEC-079 chưa tự phục hồi).
+
+**1. `GS9 Knowledge VNG AI` (52 ảnh): viết lại `image-map.json` với 52 URI `exports/` đã lấy từ phiên trước.** Người dùng xác nhận đã nạp 20 file `.md` relink lên Web và kiểm ảnh hiện đúng — vòng này đã khép kín thật, không chỉ là thay đổi cục bộ.
+
+**2. `GS9 CFL Plan Version` (29 ảnh) — relink xong, KHÔNG cần share vào MCP.** Người dùng chọn duyệt qua trình duyệt thay vì thử API bearer token. Dùng Chrome thật (đã đăng nhập), mở từng tài liệu trên Web UI. 18/29 ảnh có URI `exports/` nhúng sẵn trong "Tóm tắt" giống cơ chế KB kia; **11/29 ảnh không có embed trong Tóm tắt lẫn Toàn văn dạng text** — phải bắt thuộc tính `data-protected-src` của `<img class="markdown-image">` ngay khi tab "Toàn văn" vừa mount, **trước khi** React tự xoá attribute này lúc ảnh resolve xong thành `blob:` (phải poll ~50ms/lần). Phân biệt ảnh chính với icon nhỏ minh hoạ cùng tài liệu bằng `alt` khớp đúng tên file. Đối chiếu chéo 1 case (`image-v5-13`) giữa 2 phương pháp — khớp tuyệt đối. Relink 29 URI vào 12 file `doc-v5-*.md` (2 định dạng khác nhau: `LOCAL_ASSET` comment + embed, và bảng danh mục `- **Asset:** [tên](URI)` trong `doc-v5-10`) và viết lại `image-map.json` Plan Version. Xem DEC-080.
+
+**Còn treo:** người dùng **chưa xác nhận** đã nạp 12 file `.md` Plan Version lên Web / ảnh hiện đúng — cần làm ở phiên sau hoặc ngay khi có thể.
+
+**3. `knowledge/` trong repo local: người dùng chọn commit chính thức việc xoá.** Đã `git rm -r knowledge/` (153 file) + commit + push lên `origin/main`. Kiến trúc mới (Drive công ty là nguồn duy nhất) nay đã chốt trong lịch sử git, không còn ở trạng thái working-tree-khác-HEAD dễ nhầm lẫn.
+
+**4. Dọn root:** xoá `CFL Thu Thập Dữ Liệu.xlsx` (bản export cũ, đã có bản sống trên Drive công ty). Giữ lại `knowledge-20260820T085450Z-1-001.zip` (backup) và `VNGGames AI.lnk` (không cần track, nhưng vô hại).
+
+## Snapshot trước đó — phiên 8 (20/08/2026, máy công ty)
+
+## MỚI 20/08/2026 (phiên 8, máy công ty) — đổi kiến trúc sang Drive công ty, đứt URI ảnh, relink 52/52 ảnh, còn treo image-map.json + Plan Version
+
+**Thay đổi lớn nhất phiên này: dự án đang chuyển pha.** Người dùng xác nhận KB và Agent hiện tại **không phải bản cuối** — sẽ dựng lại sau khi thu thập xong tài liệu team qua Sheet `CFL Thu Thập Dữ Liệu` (Drive công ty, 4 sheet: HuongDan/LoaiDoc/ThuThapDoc/TuDien). Từ nay **không nên đầu tư công sức lớn chỉnh sửa cấu trúc KB/Agent cũ**.
+
+**1. Kiến trúc đổi: bỏ `knowledge/` trong repo Drive cá nhân, dùng thẳng Drive công ty.** Đường dẫn mới: `J:\.shortcut-targets-by-id\1MFx5oXxwi54JNZA3sRKa1LdFXnP-VHdG\VNGGames AI\knowledge` (ID thư mục có thể đổi theo máy — xác nhận lại đầu phiên). Người dùng tự xoá `knowledge/` khỏi repo local (153 file). **CHƯA COMMIT** — `git status` vẫn thấy 153 file `D`, `origin/main` chưa đổi. Có bản sao lưu `knowledge-20260820T085450Z-1-001.zip` (164 MB) tại root, untracked — giữ lại. Xem DEC-076.
+
+**2. Đổi Service Account JSON của `GS9 Knowledge VNG AI` sang key Drive công ty → toàn bộ URI ảnh gốc chết.** `knowledge_id` mỗi tài liệu giữ nguyên (Ghi đè theo tên file), nhưng nội dung/URI lưu trữ nạp lại từ đầu. Xem DEC-077.
+
+**3. Công cụ MCP mất khả năng trả `file_path` giữa phiên — không liên quan việc đổi Drive.** Trùng thời điểm với việc một tool khác cùng server bị ngắt/thay thế, không phải do đổi Drive. Xem DEC-079.
+
+**4. Tìm và xác nhận đường vòng: URI `exports/` (bản kết xuất OCR) render đúng khi nhúng vào `.md`.** Thực nghiệm thật: sửa `doc-00`, nạp lên Web, ảnh hiện, xác nhận qua network request 200 — không phải suy đoán. Lấy đủ **52/52 URI** cho `GS9 Knowledge VNG AI`, relink **63 lượt URI trong 20/21 file `.md`** trên Drive công ty (dùng comment `LOCAL_ASSET` làm neo, tránh thay nhầm placeholder ví dụ trong văn bản). Xem DEC-078.
+
+**5. Rủi ro chưa chứng minh:** URI `exports/` là bản kết xuất phụ, không phải blob gốc — chưa rõ có bền lâu dài không.
+
+**Còn treo cho phiên sau:**
+- **`image-map.json` trên Drive công ty CHƯA cập nhật 52 URI mới** — nếu ai chạy `build_handbook.py` trước khi cập nhật, sẽ ghi đè mất công relink vừa làm. **Việc ưu tiên số 1 đầu phiên sau.**
+- **`GS9 CFL Plan Version` (29 ảnh) hoàn toàn chưa relink** — KB này ngoài phạm vi MCP (`list_knowledge_bases` không thấy), cần người dùng share vào không gian MCP hoặc tìm cách khác.
+- Chưa xác nhận người dùng đã nạp 20 file `.md` vừa sửa lên Web.
+- `knowledge/` trong repo local vẫn ở trạng thái xoá chưa commit — cần quyết định commit hay khôi phục.
+- 3 file untracked ở root cần dọn: zip backup (giữ), `CFL Thu Thập Dữ Liệu.xlsx` cũ (có thể xoá), `VNGGames AI.lnk` (không cần trong git).
+
+Chi tiết đầy đủ: `audit/session-2026-08-20-migration-va-relink-anh.md`.
+
+## Snapshot trước đó — phiên 7 (19/08/2026, máy nhà)
+
 **Ngày snapshot:** 19/08/2026 (phiên 7, máy nhà)
 **Phiên bản:** 3.8.0
 

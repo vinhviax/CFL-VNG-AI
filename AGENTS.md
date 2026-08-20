@@ -8,6 +8,8 @@ Khi bắt đầu phiên, đọc `HANDOFF.md`, `STATUS.md`, `PROJECT.md` và `DEC
 
 ## Cấu trúc quản lý trên VNG AI
 
+**⚠️ Từ 20/08/2026 (DEC-076, commit chính thức 21/08/2026 DEC-080): `knowledge/` KHÔNG còn nằm trong repo này.** Nguồn duy nhất bây giờ là Drive công ty: `J:\.shortcut-targets-by-id\1MFx5oXxwi54JNZA3sRKa1LdFXnP-VHdG\VNGGames AI\knowledge` (ID thư mục có thể khác theo máy — xác nhận lại bằng cách mở Drive và soi đường dẫn thật, đừng hardcode giá trị này). Mô tả cấu trúc bên dưới là **lịch sử trước khi đổi**, giữ để hiểu quy ước đặt tên/tiền tố, không phản ánh vị trí file thật hiện tại.
+
 - `knowledge/` chứa mirror/dữ liệu của các Knowledge Base trên Web.
 - `knowledge/GS9 Knowledge VNG AI/` là KB nền tảng dùng chung cho cả team GS9: 20 Markdown `doc-00`→`doc-19` sinh tự động, 49 PNG `image-01`→`image-49` và `image-map.json` — **cùng một thư mục** (tái cấu trúc 15/08/2026, DEC-043/044). Không còn thư mục `GS9 Knowledge VNG - Image Assets/` riêng ở local; Web KB đó (`6da8657c-...`) vẫn còn tồn tại nguyên trạng cho tới khi Phase 3 (Google Drive connector sync) hoàn tất và chat-test đạt.
 - `knowledge/GS9 CFL Knowledge Agent/` là meta-KB riêng cho Human: 28 Markdown `doc-00`→`doc-92` — 6 hướng dẫn chung, 6 hồ sơ Agent mặc định, 10 hồ sơ Agent custom, 3 trang cấu trúc KB CFL (`doc-30`–`doc-32`), 3 trang governance; không có binary hoặc dữ liệu player.

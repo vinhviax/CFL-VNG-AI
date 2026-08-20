@@ -1,7 +1,7 @@
 # Handoff — Knowledge Base VNG
 
-**Cập nhật:** 19/08/2026 (phiên 7, máy nhà — hàng đợi thông, gate sạch hoàn toàn, xem mục 4.9) · trước đó 18/08/2026 (phiên 6, máy nhà) · 17/08/2026 (phiên 5, máy công ty — converter Plan V5 kiểm chứng, KB-20, dọn artifact dư thừa, sửa file thuyết trình, tính năng "Thêm vào tri thức", đính chính DEC-052)
-**Phiên bản:** 3.8.0 · **Test:** `Ran 30 tests OK` — không còn FAIL nào (xem mục 4.9, hàng đợi đã thông 19/08)
+**Cập nhật:** 20/08/2026 (phiên 8, máy công ty — **ĐỔI KIẾN TRÚC**: bỏ `knowledge/` trong repo, dùng thẳng Drive công ty; đổi Service Account làm chết toàn bộ URI ảnh; relink 52/52 ảnh `GS9 Knowledge VNG AI` bằng URI thay thế `exports/`, xem mục 4.9) · trước đó 19/08/2026 (phiên 7, máy nhà — hàng đợi thông, gate sạch hoàn toàn) · 18/08/2026 (phiên 6, máy nhà) · 17/08/2026 (phiên 5, máy công ty)
+**Phiên bản:** 4.0.0 · **⚠️ Gate cũ (`Ran 30 tests OK`) không còn phản ánh đúng thực trạng** — `knowledge/` đã bị xoá khỏi repo local (chưa commit), builder sẽ lỗi nếu chạy nguyên trạng. Xem mục 4.9 trước khi chạy bất kỳ lệnh build/test nào.
 
 ---
 
@@ -49,12 +49,14 @@ Thêm tính năng mới thì thêm tiền tố vào `HUMAN_SOURCE_PREFIXES` ho�
 
 ## 3. Trạng thái hai KB chính
 
-| KB | Local | Web | Ghi chú |
-|---|---|---|---|
-| `GS9 Knowledge VNG AI` | 20 doc + 49 ảnh | **Đã sync** | Chat-test ảnh ĐẠT |
-| `GS9 CFL Knowledge Agent` | 8 doc | **Đã sync** (17/08) | Có bảng binding Agent-KB |
+**⚠️ Từ 20/08/2026, `knowledge/` KHÔNG còn nằm trong repo Drive cá nhân.** Nguồn duy nhất bây giờ là Drive công ty: `J:\.shortcut-targets-by-id\1MFx5oXxwi54JNZA3sRKa1LdFXnP-VHdG\VNGGames AI\knowledge` (ID thư mục có thể khác theo máy — xác nhận lại đầu phiên bằng cách mở Drive công ty và soi đường dẫn thật, đừng hardcode). Bảng dưới đây phản ánh trạng thái **trước** khi đổi kiến trúc, chỉ giữ để tham khảo lịch sử — xem mục 4.9 và DEC-076/077/078 cho trạng thái thật hiện tại.
 
-`GS9 CFL Plan Version`: 12 doc + 29 ảnh, URI đã vá, **đã up lên Web** (17/08).
+| KB | Local (repo, đã xoá 20/08) | Web (trước khi đổi Service Account) | Ghi chú |
+|---|---|---|---|
+| `GS9 Knowledge VNG AI` | 21 doc + 52 ảnh | Đã sync, URI **đã chết** sau đổi Service Account 20/08 | Đã relink 20/21 file bằng URI `exports/` — xem DEC-078 |
+| `GS9 CFL Knowledge Agent` | 8 doc | Đã sync (17/08) | Có bảng binding Agent-KB |
+
+`GS9 CFL Plan Version`: 12 doc + 29 ảnh, URI **cũng đã chết** sau đổi Service Account nhưng **chưa relink** — KB này ngoài phạm vi MCP, xem mục 4.9.
 
 ---
 
@@ -176,7 +178,39 @@ Nội dung gồm: nguyên tắc quyền ở cấp kho · bảng 4 loại kho nê
 
 **Đừng lặp lại sai lầm cũ:** không cần rà lại URI của tất cả 52 ảnh — DEC-069 đã chứng minh 26 ảnh không đổi giữ nguyên URI, chỉ cần lấy URI cho đúng 26 ảnh vừa chuyển trạng thái.
 
-**Việc 1 (mục 4.5) — điều kiện đã đạt 20/08/2026.** Toàn bộ 21 tài liệu chữ + 52 ảnh đều `Hoàn tất`. Có thể chạy lại Case 2 (xem `audit/agent-chat-test-2026-08-17.md` mục 8).
+**Việc 1 (mục 4.5) — điều kiện đã đạt 20/08/2026.** Toàn bộ 21 tài liệu chữ + 52 ảnh đều `Hoàn tất`. Có thể chạy lại Case 2 (xem `audit/agent-chat-test-2026-08-17.md` mục 8). **Lưu ý:** điều kiện này đạt được trên KB *trước khi* đổi Service Account 20/08 — mục 4.9 vừa đóng lại bị đứt URI ngay sau đó bởi việc khác (mục 4.10). Kiểm lại trạng thái thật trước khi chạy Case 2.
+
+---
+
+### 4.10 ✅ ĐÃ ĐÓNG 21/08/2026 (phiên 9) — relink 81/81 ảnh xong, còn 1 việc treo
+
+**Đã xong trong phiên 9:** `image-map.json` của cả `GS9 Knowledge VNG AI` (52 ảnh) và `GS9 CFL Plan Version` (29 ảnh) đã viết lại với URI `exports/` mới. Plan Version relink được **không cần** share KB vào MCP — dùng Chrome thật duyệt thủ công, kỹ thuật `data-protected-src` (xem DEC-080) để lấy URI cho 11/29 ảnh không có self-embed trong mô tả. `knowledge/` local đã commit + push chính thức. Chi tiết đầy đủ: DEC-080, `STATUS.md` mục 21/08/2026.
+
+**⚠️ Còn treo — việc đầu tiên phiên sau:** người dùng **chưa xác nhận** đã nạp 12 file `doc-v5-*.md` (Plan Version) lên Web / ảnh hiện đúng. Hỏi ngay đầu phiên; nếu chưa, đó là việc ưu tiên số 1 trước khi làm gì khác trên KB đó — giống hệt bài học từ `GS9 Knowledge VNG AI` (relink cục bộ không có ý nghĩa cho tới khi sync).
+
+---
+
+### 4.10-cũ (tham khảo lịch sử, đã đóng) — đổi kiến trúc Drive công ty, đứt URI ảnh, relink dở dang
+
+**Bối cảnh đầy đủ:** `audit/session-2026-08-20-migration-va-relink-anh.md`. Tóm tắt:
+
+1. Người dùng quyết định KB/Agent hiện tại **không phải bản cuối**, đang thu thập lại nguồn qua Sheet `CFL Thu Thập Dữ Liệu` (DEC-075) — đừng đầu tư sửa cấu trúc cũ.
+2. `knowledge/` bị xoá khỏi repo local, **chưa commit** (DEC-076). Từ nay làm việc trực tiếp trên Drive công ty: `J:\.shortcut-targets-by-id\1MFx5oXxwi54JNZA3sRKa1LdFXnP-VHdG\VNGGames AI\knowledge` — **xác nhận lại đường dẫn này đầu phiên**, ID thư mục có thể khác trên máy khác.
+3. Đổi Service Account JSON của `GS9 Knowledge VNG AI` sang key công ty → toàn bộ URI ảnh gốc chết, dù `knowledge_id` giữ nguyên (DEC-077).
+4. Công cụ MCP (`list_documents`/`get_document_info`) mất trường `file_path` giữa phiên, không liên quan việc đổi Drive (DEC-079) — **thử gọi lại xem đã phục hồi chưa** trước khi lặp lại quy trình dưới đây.
+5. Tìm được đường vòng đã kiểm chứng bằng thực nghiệm thật: URI `exports/` (bản kết xuất OCR/caption, lấy qua `read_source_document(knowledge_id, 0, 0)`) render đúng khi nhúng vào `.md`. Lấy đủ 52/52 URI, relink 63 lượt trong 20/21 file `.md` của `GS9 Knowledge VNG AI` (DEC-078).
+
+**Việc phải làm theo thứ tự, khi vào lại:**
+
+1. **Xác nhận đường dẫn Drive công ty còn đúng** (`ls "J:/.shortcut-targets-by-id/.../VNGGames AI/knowledge"` — nếu lỗi, hỏi người dùng ID mới).
+2. **Hỏi người dùng: đã nạp 20 file `.md` vừa relink lên Web chưa?** Nếu chưa, đó là việc đầu tiên trước khi làm gì khác.
+3. **Viết lại `image-map.json` trên Drive công ty với 52 URI `exports/` mới** — bảng ánh xạ đầy đủ nằm trong `audit/session-2026-08-20-migration-va-relink-anh.md` mục 6, script gốc là `relink_images.py` (đã chạy, không còn trong scratchpad — phải viết lại `MAP` từ audit nếu cần chạy lại). **Làm việc này TRƯỚC khi ai chạy `build_handbook.py`** — map cũ vẫn trỏ URI chết, chạy build sẽ ghi đè mất công relink.
+4. **`GS9 CFL Plan Version` (29 ảnh) hoàn toàn chưa relink.** KB này ngoài phạm vi `list_knowledge_bases` của MCP — hỏi người dùng có share được vào không gian MCP không; nếu không, cân nhắc lặp lại quy trình fallback qua trình duyệt (chậm hơn nhiều, 29 ảnh).
+5. **Quyết định `knowledge/` local: commit việc xoá hay khôi phục?** Hỏi người dùng trực tiếp — đừng tự ý `git rm` hay `git checkout --` mà chưa hỏi.
+6. Dọn 3 file untracked ở root (`knowledge-20260820T085450Z-1-001.zip` — giữ; `CFL Thu Thập Dữ Liệu.xlsx` cũ — hỏi trước khi xoá; `VNGGames AI.lnk` — không cần trong git).
+7. **Chỉ sau khi image-map.json đã đúng và commit đã quyết**, mới chạy lại full gate (`build_handbook.py`, `unittest discover`, `link_plan_v5_minio.py --check`) — nhưng lưu ý gate hiện hành giả định `knowledge/` nằm trong repo, cần xác nhận builder còn chạy được với cấu trúc mới trước khi tin kết quả.
+
+**Đừng lặp lại sai lầm:** không cần rà lại 52 URI đã relink nếu chưa có thay đổi datasource mới — chỉ `image-map.json` là chưa đồng bộ, không phải toàn bộ việc phải làm lại.
 
 ---
 
