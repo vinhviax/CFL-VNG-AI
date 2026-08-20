@@ -186,7 +186,7 @@ Nội dung gồm: nguyên tắc quyền ở cấp kho · bảng 4 loại kho nê
 
 **Đã xong trong phiên 9:** `image-map.json` của cả `GS9 Knowledge VNG AI` (52 ảnh) và `GS9 CFL Plan Version` (29 ảnh) đã viết lại với URI `exports/` mới. Plan Version relink được **không cần** share KB vào MCP — dùng Chrome thật duyệt thủ công, kỹ thuật `data-protected-src` (xem DEC-080) để lấy URI cho 11/29 ảnh không có self-embed trong mô tả. `knowledge/` local đã commit + push chính thức. Chi tiết đầy đủ: DEC-080, `STATUS.md` mục 21/08/2026.
 
-**⚠️ Còn treo — việc đầu tiên phiên sau:** người dùng **chưa xác nhận** đã nạp 12 file `doc-v5-*.md` (Plan Version) lên Web / ảnh hiện đúng. Hỏi ngay đầu phiên; nếu chưa, đó là việc ưu tiên số 1 trước khi làm gì khác trên KB đó — giống hệt bài học từ `GS9 Knowledge VNG AI` (relink cục bộ không có ý nghĩa cho tới khi sync).
+**⚠️ Còn treo — việc đầu tiên phiên sau:** cuối phiên 9, người dùng tự tay nạp 12 file `doc-v5-*.md` (Plan Version) lên Web ngay sau khi phiên dừng lại — **agent chưa kiểm chứng kết quả** (không có bằng chứng hash/network request, khác với `GS9 Knowledge VNG AI` đã đóng vòng bằng DEC-074). Việc đầu tiên phiên sau: hỏi/kiểm xem sync đã chạy xong chưa (mốc "Thời gian tải lên" mới trên từng tài liệu Web), rồi mở ít nhất 1 tài liệu Plan Version kiểm ảnh hiện đúng — giống hệt cách đã đóng vòng cho `GS9 Knowledge VNG AI`. Nếu sync chưa chạy, đó là việc ưu tiên số 1 trước khi làm gì khác trên KB đó.
 
 ---
 
