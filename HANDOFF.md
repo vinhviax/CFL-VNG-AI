@@ -1,7 +1,7 @@
 # Handoff — Knowledge Base VNG
 
-**Cập nhật:** 20/08/2026 (phiên 8, máy công ty — **ĐỔI KIẾN TRÚC**: bỏ `knowledge/` trong repo, dùng thẳng Drive công ty; đổi Service Account làm chết toàn bộ URI ảnh; relink 52/52 ảnh `GS9 Knowledge VNG AI` bằng URI thay thế `exports/`, xem mục 4.9) · trước đó 19/08/2026 (phiên 7, máy nhà — hàng đợi thông, gate sạch hoàn toàn) · 18/08/2026 (phiên 6, máy nhà) · 17/08/2026 (phiên 5, máy công ty)
-**Phiên bản:** 4.0.0 · **⚠️ Gate cũ (`Ran 30 tests OK`) không còn phản ánh đúng thực trạng** — `knowledge/` đã bị xoá khỏi repo local (chưa commit), builder sẽ lỗi nếu chạy nguyên trạng. Xem mục 4.9 trước khi chạy bất kỳ lệnh build/test nào.
+**Cập nhật:** 21/08/2026 (phiên 9, máy công ty — relink 81/81 ảnh đã đóng vòng hoàn toàn ở cả 2 KB, đã kiểm chứng bằng Chrome thật; `knowledge/` đã commit + push chính thức xoá khỏi repo, xem mục 4.10 và DEC-080/081) · trước đó 20/08/2026 (phiên 8 — đổi kiến trúc sang Drive công ty) · 19/08/2026 (phiên 7, máy nhà) · 18/08/2026 (phiên 6, máy nhà) · 17/08/2026 (phiên 5, máy công ty)
+**Phiên bản:** 4.2.0 · **⚠️ Gate build/test cũ (`build_handbook.py`, `unittest`) chưa được xác nhận còn chạy được với cấu trúc mới** — builder viết vào `knowledge/` trong repo, nhưng thư mục đó không còn tồn tại ở local nữa (nguồn duy nhất giờ là Drive công ty). Chưa ai thử chạy lại từ khi đổi kiến trúc 20/08 — kiểm trước khi tin bất kỳ kết quả build/test nào.
 
 ---
 
@@ -182,11 +182,11 @@ Nội dung gồm: nguyên tắc quyền ở cấp kho · bảng 4 loại kho nê
 
 ---
 
-### 4.10 ✅ ĐÃ ĐÓNG 21/08/2026 (phiên 9) — relink 81/81 ảnh xong, còn 1 việc treo
+### 4.10 ✅ ĐÃ ĐÓNG HOÀN TOÀN 21/08/2026 (phiên 9) — relink 81/81 ảnh xong, đã kiểm chứng thật cả 2 KB
 
-**Đã xong trong phiên 9:** `image-map.json` của cả `GS9 Knowledge VNG AI` (52 ảnh) và `GS9 CFL Plan Version` (29 ảnh) đã viết lại với URI `exports/` mới. Plan Version relink được **không cần** share KB vào MCP — dùng Chrome thật duyệt thủ công, kỹ thuật `data-protected-src` (xem DEC-080) để lấy URI cho 11/29 ảnh không có self-embed trong mô tả. `knowledge/` local đã commit + push chính thức. Chi tiết đầy đủ: DEC-080, `STATUS.md` mục 21/08/2026.
+**Đã xong trong phiên 9:** `image-map.json` của cả `GS9 Knowledge VNG AI` (52 ảnh) và `GS9 CFL Plan Version` (29 ảnh) đã viết lại với URI `exports/` mới. Plan Version relink được **không cần** share KB vào MCP — dùng Chrome thật duyệt thủ công, kỹ thuật `data-protected-src` (xem DEC-080) để lấy URI cho 11/29 ảnh không có self-embed trong mô tả. `knowledge/` local đã commit + push chính thức.
 
-**⚠️ Còn treo — việc đầu tiên phiên sau:** cuối phiên 9, người dùng tự tay nạp 12 file `doc-v5-*.md` (Plan Version) lên Web ngay sau khi phiên dừng lại — **agent chưa kiểm chứng kết quả** (không có bằng chứng hash/network request, khác với `GS9 Knowledge VNG AI` đã đóng vòng bằng DEC-074). Việc đầu tiên phiên sau: hỏi/kiểm xem sync đã chạy xong chưa (mốc "Thời gian tải lên" mới trên từng tài liệu Web), rồi mở ít nhất 1 tài liệu Plan Version kiểm ảnh hiện đúng — giống hệt cách đã đóng vòng cho `GS9 Knowledge VNG AI`. Nếu sync chưa chạy, đó là việc ưu tiên số 1 trước khi làm gì khác trên KB đó.
+**Kiểm chứng đóng vòng (DEC-081), cùng phiên:** người dùng tự nạp 12 file `doc-v5-*.md` lên Web. Đã kiểm bằng Chrome thật, không chỉ tin lời báo: 12/12 file `Hoàn tất`, cập nhật đúng ngày sửa local; mở `doc-v5-03` (8 ảnh nhúng) — 8/8 ảnh `naturalWidth > 0`, 8/8 request `files?file_path=...exports/<uuid>` trả **200**, uuid khớp MAP tuyệt đối. Tổng tài liệu KB hiển thị 43 (không phải 41) hoá ra chỉ do `source-manifest.json` và `image-map.json` bị connector tự đánh chỉ mục — không phải trùng lặp. **Không còn việc treo nào từ mục này.** Chi tiết đầy đủ: DEC-080, DEC-081, `STATUS.md` mục 21/08/2026.
 
 ---
 

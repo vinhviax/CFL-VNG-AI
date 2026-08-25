@@ -1,7 +1,18 @@
 # Trạng thái Knowledge Base VNG
 
-**Ngày snapshot:** 21/08/2026 (phiên 9, máy công ty)
-**Phiên bản:** 4.1.0 — hoàn tất relink 81/81 ảnh, commit chốt kiến trúc mới
+**Ngày snapshot:** 21/08/2026 (phiên 9, máy công ty — 2 lượt)
+**Phiên bản:** 4.2.0 — relink 81/81 ảnh đã đóng vòng hoàn toàn ở cả 2 KB, đã kiểm chứng thật
+
+## MỚI 21/08/2026 (phiên 9, tiếp) — đóng vòng relink Plan Version, kiểm chứng bằng Chrome thật (DEC-081)
+
+**Người dùng tự nạp 12 file `.md` Plan Version lên Web xong.** Kiểm qua Chrome thật (không chỉ tin lời báo):
+- 12/12 file `doc-v5-*.md` đều `Hoàn tất`, cập nhật `21 thg 8, 2026` — khớp mốc sửa local.
+- Tổng tài liệu KB hiện 43 (không phải 41 kỳ vọng) — điều tra ra 2 "dư" chỉ là `source-manifest.json` và `image-map.json` bị connector tự đánh chỉ mục làm tài liệu, không phải trùng lặp thật.
+- Mở `doc-v5-03-cach-choi-moi.md` (8 ảnh nhúng), tab "Toàn văn": 8/8 `<img>` có `naturalWidth > 0`, đối chiếu `read_network_requests` thấy đúng 8 request `files?file_path=...exports/<uuid>` **status 200**, uuid khớp tuyệt đối MAP đã dùng relink.
+
+**Kết luận: cả 2 KB (`GS9 Knowledge VNG AI` 52 ảnh + `GS9 CFL Plan Version` 29 ảnh) đã đóng vòng relink hoàn toàn, có bằng chứng kỹ thuật (không chỉ trạng thái tài liệu).** Xem DEC-081.
+
+## Snapshot trước đó — phiên 9, phần đầu (21/08/2026, máy công ty)
 
 ## MỚI 21/08/2026 (phiên 9, máy công ty) — hoàn tất relink 81/81 ảnh (2 KB), commit xoá `knowledge/` local (DEC-080)
 
@@ -11,7 +22,7 @@
 
 **2. `GS9 CFL Plan Version` (29 ảnh) — relink xong, KHÔNG cần share vào MCP.** Người dùng chọn duyệt qua trình duyệt thay vì thử API bearer token. Dùng Chrome thật (đã đăng nhập), mở từng tài liệu trên Web UI. 18/29 ảnh có URI `exports/` nhúng sẵn trong "Tóm tắt" giống cơ chế KB kia; **11/29 ảnh không có embed trong Tóm tắt lẫn Toàn văn dạng text** — phải bắt thuộc tính `data-protected-src` của `<img class="markdown-image">` ngay khi tab "Toàn văn" vừa mount, **trước khi** React tự xoá attribute này lúc ảnh resolve xong thành `blob:` (phải poll ~50ms/lần). Phân biệt ảnh chính với icon nhỏ minh hoạ cùng tài liệu bằng `alt` khớp đúng tên file. Đối chiếu chéo 1 case (`image-v5-13`) giữa 2 phương pháp — khớp tuyệt đối. Relink 29 URI vào 12 file `doc-v5-*.md` (2 định dạng khác nhau: `LOCAL_ASSET` comment + embed, và bảng danh mục `- **Asset:** [tên](URI)` trong `doc-v5-10`) và viết lại `image-map.json` Plan Version. Xem DEC-080.
 
-**Còn treo — kết thúc phiên tại đây:** người dùng tự tay nạp 12 file `.md` Plan Version lên Web (qua Drive sync) ngay sau khi phiên này dừng lại. **Agent chưa kiểm chứng kết quả** — không có bằng chứng hash/network request như đã làm cho `GS9 Knowledge VNG AI` (DEC-074). Việc đầu tiên phiên sau: xác nhận sync đã chạy (mốc "Thời gian tải lên" mới trên Web) và ảnh render đúng trong ít nhất 1 tài liệu Plan Version, tương tự cách đã đóng vòng cho KB kia.
+**Còn treo lúc đó — đã đóng ngay trong cùng phiên, xem mục "MỚI" phía trên.**
 
 **3. `knowledge/` trong repo local: người dùng chọn commit chính thức việc xoá.** Đã `git rm -r knowledge/` (153 file) + commit + push lên `origin/main`. Kiến trúc mới (Drive công ty là nguồn duy nhất) nay đã chốt trong lịch sử git, không còn ở trạng thái working-tree-khác-HEAD dễ nhầm lẫn.
 
