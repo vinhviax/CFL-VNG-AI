@@ -44,6 +44,23 @@ VIỆC B — LÊN WEB KB "GS9 CFL METRIC PLAYBOOK"
 Việc cần làm: giống Việc A bước 2–4 — tạo KB `GS9 CFL Metric Playbook` trên `vnggames.ai`, trỏ connector đúng thư mục, bật công cụ truy hồi, chat-test. Xem `HANDOFF.md` mục 4.12.
 
 ==================================================
+VIỆC D — DÙNG "CFL Thu Thập Dữ Liệu.xlsx" ĐỂ DỰNG CÁC KB NGHIỆP VỤ CÒN THIẾU (DEC-075)
+==================================================
+
+File `CFL Thu Thập Dữ Liệu.xlsx` ở root (untracked, cố ý giữ) là sheet người dùng tạo từ 20/08/2026 để team gửi tài liệu nguồn, có 4 sheet: `Huong Dan`, `Loai Doc` (9 loại tài liệu), `Thu Thap Doc` (nơi team điền tài liệu thật — cột J "Kho đích" quyết định tài liệu vào KB nào), `TuDien` (danh sách kho đích để chọn).
+
+**Kiểm tra đầu tiên:** mở sheet `Thu Thap Doc`, xem có dòng nào ngoài **dòng 2 là dòng ví dụ** ("VÍ DỤ — xoá cả dòng này trước khi dùng") không. Lần kiểm gần nhất (18/09/2026) sheet **chưa có dữ liệu thật nào**, chỉ có dòng ví dụ. Nếu vẫn vậy, hỏi người dùng đã có ai gửi tài liệu chưa — đây không phải việc agent tự tạo ra được, phải chờ team gửi.
+
+**Nếu đã có dữ liệu thật:** dùng cột "Kho đích" (đối chiếu `TuDien`) để xếp từng tài liệu vào đúng KB. Danh sách kho đích trong `TuDien` gồm cả các KB **chưa tồn tại**, cần dựng mới:
+
+- `GS9 CFL GM Policy & Sanction` — kho điều khoản xử phạt còn thiếu cho `GM Policy Advisor` (đang dùng kho tạm `GS9 Knowledge VNG AI`).
+- `GS9 CFL Event Calendar & Brief` — kho lịch sự kiện/brief đã duyệt còn thiếu cho `Player Communications` (đang dùng kho tạm `GS9 CFL Plan Version`).
+- `GS9 CFL Item Catalog` — kho danh mục vật phẩm/giá còn thiếu cho `Economy Offer Analyst` (đang dùng kho tạm `GS9 CFL Data Daily`; phải tách khỏi `GS9 CFL Item Profile`, rà dữ liệu P0 trước khi đưa vào).
+- `GS9 CFL CS FAQ & Policy` — đã có khung nhưng nội dung còn sơ khai, cần bổ sung câu hỏi/chính sách CS thật cho `CS Copilot`.
+
+Đây chính là cách đóng nốt tình trạng "4 Agent dùng kho tạm" đã ghi ở `HANDOFF.md` mục 4.2 — làm xong việc này thì không cần vá tạm nữa. Quy trình dựng từng KB mới: soạn nội dung theo DEC-053 (không `DEC-xxx`/audit/nhãn kiểm chứng) → đặt tên `doc-NN-slug` (DEC-042) → tạo thư mục trong `knowledge/` → xin phép người dùng trước khi tạo KB/trỏ connector trên Web (như Việc A/B) → bật công cụ truy hồi → chat-test.
+
+==================================================
 VIỆC C — BACKUP 2,75 GB (còn treo từ phiên 10, DEC-085)
 ==================================================
 
