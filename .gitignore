@@ -25,3 +25,20 @@ __pycache__/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Service-account key cua Drive connector (phat hien 18/09/2026 khi chuyen tai khoan).
+# Ten file khong khop bat ky pattern credential nao o tren nen tung suyt bi commit.
+# Khong xoa file tren dia - connector dang dung; chi chan khoi git.
+/knowledge/Keys Drive/
+**/Keys Drive/
+**/*drive-kb*.json
+
+# ---- Gioi han pham vi knowledge/ trong git (DEC-082, 18/09/2026) ----
+# Chi theo doi phan text/anh nhe dang sync len VNG AI (~30 MB).
+# Loai tru binary nang: 3 file zip H5 vuot gioi han cung 100 MB/file cua GitHub,
+# PDF PUM 127 MB, du lieu nguoi choi Item Profile, kho tai lieu nguon chua xu ly.
+# Cac thu muc nay chi ton tai tren Drive - KHONG xoa khoi dia.
+/knowledge/H5 Promotion/
+/knowledge/Kho Tài Liệu Chưa Tích Hợp/
+/knowledge/GS9 CFL PUM/
+/knowledge/GS9 CFL Item Profile/

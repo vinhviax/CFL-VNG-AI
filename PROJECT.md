@@ -4,9 +4,11 @@
 
 Project đóng gói tài liệu đã kiểm chứng để tạo, vận hành và bảo trì Knowledge Base cùng Agent trên VNG AI. Root chính thức là:
 
-`J:\My Drive\CFL\VNG AI\Knowledge Base VNG`
+`J:\My Drive\VNGGames AI\Knowledge Base VNG Source`
 
 Phiên bản nội dung hiện hành là v3.3.0: 13 module Knowledge Base/Google Drive và 7 module Agent chuyên sâu.
+
+**Cập nhật 18/09/2026 (DEC-082):** project đã chuyển sang tài khoản Google Drive mới. `knowledge/` nằm trở lại trong repo (thay thế kiến trúc DEC-076 dùng shortcut sang Drive công ty), nhưng **chỉ phần text/ảnh nhẹ được git theo dõi** — xem `AGENTS.md` mục "Phạm vi git của knowledge/".
 
 ## Kiến trúc local và Web
 
@@ -92,16 +94,25 @@ Khi build, tiền tố tính năng được đổi thành `doc-` để giữ quy
 ## Hợp đồng artifact
 
 - `docs KB/Human` có đúng 21 file nguồn (`KB-00`→`KB-12`, `Agent-13`→`Agent-19`, `KB-20`); builder đổi tiền tố sang `doc-` khi sinh. Dải `KB-NN` kín 00–12 nên chủ đề KB thêm mới đánh số từ 20 trở đi để không đụng dải `Agent-13`→`Agent-19`.
-- `GS9 Knowledge VNG AI` local có 21 Markdown (`doc-00`→`doc-19`, `doc-20`), 49 PNG thật với signature PNG hợp lệ (`image-01`→`image-49`) và một map — cùng một thư mục (DEC-043).
-- Map có 49 key khớp 49 tên PNG `image-NN-...` và 49 URI `minio://knowledge-base-prd/10012/...` duy nhất. Dạng URI hiện dùng là `file_path` lấy qua MCP `list_documents` (DEC-052); dạng `exports/` cũ vẫn hợp lệ.
+- `GS9 Knowledge VNG AI` local có 21 Markdown (`doc-00`→`doc-19`, `doc-20`), **52 PNG** (`image-01`→`image-52`) và một map — cùng một thư mục (DEC-043). *(Đếm lại 18/09/2026: 21 md + 52 png + `image-map.json` = 74 file.)*
+- Map có **52 key** khớp 52 tên PNG `image-NN-...` và 52 URI `minio://knowledge-base-prd/10012/exports/...` duy nhất (chuyển sang dạng `exports/` từ DEC-078/080). Dạng URI hiện dùng là `file_path` lấy qua MCP `list_documents` (DEC-052); dạng `exports/` cũ vẫn hợp lệ.
 - 20 module có 60 link MinIO và 60 `LOCAL_ASSET` dạng `./image-NN-...` (cùng thư mục); HTML không phụ thuộc tài nguyên remote khi đọc.
 - Nội dung chỉ sửa tại `docs KB/Human` rồi build; folder `GS9 Knowledge VNG AI` là mirror phát hành, không phải nơi biên tập trực tiếp.
 - Tài liệu trong `GS9 Knowledge VNG AI` không được chứa `DEC-xxx`, link `audit/`, hay nhãn mức bằng chứng — test hồi quy kiểm điều này cho 7 module Agent.
-- Meta-KB Agent có đúng 28 Markdown phẳng (`doc-00`→`doc-92`), gồm 6 trang hướng dẫn chung, 6 hồ sơ default, 10 hồ sơ custom, 3 trang cấu trúc KB CFL (`doc-30`–`doc-32`) và 3 trang governance; không có file ngoài Markdown hoặc folder con.
+- Meta-KB Agent có **8 Markdown** phẳng trên đĩa (đếm 18/09/2026; con số "28" ở bản cũ là sai), gồm 6 trang hướng dẫn chung, 6 hồ sơ default, 10 hồ sơ custom, 3 trang cấu trúc KB CFL (`doc-30`–`doc-32`) và 3 trang governance; không có file ngoài Markdown hoặc folder con.
 
 ## Dữ liệu khác trong `knowledge/`
 
-Các folder `GS9 CFL Data Daily`, `GS9 CFL Item Profile`, `GS9 CFL PUM` và `GS9 CFL Sentiment Feedback User` là dữ liệu của những KB khác trên Web. Không tự động nhập chúng vào `GS9 Knowledge VNG AI` và không dọn nếu chưa xác định dependency.
+Các folder `GS9 CFL Data Daily`, `GS9 CFL Item Profile`, `GS9 CFL PUM` và `GS9 CFL Sentiment Feedback User` là dữ liệu của những KB khác trên Web.
+
+**Kiểm kê thật 18/09/2026 — `knowledge/` có 354 file, 2,75 GB, 12 thư mục.** Hai thư mục dưới đây **chưa từng được mô tả trong tài liệu trước đó**:
+
+| Thư mục | Thực tế | Git |
+|---|---|---|
+| `H5 Promotion/` | 6 file, **1,74 GB** — 3 zip minigame H5 (649 / 570 / 503 MB) + 2 xlsx timeline & item quà | Loại trừ (vượt 100 MB/file) |
+| `Kho Tài Liệu Chưa Tích Hợp/` | 181 file, **895 MB** — tài liệu nguồn team gửi, chưa xử lý: `Event/`, `Function/`, `Localize/`, `Membership/`, và `gs9-metric-playbook.docx` | Loại trừ |
+| `Keys Drive/` | service-account key của connector | Loại trừ (credential) |
+ Không tự động nhập chúng vào `GS9 Knowledge VNG AI` và không dọn nếu chưa xác định dependency.
 
 **Cập nhật 15/08/2026 (phiên 2):** theo yêu cầu người dùng, tên file trong `GS9 CFL PUM`, `GS9 CFL Data Daily` và `GS9 CFL Sentiment Feedback User` đã thêm tiền tố `doc-` (giữ nguyên phần tên gốc, `desktop.ini` không đổi). Người dùng xác nhận các thư mục này liên kết với Google Drive và chủ động chấp nhận việc đổi tên sẽ khiến Web tự đồng bộ theo.
 

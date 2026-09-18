@@ -1,7 +1,7 @@
 # Handoff — Knowledge Base VNG
 
-**Cập nhật:** 21/08/2026 (phiên 9, máy công ty — relink 81/81 ảnh đã đóng vòng hoàn toàn ở cả 2 KB, đã kiểm chứng bằng Chrome thật; `knowledge/` đã commit + push chính thức xoá khỏi repo, xem mục 4.10 và DEC-080/081) · trước đó 20/08/2026 (phiên 8 — đổi kiến trúc sang Drive công ty) · 19/08/2026 (phiên 7, máy nhà) · 18/08/2026 (phiên 6, máy nhà) · 17/08/2026 (phiên 5, máy công ty)
-**Phiên bản:** 4.2.0 · **⚠️ Gate build/test cũ (`build_handbook.py`, `unittest`) chưa được xác nhận còn chạy được với cấu trúc mới** — builder viết vào `knowledge/` trong repo, nhưng thư mục đó không còn tồn tại ở local nữa (nguồn duy nhất giờ là Drive công ty). Chưa ai thử chạy lại từ khi đổi kiến trúc 20/08 — kiểm trước khi tin bất kỳ kết quả build/test nào.
+**Cập nhật:** 18/09/2026 (phiên 10 — **chuyển tài khoản Google Drive**: root mới `J:\My Drive\VNGGames AI\Knowledge Base VNG Source`, `knowledge/` trở lại trong repo, xem DEC-082/083) · trước đó 21/08/2026 (phiên 9 — relink 81/81 ảnh đóng vòng) · 20/08/2026 (phiên 8 — đổi kiến trúc sang Drive công ty) · 19/08 (phiên 7) · 18/08 (phiên 6) · 17/08 (phiên 5)
+**Phiên bản:** 5.0.0 · **⚠️ Gate build/test chưa chạy lại sau khi chuyển tài khoản** — `build_handbook.py` ghi vào `knowledge/`, mà `knowledge/` giờ đã trở lại trong repo nên builder *có thể* chạy được lại, nhưng **chưa ai thử**. Kiểm trước khi tin kết quả.
 
 ---
 
@@ -49,14 +49,25 @@ Thêm tính năng mới thì thêm tiền tố vào `HUMAN_SOURCE_PREFIXES` ho�
 
 ## 3. Trạng thái hai KB chính
 
-**⚠️ Từ 20/08/2026, `knowledge/` KHÔNG còn nằm trong repo Drive cá nhân.** Nguồn duy nhất bây giờ là Drive công ty: `J:\.shortcut-targets-by-id\1MFx5oXxwi54JNZA3sRKa1LdFXnP-VHdG\VNGGames AI\knowledge` (ID thư mục có thể khác theo máy — xác nhận lại đầu phiên bằng cách mở Drive công ty và soi đường dẫn thật, đừng hardcode). Bảng dưới đây phản ánh trạng thái **trước** khi đổi kiến trúc, chỉ giữ để tham khảo lịch sử — xem mục 4.9 và DEC-076/077/078 cho trạng thái thật hiện tại.
+**⚠️ Cập nhật 18/09/2026 (DEC-082): `knowledge/` nằm trở lại TRONG repo** (`<root>\knowledge`), không còn shortcut sang Drive công ty. Bảng dưới là **kiểm kê thật ngày 18/09/2026**, đã đối chiếu từng thư mục:
 
-| KB | Local (repo, đã xoá 20/08) | Web (trước khi đổi Service Account) | Ghi chú |
-|---|---|---|---|
-| `GS9 Knowledge VNG AI` | 21 doc + 52 ảnh | Đã sync, URI **đã chết** sau đổi Service Account 20/08 | Đã relink 20/21 file bằng URI `exports/` — xem DEC-078 |
-| `GS9 CFL Knowledge Agent` | 8 doc | Đã sync (17/08) | Có bảng binding Agent-KB |
+| Kho (thư mục) | Trên đĩa | Git theo dõi? |
+|---|---|---|
+| `GS9 Knowledge VNG AI` | 21 `.md` + 52 `.png` + `image-map.json` = 74 file, 21,9 MB | Có |
+| `GS9 CFL Plan Version/V5` | 12 `.md` + 29 `.jpg` + 2 `.json`, 2,0 MB | Có |
+| `GS9 CFL Knowledge Agent` | **8** `.md` (tài liệu cũ ghi 28 — **sai**) | Có |
+| `GS9 CFL Data Daily` | 8 `.xlsx`, 0,2 MB | Có |
+| `GS9 CFL Glossary & Systems` | 3 `.md` | Có |
+| `GS9 CFL CS FAQ & Policy` | 1 `.md` | Có |
+| `GS9 CFL Sentiment Feedback User` | 1 `.xlsx`, 5,5 MB | Có |
+| `H5 Promotion` | 6 file, **1,74 GB** (3 zip 649/570/503 MB) | **Không** — vượt 100 MB/file |
+| `Kho Tài Liệu Chưa Tích Hợp` | 181 file, **895 MB** (Event/Function/Localize/Membership + `gs9-metric-playbook.docx`) | **Không** |
+| `GS9 CFL PUM` | 8 file, 127 MB PDF | **Không** |
+| `GS9 CFL Item Profile` | 9 file, 24,4 MB — dữ liệu người chơi | **Không** |
+| `Keys Drive` | service-account key | **Không** — credential |
 
-`GS9 CFL Plan Version`: 12 doc + 29 ảnh, URI **cũng đã chết** sau đổi Service Account nhưng **chưa relink** — KB này ngoài phạm vi MCP, xem mục 4.9.
+Tổng `knowledge/`: **354 file, 2,75 GB**; phần git theo dõi: **139 file, 29,7 MB**.
+
 
 ---
 
@@ -215,6 +226,15 @@ Nội dung gồm: nguyên tắc quyền ở cấp kho · bảng 4 loại kho nê
 ---
 
 ## 5. Cạm bẫy đã gặp thật
+
+**Google Drive làm hỏng `.git` bằng `desktop.ini` (18/09/2026, DEC-083).** Drive tạo 155 file `desktop.ini` bên trong `.git/`, gồm cả `refs/`, `refs/heads/`, `refs/remotes/`, `refs/tags/`. Git đọc mọi file dưới `refs/` như một ref nên báo `fatal: bad object refs/desktop.ini`, `git fsck` báo `badRefContent`, `git log --all` chết.
+→ **Cách xử lý:** `find .git -type f -name desktop.ini -delete` rồi kiểm `git for-each-ref` và `git rev-parse HEAD`. An toàn vì đây là rác OS, không phải dữ liệu git. **Sẽ tái sinh** khi Drive sync lại — đừng nghĩ repo hỏng.
+
+**Pattern credential trong `.gitignore` không phủ hết (18/09/2026, DEC-083).** `knowledge/Keys Drive/cfl-drive-kb-*.json` không khớp rule nào (các rule cũ chỉ chặn thư mục tên đúng `keys`). Suýt push service-account key lên GitHub.
+→ **Trước mỗi `git add` diện rộng, chạy `git check-ignore -v` trên đúng file credential**, đừng tin pattern chung.
+
+**Không grep/find đệ quy từ root project.** `knowledge/` nặng 2,75 GB trên Drive — `grep -r --include=*.md .` và `git status` đều timeout vì phải lội hết cây. Chỉ nhắm đúng file/thư mục cần; việc nặng thì đẩy sang background.
+
 
 **Google Drive mất kết nối rồi tự "Restore" ra layout cũ (DEC-059, 17/08/2026).** Đây là sự cố nặng nhất từng gặp: Drive rớt mount, sau đó tự phục hồi nhưng trộn cấu trúc cũ (trước 15/08) chồng lên cấu trúc mới — thư mục `knowledge` thật bị đẩy thành `knowledge (1)`, `.git` mất lịch sử, hàng trăm file lệch nội dung.
 → **Cách khôi phục đã dùng, làm lại được nếu tái diễn:** (1) clone bản sạch từ GitHub ra **ngoài** Drive để đối chiếu, không sửa gì trên Drive trước khi biết rõ; (2) nếu thư mục thật đổi tên thành `(1)` thì **đổi tên lại** (không xoá-tạo-mới) để giữ ID và không đứt kết nối connector; (3) thay `.git` hỏng bằng bản sạch từ clone; (4) `git restore .` rồi `git clean -f` từng thư mục con; (5) rà thủ công toàn cây tìm file/thư mục kiểu `(1)`, `(2)`, `Copy of`, thư mục chỉ có `desktop.ini`; (6) xác nhận cuối bằng `git diff --stat origin/main HEAD` phải **rỗng tuyệt đối**, không chỉ tin `git status`.

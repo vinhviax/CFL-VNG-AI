@@ -1,7 +1,30 @@
 # Trạng thái Knowledge Base VNG
 
-**Ngày snapshot:** 21/08/2026 (phiên 9, máy công ty — 2 lượt)
-**Phiên bản:** 4.2.0 — relink 81/81 ảnh đã đóng vòng hoàn toàn ở cả 2 KB, đã kiểm chứng thật
+**Ngày snapshot:** 18/09/2026 (phiên 10, máy công ty — chuyển tài khoản Google Drive)
+**Phiên bản:** 5.0.0 — đổi tài khoản Drive, `knowledge/` trở lại trong repo, giới hạn phạm vi git
+
+## MỚI 18/09/2026 (phiên 10) — chuyển tài khoản Google Drive, `knowledge/` trở lại repo, chặn 2 sự cố hạ tầng (DEC-082/083)
+
+**Người dùng chuyển toàn bộ project sang tài khoản Google Drive mới.** Root mới: `J:\My Drive\VNGGames AI\Knowledge Base VNG Source`. `knowledge/` nay là thư mục thật trong project, không còn shortcut `.shortcut-targets-by-id` sang Drive công ty — **thay thế kiến trúc DEC-076**.
+
+**1. Di trú không mất dữ liệu — đã kiểm chứng bằng mốc chụp trước khi chuyển.** Bốn giá trị khớp tuyệt đối trước/sau: HEAD `c56eeb9`, tree `966f9272`, hash index `f7b3848d`, 345 file tracked. `origin/main` cũng khớp. Không tái diễn sự cố DEC-059/064.
+
+**2. Suýt push service-account key lên GitHub (DEC-083).** `knowledge/Keys Drive/cfl-drive-kb-f36f5888736e.json` không khớp bất kỳ pattern credential nào trong `.gitignore` — rule cũ chỉ chặn thư mục tên đúng `keys`, không chặn `Keys Drive`. Đã thêm rule chặn; kiểm lịch sử git xác nhận **chưa từng bị commit** nên không cần rotate key. Không mở nội dung, không xoá khỏi đĩa (connector đang dùng).
+
+**3. Google Drive làm hỏng `.git` (DEC-083).** 155 file `desktop.ini` Drive tạo bên trong `.git/` — những cái ở `refs/*` khiến git báo `fatal: bad object refs/desktop.ini` và `git fsck` báo `badRefContent`. Đã xoá; HEAD/tree không đổi. Sẽ tái sinh khi Drive sync lại.
+
+**4. Đối chiếu tài liệu với thực tế `knowledge/` — tìm ra 3 chỗ sai/thiếu:**
+- `GS9 CFL Knowledge Agent` thực tế **8** `.md`, tài liệu ghi **28** — sai.
+- `GS9 Knowledge VNG AI` thực tế **52** PNG, tài liệu ghi **49** — lỗi thời từ phiên 7.
+- Hai kho **chưa từng được mô tả ở đâu**: `H5 Promotion` (6 file, 1,74 GB) và `Kho Tài Liệu Chưa Tích Hợp` (181 file, 895 MB, gồm `gs9-metric-playbook.docx` và 4 nhóm tài liệu nguồn team gửi).
+
+**5. Phạm vi git mới (DEC-082).** `knowledge/` = 354 file / 2,75 GB, nhưng chỉ **139 file / 29,7 MB** được theo dõi. Loại trừ 4 thư mục binary nặng vì **3 file zip trong `H5 Promotion` (649/570/503 MB) vượt giới hạn cứng 100 MB/file của GitHub — push sẽ bị từ chối thẳng**. Đã loại Git LFS vì 2,75 GB vượt xa quota free 1 GB.
+
+**6. Ghi nhận muộn việc ngày 25/08/2026.** Phiên đó dựng `gs9-metric-playbook.docx` (529 KB, 4 phần, 52 metric, nhúng sơ đồ phân rã) từ `gs9-metric-playbook.html`, nhưng **không được ghi vào tài liệu nào**. File hiện ở `knowledge/Kho Tài Liệu Chưa Tích Hợp/`, còn nguyên vẹn (690 đoạn, 12 bảng, 1 ảnh). **Không tái tạo lại được**: bản HTML nguồn đã không còn trên đĩa và scratchpad phiên đó đã bị xoá. Vẫn treo: chưa quyết đưa vào KB nào và chưa đổi tên theo quy ước `doc-`.
+
+**Đã viết `README.md` cho repo** (trước đây không có).
+
+## Snapshot trước đó — phiên 9 (21/08/2026)
 
 ## MỚI 21/08/2026 (phiên 9, tiếp) — đóng vòng relink Plan Version, kiểm chứng bằng Chrome thật (DEC-081)
 
