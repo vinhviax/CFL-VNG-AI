@@ -1,7 +1,27 @@
 # Trạng thái Knowledge Base VNG
 
-**Ngày snapshot:** 18/09/2026 (phiên 10, máy công ty — chuyển tài khoản Google Drive)
+**Ngày snapshot:** 18/09/2026 (phiên 10, tiếp — gate build/test sạch, chạy lại Case 2)
 **Phiên bản:** 5.0.0 — đổi tài khoản Drive, `knowledge/` trở lại trong repo, giới hạn phạm vi git
+
+## MỚI 18/09/2026 (phiên 10, tiếp) — Việc 1 xong: gate build/test sạch; Việc 2 xong: chạy lại Case 2, không tái hiện lỗi (DEC-084)
+
+**Việc 1a — gate build/test.** Copy tối thiểu (`docs KB/Human/`, `knowledge/GS9 Knowledge VNG AI/`, `knowledge/GS9 CFL Knowledge Agent/`) sang scratchpad, gọi thẳng `build_handbook.build_project(scratch_root)` bằng Python 3.11 (Python 3.13 mặc định máy không có package `markdown`) — **không đụng `knowledge/` thật**. Kết quả: builder sinh ra khớp tuyệt đối byte-for-byte với bản thật đang commit (chỉ lệch `desktop.ini` do Drive tự tạo). `unittest discover`: **`Ran 30 tests`/`OK`**, 0 FAIL 0 skip. `link_plan_v5_minio.py --check`: 0 thay đổi. **Kết luận: builder vẫn đúng, không có drift.** Chi tiết: `HANDOFF.md` mục 4.11.
+
+Phát sinh phụ: đính chính `AGENTS.md` dòng 47 — `GS9 CFL Knowledge Agent` **không phải** 28 file viết tay ngoài pipeline (ghi cũ, sai) mà là **8 file builder sinh tự động** từ `AgentCFL-*`/`KBCFL-*` (khớp 1:1 bằng diff).
+
+**Việc 1b — chưa làm, cần hỏi người dùng** nơi backup 2,75 GB (4 thư mục `H5 Promotion`, `Kho Tài Liệu Chưa Tích Hợp`, `GS9 CFL PUM`, `GS9 CFL Item Profile` chỉ tồn tại trên Drive, không có bản sao).
+
+**Việc 2 — chạy lại Case 2** (`GS9 CFL Knowledge Curator` × 2 KB cũ, model `deepseek-v4-flash`, câu hỏi y hệt 17/08). Trả lời đúng cả 3 phần, không tái hiện 2 lỗi sai cũ. Quét toàn bộ trích dẫn + bước suy luận: **0 nguồn ảnh** (12/12 chip trích dẫn là `doc-*.md`), khác hẳn Case 2 gốc từng lấy thẳng `image-01-....png` làm nguồn. **Kết luận: cơ chế ảnh-thành-nguồn vẫn đúng về kỹ thuật nhưng không bị kích hoạt lần này** — chưa đủ bằng chứng nói nền tảng đã sửa gốc. Không cần thử tắt VLM vì điều kiện "vẫn sai" không xảy ra. Chi tiết đầy đủ + phát sinh lỗi UI stream đứng hình (F5 là thấy câu trả lời đã sinh xong): `audit/case2-retest-2026-09-18.md`. Xem DEC-084.
+
+**Đã hỏi gộp một lượt các quyết định còn treo, người dùng trả lời:**
+- **Việc 1b (backup 2,75 GB):** chấp nhận rủi ro tạm thời, chưa backup ngay.
+- **Việc treo `gs9-metric-playbook.docx`:** tạo kho riêng. Đã tạo `knowledge/GS9 CFL Metric Playbook/`, chuyển file vào đó, đổi tên `doc-00-metric-playbook.docx` (DEC-042). Chưa `git add`/commit (để cuối phiên), chưa lên Web. Xem `HANDOFF.md` mục 4.12.
+- **Việc 3 — tên KB:** `GS9 Dokploy VNG AI` (đúng đề xuất gốc). **Đối tượng đọc:** cả team kể cả non-dev → viết tổng quan, giải thích thuật ngữ, hạn chế lệnh CLI chi tiết. **Ảnh minh hoạ:** không cần — tránh hẳn rủi ro ảnh thành nguồn sai (mục 4.5). **Phạm vi GigiKit:** chỉ trang `deploy-dokploy`, vẫn quét 28 trang còn lại tìm chỗ nhắc Dokploy theo yêu cầu gốc.
+- **Commit các sửa tài liệu (HANDOFF/STATUS/DECISIONS/AGENTS + audit mới) hôm nay:** để cuối phiên, gộp chung với thay đổi Việc 3.
+
+**Việc 3 — đã thu thập nguồn và viết xong 6 file nội dung, chưa lên Web.** Đọc toàn bộ 5 trang nguồn A + trang `deploy-dokploy` nguồn B + quét 28 trang GigiKit (chỉ 2/28 khớp "dokploy", không có gì mới ngoài trang chính). Bản thô lưu `scripts/one-off/dokploy-source-a-raw.md` + `dokploy-source-b-raw.md`. Đã tạo `knowledge/GS9 Dokploy VNG AI/` với `doc-00` đến `doc-05` (giới thiệu, điều kiện truy cập, quy trình 9 bước, xác thực & bảo mật, FAQ, và trang riêng cho dev dùng GigiKit CLI) — viết trực tiếp, không qua `build_handbook.py`, không ảnh. Biên tập theo DEC-053 (không DEC-xxx/audit/nhãn kiểm chứng). Xem DEC-087. **Chưa commit** (để cuối phiên), **chưa lên Web** (cần người dùng tạo KB + trỏ connector), **chưa chat-test**.
+
+## Snapshot trước đó — phiên 10, đầu phiên (18/09/2026, máy công ty — chuyển tài khoản Google Drive)
 
 ## MỚI 18/09/2026 (phiên 10) — chuyển tài khoản Google Drive, `knowledge/` trở lại repo, chặn 2 sự cố hạ tầng (DEC-082/083)
 

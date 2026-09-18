@@ -1,7 +1,7 @@
 # Handoff — Knowledge Base VNG
 
-**Cập nhật:** 18/09/2026 (phiên 10 — **chuyển tài khoản Google Drive**: root mới `J:\My Drive\VNGGames AI\Knowledge Base VNG Source`, `knowledge/` trở lại trong repo, xem DEC-082/083) · trước đó 21/08/2026 (phiên 9 — relink 81/81 ảnh đóng vòng) · 20/08/2026 (phiên 8 — đổi kiến trúc sang Drive công ty) · 19/08 (phiên 7) · 18/08 (phiên 6) · 17/08 (phiên 5)
-**Phiên bản:** 5.0.0 · **⚠️ Gate build/test chưa chạy lại sau khi chuyển tài khoản** — `build_handbook.py` ghi vào `knowledge/`, mà `knowledge/` giờ đã trở lại trong repo nên builder *có thể* chạy được lại, nhưng **chưa ai thử**. Kiểm trước khi tin kết quả.
+**Cập nhật:** 18/09/2026 (phiên 10, tiếp — **đã chạy gate build/test sau chuyển tài khoản: sạch hoàn toàn** (mục 4.11 dưới), và **đã chạy lại Case 2** (mục 4.5, đóng lại — xem `audit/case2-retest-2026-09-18.md`)) · cùng ngày, đầu phiên — chuyển tài khoản Google Drive: root mới `J:\My Drive\VNGGames AI\Knowledge Base VNG Source`, `knowledge/` trở lại trong repo, xem DEC-082/083 · trước đó 21/08/2026 (phiên 9 — relink 81/81 ảnh đóng vòng) · 20/08/2026 (phiên 8 — đổi kiến trúc sang Drive công ty) · 19/08 (phiên 7) · 18/08 (phiên 6) · 17/08 (phiên 5)
+**Phiên bản:** 5.0.0 · **Gate build/test đã chạy lại sau khi chuyển tài khoản — sạch hoàn toàn** (`Ran 30 tests OK`, builder khớp tuyệt đối với `knowledge/` thật, `link_plan_v5_minio.py --check` = 0 thay đổi). Chạy trên bản cô lập trong scratchpad, không đụng `knowledge/` thật — chi tiết cách làm ở mục 4.1.
 
 ---
 
@@ -61,7 +61,8 @@ Thêm tính năng mới thì thêm tiền tố vào `HUMAN_SOURCE_PREFIXES` ho�
 | `GS9 CFL CS FAQ & Policy` | 1 `.md` | Có |
 | `GS9 CFL Sentiment Feedback User` | 1 `.xlsx`, 5,5 MB | Có |
 | `H5 Promotion` | 6 file, **1,74 GB** (3 zip 649/570/503 MB) | **Không** — vượt 100 MB/file |
-| `Kho Tài Liệu Chưa Tích Hợp` | 181 file, **895 MB** (Event/Function/Localize/Membership + `gs9-metric-playbook.docx`) | **Không** |
+| `Kho Tài Liệu Chưa Tích Hợp` | 180 file, **895 MB** (Event/Function/Localize/Membership — `gs9-metric-playbook.docx` đã chuyển sang `GS9 CFL Metric Playbook/doc-00-metric-playbook.docx` 18/09/2026) | **Không** |
+| `GS9 CFL Metric Playbook` | 1 file `.docx`, 529 KB (mới tạo 18/09/2026, xem mục 4.12) | Chưa `git add` — sẽ theo dõi khi commit |
 | `GS9 CFL PUM` | 8 file, 127 MB PDF | **Không** |
 | `GS9 CFL Item Profile` | 9 file, 24,4 MB — dữ liệu người chơi | **Không** |
 | `Keys Drive` | service-account key | **Không** — credential |
@@ -113,7 +114,23 @@ Gắn KB **không** tự cho Agent quyền đọc kho. Công cụ `Tìm theo ng�
 
 **Dựng Agent mới luôn phải kiểm bước này.**
 
-### 4.5 ⚠️ ƯU TIÊN CAO — nghi vấn ảnh minh hoạ thành nguồn dữ kiện sai, CHƯA KẾT LUẬN
+### 4.5 ✅ ĐÃ CHẠY LẠI 18/09/2026 (phiên 10) — Case 2 không tái hiện lỗi, cơ chế vẫn đúng nhưng không bị kích hoạt lần này
+
+**Chạy lại đúng câu hỏi Case 2** (`GS9 CFL Knowledge Curator`, 2 KB cũ, model `deepseek-v4-flash` khớp lượt có trace). Bằng chứng đầy đủ: `audit/case2-retest-2026-09-18.md`.
+
+**Kết quả:** trả lời đúng cả 3 phần (agent phù hợp = `GM Policy Advisor`, kho đang gắn = kho tạm `GS9 Knowledge VNG AI`, kho đó không chứa điều khoản xử phạt vì chưa có KB nào phụ trách mảng này), trích dẫn toàn bộ bằng `doc-*.md`. **Không tái hiện hai lỗi sai cũ** ("hệ thống chỉ có 6 trợ lý mặc định", kho `Knowledge VNG - Image Assets` đã gỡ vẫn được nêu tồn tại).
+
+**Đối chiếu trực tiếp giả thuyết ảnh-thành-nguồn:** quét toàn bộ text (kể cả bung "Xem các bước", kể cả DOM trong shadow root) tìm mọi trích dẫn `image-*` — **0 kết quả thật** (0/12 chip trích dẫn là ảnh, toàn bộ là `doc-*.md`). Case 2 gốc từng có bước `Lấy tài liệu: image-01-....png` — lượt này không có bước tương đương nào.
+
+**Kết luận:** cơ chế "ảnh được OCR/caption thành chunk tra cứu được, Agent có thể chủ động truy hồi ảnh làm nguồn" **vẫn đúng về kỹ thuật, không bị bác bỏ** — chỉ là **không bị kích hoạt** ở lượt chạy lại này (nhiều khả năng do nội dung chữ trong `doc-11`/`doc-02` đã đủ rõ để truy hồi ngữ nghĩa ưu tiên đúng, không cần rơi vào ảnh). **Chưa đủ bằng chứng kết luận nền tảng đã sửa lỗi ở tầng cơ chế.** Điều kiện "nếu vẫn sai → tắt VLM so 3 kết quả" không xảy ra nên **chưa cần làm thử nghiệm tắt VLM**.
+
+**Khuyến nghị cho Việc 3 (dựng KB Dokploy):** không cần chặn tiến độ vì mục này, nhưng vẫn giữ nguyên tắc phòng ngừa rẻ tiền đã áp dụng — cảnh báo "ảnh chụp một thời điểm" cạnh mọi ảnh mang tính liệt kê/danh sách khi chèn ảnh giao diện vào KB mới.
+
+**Phát sinh mới, đáng chú ý:** UI chat bị đứng hình stream (~3 phút không thêm ký tự, nút gửi vẫn "đang chạy") — F5 thì thấy câu trả lời đã sinh xong ở server từ trước. Lỗi hiển thị phía client, không phải lỗi nội dung — cùng loại với hiện tượng "CS Copilot không render thân câu trả lời" ở audit 17/08. Đáng gộp báo team vận hành nếu tái diễn.
+
+---
+
+### 4.5-cũ (tham khảo lịch sử) — nghi vấn ảnh minh hoạ thành nguồn dữ kiện sai, lúc chưa chạy lại được
 
 `Knowledge Curator` khẳng định 3 thứ sai (hệ thống "chỉ có 6 trợ lý"; có kho `Knowledge VNG - Image Assets`; có nguồn `Drive CFL Viax` sync 15 phút). Cả 3 khớp gần như từng ký tự với nội dung trong 3 **ảnh chụp màn hình** nằm trong `GS9 Knowledge VNG AI` (`image-26`, `image-41`, `image-25`).
 
@@ -222,6 +239,60 @@ Nội dung gồm: nguyên tắc quyền ở cấp kho · bảng 4 loại kho nê
 7. **Chỉ sau khi image-map.json đã đúng và commit đã quyết**, mới chạy lại full gate (`build_handbook.py`, `unittest discover`, `link_plan_v5_minio.py --check`) — nhưng lưu ý gate hiện hành giả định `knowledge/` nằm trong repo, cần xác nhận builder còn chạy được với cấu trúc mới trước khi tin kết quả.
 
 **Đừng lặp lại sai lầm:** không cần rà lại 52 URI đã relink nếu chưa có thay đổi datasource mới — chỉ `image-map.json` là chưa đồng bộ, không phải toàn bộ việc phải làm lại.
+
+---
+
+### 4.11 ✅ ĐÃ XONG 18/09/2026 (phiên 10) — gate build/test kiểm chứng sạch sau chuyển tài khoản, KHÔNG đụng `knowledge/` thật
+
+Builder ghi cố định vào `Path(__file__).resolve().parents[1]` (root thật) khi chạy qua `main()`, nhưng `build_project(root, ...)` là hàm thuần nhận `root` tuỳ ý — nên đã copy tối thiểu (`docs KB/Human/` + `knowledge/GS9 Knowledge VNG AI/` + `knowledge/GS9 CFL Knowledge Agent/`, bỏ `desktop.ini`) sang scratchpad rồi gọi thẳng `build_project(scratch_root)` bằng Python 3.11 (có sẵn package `markdown`; Python 3.13 mặc định của máy **không có**, phải trỏ đích danh `...Python311\python.exe`).
+
+**Kết quả:**
+- `diff -rq` giữa bản builder sinh trong scratchpad và `knowledge/GS9 Knowledge VNG AI/` + `GS9 CFL Knowledge Agent/` thật: **khớp tuyệt đối byte-for-byte** (chỉ lệch mỗi `desktop.ini` do Drive tự tạo, không phải nội dung git theo dõi). Builder **còn đúng**, không có drift giữa nguồn Human và bản đã publish.
+- `python -m unittest discover -s tests -v` tại root thật: **`Ran 30 tests` / `OK`**, 0 FAIL, 0 skip — khớp đúng gate kỳ vọng ghi trong `AGENTS.md`/`README.md`. (Đã kiểm: chỉ một test gọi `build_project` thật, dùng `tempfile.TemporaryDirectory()`, không đụng `knowledge/` thật.)
+- `python scripts/link_plan_v5_minio.py --check`: `0 ảnh nhúng + 0 link registry cần đổi trên 0 file` — sạch.
+- `git status --short` sau toàn bộ: chỉ còn 3 file untracked cố ý giữ (không đổi gì so với đầu phiên).
+
+**Đính chính AGENTS.md dòng 47 (lỗi thời):** ghi `knowledge/GS9 CFL Knowledge Agent/ (28 file) viết tay, ngoài pipeline builder` — **sai theo dữ liệu hiện tại**. Thực tế đây là **8 file do `build_simple_kbs()` sinh tự động** từ 5 nguồn `AgentCFL-*.md` + 3 nguồn `KBCFL-*.md` trong `docs KB/Human/` (khớp đúng 1:1, xác nhận bằng diff ở trên). Con số 28 và "viết tay" đã lỗi thời từ trước — cần sửa `AGENTS.md` ở phiên có thời gian dọn tài liệu.
+
+---
+
+### 4.12 ✅ ĐÃ XONG 18/09/2026 (phiên 10) — kho riêng cho `gs9-metric-playbook.docx` (đóng việc treo mục 6 STATUS 18/09)
+
+Người dùng chọn tạo kho riêng thay vì gộp vào `GS9 CFL Knowledge Agent` hay để treo. Đã tạo `knowledge/GS9 CFL Metric Playbook/`, chuyển file từ `knowledge/Kho Tài Liệu Chưa Tích Hợp/gs9-metric-playbook.docx` sang đó và đổi tên theo quy ước DEC-042: `doc-00-metric-playbook.docx`. Nội dung file giữ nguyên (chỉ move + rename, không sửa nội dung).
+
+**Còn phải làm (không tự ý làm — cần người dùng):**
+1. `git add` + commit thư mục mới (gộp vào lần commit cuối phiên theo yêu cầu người dùng).
+2. Tạo KB `GS9 CFL Metric Playbook` trên `vnggames.ai`, trỏ Google Drive connector đúng vào thư mục con này (DEC-046) — việc này cần người dùng tự làm hoặc cho phép rõ ràng.
+3. Sau khi lên Web: bật công cụ truy hồi cho agent nào sẽ dùng kho này (DEC-061), rồi chat-test.
+
+---
+
+### 4.13 🚧 ĐANG LÀM 18/09/2026 (phiên 10) — dựng KB "GS9 Dokploy VNG AI" (Việc 3)
+
+Nguồn: 5 trang `docs.hub.vnggames.ai/docs/dokploy` (đọc toàn bộ) + trang `docs-gigikit.hub.vnggames.ai/guides/skills/deploy-dokploy` + quét đúng 28 trang GigiKit tìm "dokploy" (chỉ 2/28 khớp: trang `deploy-dokploy` và một dòng trong `catalog`, không có gì mới). Bản thô lưu tại `scripts/one-off/dokploy-source-a-raw.md` và `dokploy-source-b-raw.md` (bền qua phiên, không như scratchpad).
+
+**Quyết định đã hỏi và chốt với người dùng (một lượt):**
+- Tên KB: `GS9 Dokploy VNG AI` (đúng đề xuất gốc).
+- Đối tượng đọc: **cả team, kể cả non-dev** — nội dung viết tổng quan, giải thích thuật ngữ (SSO, VPN, CI...), phần lệnh CLI chi tiết tách riêng có cảnh báo rõ "dành cho dev".
+- Ảnh minh hoạ: **không chèn** — tránh hẳn rủi ro ảnh thành nguồn dữ kiện sai (mục 4.5).
+- Phạm vi GigiKit: chỉ nội dung trang `deploy-dokploy`, không viết thêm bối cảnh GigiKit nói chung.
+
+**Đã tạo `knowledge/GS9 Dokploy VNG AI/`, 6 file** (viết tay trực tiếp, giống cách các KB đơn giản khác như `GS9 CFL Glossary & Systems` — KB này không đi qua pipeline `build_handbook.py`, không có nguồn `docs KB/Human` tương ứng):
+- `doc-00-gioi-thieu.md` — Dokploy là gì, vì sao dùng, 2 công cụ cốt lõi
+- `doc-01-dieu-kien-truy-cap.md` — tài khoản + mạng cần có trước khi deploy
+- `doc-02-quy-trinh-trien-khai.md` — 9 bước, 3 giai đoạn, đầy đủ
+- `doc-03-xac-thuc-va-bao-mat.md` — VNG SSO + 5 lớp bảo mật
+- `doc-04-hoi-dap-va-ho-tro.md` — FAQ (4 câu) + bảng liên hệ hỗ trợ
+- `doc-05-trien-khai-qua-gigikit.md` — dành riêng cho dev dùng GigiKit CLI (`/gk:deploy-dokploy`), gắn nhãn rõ "có thể bỏ qua nếu không dùng GigiKit"
+
+Biên tập theo DEC-053: không có mã `DEC-xxx`, link `audit/`, hay nhãn "đã/chưa kiểm chứng" trong 6 file trên — nội dung thuần hướng dẫn thao tác.
+
+**Còn phải làm (không tự ý — cần người dùng hoặc xác nhận thêm):**
+1. Người dùng đọc lại 6 file, góp ý/sửa nếu cần.
+2. `git add` + commit (gộp cuối phiên cùng `GS9 CFL Metric Playbook`).
+3. Người dùng tự tạo KB `GS9 Dokploy VNG AI` trên `vnggames.ai`, trỏ Google Drive connector đúng vào thư mục con này (DEC-046) — tuyệt đối không tự ý share/cấu hình sync (AGENTS.md).
+4. Sau khi lên Web: bật công cụ truy hồi cho agent nào dùng kho này (DEC-061 — gắn KB không tự bật truy hồi).
+5. Chat-test theo checklist DEC-062 (không bịa, không lộ PII, truy hồi chạy đúng).
 
 ---
 

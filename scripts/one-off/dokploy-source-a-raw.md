@@ -1,0 +1,160 @@
+# Nguồn A — Dokploy VNG (raw, thu thập 18/09/2026)
+
+Nguồn: https://docs.hub.vnggames.ai/docs/dokploy (5 trang, đọc toàn bộ)
+
+---
+
+## 1. Introduction — /docs/dokploy
+
+VNGGames AIT's self-hosted deployment platform — enabling every team member to deploy services independently without going through the Platform team.
+
+VNGGames uses Dokploy — a self-hosted platform that lets you deploy your own services to a live environment quickly and independently, without requiring Platform team involvement at every step.
+
+### Why Dokploy?
+- Individual empowerment: Anyone can deploy their own service without waiting on the Platform team.
+- Flexibility: Supports a wide range of application types and databases across diverse tech stacks.
+- Built-in security: SAST, Secret Detection, and VNG SSO are integrated directly into the workflow.
+
+### Core Tools
+| Tool | URL | Role |
+|---|---|---|
+| Dokploy (App Platform) | host.vnggames.ai | Create & manage services |
+| GitLab | code.vnggames.ai | Manage source code & CI pipeline |
+
+> This platform is provided for legitimate business use. Any misuse, violation of security policies, or damage to company systems — whether intentional or accidental — is the individual's responsibility under company regulations.
+
+### Where to Start
+- Access Requirements — Set up accounts and network access before your first deployment.
+- Deployment Flow — Step-by-step guide to deploying your application end-to-end.
+- SSO & Security — Authentication via VNG SSO and available security features.
+- FAQ & Support — Common questions and who to contact for help.
+
+---
+
+## 2. Access Requirements — /docs/dokploy/getting-started
+
+Prerequisites for getting started with Dokploy — what you need before your first deployment.
+
+Before you can deploy, make sure the following are in place.
+
+### Accounts
+You need an active account on both systems:
+- Dokploy: host.vnggames.ai
+- GitLab: code.vnggames.ai
+
+Don't have an account yet? Contact the AIT team to request access.
+
+### Network Access
+You must be connected through one of the following:
+| Network | When to use |
+|---|---|
+| VNGCorp Wi-Fi | In-office wireless |
+| Cable network | In-office wired |
+| Global VPN | Working remotely |
+
+Both host.vnggames.ai and code.vnggames.ai are not accessible from the public internet. You must use VPN when working remotely.
+
+VPN setup guides: Windows setup guide, macOS setup guide (liên kết phụ, không thuộc 5 trang chính).
+
+### Next Step
+Once both prerequisites are in place, you're ready to deploy → Deployment Flow (9-step guide).
+
+---
+
+## 3. Deployment Flow — /docs/dokploy/deployment-flow
+
+A complete 9-step guide to deploying your application on Dokploy, organized into 3 phases.
+
+| Phase | Steps | What you'll do |
+|---|---|---|
+| Phase 1 — Setup | Steps 1–4 | Get accounts, network access, and sign in |
+| Phase 2 — Project Configuration | Steps 5–7 | Create a service, connect GitLab, push code with security |
+| Phase 3 — Deploy & Publish | Steps 8–9 | Deploy your app and set up a public domain |
+
+### Phase 1 — Setup (Steps 1–4)
+1. **Request Accounts** — Submit an access request for both systems: host.vnggames.ai and code.vnggames.ai. (See: Access Requirements)
+2. **Connect to the Network** — Ensure you are connected via VNGCorp Wi-Fi, Cable network, or Global VPN before accessing either tool.
+3. **Sign In** — Log in to host.vnggames.ai and code.vnggames.ai using VNG SSO – OIDC.
+4. **Wait for Access Approval** — Once your request is approved, you will have full access to both systems.
+
+### Phase 2 — Project Configuration (Steps 5–7)
+5. **Create a Service in Your Project** — On host.vnggames.ai, navigate to your project and create a Service within it.
+6. **Connect GitLab to Dokploy** — Register a GitLab OAuth Application on code.vnggames.ai and link it to Dokploy. This authorizes Dokploy to access your repositories and connect your source code to the deployment pipeline. (See: Git Integration — sub-page, ngoài phạm vi 5 trang)
+7. **Push Code & Enable Security Scanning** — Push your code to GitLab, then enable:
+   | Feature | What it does |
+   |---|---|
+   | SAST | Scans source code for known vulnerabilities on every push |
+   | Secret Detection | Detects API keys, tokens, and credentials accidentally committed |
+
+   When creating the project on GitLab (code.vnggames.ai → New project → Create blank project), scroll to Project Configuration at the bottom and enable both options before clicking Create project.
+
+### Phase 3 — Deploy & Publish (Steps 8–9)
+8. **Deploy Service** — In your Application/Service on Dokploy, click Deploy to trigger the first deployment manually. Wait for the build to complete and confirm the service is running. (To auto-redeploy on every git push, see Setup Auto Deploy — sub-page.)
+9. **Add a Domain** — In your Application, go to the Domains tab and click Add Domain. Choose one of:
+   - Option 1 — traefik.me (HTTP): free subdomain auto-generated by Dokploy (`*.traefik.me`). No configuration needed — just set the container port.
+     | Field | Value |
+     |---|---|
+     | Host | Auto-filled by Dokploy |
+     | Container Port | Port your app listens on (e.g., 3000) |
+     | HTTPS | Leave off |
+     > traefik.me is a public HTTP service and does not support SSL/HTTPS. HTTPS and certificate options will have no effect.
+   - Option 2 — nip.io (HTTPS) (chi tiết không hiện đầy đủ trên trang, chỉ liệt kê là lựa chọn thứ hai)
+
+---
+
+## 4. SSO & Security — /docs/dokploy/auth-security
+
+Centralized authentication via VNG SSO – OIDC and available security features across the Dokploy platform.
+
+### VNG SSO & Authentication
+All systems use VNG SSO – OIDC as the sole authentication gateway — no separate passwords needed.
+| System | Authentication |
+|---|---|
+| Dokploy (host.vnggames.ai) | Sign in via VNG SSO |
+| GitLab (code.vnggames.ai) | Sign in via VNG SSO |
+| Service hosting (*.hub.vnggames.ai) | SSO template integration available |
+
+### Integrating SSO into Your Service (Optional)
+If your service requires user authentication via VNG SSO, use the available SSO Template and request configuration support from the AIT team. Contact AI Transformation - HungHNT for assistance with SSO configuration for your service.
+
+### Security Features
+| Feature | Description | How to Enable |
+|---|---|---|
+| VNGCorp Whitelist | Blocks access from the public internet | Applied at the infrastructure level |
+| VNG SSO – OIDC | Centralized authentication for *.hub.vnggames.ai | Contact AIT Team to request |
+| SAST | Static Application Security Testing | Configure in GitLab repository settings |
+| Secret Detection | Detects secrets and credentials in code | Configure in GitLab repository settings |
+| Basic Auth | HTTP username/password prompt on your app's public URL | Configure in Dokploy's Advanced tab |
+
+> While SAST and Secret Detection are not technically mandatory, they are strongly recommended for all projects to ensure information security.
+
+### Setup Guides
+- Setup Security Authentication — Add HTTP Basic Auth to your application's public URL — no code changes required / for an extra security layer.
+
+---
+
+## 5. FAQ & Support — /docs/dokploy/faq
+
+Frequently asked questions and support contacts for Dokploy users.
+
+### Frequently Asked Questions
+**Q: Do I need both a GitLab and a Dokploy account?**
+A: Yes. Both accounts are required to complete the deployment process. GitLab is used to manage your source code and CI pipeline, while Dokploy is used to create and manage your service.
+
+**Q: Can I deploy from home?**
+A: Yes, but you must first connect to the Global VPN. Both host.vnggames.ai and code.vnggames.ai are not accessible from the public internet.
+
+**Q: How does Auto Push Deploy work?**
+A: Each time you push a new commit to GitLab, Dokploy automatically triggers a deployment via the configured webhook. Refer to Setup Auto Deploy for setup instructions.
+
+**Q: Are SAST and Secret Detection required?**
+A: They are not technically enforced, but strongly recommended for all projects to detect security vulnerabilities and sensitive information in your code at an early stage.
+
+### Support Contacts
+| Issue | Contact |
+|---|---|
+| Account provisioning | AI Transformation - HungHNT |
+| Network / VPN issues | IT / Network Team |
+| SSO configuration | AI Transformation - HungHNT |
+| GitLab repository issues | AI Transformation - HungHNT |
+| Dokploy service issues | AI Transformation - HungHNT |

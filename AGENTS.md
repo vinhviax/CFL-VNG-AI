@@ -44,7 +44,7 @@ Khi bắt đầu phiên, đọc `HANDOFF.md`, `STATUS.md`, `PROJECT.md` và `DEC
 - Không sửa trực tiếp 21 module sinh hoặc HTML. `image-map.json` là dependency build và phải giữ 49 URI MinIO duy nhất, khoá đặt tên `image-NN-...`.
 - Mỗi module dùng URI MinIO hoạt động cho Web và comment `LOCAL_ASSET` trỏ `./image-NN-...` (cùng thư mục).
 - **URI ảnh có thể chết sau khi ảnh được re-sync qua Drive connector.** Lấy lại hàng loạt bằng MCP `list_documents`, trường `file_path` (DEC-052) — dạng `minio://.../10012/<knowledge_id>/<uuid>.png` đã kiểm chứng render đúng.
-- `knowledge/GS9 CFL Knowledge Agent/` (28 file) **viết tay, ngoài pipeline builder** — và đang lẫn nội dung Dev, chưa tách xong. Xem `HANDOFF.md`.
+- `knowledge/GS9 CFL Knowledge Agent/` (8 file, không phải 28 — đính chính 18/09/2026) **do `build_simple_kbs()` trong `scripts/build_handbook.py` sinh tự động** từ nguồn `AgentCFL-*.md`/`KBCFL-*.md` trong `docs KB/Human/` (đã kiểm bằng diff, khớp 1:1) — **không phải viết tay ngoài pipeline** như ghi trước đây. Sửa nội dung ở nguồn Human rồi build lại, đừng sửa tay file trong `knowledge/`.
 
 ## An toàn
 
