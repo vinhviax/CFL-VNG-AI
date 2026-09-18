@@ -8,124 +8,122 @@ Xác nhận bằng `git rev-parse --show-toplevel` (ổ đĩa có thể khác `J
 
 **Kiến trúc hiện hành (DEC-082, 18/09/2026):** `knowledge/` nằm **trong** repo tại `<root>\knowledge`. Không còn shortcut `.shortcut-targets-by-id` sang Drive công ty — kiến trúc DEC-076 đã bị thay thế. Trên đĩa `knowledge/` có 354 file / 2,75 GB nhưng **git chỉ theo dõi 139 file / 29,7 MB**; 4 thư mục binary nặng bị `.gitignore` loại trừ (`H5 Promotion`, `Kho Tài Liệu Chưa Tích Hợp`, `GS9 CFL PUM`, `GS9 CFL Item Profile`) và `Keys Drive` (credential). Đọc `README.md` mục "Phạm vi git" trước khi `git add`.
 
-Đọc theo thứ tự: `AGENTS.md` → `HANDOFF.md` (mục 4.5 là việc ưu tiên còn mở) → `STATUS.md` → `DECISIONS.md` từ DEC-075 tra khi cần.
+Đọc theo thứ tự: `README.md` → `AGENTS.md` → `HANDOFF.md` → `STATUS.md` → `DECISIONS.md` (tra từ DEC-075 khi cần).
 
 ==================================================
 0. TRẠNG THÁI KHI BÀN GIAO (kiểm chứng 18/09/2026, phiên 10)
 ==================================================
 
-- Đã **chuyển sang tài khoản Google Drive mới**. Di trú không mất dữ liệu: HEAD/tree/hash index/số file tracked khớp tuyệt đối với mốc chụp trước khi chuyển (DEC-082).
-- Repo có commit mới của phiên 10 (cập nhật tài liệu + `README.md` + đưa `knowledge/` vào git theo phạm vi giới hạn).
-- Tài liệu đã đối chiếu với thực tế `knowledge/` ngày 18/09: sửa 3 chỗ sai (Knowledge Agent 28→8 `.md`, ảnh 49→52, bổ sung 2 kho chưa từng được mô tả).
-- **Gate build/test CHƯA chạy lại** sau khi chuyển tài khoản — `build_handbook.py` ghi vào `knowledge/`, nay đã trở lại trong repo nên *có thể* chạy được, nhưng chưa ai thử.
-- Nếu git báo `fatal: bad object refs/desktop.ini`: Drive lại rải `desktop.ini` vào `.git/`. Chạy `find .git -type f -name desktop.ini -delete`. Repo không hỏng (DEC-083).
+- Repo **sạch**, HEAD = `196029d`, khớp `origin/main`, `git diff --stat origin/main HEAD` rỗng. 485 file tracked.
+- Đã chuyển sang tài khoản Google Drive mới, **không mất dữ liệu** (đối chiếu HEAD/tree/hash index/số file với mốc trước khi chuyển — khớp tuyệt đối).
+- 3 file untracked ở root là cố ý giữ, **đừng xoá**: `knowledge-20260820T085450Z-1-001.zip`, `CFL Thu Thập Dữ Liệu.xlsx`, `VNGGames AI.html`.
+- **Nếu git báo `fatal: bad object refs/desktop.ini`:** Drive lại rải `desktop.ini` vào `.git/`. Chạy `find .git -type f -name desktop.ini -delete` rồi `git for-each-ref`. Repo **không** hỏng — chuyện này tái diễn liên tục (DEC-083). Đã gặp lại chỉ ~30 phút sau lần dọn đầu.
+
+**Người dùng đã chốt thứ tự làm việc:** làm **Việc 1 → Việc 2 → Việc 3** dưới đây. Nhóm tài liệu Membership / Content Game / Function Game / Event / Localize / Survey trong `Kho Tài Liệu Chưa Tích Hợp` **để từ từ sau**, chưa đụng tới.
 
 ==================================================
-1. VIỆC ƯU TIÊN SỐ 1 — CÓ VIỆC ĐÃ LÀM NHƯNG CHƯA VÀO SỔ
+VIỆC 1 — DỌN NỢ KỸ THUẬT
 ==================================================
 
-**Ngày 25/08/2026 có một phiên làm việc không được ghi vào bất kỳ tài liệu nào.** Tìm chuỗi `metric.playbook` trong các file `.md` chỉ khớp đúng file prompt này — nghĩa là `STATUS.md`, `HANDOFF.md`, `DECISIONS.md` đều không biết việc này từng xảy ra. Cần ghi lại thành **DEC-082** + mục mới trong `STATUS.md` + cập nhật `HANDOFF.md`.
+**1a. Chạy gate build/test — chưa ai chạy lại từ khi đổi kiến trúc.**
 
-**Việc đã làm hôm đó:** dựng tài liệu KB dạng `.docx` từ file `gs9-metric-playbook.html` (playbook bộ metric chuẩn của GS9 cho CFM VN · PTG · DT3Q).
+`scripts/build_handbook.py` sinh module vào `knowledge/GS9 Knowledge VNG AI/`. Trước đây `knowledge/` không nằm trong repo nên builder chắc chắn lỗi; nay đã trở lại nên **có thể** chạy được — nhưng chưa kiểm chứng.
 
-Kết quả: `knowledge/Kho Tài Liệu Chưa Tích Hợp/gs9-metric-playbook.docx` (529 KB). Đã kiểm lại 18/09: file **còn nguyên vẹn** — 690 đoạn, 12 bảng, 1 ảnh nhúng, 36.065 ký tự văn bản, zip không lỗi.
+⚠️ **Người dùng dặn không được sửa gì trong `knowledge/`** (đó là bản mới nhất đang sync lên VNG AI). Nên **đừng chạy builder thẳng vào thư mục thật**. Cách an toàn:
 
-Cấu trúc file: bìa + bảng thông tin tài liệu · Mục lục (trường tự động) · Phần I quy ước chung và nhãn phụ trách · Phần II định nghĩa 52 metric theo 10 nhóm · Phần III bảng tổng hợp nhanh (10 bảng) · Phần IV phân rã chỉ số gộp (sơ đồ D0 nhúng ảnh + 4 thẻ D1–D4 + bảng ma trận Install type × User status).
+1. Copy `knowledge/GS9 Knowledge VNG AI/` sang scratchpad.
+2. Chạy builder trỏ vào bản copy (hoặc chạy rồi `git diff` ngay để xem nó đổi gì, và `git checkout -- knowledge/` để hoàn tác nếu có).
+3. So sánh bản sinh với bản thật: nếu khớp → builder còn đúng; nếu lệch → báo cáo lệch chỗ nào, **đừng tự ghi đè**.
+4. Chạy `python -m unittest discover -s tests -v`. Gate cũ kỳ vọng `Ran 30 tests`; nhiều test khoá cứng số lượng (49/52 ảnh, 61/64 lượt tham chiếu) nên có thể FAIL do số liệu đã đổi — **đọc kỹ từng FAIL, đừng sửa test cho pass**.
 
-**Mức bằng chứng của phiên đó:**
+**1b. Backup 2,75 GB đang không có bản sao.**
 
-| Việc | Mức |
-|---|---|
-| Độ phủ nội dung 100% (từng từ hiển thị trong HTML đều có trong `.docx`) | **Đã kiểm chứng** — đối chiếu token tự động |
-| XML hợp lệ, đủ thành phần OOXML, 12/12 bảng khớp độ rộng cột | **Đã kiểm chứng** — parser UTF-8 riêng |
-| Bố cục/màu/bảng/sơ đồ hiển thị đúng | **Đã kiểm chứng** — render thật từng phần qua `docx-preview` |
-| File mở đúng trong Word thật | **CHƯA kiểm chứng** — không xuất được PDF trên máy này (xem mục 3) |
-
-**Phát hiện cần ghi vào sổ:** file HTML nguồn ghi *"10 nhóm · 53 metric"* nhưng thực tế chỉ có **52** — đếm 2 nguồn độc lập trong HTML đều ra 52 (52 thẻ `article.metric` và 52 dòng bảng). File `.docx` dùng số đúng là 52. Nếu bản HTML còn ở đâu đó, nên sửa con số này.
+Bốn thư mục bị loại khỏi git **chỉ tồn tại trên Drive**: `H5 Promotion` (1,74 GB), `Kho Tài Liệu Chưa Tích Hợp` (895 MB), `GS9 CFL PUM` (127 MB), `GS9 CFL Item Profile` (24 MB). Vừa chuyển tài khoản Drive một lần — mất lần nữa là mất hẳn. **Hỏi người dùng** muốn backup đi đâu (ổ ngoài / Drive khác / chấp nhận rủi ro), đừng tự quyết.
 
 ==================================================
-2. VIỆC CẦN QUYẾT ĐỊNH — ĐANG TREO, KHÔNG TỰ Ý LÀM
+VIỆC 2 — ĐÓNG NGHI VẤN CŨ (HANDOFF mục 4.5)
 ==================================================
 
-**Số phận file `gs9-metric-playbook.docx`.** Câu hỏi này đã đặt ra cuối phiên 25/08 nhưng **người dùng chưa trả lời**:
+Mục 4.5 đánh dấu **ƯU TIÊN CAO** từ 17/08/2026 và **chưa bao giờ được đóng**: nghi vấn Agent lấy nội dung trong **ảnh minh hoạ** làm nguồn dữ kiện, rồi trả lời sai.
 
-File đang nằm trong `Kho Tài Liệu Chưa Tích Hợp` — thư mục này **không được connector đồng bộ vào KB nào**, nên nội dung playbook hiện chưa lên Web, Agent chưa tra được. Muốn đưa lên thì cần quyết:
+**Đã kiểm chứng trước đó:** nền tảng OCR nội dung ảnh **và** sinh caption ngay lúc nạp, lưu thành chunk tra cứu được; trace một lượt chạy ghi rõ Agent chủ động truy hồi `image-01-...png` làm nguồn.
+**Chưa chứng minh:** câu trả lời sai có *lấy đúng* từ các chunk đó không.
 
-1. Chuyển vào KB nào? (`GS9 Knowledge VNG AI` là kho hướng dẫn nền tảng — playbook metric có thể không thuộc đây; có thể cần kho nghiệp vụ Data riêng)
-2. Đổi tên theo quy ước `doc-` (DEC-042) chưa? Tên hiện tại `gs9-metric-playbook.docx` không khớp regex đồng bộ `^(doc|image)-`.
+Việc cần làm: chạy lại Case 2 (`audit/agent-chat-test-2026-08-17.md` mục 8), so kết quả. Nếu vẫn sai → thử tắt VLM/đọc ảnh cho KB thuần hướng dẫn rồi chạy lại, so ba kết quả.
 
-**Hỏi người dùng trước khi di chuyển** — chuyển file vào thư mục KB sẽ kích hoạt connector đồng bộ lên Web thật.
+**Vì sao đáng làm trước khi dựng KB mới:** nếu lỗi này có thật, mọi KB dựng sau đều dính. Chốt được nguyên nhân sẽ định hình cách chèn ảnh vào KB Dokploy sắp làm.
 
-==================================================
-3. CẢNH BÁO: KHÔNG TÁI TẠO LẠI ĐƯỢC FILE NÀY
-==================================================
-
-Hai thứ cần cho việc dựng lại `.docx` **đều đã mất**:
-
-- **File HTML nguồn đã không còn.** `find` toàn cây `knowledge/` chỉ thấy `.docx`, không còn `gs9-metric-playbook.html` (bản gốc 153 KB, còn tồn tại lúc 24/08 17:16). Không rõ người dùng xoá, chuyển đi, hay đổi tên — **hỏi, đừng suy đoán**.
-- **Scratchpad phiên cũ đã bị xoá.** Toàn bộ script dựng file (`extract.py` trích HTML→JSON, `build.js` dựng DOCX, `verify_docx.py`, `coverage.py`, `preview.html`, `srv.py`) và `content.json`, `diagram-d0.png` đều mất — scratchpad là theo phiên, không lưu lâu dài.
-
-→ **Hệ quả:** `gs9-metric-playbook.docx` hiện là bản duy nhất của nội dung đó. Muốn sửa nội dung thì phải sửa thẳng trên `.docx` (hoặc tìm lại bản HTML). Nếu người dùng cần pipeline tái tạo, phải viết lại từ đầu — lần này **lưu script vào `scripts/one-off/`** như tiền lệ `relink_images_2026-08-20.py`, đừng để trong scratchpad.
+**Việc treo nhỏ kèm theo:** `knowledge/Kho Tài Liệu Chưa Tích Hợp/gs9-metric-playbook.docx` (529 KB, dựng 25/08) chưa quyết đưa vào KB nào và chưa đổi tên theo quy ước `doc-`. **Không tái tạo lại được** — bản HTML nguồn đã mất. Hỏi người dùng.
 
 ==================================================
-4. CẠM BẪY MÔI TRƯỜNG ĐÃ KIỂM CHỨNG (máy công ty) — tiết kiệm nhiều giờ nếu đọc trước
+VIỆC 3 — DỰNG KB "DOKPLOY VNG AI" (việc chính người dùng muốn)
 ==================================================
 
-Phát hiện 25/08 khi làm `.docx`, chưa ghi vào `HANDOFF.md` mục 5 (nên ghi vào):
+Nguồn: hai site tài liệu nội bộ. **Đã trinh sát 18/09/2026, số liệu dưới đây là thật.**
 
-- **Không xuất được PDF bằng Word.** Word COM mở file bình thường (~2s) nhưng `ExportAsFixedFormat` **treo vô hạn** — đã thử với tài liệu trắng chỉ chứa chữ "Hello" cũng treo, nên là vấn đề của Word/máy, không phải của file. Đã đốt ~15 phút mới tách được nguyên nhân. Máy **không có** LibreOffice, `pandoc`, `pdftoppm`.
-- **Cách kiểm chứng `.docx` thay thế (đã dùng được):** `npm install docx-preview jszip` trong scratchpad → dựng trang HTML dùng `docx.renderAsync()` → chạy server cục bộ (`python -m http.server`) → mở bằng Chrome thật và chụp. **Bắt buộc render 1 trang mỗi lần tải** (tham số `?p=N`, xoá các `section.docx` khác khỏi DOM): để cả tài liệu (~19.000 px) thì `Page.captureScreenshot` timeout.
-- **Trình duyệt in-app không đăng nhập được vnggames.ai** — dùng Chrome thật (`mcp__claude-in-chrome__*`). Trình duyệt in-app cũng chỉ render **snapshot tĩnh** với file ngoài project folder, không chạy JS → muốn chạy JS trên file local phải copy vào scratchpad rồi serve qua HTTP.
-- **`scripts/office/validate.py` của skill docx báo lỗi giả trên Windows:** nó mở XML bằng codec `charmap` (cp1252) nên vỡ ở chữ tiếng Việt, báo "FAILED - found NEW validation errors". Tự kiểm bằng parser UTF-8 thì **22/22 phần XML hợp lệ, 0 lỗi**. Đừng tin kết quả của script đó trên máy này.
-- **`scripts/office/soffice.py` của skill crash trên Windows:** dùng `socket.AF_UNIX` (chỉ có trên Unix).
-- **`convertMillimetersToTwip` làm tròn xuống:** A4 210mm → 11905 (không phải 11906), lề 20mm → 1133. Nên chiều rộng nội dung = **9639** twip, không phải 9638. `columnWidths` của bảng phải cộng đúng bằng số này, nếu không Word co giãn cột sai. Nên tính cột cuối = `CONTENT_W - tổng các cột trước` thay vì gõ tay.
-- **`docx` npm không có sẵn** dù SKILL.md nói preinstalled → `npm install docx` trong scratchpad.
-- **Không đặt `keepNext` trên hàng trăm đoạn liên tiếp** — làm Word thrash khi phân trang.
-- Console Git Bash/PowerShell là cp1252: `print()` chuỗi tiếng Việt sẽ `UnicodeEncodeError` **sau khi** tác vụ đã chạy xong. Đừng nhầm là tác vụ thất bại; thêm `sys.stdout.reconfigure(encoding="utf-8")`.
-- **Ghi file trên Drive phải qua file tạm + `os.replace`** (cạm bẫy cũ, vẫn đúng) — ghi đè trực tiếp từng làm mất sạch nội dung một file.
+### ⚠️ Cả hai site đều sau SSO — đừng phí thời gian với WebFetch
+
+`WebFetch` **luôn thất bại**: bị 302 sang `auth.vnggames.ai/auth/realms/AITransformation/...`. Đã thử, đã xác nhận.
+→ **Dùng Chrome thật** (`mcp__claude-in-chrome__*`), nơi người dùng đã đăng nhập sẵn. Đã kiểm: mở được cả 2 site, không bị chặn.
+→ Đọc nội dung bằng `get_page_text` hoặc `javascript_tool` (`document.body.innerText`), không cần screenshot.
+
+### Nguồn A — Dokploy VNG (đọc TOÀN BỘ, đúng 5 trang)
+
+`https://docs.hub.vnggames.ai/docs/dokploy`
+
+| # | Trang | URL |
+|---|---|---|
+| 1 | Introduction | `/docs/dokploy` |
+| 2 | Access Requirements | `/docs/dokploy/getting-started` |
+| 3 | Deployment Flow | `/docs/dokploy/deployment-flow` |
+| 4 | SSO & Security | `/docs/dokploy/auth-security` |
+| 5 | FAQ & Support | `/docs/dokploy/faq` |
+
+### Nguồn B — GigiKit (CHỈ lấy phần liên quan Dokploy)
+
+`https://docs-gigikit.hub.vnggames.ai` — tổng 29 trang. Trang trực tiếp về Dokploy:
+
+- **`/guides/skills/deploy-dokploy`** — "gk:deploy-dokploy — Deploy to Dokploy", ~4.500 ký tự, 16 mục: When to Use · Prerequisites (Install CLI, Authenticate) · What the Skill Does · Workflow: Deploy an App · Key Commands Reference (Project & App, Database, Environment Variables, Create Environment) · Post-Deploy · Error Reference · Security Notes.
+
+Ngoài ra **phải quét 28 trang còn lại tìm chỗ nhắc Dokploy** (rất có thể có trong `commands-cheat-sheet`, `workflow-recipes`, `primary-workflow`). Danh sách nav đầy đủ: `/guides/getting-started/{introduction,installation,quickstart,commands-cheat-sheet,command-finder}`, `/guides/agents/{overview,planner,developer,tester,reviewer}`, `/guides/skills/{catalog,using-skills,creating-skills,deploy-dokploy,nexus-ui,skill-creator}`, `/guides/workflows/{primary-workflow,orchestration,chaining-patterns,workflow-recipes}`, `/guides/rules/{development-rules,team-coordination}`, `/guides/hooks/{overview,custom-hooks}`, `/guides/teams/{multi-agent,file-ownership}`, `/guides/plans/{creating-plans,templates}`.
+
+### Cách làm đề xuất
+
+1. **Thu thập:** duyệt 5 trang nguồn A + trang `deploy-dokploy` + quét 28 trang nguồn B tìm `dokploy`. Lưu bản thô ra scratchpad **và** `scripts/one-off/` (bài học: scratchpad bị xoá giữa các phiên, mất hết script/dữ liệu trung gian).
+2. **Biên tập theo DEC-053:** nội dung lên KB là **hướng dẫn cho người đọc**, không chứa mã `DEC-xxx`, link `audit/`, hay nhãn "đã/chưa kiểm chứng".
+3. **Đặt tên theo DEC-042:** file `doc-NN-<slug>.md`, regex đồng bộ khoá `^(doc|image)-`. Ảnh (nếu có) `image-NN-...`.
+4. **Vị trí:** tạo thư mục mới `knowledge/GS9 Dokploy VNG AI/` (tiền tố `GS9` là bắt buộc theo quy định công ty). **Hỏi người dùng xác nhận tên KB** trước khi tạo.
+5. **Đưa lên Web:** tạo KB trên vnggames.ai + trỏ connector vào thư mục — **việc này cần người dùng làm hoặc cho phép rõ ràng**, tuyệt đối không tự share/cấu hình sync (AGENTS.md).
+6. **Chat-test** sau khi sync, và nhớ **bật công cụ truy hồi** cho Agent (DEC-061: gắn KB thôi chưa đủ, `Tìm theo ngữ nghĩa`/`Tìm theo từ khóa` không tự bật).
+
+### Câu hỏi nên gộp hỏi người dùng một lượt
+
+- Tên KB chính thức? (đề xuất `GS9 Dokploy VNG AI`)
+- KB này cho ai đọc — dev nội bộ hay cả team? (quyết định độ sâu kỹ thuật)
+- Có cần chụp ảnh giao diện Dokploy chèn vào không? (lưu ý nghi vấn mục 4.5 ở Việc 2)
+- Phần GigiKit: chỉ lấy `deploy-dokploy`, hay lấy cả bối cảnh GigiKit để người đọc hiểu skill nằm trong hệ thống nào?
 
 ==================================================
-5. BỐI CẢNH MỚI — TEAM ĐANG DỒN TÀI LIỆU NGUỒN VÀO
+LỆNH KIỂM TRA ĐẦU PHIÊN
 ==================================================
 
-Từ 26–28/08, `Kho Tài Liệu Chưa Tích Hợp` mọc thêm 4 thư mục con chứa tài liệu nghiệp vụ thật (chưa ai xử lý, chưa vào KB nào):
-
-| Thư mục | Nội dung |
-|---|---|
-| `Event/` | `Event Control`, `Event Plan` |
-| `Function/` | `Content Game`, `Function Game`, `Quản lý lỗi Function`, `Survey` |
-| `Localize/` | `总翻译表20260824.xlsx` (bảng dịch tổng) |
-| `Membership/` | 6 file `.docx`/`.xlsx` về Membership, Săn Thẻ Đổi Quà |
-
-Việc này khớp hướng DEC-075: **KB/Agent hiện tại không phải bản cuối**, team đang thu thập lại nguồn qua Sheet `CFL Thu Thập Dữ Liệu` để dựng lại cấu trúc kho từ đầu. Rất có thể đây mới là việc chính người dùng muốn làm tiếp — **hỏi trước khi đầu tư công sức**, và **đừng tối ưu cấu trúc KB/Agent cũ** vì sẽ bị thay.
-
-==================================================
-6. LỆNH KIỂM TRA ĐẦU PHIÊN
-==================================================
-
-```powershell
-# 1. Repo
+```bash
 git rev-parse --show-toplevel
 git status --short
-git fetch origin; git diff --stat origin/main HEAD    # phải rỗng
-
-# 2. knowledge/ co day du khong
-ls knowledge/    # phai thay 12 thu muc kho
-
-# 3. File playbook còn đó và nội dung chưa vào sổ
-ls -la "knowledge/Kho Tài Liệu Chưa Tích Hợp/"
-grep -ril "metric.playbook" --include=*.md .          # chỉ thấy NEXT_SESSION_PROMPT.md = vẫn chưa vào sổ
+git fetch origin && git diff --stat origin/main HEAD    # phải rỗng
+ls knowledge/                                            # phải thấy 12 thư mục
+find .git -type f -name desktop.ini -delete              # dọn rác Drive nếu có
 ```
 
-Nếu lệnh (2) thiếu thư mục, Drive chưa sync xong — **đợi sync hết** rồi kiểm lại, đừng kết luận mất dữ liệu (DEC-064).
-
 ==================================================
-7. CÁCH LÀM VIỆC NGƯỜI DÙNG MONG MUỐN
+CÁCH LÀM VIỆC NGƯỜI DÙNG MONG MUỐN
 ==================================================
 
 - Trả lời ngắn gọn, đi thẳng vào việc. **Hỏi gộp một lượt rồi làm**, đừng hỏi lắt nhắt.
 - Phân biệt rõ **"đã kiểm chứng" / "chưa chứng minh" / "còn biến số"**. Không báo cáo suông.
-- Kiểm chứng thật bằng nhiều lớp; khi có thể, **đối chiếu 2 nguồn độc lập** trước khi kết luận (cách này đã bắt được lỗi đếm 53↔52 và 3 khối nội dung bị bỏ sót khi trích HTML).
-- Khi một công cụ báo lỗi, **tách nguyên nhân bằng test tối thiểu** trước khi kết luận — đừng đoán (bài học Word COM: tưởng do tài liệu phức tạp, thực ra treo cả với tài liệu trắng).
-- Khi phát hiện điều mới: ghi vào `DECISIONS.md`, rồi chắt phần "người dùng cần làm gì" sang `docs KB/Human` nếu liên quan hướng dẫn thao tác.
-- Không tự ý: chuyển file vào thư mục KB (kích hoạt sync lên Web), xoá file, commit/push khi chưa được yêu cầu.
+- Kiểm chứng bằng nhiều lớp, **đối chiếu 2 nguồn độc lập** khi có thể.
+- Khi công cụ báo lỗi, **tách nguyên nhân bằng test tối thiểu** trước khi kết luận.
+- **Không grep/find đệ quy từ root** — `knowledge/` 2,75 GB trên Drive làm `grep -r` và `git status` timeout. Chỉ nhắm đúng file; việc nặng đẩy sang background.
+- **Ghi file trên Drive qua file tạm + `os.replace`**; console Windows là cp1252 nên `print()` tiếng Việt sẽ `UnicodeEncodeError` *sau khi* tác vụ đã chạy xong — đừng nhầm là thất bại.
+- **Trước mỗi `git add` diện rộng:** chạy `git check-ignore -v` trên đúng file credential (`knowledge/Keys Drive/*.json`). Pattern chung **không** phủ hết — đã suýt push service-account key (DEC-083).
+- Không tự ý: sửa file trong `knowledge/`, chạy builder ghi đè `knowledge/`, tạo/share KB trên Web, `git push --force`, `git add -f`.
