@@ -4,104 +4,60 @@ Bạn đang tiếp quản dự án **Knowledge Base VNG**. Root repo Git:
 J:\My Drive\VNGGames AI\Knowledge Base VNG Source
 ```
 
-Xác nhận bằng `git rev-parse --show-toplevel` (ổ đĩa có thể khác `J:` trên máy khác).
+Xác nhận bằng `git rev-parse --show-toplevel` (ổ đĩa có thể khác `J:` trên máy khác — nếu vậy, hỏi người dùng đường dẫn thật trên máy này).
 
-**Kiến trúc hiện hành (DEC-082, 18/09/2026):** `knowledge/` nằm **trong** repo tại `<root>\knowledge`. Không còn shortcut `.shortcut-targets-by-id` sang Drive công ty — kiến trúc DEC-076 đã bị thay thế. Trên đĩa `knowledge/` có 354 file / 2,75 GB nhưng **git chỉ theo dõi 139 file / 29,7 MB**; 4 thư mục binary nặng bị `.gitignore` loại trừ (`H5 Promotion`, `Kho Tài Liệu Chưa Tích Hợp`, `GS9 CFL PUM`, `GS9 CFL Item Profile`) và `Keys Drive` (credential). Đọc `README.md` mục "Phạm vi git" trước khi `git add`.
+**Kiến trúc hiện hành (DEC-082, 18/09/2026):** `knowledge/` nằm **trong** repo tại `<root>\knowledge`. Git chỉ theo dõi phần text/ảnh nhẹ (~30 MB); 4 thư mục binary nặng (`H5 Promotion`, `Kho Tài Liệu Chưa Tích Hợp`, `GS9 CFL PUM`, `GS9 CFL Item Profile`) và `Keys Drive` (credential) bị `.gitignore` loại trừ, chỉ tồn tại trên Drive. Đọc `README.md` mục "Phạm vi git" trước khi `git add`.
 
-Đọc theo thứ tự: `README.md` → `AGENTS.md` → `HANDOFF.md` → `STATUS.md` → `DECISIONS.md` (tra từ DEC-075 khi cần).
+Đọc theo thứ tự: `README.md` → `AGENTS.md` → `HANDOFF.md` → `STATUS.md` → `DECISIONS.md` (tra từ DEC-084 khi cần — đó là mốc phiên trước bàn giao).
 
 ==================================================
-0. TRẠNG THÁI KHI BÀN GIAO (kiểm chứng 18/09/2026, phiên 10)
+0. TRẠNG THÁI KHI BÀN GIAO (kiểm chứng 18/09/2026, cuối phiên 10)
 ==================================================
 
-- Repo **sạch**, HEAD = `196029d`, khớp `origin/main`, `git diff --stat origin/main HEAD` rỗng. 485 file tracked.
-- Đã chuyển sang tài khoản Google Drive mới, **không mất dữ liệu** (đối chiếu HEAD/tree/hash index/số file với mốc trước khi chuyển — khớp tuyệt đối).
+- Repo **sạch**, HEAD = `3c417ac`, đã **push lên `origin/main`** — máy khác `git pull --ff-only origin main` sẽ thấy đúng trạng thái này.
 - 3 file untracked ở root là cố ý giữ, **đừng xoá**: `knowledge-20260820T085450Z-1-001.zip`, `CFL Thu Thập Dữ Liệu.xlsx`, `VNGGames AI.html`.
-- **Nếu git báo `fatal: bad object refs/desktop.ini`:** Drive lại rải `desktop.ini` vào `.git/`. Chạy `find .git -type f -name desktop.ini -delete` rồi `git for-each-ref`. Repo **không** hỏng — chuyện này tái diễn liên tục (DEC-083). Đã gặp lại chỉ ~30 phút sau lần dọn đầu.
+- `knowledge/` nay có **14 thư mục con** (không phải 12 như tài liệu cũ ghi) — hai thư mục mới: `GS9 CFL Metric Playbook/` và `GS9 Dokploy VNG AI/`. Cả hai đã commit, **chưa lên Web**.
+- Nếu git báo `fatal: bad object refs/desktop.ini`: chạy `find .git -type f -name desktop.ini -delete` rồi `git for-each-ref` — đây là rác Google Drive tái sinh liên tục (DEC-083), không phải repo hỏng.
 
-**Người dùng đã chốt thứ tự làm việc:** làm **Việc 1 → Việc 2 → Việc 3** dưới đây. Nhóm tài liệu Membership / Content Game / Function Game / Event / Localize / Survey trong `Kho Tài Liệu Chưa Tích Hợp` **để từ từ sau**, chưa đụng tới.
-
-==================================================
-VIỆC 1 — DỌN NỢ KỸ THUẬT
-==================================================
-
-**1a. Chạy gate build/test — chưa ai chạy lại từ khi đổi kiến trúc.**
-
-`scripts/build_handbook.py` sinh module vào `knowledge/GS9 Knowledge VNG AI/`. Trước đây `knowledge/` không nằm trong repo nên builder chắc chắn lỗi; nay đã trở lại nên **có thể** chạy được — nhưng chưa kiểm chứng.
-
-⚠️ **Người dùng dặn không được sửa gì trong `knowledge/`** (đó là bản mới nhất đang sync lên VNG AI). Nên **đừng chạy builder thẳng vào thư mục thật**. Cách an toàn:
-
-1. Copy `knowledge/GS9 Knowledge VNG AI/` sang scratchpad.
-2. Chạy builder trỏ vào bản copy (hoặc chạy rồi `git diff` ngay để xem nó đổi gì, và `git checkout -- knowledge/` để hoàn tác nếu có).
-3. So sánh bản sinh với bản thật: nếu khớp → builder còn đúng; nếu lệch → báo cáo lệch chỗ nào, **đừng tự ghi đè**.
-4. Chạy `python -m unittest discover -s tests -v`. Gate cũ kỳ vọng `Ran 30 tests`; nhiều test khoá cứng số lượng (49/52 ảnh, 61/64 lượt tham chiếu) nên có thể FAIL do số liệu đã đổi — **đọc kỹ từng FAIL, đừng sửa test cho pass**.
-
-**1b. Backup 2,75 GB đang không có bản sao.**
-
-Bốn thư mục bị loại khỏi git **chỉ tồn tại trên Drive**: `H5 Promotion` (1,74 GB), `Kho Tài Liệu Chưa Tích Hợp` (895 MB), `GS9 CFL PUM` (127 MB), `GS9 CFL Item Profile` (24 MB). Vừa chuyển tài khoản Drive một lần — mất lần nữa là mất hẳn. **Hỏi người dùng** muốn backup đi đâu (ổ ngoài / Drive khác / chấp nhận rủi ro), đừng tự quyết.
+**Phiên trước (phiên 10) đã đóng Việc 1 và Việc 2 trong `NEXT_SESSION_PROMPT.md` cũ, và làm được phần thu thập/soạn nội dung của Việc 3.** Việc còn lại của phiên này chủ yếu là **hoàn tất Việc 3** (đưa lên Web + chat-test) và **Việc 1b** (backup) — cả hai đều cần **người dùng ra quyết định hoặc tự thao tác trên Web**, agent không tự làm được.
 
 ==================================================
-VIỆC 2 — ĐÓNG NGHI VẤN CŨ (HANDOFF mục 4.5)
+VIỆC A — HOÀN TẤT KB "GS9 DOKPLOY VNG AI" (ưu tiên cao nhất — đây là việc chính người dùng muốn)
 ==================================================
 
-Mục 4.5 đánh dấu **ƯU TIÊN CAO** từ 17/08/2026 và **chưa bao giờ được đóng**: nghi vấn Agent lấy nội dung trong **ảnh minh hoạ** làm nguồn dữ kiện, rồi trả lời sai.
+Nội dung **đã viết xong, đã commit** tại `knowledge/GS9 Dokploy VNG AI/doc-00` → `doc-05` (giới thiệu, điều kiện truy cập, quy trình 9 bước, xác thực & bảo mật, FAQ, và trang riêng cho dev dùng GigiKit CLI). Biên tập theo DEC-053 (không `DEC-xxx`, không link `audit/`, không nhãn "đã/chưa kiểm chứng"). Nguồn thô lưu tại `scripts/one-off/dokploy-source-a-raw.md` và `dokploy-source-b-raw.md` nếu cần đối chiếu lại.
 
-**Đã kiểm chứng trước đó:** nền tảng OCR nội dung ảnh **và** sinh caption ngay lúc nạp, lưu thành chunk tra cứu được; trace một lượt chạy ghi rõ Agent chủ động truy hồi `image-01-...png` làm nguồn.
-**Chưa chứng minh:** câu trả lời sai có *lấy đúng* từ các chunk đó không.
+**Việc cần làm theo thứ tự:**
 
-Việc cần làm: chạy lại Case 2 (`audit/agent-chat-test-2026-08-17.md` mục 8), so kết quả. Nếu vẫn sai → thử tắt VLM/đọc ảnh cho KB thuần hướng dẫn rồi chạy lại, so ba kết quả.
-
-**Vì sao đáng làm trước khi dựng KB mới:** nếu lỗi này có thật, mọi KB dựng sau đều dính. Chốt được nguyên nhân sẽ định hình cách chèn ảnh vào KB Dokploy sắp làm.
-
-**Việc treo nhỏ kèm theo:** `knowledge/Kho Tài Liệu Chưa Tích Hợp/gs9-metric-playbook.docx` (529 KB, dựng 25/08) chưa quyết đưa vào KB nào và chưa đổi tên theo quy ước `doc-`. **Không tái tạo lại được** — bản HTML nguồn đã mất. Hỏi người dùng.
+1. **Hỏi người dùng đã đọc/duyệt 6 file nội dung chưa** — nếu muốn sửa gì, sửa trực tiếp trong `knowledge/GS9 Dokploy VNG AI/` (KB này viết tay, không qua `build_handbook.py`, không có nguồn `docs KB/Human` tương ứng).
+2. **Tạo KB `GS9 Dokploy VNG AI` trên `vnggames.ai`** — việc này **cần người dùng tự làm hoặc cho phép rõ ràng** (AGENTS.md: không tự share/cấu hình sync). Nếu người dùng cho phép agent thao tác qua `claude-in-chrome` (Chrome thật, đã đăng nhập), làm theo đúng quy trình DEC-046 (Google Drive connector, trỏ đúng một thư mục con `knowledge/GS9 Dokploy VNG AI/`, tuyệt đối không trỏ root project).
+3. **Sau khi lên Web: bật công cụ truy hồi** cho Agent nào sẽ dùng kho này (DEC-061 — gắn KB **không** tự bật `Tìm theo ngữ nghĩa`/`Tìm theo từ khóa`).
+4. **Chat-test** theo checklist DEC-062 (không bịa, không lộ PII, truy hồi chạy đúng, trích dẫn đúng nguồn).
+5. Cập nhật `HANDOFF.md` mục 4.13 và `STATUS.md` khi xong từng bước — đừng chờ xong hết mới ghi.
 
 ==================================================
-VIỆC 3 — DỰNG KB "DOKPLOY VNG AI" (việc chính người dùng muốn)
+VIỆC B — LÊN WEB KB "GS9 CFL METRIC PLAYBOOK"
 ==================================================
 
-Nguồn: hai site tài liệu nội bộ. **Đã trinh sát 18/09/2026, số liệu dưới đây là thật.**
+`gs9-metric-playbook.docx` (52 metric, 4 phần) đã được chuyển vào kho riêng `knowledge/GS9 CFL Metric Playbook/doc-00-metric-playbook.docx`, đã commit. **Chưa lên Web.**
 
-### ⚠️ Cả hai site đều sau SSO — đừng phí thời gian với WebFetch
+Việc cần làm: giống Việc A bước 2–4 — tạo KB `GS9 CFL Metric Playbook` trên `vnggames.ai`, trỏ connector đúng thư mục, bật công cụ truy hồi, chat-test. Xem `HANDOFF.md` mục 4.12.
 
-`WebFetch` **luôn thất bại**: bị 302 sang `auth.vnggames.ai/auth/realms/AITransformation/...`. Đã thử, đã xác nhận.
-→ **Dùng Chrome thật** (`mcp__claude-in-chrome__*`), nơi người dùng đã đăng nhập sẵn. Đã kiểm: mở được cả 2 site, không bị chặn.
-→ Đọc nội dung bằng `get_page_text` hoặc `javascript_tool` (`document.body.innerText`), không cần screenshot.
+==================================================
+VIỆC C — BACKUP 2,75 GB (còn treo từ phiên 10, DEC-085)
+==================================================
 
-### Nguồn A — Dokploy VNG (đọc TOÀN BỘ, đúng 5 trang)
+Bốn thư mục **chỉ tồn tại trên Drive, không có bản sao nào khác**: `H5 Promotion` (1,74 GB), `Kho Tài Liệu Chưa Tích Hợp` (895 MB, nay 180 file), `GS9 CFL PUM` (127 MB), `GS9 CFL Item Profile` (24 MB). Phiên 10 đã hỏi, người dùng chọn **chấp nhận rủi ro tạm thời** — chưa backup.
 
-`https://docs.hub.vnggames.ai/docs/dokploy`
+**Hỏi lại người dùng đầu phiên này** xem đã sẵn sàng quyết định nơi backup chưa (ổ ngoài / Drive khác / tiếp tục chấp nhận rủi ro). Đừng tự ý chọn thay, và đừng để việc này rơi vào quên lãng — nhắc mỗi phiên cho tới khi giải quyết.
 
-| # | Trang | URL |
-|---|---|---|
-| 1 | Introduction | `/docs/dokploy` |
-| 2 | Access Requirements | `/docs/dokploy/getting-started` |
-| 3 | Deployment Flow | `/docs/dokploy/deployment-flow` |
-| 4 | SSO & Security | `/docs/dokploy/auth-security` |
-| 5 | FAQ & Support | `/docs/dokploy/faq` |
+==================================================
+VIỆC ĐÃ ĐÓNG TRONG PHIÊN 10 — không cần làm lại
+==================================================
 
-### Nguồn B — GigiKit (CHỈ lấy phần liên quan Dokploy)
-
-`https://docs-gigikit.hub.vnggames.ai` — tổng 29 trang. Trang trực tiếp về Dokploy:
-
-- **`/guides/skills/deploy-dokploy`** — "gk:deploy-dokploy — Deploy to Dokploy", ~4.500 ký tự, 16 mục: When to Use · Prerequisites (Install CLI, Authenticate) · What the Skill Does · Workflow: Deploy an App · Key Commands Reference (Project & App, Database, Environment Variables, Create Environment) · Post-Deploy · Error Reference · Security Notes.
-
-Ngoài ra **phải quét 28 trang còn lại tìm chỗ nhắc Dokploy** (rất có thể có trong `commands-cheat-sheet`, `workflow-recipes`, `primary-workflow`). Danh sách nav đầy đủ: `/guides/getting-started/{introduction,installation,quickstart,commands-cheat-sheet,command-finder}`, `/guides/agents/{overview,planner,developer,tester,reviewer}`, `/guides/skills/{catalog,using-skills,creating-skills,deploy-dokploy,nexus-ui,skill-creator}`, `/guides/workflows/{primary-workflow,orchestration,chaining-patterns,workflow-recipes}`, `/guides/rules/{development-rules,team-coordination}`, `/guides/hooks/{overview,custom-hooks}`, `/guides/teams/{multi-agent,file-ownership}`, `/guides/plans/{creating-plans,templates}`.
-
-### Cách làm đề xuất
-
-1. **Thu thập:** duyệt 5 trang nguồn A + trang `deploy-dokploy` + quét 28 trang nguồn B tìm `dokploy`. Lưu bản thô ra scratchpad **và** `scripts/one-off/` (bài học: scratchpad bị xoá giữa các phiên, mất hết script/dữ liệu trung gian).
-2. **Biên tập theo DEC-053:** nội dung lên KB là **hướng dẫn cho người đọc**, không chứa mã `DEC-xxx`, link `audit/`, hay nhãn "đã/chưa kiểm chứng".
-3. **Đặt tên theo DEC-042:** file `doc-NN-<slug>.md`, regex đồng bộ khoá `^(doc|image)-`. Ảnh (nếu có) `image-NN-...`.
-4. **Vị trí:** tạo thư mục mới `knowledge/GS9 Dokploy VNG AI/` (tiền tố `GS9` là bắt buộc theo quy định công ty). **Hỏi người dùng xác nhận tên KB** trước khi tạo.
-5. **Đưa lên Web:** tạo KB trên vnggames.ai + trỏ connector vào thư mục — **việc này cần người dùng làm hoặc cho phép rõ ràng**, tuyệt đối không tự share/cấu hình sync (AGENTS.md).
-6. **Chat-test** sau khi sync, và nhớ **bật công cụ truy hồi** cho Agent (DEC-061: gắn KB thôi chưa đủ, `Tìm theo ngữ nghĩa`/`Tìm theo từ khóa` không tự bật).
-
-### Câu hỏi nên gộp hỏi người dùng một lượt
-
-- Tên KB chính thức? (đề xuất `GS9 Dokploy VNG AI`)
-- KB này cho ai đọc — dev nội bộ hay cả team? (quyết định độ sâu kỹ thuật)
-- Có cần chụp ảnh giao diện Dokploy chèn vào không? (lưu ý nghi vấn mục 4.5 ở Việc 2)
-- Phần GigiKit: chỉ lấy `deploy-dokploy`, hay lấy cả bối cảnh GigiKit để người đọc hiểu skill nằm trong hệ thống nào?
+- **Gate build/test:** đã chạy lại sau đổi tài khoản Drive, sạch hoàn toàn (`Ran 30 tests OK`, builder khớp tuyệt đối `knowledge/` thật). Xem `HANDOFF.md` mục 4.11 nếu cần lặp lại cách chạy an toàn (bản cô lập trong scratchpad, không đụng `knowledge/` thật).
+- **Nghi vấn ảnh minh hoạ thành nguồn dữ kiện sai (mục 4.5 HANDOFF cũ):** đã chạy lại Case 2 — không tái hiện lỗi, không có trích dẫn ảnh nào trong câu trả lời/bước suy luận. Cơ chế gốc (ảnh có thể được OCR và truy hồi làm nguồn) **vẫn đúng về kỹ thuật**, chỉ là không bị kích hoạt lần này — không cần điều tra thêm trừ khi lỗi tái xuất hiện thật. Bằng chứng: `audit/case2-retest-2026-09-18.md`.
+- **README.md** đã có mục "KB và Agent hiện có trên VNG AI" — danh sách đầy đủ 14 KB local (9 tracked + 4 không tracked + 1 web-only) và 16 Agent (6 mặc định + 10 CFL custom, kèm kho đang gắn và đúng/tạm chuyên môn). **Cập nhật lại mục này nếu binding Agent × KB đổi.**
 
 ==================================================
 LỆNH KIỂM TRA ĐẦU PHIÊN
@@ -111,7 +67,7 @@ LỆNH KIỂM TRA ĐẦU PHIÊN
 git rev-parse --show-toplevel
 git status --short
 git fetch origin && git diff --stat origin/main HEAD    # phải rỗng
-ls knowledge/                                            # phải thấy 12 thư mục
+ls knowledge/                                            # phải thấy 14 thư mục
 find .git -type f -name desktop.ini -delete              # dọn rác Drive nếu có
 ```
 
@@ -126,4 +82,6 @@ CÁCH LÀM VIỆC NGƯỜI DÙNG MONG MUỐN
 - **Không grep/find đệ quy từ root** — `knowledge/` 2,75 GB trên Drive làm `grep -r` và `git status` timeout. Chỉ nhắm đúng file; việc nặng đẩy sang background.
 - **Ghi file trên Drive qua file tạm + `os.replace`**; console Windows là cp1252 nên `print()` tiếng Việt sẽ `UnicodeEncodeError` *sau khi* tác vụ đã chạy xong — đừng nhầm là thất bại.
 - **Trước mỗi `git add` diện rộng:** chạy `git check-ignore -v` trên đúng file credential (`knowledge/Keys Drive/*.json`). Pattern chung **không** phủ hết — đã suýt push service-account key (DEC-083).
-- Không tự ý: sửa file trong `knowledge/`, chạy builder ghi đè `knowledge/`, tạo/share KB trên Web, `git push --force`, `git add -f`.
+- **Trước mỗi `git push`:** quét diff tìm secret/token thật (không chỉ tin từ khoá chung chung như "password" xuất hiện trong văn bản hướng dẫn — phân biệt với giá trị thật).
+- Không tự ý: sửa file trong `knowledge/GS9 Knowledge VNG AI/` (KB đang sync chính), chạy builder ghi đè `knowledge/`, tạo/share KB trên Web, `git push --force`, `git add -f`.
+- **Chỉ commit khi người dùng đồng ý** — không tự động commit giữa chừng, hỏi trước khi commit và trước khi push.

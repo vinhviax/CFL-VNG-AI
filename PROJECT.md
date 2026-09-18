@@ -105,7 +105,7 @@ Khi build, tiền tố tính năng được đổi thành `doc-` để giữ quy
 
 Các folder `GS9 CFL Data Daily`, `GS9 CFL Item Profile`, `GS9 CFL PUM` và `GS9 CFL Sentiment Feedback User` là dữ liệu của những KB khác trên Web.
 
-**Kiểm kê thật 18/09/2026 — `knowledge/` có 354 file, 2,75 GB, 12 thư mục.** Hai thư mục dưới đây **chưa từng được mô tả trong tài liệu trước đó**:
+**Kiểm kê thật 18/09/2026 (đầu phiên 10) — `knowledge/` có 354 file, 2,75 GB, 12 thư mục.** Hai thư mục dưới đây **chưa từng được mô tả trong tài liệu trước đó**:
 
 | Thư mục | Thực tế | Git |
 |---|---|---|
@@ -113,6 +113,11 @@ Các folder `GS9 CFL Data Daily`, `GS9 CFL Item Profile`, `GS9 CFL PUM` và `GS9
 | `Kho Tài Liệu Chưa Tích Hợp/` | 181 file, **895 MB** — tài liệu nguồn team gửi, chưa xử lý: `Event/`, `Function/`, `Localize/`, `Membership/`, và `gs9-metric-playbook.docx` | Loại trừ |
 | `Keys Drive/` | service-account key của connector | Loại trừ (credential) |
  Không tự động nhập chúng vào `GS9 Knowledge VNG AI` và không dọn nếu chưa xác định dependency.
+
+**Cập nhật cuối phiên 10 (18/09/2026) — thêm 2 thư mục nhẹ, tổng nay 14 thư mục:**
+- `gs9-metric-playbook.docx` đã **chuyển ra khỏi** `Kho Tài Liệu Chưa Tích Hợp/` (còn 180 file, 895 MB) sang kho riêng mới `GS9 CFL Metric Playbook/doc-00-metric-playbook.docx` (1 file, 529 KB, **có** git theo dõi).
+- `GS9 Dokploy VNG AI/` — kho mới, 6 file Markdown (`doc-00`→`doc-05`), viết tay trực tiếp không qua builder, **có** git theo dõi.
+- Cả hai kho mới **chưa lên Web**, chưa trỏ Google Drive connector — xem `HANDOFF.md` mục 4.12/4.13.
 
 **Cập nhật 15/08/2026 (phiên 2):** theo yêu cầu người dùng, tên file trong `GS9 CFL PUM`, `GS9 CFL Data Daily` và `GS9 CFL Sentiment Feedback User` đã thêm tiền tố `doc-` (giữ nguyên phần tên gốc, `desktop.ini` không đổi). Người dùng xác nhận các thư mục này liên kết với Google Drive và chủ động chấp nhận việc đổi tên sẽ khiến Web tự đồng bộ theo.
 
