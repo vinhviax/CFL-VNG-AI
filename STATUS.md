@@ -1,7 +1,26 @@
 # Trạng thái Knowledge Base VNG
 
-**Ngày snapshot:** 18/09/2026 (phiên 10, tiếp — gate build/test sạch, chạy lại Case 2)
+**Ngày snapshot:** 18/09/2026 (phiên 10, cuối phiên — mở rộng nội dung KB Dokploy bằng ghi chép thực tế, connector đã trỏ)
 **Phiên bản:** 5.0.0 — đổi tài khoản Drive, `knowledge/` trở lại trong repo, giới hạn phạm vi git
+
+## MỚI 18/09/2026 (phiên 10, cuối phiên) — KB "GS9 Dokploy VNG AI" mở rộng 6→10 file bằng kinh nghiệm thực tế, connector đã trỏ, đã push (DEC-088)
+
+Người dùng cung cấp `F:\DOKPLOY.md` — ghi chép thao tác thật (nhãn ✅/📖/❓ theo độ tin cậy) từ việc migrate dự án CFL Feedback Intelligence lên Dokploy. Đã đọc chọn lọc, bỏ nhãn độ tin cậy kiểu audit (vi phạm DEC-053 nếu đưa nguyên vào KB Human), viết lại thành 4 file hướng dẫn mới:
+
+- `doc-06-kien-truc-va-loai-dich-vu.md` — Docker Swarm, Traefik, giờ UTC, 5 loại dịch vụ.
+- `doc-07-dung-va-deploy-application.md` — cấu hình build monorepo + **2 bẫy deploy quan trọng nhất** (autodeploy không tự chạy; build "Done" ≠ container đã đổi, phải Stop→Start) + 2 checklist.
+- `doc-08-volume-bien-moi-truong-va-domain.md` — bẫy quyền `USER node` + named volume, volume không có UI quản lý file, 3 ô biến môi trường (`VITE_*` phải qua Build-time Arguments), domain/SSL.
+- `doc-09-kinh-nghiem-thuc-te.md` — case monorepo, khảo sát trước khi dựng, đưa file lớn vào volume không SSH, danh sách phần chưa thử nghiệm.
+
+`doc-00-gioi-thieu.md` đã thêm mục trỏ sang 4 trang mới. Tổng KB nay **10 file**, vẫn không ảnh, vẫn đúng quy ước DEC-042/DEC-053.
+
+**Phát hiện phụ:** mục "13. gigikit — chưa xác định" trong tài liệu nguồn của người dùng gần như chắc chắn là **GigiKit** (đã tự xác nhận qua `doc-05` cùng kho, thu thập từ `docs-gigikit.hub.vnggames.ai` cùng phiên) — đã báo người dùng qua chat, không tự sửa file nguồn ngoài repo.
+
+**Đưa lên Web:** người dùng đã tự trỏ Google Drive connector vào `knowledge/GS9 Dokploy VNG AI/`, xác nhận sẽ tự đồng bộ sáng hôm sau. **Chưa xác nhận đồng bộ thành công** — phiên sau phải kiểm tra qua Web/MCP trước khi tin, rồi mới bật công cụ truy hồi + chat-test. Xem `HANDOFF.md` mục 4.13, DEC-088.
+
+**Đã commit + push lên `origin/main` cùng phiên** (bao gồm cả việc thêm "Việc D" vào `NEXT_SESSION_PROMPT.md` — dùng `CFL Thu Thập Dữ Liệu.xlsx` để dựng các KB nghiệp vụ còn thiếu, xem lịch sử commit).
+
+## Snapshot trước đó trong cùng ngày — phiên 10, tiếp (gate build/test sạch, chạy lại Case 2)
 
 ## MỚI 18/09/2026 (phiên 10, tiếp) — Việc 1 xong: gate build/test sạch; Việc 2 xong: chạy lại Case 2, không tái hiện lỗi (DEC-084)
 

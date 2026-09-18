@@ -267,32 +267,33 @@ Người dùng chọn tạo kho riêng thay vì gộp vào `GS9 CFL Knowledge Ag
 
 ---
 
-### 4.13 🚧 ĐANG LÀM 18/09/2026 (phiên 10) — dựng KB "GS9 Dokploy VNG AI" (Việc 3)
+### 4.13 🚧 ĐANG LÀM (phiên 10, cập nhật 18/09/2026 tối) — dựng KB "GS9 Dokploy VNG AI" (Việc 3), nội dung đã mở rộng, connector đã trỏ
 
-Nguồn: 5 trang `docs.hub.vnggames.ai/docs/dokploy` (đọc toàn bộ) + trang `docs-gigikit.hub.vnggames.ai/guides/skills/deploy-dokploy` + quét đúng 28 trang GigiKit tìm "dokploy" (chỉ 2/28 khớp: trang `deploy-dokploy` và một dòng trong `catalog`, không có gì mới). Bản thô lưu tại `scripts/one-off/dokploy-source-a-raw.md` và `dokploy-source-b-raw.md` (bền qua phiên, không như scratchpad).
+Nguồn ban đầu: 5 trang `docs.hub.vnggames.ai/docs/dokploy` (đọc toàn bộ) + trang `docs-gigikit.hub.vnggames.ai/guides/skills/deploy-dokploy` + quét đúng 28 trang GigiKit tìm "dokploy" (chỉ 2/28 khớp, không có gì mới). Bản thô lưu tại `scripts/one-off/dokploy-source-a-raw.md` và `dokploy-source-b-raw.md`.
 
-**Quyết định đã hỏi và chốt với người dùng (một lượt):**
-- Tên KB: `GS9 Dokploy VNG AI` (đúng đề xuất gốc).
-- Đối tượng đọc: **cả team, kể cả non-dev** — nội dung viết tổng quan, giải thích thuật ngữ (SSO, VPN, CI...), phần lệnh CLI chi tiết tách riêng có cảnh báo rõ "dành cho dev".
-- Ảnh minh hoạ: **không chèn** — tránh hẳn rủi ro ảnh thành nguồn dữ kiện sai (mục 4.5).
-- Phạm vi GigiKit: chỉ nội dung trang `deploy-dokploy`, không viết thêm bối cảnh GigiKit nói chung.
+**Quyết định đã hỏi và chốt với người dùng (một lượt, đầu Việc 3):**
+- Tên KB: `GS9 Dokploy VNG AI`.
+- Đối tượng đọc: cả team, kể cả non-dev — nội dung viết tổng quan, phần lệnh CLI/kỹ thuật sâu tách riêng có cảnh báo rõ "dành cho dev".
+- Ảnh minh hoạ: không chèn — tránh rủi ro ảnh thành nguồn dữ kiện sai (mục 4.5).
+- Phạm vi GigiKit: chỉ nội dung trang `deploy-dokploy`.
 
-**Đã tạo `knowledge/GS9 Dokploy VNG AI/`, 6 file** (viết tay trực tiếp, giống cách các KB đơn giản khác như `GS9 CFL Glossary & Systems` — KB này không đi qua pipeline `build_handbook.py`, không có nguồn `docs KB/Human` tương ứng):
-- `doc-00-gioi-thieu.md` — Dokploy là gì, vì sao dùng, 2 công cụ cốt lõi
-- `doc-01-dieu-kien-truy-cap.md` — tài khoản + mạng cần có trước khi deploy
-- `doc-02-quy-trinh-trien-khai.md` — 9 bước, 3 giai đoạn, đầy đủ
-- `doc-03-xac-thuc-va-bao-mat.md` — VNG SSO + 5 lớp bảo mật
-- `doc-04-hoi-dap-va-ho-tro.md` — FAQ (4 câu) + bảng liên hệ hỗ trợ
-- `doc-05-trien-khai-qua-gigikit.md` — dành riêng cho dev dùng GigiKit CLI (`/gk:deploy-dokploy`), gắn nhãn rõ "có thể bỏ qua nếu không dùng GigiKit"
+**Nguồn bổ sung 18/09/2026 (tối, cùng phiên):** người dùng cung cấp `F:\DOKPLOY.md` — ghi chép thao tác thật từ việc migrate một dự án thật (CFL Feedback Intelligence) lên Dokploy. Đã đọc chọn lọc (bỏ phần quá hẹp/không áp dụng chung như lỗi đường dẫn Windows-Git Bash cụ thể, và mục "gigikit chưa xác định" — xem ghi chú bên dưới), viết lại theo văn phong hướng dẫn thay vì giữ nguyên nhãn độ tin cậy ✅/📖/❓ của tài liệu nguồn (nhãn đó tương đương "đã/chưa kiểm chứng", vi phạm DEC-053 nếu đưa nguyên vào KB).
 
-Biên tập theo DEC-053: không có mã `DEC-xxx`, link `audit/`, hay nhãn "đã/chưa kiểm chứng" trong 6 file trên — nội dung thuần hướng dẫn thao tác.
+**Ghi chú thú vị phát sinh:** tài liệu nguồn có mục "13. gigikit — chưa xác định được đây là gì". Đối chiếu với `doc-05-trien-khai-qua-gigikit.md` đã viết trong kho này (từ khi thu thập `docs-gigikit.hub.vnggames.ai`), gần như chắc chắn đó chính là **GigiKit** — bộ công cụ AI hỗ trợ code có skill `/gk:deploy-dokploy`. Đã báo lại cho người dùng qua chat, **không tự sửa** `F:\DOKPLOY.md` (file ngoài repo này).
 
-**Còn phải làm (không tự ý — cần người dùng hoặc xác nhận thêm):**
-1. Người dùng đọc lại 6 file, góp ý/sửa nếu cần.
-2. `git add` + commit (gộp cuối phiên cùng `GS9 CFL Metric Playbook`).
-3. Người dùng tự tạo KB `GS9 Dokploy VNG AI` trên `vnggames.ai`, trỏ Google Drive connector đúng vào thư mục con này (DEC-046) — tuyệt đối không tự ý share/cấu hình sync (AGENTS.md).
-4. Sau khi lên Web: bật công cụ truy hồi cho agent nào dùng kho này (DEC-061 — gắn KB không tự bật truy hồi).
-5. Chat-test theo checklist DEC-062 (không bịa, không lộ PII, truy hồi chạy đúng).
+**`knowledge/GS9 Dokploy VNG AI/` nay có 10 file** (viết tay trực tiếp, không qua `build_handbook.py`):
+- `doc-00` đến `doc-05` — như phiên bản đầu (giới thiệu, điều kiện truy cập, quy trình 9 bước, xác thực & bảo mật, FAQ, GigiKit CLI). `doc-00` đã thêm mục trỏ sang 4 trang mới.
+- `doc-06-kien-truc-va-loai-dich-vu.md` — Docker Swarm bên dưới, Traefik, giờ UTC, 5 loại dịch vụ (chỉ Database có backup tự động).
+- `doc-07-dung-va-deploy-application.md` — cấu hình build (bao gồm Context Path cho monorepo), và **phần quan trọng nhất: 2 bẫy vòng đời deploy** (autodeploy không tự chạy; build "Done" không có nghĩa container đã đổi — phải Stop→Start), kèm 2 checklist (dựng mới / deploy thay đổi).
+- `doc-08-volume-bien-moi-truong-va-domain.md` — bẫy quyền ghi `USER node` + named volume, volume không có UI quản lý file, 3 ô biến môi trường khác nhau (đặc biệt `VITE_*` phải qua Build-time Arguments), domain/SSL qua `nip.io` + cảnh báo bảo mật.
+- `doc-09-kinh-nghiem-thuc-te.md` — case monorepo 2 service, khảo sát trước khi dựng, cách đưa file lớn vào volume khi không có SSH (endpoint tạm có xác thực, xoá ngay sau khi dùng), và danh sách các phần chưa thử nghiệm đầy đủ (rollback, backup Database, Compose/Template...).
+
+**Đưa lên Web — đã tiến thêm một bước:** người dùng đã **tự trỏ Google Drive connector** vào thư mục `knowledge/GS9 Dokploy VNG AI/` (không phải agent làm) và xác nhận đồng bộ tự động sẽ chạy vào sáng hôm sau. **Chưa xác nhận đồng bộ đã thành công** — phiên sau cần kiểm tra qua Web/MCP trước khi tin.
+
+**Còn phải làm:**
+1. Kiểm tra đầu phiên sau: 10 tài liệu đã đồng bộ lên KB `GS9 Dokploy VNG AI` trên Web chưa (không chỉ tin đã "trỏ connector" là xong).
+2. Bật công cụ truy hồi cho agent nào dùng kho này (DEC-061 — gắn KB không tự bật truy hồi).
+3. Chat-test theo checklist DEC-062 (không bịa, không lộ PII, truy hồi chạy đúng, trích dẫn đúng nguồn — đặc biệt thử hỏi về 2 bẫy deploy ở `doc-07` xem agent có tra trúng không).
 
 ---
 

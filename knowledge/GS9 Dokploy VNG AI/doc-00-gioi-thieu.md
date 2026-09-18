@@ -31,3 +31,12 @@ Bốn tài liệu tiếp theo trong kho này đi theo đúng trình tự một n
 4. [Hỏi đáp và hỗ trợ](doc-04-hoi-dap-va-ho-tro.md) — câu hỏi thường gặp và liên hệ khi cần giúp đỡ.
 
 Nếu team bạn đang dùng bộ công cụ AI hỗ trợ code có tên GigiKit (lệnh dạng `/gk:...` trong Claude Code), còn có thêm [Triển khai qua GigiKit](doc-05-trien-khai-qua-gigikit.md) — cách deploy lên Dokploy bằng dòng lệnh, dành cho developer.
+
+## Đã sẵn sàng tự dựng một ứng dụng thật?
+
+Bốn tài liệu tiếp theo là kinh nghiệm thực tế từ một lần triển khai dự án thật lên Dokploy — dành cho ai chuẩn bị tự dựng và vận hành một ứng dụng, không chỉ đọc để biết:
+
+5. [Kiến trúc và các loại dịch vụ](doc-06-kien-truc-va-loai-dich-vu.md) — Dokploy chạy trên nền gì, và khi nào chọn Application/Database/Compose.
+6. [Dựng và deploy Application](doc-07-dung-va-deploy-application.md) — cấu hình build, và **những bẫy dễ tốn thời gian nhất** khi deploy (autodeploy không tự chạy, build xong chưa chắc container đã đổi).
+7. [Volume, biến môi trường và domain](doc-08-volume-bien-moi-truong-va-domain.md) — lưu dữ liệu, khai biến, gắn tên miền.
+8. [Kinh nghiệm thực tế và lưu ý khi triển khai](doc-09-kinh-nghiem-thuc-te.md) — các tình huống đã gặp thật và cách xử lý.

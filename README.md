@@ -28,7 +28,7 @@ Thứ tự này có chủ đích — đọc sai thứ tự dễ làm hỏng vi�
 | 1 | [`AGENTS.md`](AGENTS.md) | Quy tắc làm việc, ranh giới an toàn, phạm vi git |
 | 2 | [`HANDOFF.md`](HANDOFF.md) | Trạng thái hiện tại, việc đang mở, **cạm bẫy đã gặp thật** |
 | 3 | [`STATUS.md`](STATUS.md) | Nhật ký theo phiên |
-| 4 | [`DECISIONS.md`](DECISIONS.md) | 87 quyết định bền vững — tra khi không hiểu "vì sao lại làm vậy" |
+| 4 | [`DECISIONS.md`](DECISIONS.md) | 88 quyết định bền vững — tra khi không hiểu "vì sao lại làm vậy" |
 | 5 | [`PROJECT.md`](PROJECT.md) | Cây thư mục chuẩn, hợp đồng artifact |
 
 ---
@@ -77,7 +77,7 @@ docs KB/Human/{KB,Agent}-NN-*.md
 | `GS9 CFL CS FAQ & Policy` | Câu hỏi và chính sách chăm sóc khách hàng CFL. | Mới có định dạng, nội dung còn sơ khai — chưa đủ để `CS Copilot` dùng làm nguồn CS thật |
 | `GS9 CFL Sentiment Feedback User` | Phản hồi và cảm xúc người chơi đã ẩn danh. | Đang dùng, đã lên Web — chứa dữ liệu phản hồi người chơi, chỉ dùng nội bộ |
 | `GS9 CFL Metric Playbook` | Sổ tay 52 metric theo dõi CFL (4 phần, kèm sơ đồ phân rã). 1 tài liệu `.docx`. | **Mới tạo 18/09/2026, chưa lên Web** — cần tạo KB + trỏ connector |
-| `GS9 Dokploy VNG AI` | Hướng dẫn dùng nền tảng deploy nội bộ Dokploy: điều kiện truy cập, quy trình 9 bước, xác thực & bảo mật, FAQ, và cách deploy qua GigiKit CLI cho dev. 6 tài liệu. | **Mới tạo 18/09/2026, chưa lên Web** — cần tạo KB + trỏ connector |
+| `GS9 Dokploy VNG AI` | Hướng dẫn dùng nền tảng deploy nội bộ Dokploy: điều kiện truy cập, quy trình 9 bước, xác thực & bảo mật, FAQ, deploy qua GigiKit CLI, cộng kinh nghiệm thực tế (kiến trúc Swarm, bẫy deploy, volume, domain) từ một lần triển khai dự án thật. 10 tài liệu. | Tạo 18/09/2026 — người dùng đã trỏ Google Drive connector, chờ tự đồng bộ lên Web |
 
 **Chỉ tồn tại trên Drive, KHÔNG git theo dõi** (quá nặng hoặc nhạy cảm — xem bảng phạm vi git bên dưới):
 

@@ -8,32 +8,32 @@ Xác nhận bằng `git rev-parse --show-toplevel` (ổ đĩa có thể khác `J
 
 **Kiến trúc hiện hành (DEC-082, 18/09/2026):** `knowledge/` nằm **trong** repo tại `<root>\knowledge`. Git chỉ theo dõi phần text/ảnh nhẹ (~30 MB); 4 thư mục binary nặng (`H5 Promotion`, `Kho Tài Liệu Chưa Tích Hợp`, `GS9 CFL PUM`, `GS9 CFL Item Profile`) và `Keys Drive` (credential) bị `.gitignore` loại trừ, chỉ tồn tại trên Drive. Đọc `README.md` mục "Phạm vi git" trước khi `git add`.
 
-Đọc theo thứ tự: `README.md` → `AGENTS.md` → `HANDOFF.md` → `STATUS.md` → `DECISIONS.md` (tra từ DEC-084 khi cần — đó là mốc phiên trước bàn giao).
+Đọc theo thứ tự: `README.md` → `AGENTS.md` → `HANDOFF.md` → `STATUS.md` → `DECISIONS.md` (tra từ DEC-088 khi cần — đó là mốc phiên trước bàn giao).
 
 ==================================================
 0. TRẠNG THÁI KHI BÀN GIAO (kiểm chứng 18/09/2026, cuối phiên 10)
 ==================================================
 
-- Repo **sạch**, HEAD = `3c417ac`, đã **push lên `origin/main`** — máy khác `git pull --ff-only origin main` sẽ thấy đúng trạng thái này.
+- Repo **sạch**, HEAD = `759cf5f`, đã **push lên `origin/main`** — máy khác `git pull --ff-only origin main` sẽ thấy đúng trạng thái này.
 - 3 file untracked ở root là cố ý giữ, **đừng xoá**: `knowledge-20260820T085450Z-1-001.zip`, `CFL Thu Thập Dữ Liệu.xlsx`, `VNGGames AI.html`.
-- `knowledge/` nay có **14 thư mục con** (không phải 12 như tài liệu cũ ghi) — hai thư mục mới: `GS9 CFL Metric Playbook/` và `GS9 Dokploy VNG AI/`. Cả hai đã commit, **chưa lên Web**.
+- `knowledge/` nay có **14 thư mục con** (không phải 12 như tài liệu cũ ghi) — hai thư mục mới: `GS9 CFL Metric Playbook/` và `GS9 Dokploy VNG AI/` (nay **10 file**, không phải 6). Cả hai đã commit.
+- **`GS9 Dokploy VNG AI` đã được người dùng tự trỏ Google Drive connector** cuối phiên 10 — dự kiến tự đồng bộ lên Web sáng hôm sau. **Chưa xác nhận đồng bộ thành công**, kiểm tra đầu tiên ở Việc A bên dưới. `GS9 CFL Metric Playbook` thì **chưa** trỏ connector.
 - Nếu git báo `fatal: bad object refs/desktop.ini`: chạy `find .git -type f -name desktop.ini -delete` rồi `git for-each-ref` — đây là rác Google Drive tái sinh liên tục (DEC-083), không phải repo hỏng.
 
-**Phiên trước (phiên 10) đã đóng Việc 1 và Việc 2 trong `NEXT_SESSION_PROMPT.md` cũ, và làm được phần thu thập/soạn nội dung của Việc 3.** Việc còn lại của phiên này chủ yếu là **hoàn tất Việc 3** (đưa lên Web + chat-test) và **Việc 1b** (backup) — cả hai đều cần **người dùng ra quyết định hoặc tự thao tác trên Web**, agent không tự làm được.
+**Phiên trước (phiên 10) đã đóng Việc 1 và Việc 2, soạn xong nội dung Việc 3 (10 file, gồm cả kinh nghiệm thực tế từ một lần migrate dự án thật lên Dokploy), và người dùng đã tự trỏ connector cho KB Dokploy.** Việc còn lại chủ yếu là **xác nhận đồng bộ Web + chat-test cho Việc A**, hoàn tất Việc B (Metric Playbook chưa trỏ connector), Việc C (backup) và Việc D (dùng file xlsx dựng KB còn thiếu) — phần lớn cần **người dùng ra quyết định hoặc tự thao tác trên Web**.
 
 ==================================================
-VIỆC A — HOÀN TẤT KB "GS9 DOKPLOY VNG AI" (ưu tiên cao nhất — đây là việc chính người dùng muốn)
+VIỆC A — XÁC NHẬN ĐỒNG BỘ + CHAT-TEST KB "GS9 DOKPLOY VNG AI" (ưu tiên cao nhất)
 ==================================================
 
-Nội dung **đã viết xong, đã commit** tại `knowledge/GS9 Dokploy VNG AI/doc-00` → `doc-05` (giới thiệu, điều kiện truy cập, quy trình 9 bước, xác thực & bảo mật, FAQ, và trang riêng cho dev dùng GigiKit CLI). Biên tập theo DEC-053 (không `DEC-xxx`, không link `audit/`, không nhãn "đã/chưa kiểm chứng"). Nguồn thô lưu tại `scripts/one-off/dokploy-source-a-raw.md` và `dokploy-source-b-raw.md` nếu cần đối chiếu lại.
+Nội dung **đã viết xong, đã commit, connector đã được người dùng tự trỏ** — `knowledge/GS9 Dokploy VNG AI/doc-00` → `doc-09` (10 file): giới thiệu, điều kiện truy cập, quy trình 9 bước, xác thực & bảo mật, FAQ, trang riêng cho dev dùng GigiKit CLI, và 4 file kinh nghiệm thực tế (`doc-06`–`doc-09`: kiến trúc Swarm/Traefik, cấu hình build + 2 bẫy deploy quan trọng nhất, volume/biến môi trường/domain, case thực tế). Biên tập theo DEC-053. Nguồn thô: `scripts/one-off/dokploy-source-a-raw.md`, `dokploy-source-b-raw.md`; nguồn kinh nghiệm thực tế người dùng cung cấp trực tiếp qua chat (không lưu file thô riêng, đã viết thẳng vào 4 doc mới).
 
 **Việc cần làm theo thứ tự:**
 
-1. **Hỏi người dùng đã đọc/duyệt 6 file nội dung chưa** — nếu muốn sửa gì, sửa trực tiếp trong `knowledge/GS9 Dokploy VNG AI/` (KB này viết tay, không qua `build_handbook.py`, không có nguồn `docs KB/Human` tương ứng).
-2. **Tạo KB `GS9 Dokploy VNG AI` trên `vnggames.ai`** — việc này **cần người dùng tự làm hoặc cho phép rõ ràng** (AGENTS.md: không tự share/cấu hình sync). Nếu người dùng cho phép agent thao tác qua `claude-in-chrome` (Chrome thật, đã đăng nhập), làm theo đúng quy trình DEC-046 (Google Drive connector, trỏ đúng một thư mục con `knowledge/GS9 Dokploy VNG AI/`, tuyệt đối không trỏ root project).
-3. **Sau khi lên Web: bật công cụ truy hồi** cho Agent nào sẽ dùng kho này (DEC-061 — gắn KB **không** tự bật `Tìm theo ngữ nghĩa`/`Tìm theo từ khóa`).
-4. **Chat-test** theo checklist DEC-062 (không bịa, không lộ PII, truy hồi chạy đúng, trích dẫn đúng nguồn).
-5. Cập nhật `HANDOFF.md` mục 4.13 và `STATUS.md` khi xong từng bước — đừng chờ xong hết mới ghi.
+1. **Kiểm tra đồng bộ đã chạy chưa và có đủ 10 tài liệu không** — qua Web hoặc MCP `list_documents` (đừng chỉ tin "đã trỏ connector là xong", per thói quen dự án: luôn kiểm bằng chứng, không tin lời báo). Nếu chưa đồng bộ hoặc thiếu tài liệu, hỏi người dùng.
+2. **Bật công cụ truy hồi** cho Agent nào sẽ dùng kho này (DEC-061 — gắn KB **không** tự bật `Tìm theo ngữ nghĩa`/`Tìm theo từ khóa`).
+3. **Chat-test** theo checklist DEC-062 (không bịa, không lộ PII, truy hồi chạy đúng, trích dẫn đúng nguồn). **Ưu tiên thử câu hỏi về nội dung mới** (`doc-07`/`doc-08`) — ví dụ "deploy xong sao vẫn thấy code cũ?", "container báo lỗi quyền ghi vào volume thì sao?" — để xác nhận agent tra trúng phần kinh nghiệm thực tế vừa thêm, không chỉ phần hướng dẫn cơ bản cũ.
+4. Cập nhật `HANDOFF.md` mục 4.13 và `STATUS.md` khi xong từng bước — đừng chờ xong hết mới ghi.
 
 ==================================================
 VIỆC B — LÊN WEB KB "GS9 CFL METRIC PLAYBOOK"
